@@ -1,15 +1,17 @@
 <?php require_once('header.php'); ?>
 
 <?php
+// Kiểm tra xem form đã được gửi hay chưa
 if(isset($_POST['form1'])) {
 	$valid = 1;
 
+    // Kiểm tra nếu trường "Tên màu" bị trống
     if(empty($_POST['color_name'])) {
         $valid = 0;
-        $error_message .= "Color Name can not be empty<br>";
+        $error_message .= "Tên màu không được để trống<br>";
     } else {
-		// Duplicate Color checking
-    	// current Color name that is in the database
+		// Kiểm tra trùng lặp tên màu
+    	// Lấy tên màu hiện tại từ cơ sở dữ liệu
     	$statement = $pdo->prepare("SELECT * FROM tbl_color WHERE color_id=?");
 		$statement->execute(array($_REQUEST['id']));
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -17,31 +19,33 @@ if(isset($_POST['form1'])) {
 			$current_color_name = $row['color_name'];
 		}
 
+		// Kiểm tra xem tên màu mới đã tồn tại trong cơ sở dữ liệu chưa
 		$statement = $pdo->prepare("SELECT * FROM tbl_color WHERE color_name=? and color_name!=?");
     	$statement->execute(array($_POST['color_name'],$current_color_name));
     	$total = $statement->rowCount();							
     	if($total) {
     		$valid = 0;
-        	$error_message .= 'Color name already exists<br>';
+        	$error_message .= 'Tên màu đã tồn tại<br>';
     	}
     }
 
     if($valid == 1) {    	
-		// updating into the database
+		// Cập nhật thông tin vào cơ sở dữ liệu
 		$statement = $pdo->prepare("UPDATE tbl_color SET color_name=? WHERE color_id=?");
 		$statement->execute(array($_POST['color_name'],$_REQUEST['id']));
 
-    	$success_message = 'Color is updated successfully.';
+    	$success_message = 'Màu đã được cập nhật thành công.';
     }
 }
 ?>
 
 <?php
+// Kiểm tra id trong yêu cầu, nếu không có id, chuyển về trang đăng xuất
 if(!isset($_REQUEST['id'])) {
 	header('location: logout.php');
 	exit;
 } else {
-	// Check the id is valid or not
+	// Kiểm tra id có hợp lệ hay không
 	$statement = $pdo->prepare("SELECT * FROM tbl_color WHERE color_id=?");
 	$statement->execute(array($_REQUEST['id']));
 	$total = $statement->rowCount();
@@ -55,15 +59,15 @@ if(!isset($_REQUEST['id'])) {
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Edit Color</h1>
+		<h1>Chỉnh sửa màu</h1>
 	</div>
 	<div class="content-header-right">
-		<a href="color.php" class="btn btn-primary btn-sm">View All</a>
+		<a href="color.php" class="btn btn-primary btn-sm">Xem tất cả</a>
 	</div>
 </section>
 
-
 <?php							
+// Lấy tên màu hiện tại
 foreach ($result as $row) {
 	$color_name = $row['color_name'];
 }
@@ -96,7 +100,7 @@ foreach ($result as $row) {
 
             <div class="box-body">
                 <div class="form-group">
-                    <label for="" class="col-sm-2 control-label">Color Name <span>*</span></label>
+                    <label for="" class="col-sm-2 control-label">Tên màu <span>*</span></label>
                     <div class="col-sm-4">
                         <input type="text" class="form-control" name="color_name" value="<?php echo $color_name; ?>">
                     </div>
@@ -104,7 +108,7 @@ foreach ($result as $row) {
                 <div class="form-group">
                 	<label for="" class="col-sm-2 control-label"></label>
                     <div class="col-sm-6">
-                      <button type="submit" class="btn btn-success pull-left" name="form1">Update</button>
+                      <button type="submit" class="btn btn-success pull-left" name="form1">Cập nhật</button>
                     </div>
                 </div>
 
@@ -114,26 +118,25 @@ foreach ($result as $row) {
 
         </form>
 
-
-
     </div>
   </div>
 
 </section>
 
+<!-- Hộp thoại xác nhận xóa -->
 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Delete Confirmation</h4>
+                <h4 class="modal-title" id="myModalLabel">Xác nhận xóa</h4>
             </div>
             <div class="modal-body">
-                Are you sure want to delete this item?
+                Bạn có chắc chắn muốn xóa mục này không?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-danger btn-ok">Delete</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                <a class="btn btn-danger btn-ok">Xóa</a>
             </div>
         </div>
     </div>

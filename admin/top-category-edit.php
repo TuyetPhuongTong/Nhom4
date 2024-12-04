@@ -6,10 +6,10 @@ if(isset($_POST['form1'])) {
 
     if(empty($_POST['tcat_name'])) {
         $valid = 0;
-        $error_message .= "Top Category Name can not be empty<br>";
+        $error_message .= "Tên danh mục cấp cao không thể để trống<br>";
     } else {
-		// Duplicate Top Category checking
-    	// current Top Category name that is in the database
+		// Kiểm tra danh mục cấp cao trùng lặp
+    	// Lấy tên danh mục cấp cao hiện tại trong cơ sở dữ liệu
     	$statement = $pdo->prepare("SELECT * FROM tbl_top_category WHERE tcat_id=?");
 		$statement->execute(array($_REQUEST['id']));
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -22,16 +22,16 @@ if(isset($_POST['form1'])) {
     	$total = $statement->rowCount();							
     	if($total) {
     		$valid = 0;
-        	$error_message .= 'Top Category name already exists<br>';
+        	$error_message .= 'Tên danh mục cấp cao đã tồn tại<br>';
     	}
     }
 
     if($valid == 1) {    	
-		// updating into the database
+		// Cập nhật vào cơ sở dữ liệu
 		$statement = $pdo->prepare("UPDATE tbl_top_category SET tcat_name=?,show_on_menu=? WHERE tcat_id=?");
 		$statement->execute(array($_POST['tcat_name'],$_POST['show_on_menu'],$_REQUEST['id']));
 
-    	$success_message = 'Top Category is updated successfully.';
+    	$success_message = 'Danh mục cấp cao đã được cập nhật thành công.';
     }
 }
 ?>
@@ -41,7 +41,7 @@ if(!isset($_REQUEST['id'])) {
 	header('location: logout.php');
 	exit;
 } else {
-	// Check the id is valid or not
+	// Kiểm tra id có hợp lệ không
 	$statement = $pdo->prepare("SELECT * FROM tbl_top_category WHERE tcat_id=?");
 	$statement->execute(array($_REQUEST['id']));
 	$total = $statement->rowCount();
@@ -55,10 +55,10 @@ if(!isset($_REQUEST['id'])) {
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Edit Top Level Category</h1>
+		<h1>Chỉnh sửa Danh mục cấp cao</h1>
 	</div>
 	<div class="content-header-right">
-		<a href="top-category.php" class="btn btn-primary btn-sm">View All</a>
+		<a href="top-category.php" class="btn btn-primary btn-sm">Xem tất cả</a>
 	</div>
 </section>
 
@@ -97,24 +97,24 @@ foreach ($result as $row) {
 
             <div class="box-body">
                 <div class="form-group">
-                    <label for="" class="col-sm-2 control-label">Top Category Name <span>*</span></label>
+                    <label for="" class="col-sm-2 control-label">Tên danh mục cấp cao <span>*</span></label>
                     <div class="col-sm-4">
                         <input type="text" class="form-control" name="tcat_name" value="<?php echo $tcat_name; ?>">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="" class="col-sm-2 control-label">Show on Menu? <span>*</span></label>
+                    <label for="" class="col-sm-2 control-label">Hiển thị trên Menu? <span>*</span></label>
                     <div class="col-sm-4">
                         <select name="show_on_menu" class="form-control" style="width:auto;">
-                            <option value="0" <?php if($show_on_menu == 0) {echo 'selected';} ?>>No</option>
-                            <option value="1" <?php if($show_on_menu == 1) {echo 'selected';} ?>>Yes</option>
+                            <option value="0" <?php if($show_on_menu == 0) {echo 'selected';} ?>>Không</option>
+                            <option value="1" <?php if($show_on_menu == 1) {echo 'selected';} ?>>Có</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
                 	<label for="" class="col-sm-2 control-label"></label>
                     <div class="col-sm-6">
-                      <button type="submit" class="btn btn-success pull-left" name="form1">Update</button>
+                      <button type="submit" class="btn btn-success pull-left" name="form1">Cập nhật</button>
                     </div>
                 </div>
 
@@ -123,8 +123,6 @@ foreach ($result as $row) {
         </div>
 
         </form>
-
-
 
     </div>
   </div>
@@ -136,14 +134,14 @@ foreach ($result as $row) {
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Delete Confirmation</h4>
+                <h4 class="modal-title" id="myModalLabel">Xác nhận xóa</h4>
             </div>
             <div class="modal-body">
-                Are you sure want to delete this item?
+                Bạn có chắc muốn xóa mục này không?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-danger btn-ok">Delete</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                <a class="btn btn-danger btn-ok">Xóa</a>
             </div>
         </div>
     </div>

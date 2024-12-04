@@ -5,7 +5,7 @@ if(!isset($_REQUEST['id'])) {
 	header('location: logout.php');
 	exit;
 } else {
-	// Check the id is valid or not
+	// Kiểm tra xem id có hợp lệ không
 	$statement = $pdo->prepare("SELECT * FROM tbl_customer WHERE cust_id=?");
 	$statement->execute(array($_REQUEST['id']));
 	$total = $statement->rowCount();
@@ -22,6 +22,7 @@ if(!isset($_REQUEST['id'])) {
 ?>
 
 <?php
+// Đổi trạng thái khách hàng
 if($cust_status == 0) {$final = 1;} else {$final = 0;}
 $statement = $pdo->prepare("UPDATE tbl_customer SET cust_status=? WHERE cust_id=?");
 $statement->execute(array($final,$_REQUEST['id']));

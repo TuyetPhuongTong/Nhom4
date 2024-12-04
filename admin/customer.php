@@ -2,7 +2,7 @@
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>View Customers</h1>
+		<h1>Xem Khách Hàng</h1>
 	</div>
 </section>
 
@@ -15,12 +15,12 @@
 						<thead>
 							<tr>
 								<th width="10">#</th>
-								<th width="180">Name</th>
-								<th width="150">Email Address</th>
-								<th width="180">Country, City, State</th>
-								<th>Status</th>
-								<th width="100">Change Status</th>
-								<th width="100">Action</th>
+								<th width="180">Tên</th>
+								<th width="150">Địa Chỉ Email</th>
+								<th width="180">Quốc Gia, Thành Phố, Tỉnh</th>
+								<th>Trạng Thái</th>
+								<th width="100">Thay Đổi Trạng Thái</th>
+								<th width="100">Hành Động</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -45,12 +45,12 @@
 										<?php echo $row['cust_city']; ?><br>
 										<?php echo $row['cust_state']; ?>
 									</td>
-									<td><?php if($row['cust_status']==1) {echo 'Active';} else {echo 'Inactive';} ?></td>
+									<td><?php if($row['cust_status']==1) {echo 'Hoạt Động';} else {echo 'Không Hoạt Động';} ?></td>
 									<td>
-										<a href="customer-change-status.php?id=<?php echo $row['cust_id']; ?>" class="btn btn-success btn-xs">Change Status</a>
+										<a href="customer-change-status.php?id=<?php echo $row['cust_id']; ?>" class="btn btn-success btn-xs">Thay Đổi Trạng Thái</a>
 									</td>
 									<td>
-										<a href="#" class="btn btn-danger btn-xs" data-href="customer-delete.php?id=<?php echo $row['cust_id']; ?>" data-toggle="modal" data-target="#confirm-delete">Delete</a>
+										<a href="#" class="btn btn-danger btn-xs" data-href="customer-delete.php?id=<?php echo $row['cust_id']; ?>" data-toggle="modal" data-target="#confirm-delete">Xóa</a>
 									</td>
 								</tr>
 								<?php
@@ -62,28 +62,24 @@
 			</div>
 		</div>
 	</div>
-
-
 </section>
-
 
 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Delete Confirmation</h4>
+                <h4 class="modal-title" id="myModalLabel">Xác Nhận Xóa</h4>
             </div>
             <div class="modal-body">
-                <p>Are you sure want to delete this item?</p>
+                <p>Bạn có chắc chắn muốn xóa mục này không?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-danger btn-ok">Delete</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                <a class="btn btn-danger btn-ok">Xóa</a>
             </div>
         </div>
     </div>
 </div>
-
 
 <?php require_once('footer.php'); ?>

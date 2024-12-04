@@ -6,20 +6,20 @@ if(isset($_POST['form1'])) {
 
 	if(empty($_POST['faq_title'])) {
 		$valid = 0;
-		$error_message .= 'Title can not be empty<br>';
+		$error_message .= 'Tiêu đề không được để trống<br>';
 	}
 
 	if(empty($_POST['faq_content'])) {
 		$valid = 0;
-		$error_message .= 'Content can not be empty<br>';
+		$error_message .= 'Nội dung không được để trống<br>';
 	}
 
 	if($valid == 1) {
 	
-		$statement = $pdo->prepare("INSERT INTO tbl_faq (faq_title,faq_content) VALUES (?,?)");
-		$statement->execute(array($_POST['faq_title'],$_POST['faq_content']));
+		$statement = $pdo->prepare("INSERT INTO tbl_faq (faq_title, faq_content) VALUES (?, ?)");
+		$statement->execute(array($_POST['faq_title'], $_POST['faq_content']));
 			
-		$success_message = 'FAQ is added successfully!';
+		$success_message = 'Câu hỏi thường gặp đã được thêm thành công!';
 
 		unset($_POST['faq_title']);
 		unset($_POST['faq_content']);
@@ -29,13 +29,12 @@ if(isset($_POST['form1'])) {
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Add FAQ</h1>
+		<h1>Thêm Câu Hỏi Thường Gặp</h1>
 	</div>
 	<div class="content-header-right">
-		<a href="faq.php" class="btn btn-primary btn-sm">View All</a>
+		<a href="faq.php" class="btn btn-primary btn-sm">Xem Tất Cả</a>
 	</div>
 </section>
-
 
 <section class="content">
 
@@ -60,13 +59,13 @@ if(isset($_POST['form1'])) {
 				<div class="box box-info">
 					<div class="box-body">
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Title <span>*</span></label>
+							<label for="" class="col-sm-2 control-label">Tiêu đề <span>*</span></label>
 							<div class="col-sm-6">
 								<input type="text" autocomplete="off" class="form-control" name="faq_title" value="<?php if(isset($_POST['faq_title'])){echo $_POST['faq_title'];} ?>">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Content <span>*</span></label>
+							<label for="" class="col-sm-2 control-label">Nội dung <span>*</span></label>
 							<div class="col-sm-9">
 								<textarea class="form-control" name="faq_content" id="editor1" style="height:200px;"><?php if(isset($_POST['faq_content'])){echo $_POST['faq_content'];} ?></textarea>
 							</div>
@@ -74,7 +73,7 @@ if(isset($_POST['form1'])) {
 						<div class="form-group">
 							<label for="" class="col-sm-2 control-label"></label>
 							<div class="col-sm-6">
-								<button type="submit" class="btn btn-success pull-left" name="form1">Submit</button>
+								<button type="submit" class="btn btn-success pull-left" name="form1">Gửi</button>
 							</div>
 						</div>
 					</div>

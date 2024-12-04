@@ -1,12 +1,12 @@
 <?php require_once('header.php'); ?>
 
 <?php
-// Preventing the direct access of this page.
+// Ngăn chặn truy cập trực tiếp vào trang này.
 if(!isset($_REQUEST['id'])) {
 	header('location: logout.php');
 	exit;
 } else {
-	// Check the id is valid or not
+	// Kiểm tra xem ID có hợp lệ không
 	$statement = $pdo->prepare("SELECT * FROM tbl_country WHERE country_id=?");
 	$statement->execute(array($_REQUEST['id']));
 	$total = $statement->rowCount();
@@ -19,7 +19,7 @@ if(!isset($_REQUEST['id'])) {
 
 <?php
 
-	// Delete from tbl_country
+	// Xóa khỏi bảng tbl_country
 	$statement = $pdo->prepare("DELETE FROM tbl_country WHERE country_id=?");
 	$statement->execute(array($_REQUEST['id']));
 

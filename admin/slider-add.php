@@ -12,16 +12,16 @@ if(isset($_POST['form1'])) {
         $file_name = basename( $path, '.' . $ext );
         if( $ext!='jpg' && $ext!='png' && $ext!='jpeg' && $ext!='gif' ) {
             $valid = 0;
-            $error_message .= 'You must have to upload jpg, jpeg, gif or png file<br>';
+            $error_message .= 'Bạn phải tải lên tệp có định dạng jpg, jpeg, gif hoặc png<br>';
         }
     } else {
     	$valid = 0;
-        $error_message .= 'You must have to select a photo<br>';
+        $error_message .= 'Bạn phải chọn một bức ảnh<br>';
     }
 
 	if($valid == 1) {
 
-		// getting auto increment id
+		// lấy id tự tăng tự động
 		$statement = $pdo->prepare("SHOW TABLE STATUS LIKE 'tbl_slider'");
 		$statement->execute();
 		$result = $statement->fetchAll();
@@ -29,15 +29,13 @@ if(isset($_POST['form1'])) {
 			$ai_id=$row[10];
 		}
 
-
 		$final_name = 'slider-'.$ai_id.'.'.$ext;
         move_uploaded_file( $path_tmp, '../assets/uploads/'.$final_name );
 
-	
 		$statement = $pdo->prepare("INSERT INTO tbl_slider (photo,heading,content,button_text,button_url,position) VALUES (?,?,?,?,?,?)");
 		$statement->execute(array($final_name,$_POST['heading'],$_POST['content'],$_POST['button_text'],$_POST['button_url'],$_POST['position']));
 			
-		$success_message = 'Slider is added successfully!';
+		$success_message = 'Slider đã được thêm thành công!';
 
 		unset($_POST['heading']);
 		unset($_POST['content']);
@@ -49,13 +47,12 @@ if(isset($_POST['form1'])) {
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Add Slider</h1>
+		<h1>Thêm Slider</h1>
 	</div>
 	<div class="content-header-right">
-		<a href="slider.php" class="btn btn-primary btn-sm">View All</a>
+		<a href="slider.php" class="btn btn-primary btn-sm">Xem Tất Cả</a>
 	</div>
 </section>
-
 
 <section class="content">
 
@@ -80,49 +77,49 @@ if(isset($_POST['form1'])) {
 				<div class="box box-info">
 					<div class="box-body">
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Photo <span>*</span></label>
+							<label for="" class="col-sm-2 control-label">Ảnh <span>*</span></label>
 							<div class="col-sm-9" style="padding-top:5px">
-								<input type="file" name="photo">(Only jpg, jpeg, gif and png are allowed)
+								<input type="file" name="photo">(Chỉ chấp nhận tệp jpg, jpeg, gif và png)
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Heading </label>
+							<label for="" class="col-sm-2 control-label">Tiêu Đề </label>
 							<div class="col-sm-6">
 								<input type="text" autocomplete="off" class="form-control" name="heading" value="<?php if(isset($_POST['heading'])){echo $_POST['heading'];} ?>">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Content </label>
+							<label for="" class="col-sm-2 control-label">Nội Dung </label>
 							<div class="col-sm-6">
 								<textarea class="form-control" name="content" style="height:140px;"><?php if(isset($_POST['content'])){echo $_POST['content'];} ?></textarea>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Button Text </label>
+							<label for="" class="col-sm-2 control-label">Nút Văn Bản </label>
 							<div class="col-sm-6">
 								<input type="text" autocomplete="off" class="form-control" name="button_text" value="<?php if(isset($_POST['button_text'])){echo $_POST['button_text'];} ?>">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Button URL </label>
+							<label for="" class="col-sm-2 control-label"> Nút URL </label>
 							<div class="col-sm-6">
 								<input type="text" autocomplete="off" class="form-control" name="button_url" value="<?php if(isset($_POST['button_url'])){echo $_POST['button_url'];} ?>">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Position </label>
+							<label for="" class="col-sm-2 control-label">Vị Trí </label>
 							<div class="col-sm-6">
 								<select name="position" class="form-control">
-									<option value="Left">Left</option>
-									<option value="Center">Center</option>
-									<option value="Right">Right</option>
+									<option value="Left">Trái</option>
+									<option value="Center">Giữa</option>
+									<option value="Right">Phải</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="" class="col-sm-2 control-label"></label>
 							<div class="col-sm-6">
-								<button type="submit" class="btn btn-success pull-left" name="form1">Submit</button>
+								<button type="submit" class="btn btn-success pull-left" name="form1">Gửi</button>
 							</div>
 						</div>
 					</div>

@@ -10,7 +10,7 @@ $error_message='';
 if(isset($_POST['form1'])) {
         
     if(empty($_POST['email']) || empty($_POST['password'])) {
-        $error_message = 'Email and/or Password can not be empty<br>';
+        $error_message = 'Email và/hoặc Mật khẩu không được để trống<br>';
     } else {
 		
 		$email = strip_tags($_POST['email']);
@@ -21,14 +21,14 @@ if(isset($_POST['form1'])) {
     	$total = $statement->rowCount();    
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);    
         if($total==0) {
-            $error_message .= 'Email Address does not match<br>';
+            $error_message .= 'Địa chỉ email không đúng<br>';
         } else {       
             foreach($result as $row) { 
                 $row_password = $row['password'];
             }
         
             if( $row_password != md5($password) ) {
-                $error_message .= 'Password does not match<br>';
+                $error_message .= 'Mật khẩu không đúng<br>';
             } else {       
             
 				$_SESSION['user'] = $row;
@@ -45,7 +45,7 @@ if(isset($_POST['form1'])) {
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Login</title>
+	<title>Đăng nhập</title>
 
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
@@ -66,10 +66,10 @@ if(isset($_POST['form1'])) {
 
 <div class="login-box">
 	<div class="login-logo">
-		<b>Admin Panel</b>
+		<b>Bảng điều khiển quản trị</b>
 	</div>
   	<div class="login-box-body">
-    	<p class="login-box-msg">Log in to start your session</p>
+    	<p class="login-box-msg">Đăng nhập để bắt đầu</p>
     
 	    <?php 
 	    if( (isset($error_message)) && ($error_message!='') ):

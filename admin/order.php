@@ -17,7 +17,7 @@ if(isset($_POST['form1'])) {
         $subject_text = strip_tags($_POST['subject_text']);
         $message_text = strip_tags($_POST['message_text']);
 
-        // Getting Customer Email Address
+        // Lấy email của khách hàng
         $statement = $pdo->prepare("SELECT * FROM tbl_customer WHERE cust_id=?");
         $statement->execute(array($_POST['cust_id']));
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            

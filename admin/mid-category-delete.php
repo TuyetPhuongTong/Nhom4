@@ -1,12 +1,12 @@
 <?php require_once('header.php'); ?>
 
 <?php
-// Preventing the direct access of this page.
+// Ngăn chặn việc truy cập trực tiếp vào trang này.
 if(!isset($_REQUEST['id'])) {
 	header('location: logout.php');
 	exit;
 } else {
-	// Check the id is valid or not
+	// Kiểm tra ID có hợp lệ hay không
 	$statement = $pdo->prepare("SELECT * FROM tbl_mid_category WHERE mcat_id=?");
 	$statement->execute(array($_REQUEST['id']));
 	$total = $statement->rowCount();
@@ -19,7 +19,7 @@ if(!isset($_REQUEST['id'])) {
 
 <?php
 
-	// Getting all ecat ids
+	// Nhận tất cả các ID ecat
 	$statement = $pdo->prepare("SELECT * FROM tbl_end_category WHERE mcat_id=?");
 	$statement->execute(array($_REQUEST['id']));
 	$total = $statement->rowCount();
@@ -41,7 +41,7 @@ if(!isset($_REQUEST['id'])) {
 
 		for($i=0;$i<count($p_ids);$i++) {
 
-			// Getting photo ID to unlink from folder
+			// Lấy ảnh ID để hủy liên kết khỏi thư mục
 			$statement = $pdo->prepare("SELECT * FROM tbl_product WHERE p_id=?");
 			$statement->execute(array($p_ids[$i]));
 			$result = $statement->fetchAll(PDO::FETCH_ASSOC);							
@@ -50,7 +50,7 @@ if(!isset($_REQUEST['id'])) {
 				unlink('../assets/uploads/'.$p_featured_photo);
 			}
 
-			// Getting other photo ID to unlink from folder
+			// Lấy ID ảnh khác để hủy liên kết khỏi thư mục
 			$statement = $pdo->prepare("SELECT * FROM tbl_product_photo WHERE p_id=?");
 			$statement->execute(array($p_ids[$i]));
 			$result = $statement->fetchAll(PDO::FETCH_ASSOC);							
@@ -59,27 +59,27 @@ if(!isset($_REQUEST['id'])) {
 				unlink('../assets/uploads/product_photos/'.$photo);
 			}
 
-			// Delete from tbl_photo
+			// Xóa khỏi tbl_photo
 			$statement = $pdo->prepare("DELETE FROM tbl_product WHERE p_id=?");
 			$statement->execute(array($p_ids[$i]));
 
-			// Delete from tbl_product_photo
+			// Xóa khỏi tbl_product_photo
 			$statement = $pdo->prepare("DELETE FROM tbl_product_photo WHERE p_id=?");
 			$statement->execute(array($p_ids[$i]));
 
-			// Delete from tbl_product_size
+			// Xóa khỏi tbl_product_size
 			$statement = $pdo->prepare("DELETE FROM tbl_product_size WHERE p_id=?");
 			$statement->execute(array($p_ids[$i]));
 
-			// Delete from tbl_product_color
+			// Xóa khỏi tbl_product_color
 			$statement = $pdo->prepare("DELETE FROM tbl_product_color WHERE p_id=?");
 			$statement->execute(array($p_ids[$i]));
 
-			// Delete from tbl_rating
+			// Xóa khỏi tbl_rating
 			$statement = $pdo->prepare("DELETE FROM tbl_rating WHERE p_id=?");
 			$statement->execute(array($p_ids[$i]));
 
-			// Delete from tbl_payment
+			// Xóa khỏi tbl_payment
 			$statement = $pdo->prepare("SELECT * FROM tbl_order WHERE product_id=?");
 			$statement->execute(array($p_ids[$i]));
 			$result = $statement->fetchAll(PDO::FETCH_ASSOC);							
@@ -88,12 +88,12 @@ if(!isset($_REQUEST['id'])) {
 				$statement1->execute(array($row['payment_id']));
 			}
 
-			// Delete from tbl_order
+			// Xóa khỏi tbl_order
 			$statement = $pdo->prepare("DELETE FROM tbl_order WHERE product_id=?");
 			$statement->execute(array($p_ids[$i]));
 		}
 
-		// Delete from tbl_end_category
+		// Xóa khỏi tbl_end_category
 		for($i=0;$i<count($ecat_ids);$i++) {
 			$statement = $pdo->prepare("DELETE FROM tbl_end_category WHERE ecat_id=?");
 			$statement->execute(array($ecat_ids[$i]));
@@ -101,7 +101,7 @@ if(!isset($_REQUEST['id'])) {
 
 	}
 
-	// Delete from tbl_mid_category
+	// Xóa khỏi tbl_mid_category
 	$statement = $pdo->prepare("DELETE FROM tbl_mid_category WHERE mcat_id=?");
 	$statement->execute(array($_REQUEST['id']));
 

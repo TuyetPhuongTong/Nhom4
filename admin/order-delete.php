@@ -5,7 +5,7 @@ if(!isset($_REQUEST['id'])) {
 	header('location: logout.php');
 	exit;
 } else {
-	// Check the id is valid or not
+	// Check tài khoản có tồn tại không
 	$statement = $pdo->prepare("SELECT * FROM tbl_payment WHERE id=?");
 	$statement->execute(array($_REQUEST['id']));
 	$total = $statement->rowCount();

@@ -78,17 +78,17 @@
 	<script>
 	  $(function () {
 
-	    //Initialize Select2 Elements
+	    //Khởi tạo thành phần
 	    $(".select2").select2();
 
-	    //Datemask dd/mm/yyyy
+	    //Ngày dd/mm/yyyy
 	    $("#datemask").inputmask("dd-mm-yyyy", {"placeholder": "dd-mm-yyyy"});
-	    //Datemask2 mm/dd/yyyy
+	    //Ngày mm/dd/yyyy
 	    $("#datemask2").inputmask("mm-dd-yyyy", {"placeholder": "mm-dd-yyyy"});
-	    //Money Euro
+	    //Tiền
 	    $("[data-mask]").inputmask();
 
-	    //Date picker
+	    //Chọn ngày
 	    $('#datepicker').datepicker({
 	      autoclose: true,
 	      format: 'dd-mm-yyyy',

@@ -2,10 +2,10 @@
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>View Photos</h1>
+		<h1>Xem Ảnh</h1>
 	</div>
 	<div class="content-header-right">
-		<a href="photo-add.php" class="btn btn-primary btn-sm">Thêm mới</a>
+		<a href="photo-add.php" class="btn btn-primary btn-sm">Thêm Mới</a>
 	</div>
 </section>
 
@@ -23,9 +23,9 @@
 			<thead>
 			    <tr>
 			        <th>#</th>
-			        <th>Chú thích</th>
+			        <th>Chú Thích</th>
 			        <th>Ảnh</th>
-			        <th>Thao tác</th>
+			        <th>Thao Tác</th>
 			    </tr>
 			</thead>
             <tbody>
@@ -45,7 +45,7 @@
 	                    	<img src="../assets/uploads/<?php echo $row['photo']; ?>" width="140">
 	                    </td>
 	                    <td>
-	                        <a href="photo-edit.php?id=<?php echo $row['id']; ?>" class="btn btn-primary btn-xs">Chỉnh sửa</a>
+	                        <a href="photo-edit.php?id=<?php echo $row['id']; ?>" class="btn btn-primary btn-xs">Chỉnh Sửa</a>
 	                        <a href="#" class="btn btn-danger btn-xs" data-href="photo-delete.php?id=<?php echo $row['id']; ?>" data-toggle="modal" data-target="#confirm-delete">Xóa</a>
 	                    </td>
 	                </tr>
@@ -65,7 +65,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Xác nhận xóa</h4>
+                <h4 class="modal-title" id="myModalLabel">Xác Nhận Xóa</h4>
             </div>
             <div class="modal-body">
 			Bạn có chắc chắn muốn xóa mục này không?

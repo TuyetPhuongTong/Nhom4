@@ -48,10 +48,10 @@ if(isset($_POST['form1'])) {
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Thêm ảnh</h1>
+		<h1>Thêm Ảnh</h1>
 	</div>
 	<div class="content-header-right">
-		<a href="photo.php" class="btn btn-primary btn-sm">Xem tất cả</a>
+		<a href="photo.php" class="btn btn-primary btn-sm">Xem Tất Cả</a>
 	</div>
 </section>
 
@@ -81,13 +81,13 @@ if(isset($_POST['form1'])) {
 				<div class="box box-info">
 					<div class="box-body">
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Chú thích ảnh <span>*</span></label>
+							<label for="" class="col-sm-2 control-label">Chú Thích Ảnh <span>*</span></label>
 							<div class="col-sm-4">
 								<input type="text" class="form-control" name="caption">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Tải ảnh lên<span>*</span></label>
+							<label for="" class="col-sm-2 control-label">Tải Ảnh Lên<span>*</span></label>
 							<div class="col-sm-4" style="padding-top:6px;">
 								<input type="file" name="photo">
 							</div>

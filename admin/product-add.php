@@ -161,7 +161,7 @@ if(isset($_POST['form1'])) {
 		<h1>Thêm Sản Phẩm</h1>
 	</div>
 	<div class="content-header-right">
-		<a href="product.php" class="btn btn-primary btn-sm">Xem tất cả</a>
+		<a href="product.php" class="btn btn-primary btn-sm">Xem Tất Cả</a>
 	</div>
 </section>
 

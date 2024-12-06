@@ -6,32 +6,32 @@ if(isset($_POST['form1'])) {
 
     if(empty($_POST['tcat_id'])) {
         $valid = 0;
-        $error_message .= "You must have to select a top level category<br>";
+        $error_message .=  "Bạn phải chọn một danh mục cấp cao<br>";
     }
 
     if(empty($_POST['mcat_id'])) {
         $valid = 0;
-        $error_message .= "You must have to select a mid level category<br>";
+        $error_message .= "Bạn phải chọn một danh mục cấp giữa<br>";
     }
 
     if(empty($_POST['ecat_id'])) {
         $valid = 0;
-        $error_message .= "You must have to select an end level category<br>";
+        $error_message .= "Bạn phải chọn một danh mục cấp cuối<br>";
     }
 
     if(empty($_POST['p_name'])) {
         $valid = 0;
-        $error_message .= "Product name can not be empty<br>";
+        $error_message .= "Tên sản phẩm không được để trống<br>";
     }
 
     if(empty($_POST['p_current_price'])) {
         $valid = 0;
-        $error_message .= "Current Price can not be empty<br>";
+        $error_message .= "Giá hiện tại không được để trống<br>";
     }
 
     if(empty($_POST['p_qty'])) {
         $valid = 0;
-        $error_message .= "Quantity can not be empty<br>";
+        $error_message .= "Số lượng không được để trống<br>";
     }
 
     $path = $_FILES['p_featured_photo']['name'];
@@ -42,11 +42,11 @@ if(isset($_POST['form1'])) {
         $file_name = basename( $path, '.' . $ext );
         if( $ext!='jpg' && $ext!='png' && $ext!='jpeg' && $ext!='gif' ) {
             $valid = 0;
-            $error_message .= 'You must have to upload jpg, jpeg, gif or png file<br>';
+            $error_message .= 'Bạn phải tải lên ảnh có định dạng jpg, jpeg, gif hoặc png<br>';
         }
     } else {
     	$valid = 0;
-        $error_message .= 'You must have to select a featured photo<br>';
+        $error_message .= 'Bạn phải chọn một ảnh đặc trưng<br>';
     }
 
 
@@ -101,7 +101,7 @@ if(isset($_POST['form1'])) {
 		$final_name = 'product-featured-'.$ai_id.'.'.$ext;
         move_uploaded_file( $path_tmp, '../assets/uploads/'.$final_name );
 
-		//Saving data into the main table tbl_product
+		// Lưu dữ liệu vào bảng chính tbl_product
 		$statement = $pdo->prepare("INSERT INTO tbl_product(
 										p_name,
 										p_old_price,
@@ -151,17 +151,17 @@ if(isset($_POST['form1'])) {
 			}
 		}
 	
-    	$success_message = 'Product is added successfully.';
+    	$success_message = 'Sản phẩm đã được thêm thành công.';
     }
 }
 ?>
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Add Product</h1>
+		<h1>Thêm Sản Phẩm</h1>
 	</div>
 	<div class="content-header-right">
-		<a href="product.php" class="btn btn-primary btn-sm">View All</a>
+		<a href="product.php" class="btn btn-primary btn-sm">Xem tất cả</a>
 	</div>
 </section>
 
@@ -192,10 +192,10 @@ if(isset($_POST['form1'])) {
 				<div class="box box-info">
 					<div class="box-body">
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Top Level Category Name <span>*</span></label>
+							<label for="" class="col-sm-3 control-label">Tên Danh Mục Cấp Cao  <span>*</span></label>
 							<div class="col-sm-4">
 								<select name="tcat_id" class="form-control select2 top-cat">
-									<option value="">Select Top Level Category</option>
+									<option value="">Chọn Danh Mục Cấp Cao</option>
 									<?php
 									$statement = $pdo->prepare("SELECT * FROM tbl_top_category ORDER BY tcat_name ASC");
 									$statement->execute();
@@ -210,47 +210,47 @@ if(isset($_POST['form1'])) {
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Mid Level Category Name <span>*</span></label>
+							<label for="" class="col-sm-3 control-label">Tên Danh Mục Cấp Trung <span>*</span></label>
 							<div class="col-sm-4">
 								<select name="mcat_id" class="form-control select2 mid-cat">
-									<option value="">Select Mid Level Category</option>
+									<option value="">Chọn Danh Mục Cấp Trung</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">End Level Category Name <span>*</span></label>
+							<label for="" class="col-sm-3 control-label">Tên Danh Mục Cấp Cuối <span>*</span></label>
 							<div class="col-sm-4">
 								<select name="ecat_id" class="form-control select2 end-cat">
-									<option value="">Select End Level Category</option>
+									<option value="">Chọn Danh Mục Cấp Cuối</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Product Name <span>*</span></label>
+							<label for="" class="col-sm-3 control-label">Tên Sản Phẩm <span>*</span></label>
 							<div class="col-sm-4">
 								<input type="text" name="p_name" class="form-control">
 							</div>
 						</div>	
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Old Price <br><span style="font-size:10px;font-weight:normal;">(In USD)</span></label>
+							<label for="" class="col-sm-3 control-label">Giá Cũ  <br><span style="font-size:10px;font-weight:normal;">(Đơn vị VNĐ)</span></label>
 							<div class="col-sm-4">
 								<input type="text" name="p_old_price" class="form-control">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Current Price <span>*</span><br><span style="font-size:10px;font-weight:normal;">(In USD)</span></label>
+							<label for="" class="col-sm-3 control-label">Giá Hiện Tại  <span>*</span><br><span style="font-size:10px;font-weight:normal;">(Đơn vị VNĐ)</span></label>
 							<div class="col-sm-4">
 								<input type="text" name="p_current_price" class="form-control">
 							</div>
 						</div>	
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Quantity <span>*</span></label>
+							<label for="" class="col-sm-3 control-label">Số Lượng <span>*</span></label>
 							<div class="col-sm-4">
 								<input type="text" name="p_qty" class="form-control">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Select Size</label>
+							<label for="" class="col-sm-3 control-label">Chọn Kích Cỡ</label>
 							<div class="col-sm-4">
 								<select name="size[]" class="form-control select2" multiple="multiple">
 									<?php
@@ -267,7 +267,7 @@ if(isset($_POST['form1'])) {
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Select Color</label>
+							<label for="" class="col-sm-3 control-label">Chọn Màu Sắc</label>
 							<div class="col-sm-4">
 								<select name="color[]" class="form-control select2" multiple="multiple">
 									<?php
@@ -284,13 +284,13 @@ if(isset($_POST['form1'])) {
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Featured Photo <span>*</span></label>
+							<label for="" class="col-sm-3 control-label">Ảnh Nổi Bật <span>*</span></label>
 							<div class="col-sm-4" style="padding-top:4px;">
 								<input type="file" name="p_featured_photo">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Other Photos</label>
+							<label for="" class="col-sm-3 control-label">Ảnh Khác</label>
 							<div class="col-sm-4" style="padding-top:4px;">
 								<table id="ProductTable" style="width:100%;">
 			                        <tbody>
@@ -306,61 +306,61 @@ if(isset($_POST['form1'])) {
 			                    </table>
 							</div>
 							<div class="col-sm-2">
-			                    <input type="button" id="btnAddNew" value="Add Item" style="margin-top: 5px;margin-bottom:10px;border:0;color: #fff;font-size: 14px;border-radius:3px;" class="btn btn-warning btn-xs">
+			                    <input type="button" id="btnAddNew" value="Thêm mới" style="margin-top: 5px;margin-bottom:10px;border:0;color: #fff;font-size: 14px;border-radius:3px;" class="btn btn-warning btn-xs">
 			                </div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Description</label>
+							<label for="" class="col-sm-3 control-label">Mô Tả</label>
 							<div class="col-sm-8">
 								<textarea name="p_description" class="form-control" cols="30" rows="10" id="editor1"></textarea>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Short Description</label>
+							<label for="" class="col-sm-3 control-label">Mô Tả Ngắn</label>
 							<div class="col-sm-8">
 								<textarea name="p_short_description" class="form-control" cols="30" rows="10" id="editor2"></textarea>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Features</label>
+							<label for="" class="col-sm-3 control-label">Tính Năng</label>
 							<div class="col-sm-8">
 								<textarea name="p_feature" class="form-control" cols="30" rows="10" id="editor3"></textarea>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Conditions</label>
+							<label for="" class="col-sm-3 control-label">Điều Kiện</label>
 							<div class="col-sm-8">
 								<textarea name="p_condition" class="form-control" cols="30" rows="10" id="editor4"></textarea>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Return Policy</label>
+							<label for="" class="col-sm-3 control-label">Chính Sách Đổi Trả</label>
 							<div class="col-sm-8">
 								<textarea name="p_return_policy" class="form-control" cols="30" rows="10" id="editor5"></textarea>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Is Featured?</label>
+							<label for="" class="col-sm-3 control-label">Có Nổi Bật Không?</label>
 							<div class="col-sm-8">
 								<select name="p_is_featured" class="form-control" style="width:auto;">
-									<option value="0">No</option>
-									<option value="1">Yes</option>
+									<option value="0">Không</option>
+									<option value="1">Có</option>
 								</select> 
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Is Active?</label>
+							<label for="" class="col-sm-3 control-label">Có Hoạt Động Không?</label>
 							<div class="col-sm-8">
 								<select name="p_is_active" class="form-control" style="width:auto;">
-									<option value="0">No</option>
-									<option value="1">Yes</option>
+									<option value="0">Không</option>
+									<option value="1">Có</option>
 								</select> 
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="" class="col-sm-3 control-label"></label>
 							<div class="col-sm-6">
-								<button type="submit" class="btn btn-success pull-left" name="form1">Add Product</button>
+								<button type="submit" class="btn btn-success pull-left" name="form1">Thêm Sản Phẩm</button>
 							</div>
 						</div>
 					</div>

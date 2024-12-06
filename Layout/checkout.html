@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Thanh Toán</title>
+    <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+    <!-- Notification Bar -->
+    <div class="notification-bar">
+        <p>Đặt quà và giao hàng miễn phí cho đơn từ 1.000.000 VND</p>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <a href="#login">Đăng nhập</a>
+            <a href="#register">Đăng ký</a>
+        </div>
+        <div class="logo">
+            <img src="ĐÔ.png" alt="Logo">
+        </div>
+        <div class="header-right">
+            <a href="#cart">Giỏ hàng</a>
+            <a href="#search">Tìm kiếm</a>
+        </div>
+    </header>
+<!-- Main Navigation -->
+<nav class="main-nav">
+    <ul>
+        <li><a href="#home">Trang chủ</a></li>
+        <li><a href="#products">Sản phẩm</a></li>
+        <li><a href="#blog">Bài viết</a></li>
+        <li><a href="#about">Về chúng tôi</a></li>
+        <li><a href="#contact">Liên hệ</a></li>
+        <li><a href="#faq">FAQ</a></li>
+    </ul>
+</nav>
+    <!-- Checkout Form -->
+    <section class="checkout-section">
+        <h2>Thông tin thanh toán</h2>
+        
+        <form action="#" method="POST" class="checkout-form">
+            <!-- Shipping Information -->
+            <div class="form-group">
+                <label for="fullname">Họ và tên</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Nhập họ và tên" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Nhập email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Số điện thoại</label>
+                <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="address">Địa chỉ giao hàng</label>
+                <input type="text" id="address" name="address" placeholder="Nhập địa chỉ giao hàng" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="city">Thành phố</label>
+                <input type="text" id="city" name="city" placeholder="Nhập thành phố" required>
+            </div>
+
+            <!-- Payment Method -->
+            <div class="payment-method">
+                <h3>Phương thức thanh toán</h3>
+                <div class="form-group">
+                    <label>
+                        <input type="radio" name="payment" value="credit-card" checked> Thanh toán qua thẻ tín dụng
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="radio" name="payment" value="cod"> Thanh toán khi nhận hàng (COD)
+                    </label>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <h3>Tóm tắt đơn hàng</h3>
+                <table>
+                    <tr>
+                        <td>Sản phẩm 1</td>
+                        <td>200.000 VND</td>
+                    </tr>
+                    <tr>
+                        <td>Sản phẩm 2</td>
+                        <td>300.000 VND</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tổng cộng</strong></td>
+                        <td><strong>500.000 VND</strong></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn">Đặt hàng</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Liên hệ</h4>
+                <p>Địa chỉ: 123 Đường ABC, TP. Hồ Chí Minh</p>
+                <p>Email: contact@chocolatestore.com</p>
+                <p>Hotline: 0909 123 456</p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Theo dõi chúng tôi</h4>
+                <ul class="social-links">
+                    <li><a href="#facebook">Facebook</a></li>
+                    <li><a href="#instagram">Instagram</a></li>
+                    <li><a href="#twitter">Twitter</a></li>
+                    <li><a href="#youtube">YouTube</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Liên kết nhanh</h4>
+                <ul>
+                    <li><a href="#home">Trang chủ</a></li>
+                    <li><a href="#products">Sản phẩm</a></li>
+                    <li><a href="#about">Về chúng tôi</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Đô Si La Mi. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

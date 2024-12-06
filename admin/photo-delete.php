@@ -5,7 +5,7 @@ if(!isset($_REQUEST['id'])) {
 	header('location: logout.php');
 	exit;
 } else {
-	// Check the id is valid or not
+	// Kiểm tra xem id có hợp lệ không
 	$statement = $pdo->prepare("SELECT * FROM tbl_photo WHERE id=?");
 	$statement->execute(array($_REQUEST['id']));
 	$total = $statement->rowCount();
@@ -15,7 +15,7 @@ if(!isset($_REQUEST['id'])) {
 	}
 }
 	
-// Getting photo ID to unlink from folder
+// Lấy ID ảnh để xóa khỏi thư mục
 $statement = $pdo->prepare("SELECT * FROM tbl_photo WHERE id=?");
 $statement->execute(array($_REQUEST['id']));
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);							
@@ -23,12 +23,12 @@ foreach ($result as $row) {
 	$photo = $row['photo'];
 }
 
-// Unlink the photo
+// Xóa ảnh khỏi thư mục
 if($photo!='') {
 	unlink('../assets/uploads/'.$photo);
 }
 
-// Delete from tbl_photo
+// Xóa ảnh khỏi bảng tbl_photo
 $statement = $pdo->prepare("DELETE FROM tbl_photo WHERE id=?");
 $statement->execute(array($_REQUEST['id']));
 

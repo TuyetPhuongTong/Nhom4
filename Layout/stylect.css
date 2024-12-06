@@ -73,62 +73,85 @@ header a {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Product Container */
+/* Adjust Product Container Layout */
 .product-container {
     display: flex;
-    gap: 20px;
+    align-items: flex-start; /* Align items to the top */
+    justify-content: space-between; /* Space between image and info */
+    gap: 20px; /* Spacing between image and info */
 }
 
-/* Product Image */
+/* Adjust Product Image */
+.product-image {
+    flex: 1; /* Allow image to take up a proportional width */
+    max-width: 50%; /* Limit image width */
+}
+
 .product-image img {
-    max-width: 100%;
-    border-radius: 5px;
+    width: 100%; /* Ensure image is responsive */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Add slight rounding for aesthetics */
 }
 
-/* Product Information */
-.product-info h1 {
-    font-size: 28px;
-    margin-bottom: 10px;
+/* Adjust Product Info */
+.product-info {
+    flex: 1; /* Allow info to take up a proportional width */
+    max-width: 50%; /* Limit info width */
+    font-size: 16px; /* Adjust text size for readability */
+    line-height: 1.5; /* Improve spacing in text */
 }
 
-.product-info .price {
-    color: #d32f2f;
-    font-size: 22px;
-    margin-bottom: 15px;
-}
-
-.product-info .description {
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
 
 .add-to-cart-form {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.add-to-cart-form label {
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.add-to-cart-form select {
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.add-to-cart-form select:focus {
+    border-color: #d32f2f;
+    outline: none;
 }
 
 .add-to-cart-form input[type="number"] {
     width: 60px;
     padding: 5px;
+    font-size: 16px;
     border: 1px solid #ddd;
-    border-radius: 3px;
+    border-radius: 5px;
 }
 
 .add-to-cart-form button {
-    background: #d32f2f;
-    color: #fff;
     padding: 10px 20px;
+    font-size: 16px;
+    background-color: #d32f2f;
+    color: #fff;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background-color 0.3s ease;
 }
 
 .add-to-cart-form button:hover {
-    background: #b71c1c;
+    background-color: #b71c1c;
 }
+
 
 /* Product Extra Information */
 .product-extra-info h2 {

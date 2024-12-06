@@ -5,84 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi tiết sản phẩm</title>
     <link rel="stylesheet" href="stylect.css">
-    <style>
-        /* Tab CSS */
-        .product-tabs {
-            margin-top: 20px;
-        }
-
-        .tabs {
-            display: flex;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            border-bottom: 2px solid #ddd;
-        }
-
-        .tabs li {
-            padding: 10px 20px;
-            cursor: pointer;
-            border: 2px solid transparent;
-            border-bottom: none;
-            transition: all 0.3s;
-        }
-
-        .tabs li.active {
-            border-color: #333;
-            background: #f9f9f9;
-        }
-
-        .tab-content {
-            margin-top: 20px;
-        }
-
-        .tab-pane {
-            display: none;
-        }
-
-        .tab-pane.active {
-            display: block;
-        }
-
-        /* Related Products */
-        .related-products {
-            margin-top: 40px;
-        }
-
-        .related-products h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .related-products .product-grid {
-            display: flex;
-            gap: 20px;
-        }
-
-        .related-products .product {
-            flex: 1;
-            text-align: center;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .related-products .product img {
-            max-width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .related-products .product h3 {
-            margin: 10px 0;
-            font-size: 16px;
-        }
-
-        .related-products .product p {
-            font-size: 14px;
-            color: #d32f2f;
-        }
-    </style>
+    
 </head>
 <body>
     <!-- Notification Bar -->
@@ -122,7 +45,7 @@
         <div class="product-container">
             <!-- Product Image -->
             <div class="product-image">
-                <img src="sp1.png" alt="Sản phẩm 1">
+                <img src="sp1 (2).png" alt="Sản phẩm 1">
             </div>
             
             <!-- Product Information -->
@@ -130,9 +53,26 @@
                 <h1>Sản phẩm 1</h1>
                 <p class="price">Giá: 200.000 VND</p>
                 <p class="description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus in felis ut eros tincidunt pretium. Nunc convallis, lorem id aliquam pretium, ligula orci pulvinar nisi, vel malesuada magna purus sed tortor.
+                    Mô tả ngắn sản phẩm của Đô Si La Mi
                 </p>
                 <form class="add-to-cart-form" action="#">
+                    <label for="size">Chọn kích cỡ: </label>
+    <select id="size" name="size" required>
+        <option value="" disabled selected>Đô Si La Mi</option>
+        <option value="S">Đô</option>
+        <option value="M">Si</option>
+        <option value="L">La</option>
+        <option value="XL">Mi</option>
+    </select>
+    
+    <label for="flavor">Chọn hương vị: </label>
+    <select id="flavor" name="flavor" required>
+        <option value="" disabled selected>Chọn hương vị</option>
+        <option value="chocolate">Socola</option>
+        <option value="vanilla">Vanilla</option>
+        <option value="strawberry">Dâu</option>
+        <option value="matcha">Matcha</option>
+    </select>
                     <label for="quantity">Số lượng:</label>
                     <input type="number" id="quantity" name="quantity" min="1" value="1">
                     <button type="submit">Thêm vào giỏ hàng</button>
@@ -165,17 +105,17 @@
             <h2>Sản phẩm liên quan</h2>
             <div class="product-grid">
                 <div class="product">
-                    <img src="related1.jpg" alt="Sản phẩm 1">
+                    <img src="sp2 (2).png" alt="Sản phẩm 1">
                     <h3>Sản phẩm 1</h3>
                     <p>Giá: 200.000 VND</p>
                 </div>
                 <div class="product">
-                    <img src="related2.jpg" alt="Sản phẩm 2">
+                    <img src="sp3.png" alt="Sản phẩm 2">
                     <h3>Sản phẩm 2</h3>
                     <p>Giá: 300.000 VND</p>
                 </div>
                 <div class="product">
-                    <img src="related3.jpg" alt="Sản phẩm 3">
+                    <img src="sp4.png" alt="Sản phẩm 3">
                     <h3>Sản phẩm 3</h3>
                     <p>Giá: 400.000 VND</p>
                 </div>

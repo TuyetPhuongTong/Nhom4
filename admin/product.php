@@ -2,10 +2,10 @@
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>View Products</h1>
+		<h1>Quản Lý Sản Phẩm</h1>
 	</div>
 	<div class="content-header-right">
-		<a href="product-add.php" class="btn btn-primary btn-sm">Add Product</a>
+		<a href="product-add.php" class="btn btn-primary btn-sm">Thêm Sản Phẩm</a>
 	</div>
 </section>
 
@@ -18,15 +18,15 @@
 					<thead class="thead-dark">
 							<tr>
 								<th width="10">#</th>
-								<th>Photo</th>
-								<th width="160">Product Name</th>
-								<th width="60">Old Price</th>
-								<th width="60">(C) Price</th>
-								<th width="60">Quantity</th>
-								<th>Featured?</th>
-								<th>Active?</th>
-								<th>Category</th>
-								<th width="80">Action</th>
+								<th>Ảnh</th>
+								<th width="160">Tên Sản Phẩm</th>
+								<th width="60">Giá Cũ</th>
+								<th width="60">Giá Hiện Tại</th>
+								<th width="60">Số Lượng</th>
+								<th>Đặc Biệt?</th>
+								<th>Kích Hoạt?</th>
+								<th>Danh Mục</th>
+								<th width="80">Hành Động</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -75,15 +75,15 @@
 									<td>$<?php echo $row['p_current_price']; ?></td>
 									<td><?php echo $row['p_qty']; ?></td>
 									<td>
-										<?php if($row['p_is_featured'] == 1) {echo '<span class="badge badge-success" style="background-color:green;">Yes</span>';} else {echo '<span class="badge badge-success" style="background-color:red;">No</span>';} ?>
+										<?php if($row['p_is_featured'] == 1) {echo '<span class="badge badge-success" style="background-color:green;">Yes</span>';} else {echo '<span class="badge badge-success" style="background-color:red;">Không</span>';} ?>
 									</td>
 									<td>
-										<?php if($row['p_is_active'] == 1) {echo '<span class="badge badge-success" style="background-color:green;">Yes</span>';} else {echo '<span class="badge badge-danger" style="background-color:red;">No</span>';} ?>
+										<?php if($row['p_is_active'] == 1) {echo '<span class="badge badge-success" style="background-color:green;">Yes</span>';} else {echo '<span class="badge badge-danger" style="background-color:red;">Không</span>';} ?>
 									</td>
 									<td><?php echo $row['tcat_name']; ?><br><?php echo $row['mcat_name']; ?><br><?php echo $row['ecat_name']; ?></td>
 									<td>										
-										<a href="product-edit.php?id=<?php echo $row['p_id']; ?>" class="btn btn-primary btn-xs">Edit</a>
-										<a href="#" class="btn btn-danger btn-xs" data-href="product-delete.php?id=<?php echo $row['p_id']; ?>" data-toggle="modal" data-target="#confirm-delete">Delete</a>  
+										<a href="product-edit.php?id=<?php echo $row['p_id']; ?>" class="btn btn-primary btn-xs">Chỉnh Sửa</a>
+										<a href="#" class="btn btn-danger btn-xs" data-href="product-delete.php?id=<?php echo $row['p_id']; ?>" data-toggle="modal" data-target="#confirm-delete">Xóa</a>  
 									</td>
 								</tr>
 								<?php
@@ -97,21 +97,21 @@
 	</div>
 </section>
 
-
+<!-- Hộp thoại xác nhận xóa -->
 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Delete Confirmation</h4>
+                <h4 class="modal-title" id="myModalLabel">Xác Nhận Xóa</h4>
             </div>
             <div class="modal-body">
-                <p>Are you sure want to delete this item?</p>
-                <p style="color:red;">Be careful! This product will be deleted from the order table, payment table, size table, color table and rating table also.</p>
+                <p>Bạn có chắc chắn muốn xóa mục này không?</p>
+                <p style="color:red;">Cẩn thận! Sản phẩm này sẽ bị xóa khỏi các bảng đơn hàng, thanh toán, kích thước, màu sắc và đánh giá.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-danger btn-ok">Delete</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                <a class="btn btn-danger btn-ok">Xóa</a>
             </div>
         </div>
     </div>

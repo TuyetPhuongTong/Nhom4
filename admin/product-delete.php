@@ -5,7 +5,7 @@ if(!isset($_REQUEST['id'])) {
 	header('location: logout.php');
 	exit;
 } else {
-	// Check the id is valid or not
+	// Kiểm tra ID có hợp lệ không
 	$statement = $pdo->prepare("SELECT * FROM tbl_product WHERE p_id=?");
 	$statement->execute(array($_REQUEST['id']));
 	$total = $statement->rowCount();
@@ -17,7 +17,7 @@ if(!isset($_REQUEST['id'])) {
 ?>
 
 <?php
-	// Getting photo ID to unlink from folder
+	// Lấy ID ảnh để xóa khỏi thư mục
 	$statement = $pdo->prepare("SELECT * FROM tbl_product WHERE p_id=?");
 	$statement->execute(array($_REQUEST['id']));
 	$result = $statement->fetchAll(PDO::FETCH_ASSOC);							
@@ -26,7 +26,7 @@ if(!isset($_REQUEST['id'])) {
 		unlink('../assets/uploads/'.$p_featured_photo);
 	}
 
-	// Getting other photo ID to unlink from folder
+	// Lấy ID ảnh khác để xóa khỏi thư mục
 	$statement = $pdo->prepare("SELECT * FROM tbl_product_photo WHERE p_id=?");
 	$statement->execute(array($_REQUEST['id']));
 	$result = $statement->fetchAll(PDO::FETCH_ASSOC);							
@@ -36,27 +36,27 @@ if(!isset($_REQUEST['id'])) {
 	}
 
 
-	// Delete from tbl_photo
+	// Xóa trong bảng tbl_photo
 	$statement = $pdo->prepare("DELETE FROM tbl_product WHERE p_id=?");
 	$statement->execute(array($_REQUEST['id']));
 
-	// Delete from tbl_product_photo
+	// Xóa trong bảng tbl_product_photo
 	$statement = $pdo->prepare("DELETE FROM tbl_product_photo WHERE p_id=?");
 	$statement->execute(array($_REQUEST['id']));
 
-	// Delete from tbl_product_size
+	// Xóa trong bảng tbl_product_size
 	$statement = $pdo->prepare("DELETE FROM tbl_product_size WHERE p_id=?");
 	$statement->execute(array($_REQUEST['id']));
 
-	// Delete from tbl_product_color
+	// Xóa trong bảng tbl_product_color
 	$statement = $pdo->prepare("DELETE FROM tbl_product_color WHERE p_id=?");
 	$statement->execute(array($_REQUEST['id']));
 
-	// Delete from tbl_rating
+	// Xóa trong bảng tbl_rating
 	$statement = $pdo->prepare("DELETE FROM tbl_rating WHERE p_id=?");
 	$statement->execute(array($_REQUEST['id']));
 
-	// Delete from tbl_payment
+	// Xóa trong bảng tbl_payment
 	$statement = $pdo->prepare("SELECT * FROM tbl_order WHERE product_id=?");
 	$statement->execute(array($_REQUEST['id']));
 	$result = $statement->fetchAll(PDO::FETCH_ASSOC);							
@@ -65,7 +65,7 @@ if(!isset($_REQUEST['id'])) {
 		$statement1->execute(array($row['payment_id']));
 	}
 
-	// Delete from tbl_order
+	// Xóa trong bảng tbl_order
 	$statement = $pdo->prepare("DELETE FROM tbl_order WHERE product_id=?");
 	$statement->execute(array($_REQUEST['id']));
 

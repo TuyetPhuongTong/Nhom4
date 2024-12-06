@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm</title>
+    <link rel="stylesheet" href="stylect.css">
+    <style>
+        /* Tab CSS */
+        .product-tabs {
+            margin-top: 20px;
+        }
+
+        .tabs {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .tabs li {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-bottom: none;
+            transition: all 0.3s;
+        }
+
+        .tabs li.active {
+            border-color: #333;
+            background: #f9f9f9;
+        }
+
+        .tab-content {
+            margin-top: 20px;
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        /* Related Products */
+        .related-products {
+            margin-top: 40px;
+        }
+
+        .related-products h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .related-products .product-grid {
+            display: flex;
+            gap: 20px;
+        }
+
+        .related-products .product {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .related-products .product img {
+            max-width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .related-products .product h3 {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .related-products .product p {
+            font-size: 14px;
+            color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <!-- Notification Bar -->
+    <div class="notification-bar">
+        <p>Đặt quà và giao hàng miễn phí cho đơn từ 1.000.000 VND</p>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <a href="#login">Đăng nhập</a>
+            <a href="#register">Đăng ký</a>
+        </div>
+        <div class="logo">
+            <img src="ĐÔ.png" alt="Logo">
+        </div>
+        <div class="header-right">
+            <a href="#cart">Giỏ hàng</a>
+            <a href="#search">Tìm kiếm</a>
+        </div>
+    </header>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#home">Trang chủ</a></li>
+            <li><a href="#products">Sản phẩm</a></li>
+            <li><a href="#blog">Bài viết</a></li>
+            <li><a href="#about">Về chúng tôi</a></li>
+            <li><a href="#contact">Liên hệ</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+    </nav>
+
+    <!-- Product Details -->
+    <section class="product-details">
+        <div class="product-container">
+            <!-- Product Image -->
+            <div class="product-image">
+                <img src="sp1.png" alt="Sản phẩm 1">
+            </div>
+            
+            <!-- Product Information -->
+            <div class="product-info">
+                <h1>Sản phẩm 1</h1>
+                <p class="price">Giá: 200.000 VND</p>
+                <p class="description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus in felis ut eros tincidunt pretium. Nunc convallis, lorem id aliquam pretium, ligula orci pulvinar nisi, vel malesuada magna purus sed tortor.
+                </p>
+                <form class="add-to-cart-form" action="#">
+                    <label for="quantity">Số lượng:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" value="1">
+                    <button type="submit">Thêm vào giỏ hàng</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="product-tabs">
+            <ul class="tabs">
+                <li class="active" data-tab="details">Chi tiết</li>
+                <li data-tab="specifications">Đặc tính</li>
+                <li data-tab="policy">Chính sách đổi trả</li>
+            </ul>
+            <div class="tab-content">
+                <div id="details" class="tab-pane active">
+                    <p>Nội dung chi tiết về sản phẩm, các thông tin liên quan và cách sử dụng.</p>
+                </div>
+                <div id="specifications" class="tab-pane">
+                    <p>Đặc tính kỹ thuật của sản phẩm như kích thước, trọng lượng, chất liệu, v.v.</p>
+                </div>
+                <div id="policy" class="tab-pane">
+                    <p>Thông tin về chính sách đổi trả sản phẩm trong trường hợp lỗi hoặc không ưng ý.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Products -->
+        <div class="related-products">
+            <h2>Sản phẩm liên quan</h2>
+            <div class="product-grid">
+                <div class="product">
+                    <img src="related1.jpg" alt="Sản phẩm 1">
+                    <h3>Sản phẩm 1</h3>
+                    <p>Giá: 200.000 VND</p>
+                </div>
+                <div class="product">
+                    <img src="related2.jpg" alt="Sản phẩm 2">
+                    <h3>Sản phẩm 2</h3>
+                    <p>Giá: 300.000 VND</p>
+                </div>
+                <div class="product">
+                    <img src="related3.jpg" alt="Sản phẩm 3">
+                    <h3>Sản phẩm 3</h3>
+                    <p>Giá: 400.000 VND</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Liên hệ</h4>
+                <p>Địa chỉ: 123 Đường ABC, TP. Hồ Chí Minh</p>
+                <p>Email: contact@chocolatestore.com</p>
+                <p>Hotline: 0909 123 456</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.querySelectorAll('.tabs li').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tabs li, .tab-pane').forEach(el => el.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

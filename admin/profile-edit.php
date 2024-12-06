@@ -9,18 +9,18 @@ if(isset($_POST['form1'])) {
 
 	    if(empty($_POST['full_name'])) {
 	        $valid = 0;
-	        $error_message .= "Name can not be empty<br>";
+	        $error_message .= "Họ và tên không được để trống<br>";
 	    }
 
 	    if(empty($_POST['email'])) {
 	        $valid = 0;
-	        $error_message .= 'Email address can not be empty<br>';
+	        $error_message .= "Địa chỉ email không được để trống<br>";
 	    } else {
 	    	if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) === false) {
 		        $valid = 0;
-		        $error_message .= 'Email address must be valid<br>';
+		        $error_message .= "Địa chỉ email phải hợp lệ<br>";
 		    } else {
-		    	// current email address that is in the database
+		    	 // Lấy email hiện tại trong cơ sở dữ liệu
 		    	$statement = $pdo->prepare("SELECT * FROM tbl_user WHERE id=?");
 				$statement->execute(array($_SESSION['user']['id']));
 				$result = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -33,7 +33,7 @@ if(isset($_POST['form1'])) {
 		    	$total = $statement->rowCount();							
 		    	if($total) {
 		    		$valid = 0;
-		        	$error_message .= 'Email address already exists<br>';
+		        	$error_message .= "Địa chỉ email đã tồn tại<br>";
 		    	}
 		    }
 	    }
@@ -43,21 +43,21 @@ if(isset($_POST['form1'])) {
 			$_SESSION['user']['full_name'] = $_POST['full_name'];
 	    	$_SESSION['user']['email'] = $_POST['email'];
 
-			// updating the database
+			// Cập nhật cơ sở dữ liệu
 			$statement = $pdo->prepare("UPDATE tbl_user SET full_name=?, email=?, phone=? WHERE id=?");
 			$statement->execute(array($_POST['full_name'],$_POST['email'],$_POST['phone'],$_SESSION['user']['id']));
 
-	    	$success_message = 'User Information is updated successfully.';
+	    	$success_message ="Thông tin người dùng đã được cập nhật thành công.";
 	    }
 	}
 	else {
 		$_SESSION['user']['phone'] = $_POST['phone'];
 
-		// updating the database
+		// Cập nhật cơ sở dữ liệu
 		$statement = $pdo->prepare("UPDATE tbl_user SET phone=? WHERE id=?");
 		$statement->execute(array($_POST['phone'],$_SESSION['user']['id']));
 
-		$success_message = 'User Information is updated successfully.';	
+		$success_message = "Thông tin người dùng đã được cập nhật thành công.";
 	}
 }
 
@@ -73,27 +73,27 @@ if(isset($_POST['form2'])) {
         $file_name = basename( $path, '.' . $ext );
         if( $ext!='jpg' && $ext!='png' && $ext!='jpeg' && $ext!='gif' ) {
             $valid = 0;
-            $error_message .= 'You must have to upload jpg, jpeg, gif or png file<br>';
+            $error_message .= "Bạn chỉ được tải lên tệp jpg, jpeg, gif hoặc png<br>";
         }
     }
 
     if($valid == 1) {
 
-    	// removing the existing photo
+    	// Xóa ảnh hiện tại
     	if($_SESSION['user']['photo']!='') {
     		unlink('../assets/uploads/'.$_SESSION['user']['photo']);	
     	}
 
-    	// updating the data
+    	// Cập nhật dữ liệu
     	$final_name = 'user-'.$_SESSION['user']['id'].'.'.$ext;
         move_uploaded_file( $path_tmp, '../assets/uploads/'.$final_name );
         $_SESSION['user']['photo'] = $final_name;
 
-        // updating the database
+        // Cập nhật cơ sở dữ liệu
 		$statement = $pdo->prepare("UPDATE tbl_user SET photo=? WHERE id=?");
 		$statement->execute(array($final_name,$_SESSION['user']['id']));
 
-        $success_message = 'User Photo is updated successfully.';
+        $success_message = "Ảnh người dùng đã được cập nhật thành công.";
     	
     }
 }
@@ -103,13 +103,13 @@ if(isset($_POST['form3'])) {
 
 	if( empty($_POST['password']) || empty($_POST['re_password']) ) {
         $valid = 0;
-        $error_message .= "Password can not be empty<br>";
+        $error_message .= "Mật khẩu không được để trống<br>";
     }
 
     if( !empty($_POST['password']) && !empty($_POST['re_password']) ) {
     	if($_POST['password'] != $_POST['re_password']) {
 	    	$valid = 0;
-	        $error_message .= "Passwords do not match<br>";	
+	        $error_message .= "Mật khẩu không khớp<br>";
     	}        
     }
 
@@ -117,18 +117,18 @@ if(isset($_POST['form3'])) {
 
     	$_SESSION['user']['password'] = md5($_POST['password']);
 
-    	// updating the database
+    	// Cập nhật cơ sở dữ liệu
 		$statement = $pdo->prepare("UPDATE tbl_user SET password=? WHERE id=?");
 		$statement->execute(array(md5($_POST['password']),$_SESSION['user']['id']));
 
-    	$success_message = 'User Password is updated successfully.';
+    	$success_message = "Mật khẩu người dùng đã được cập nhật thành công.";
     }
 }
 ?>
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Edit Profile</h1>
+		<h1>Chỉnh Sửa Hồ Sơ</h1>
 	</div>
 </section>
 
@@ -155,9 +155,9 @@ foreach ($result as $row) {
 				
 				<div class="nav-tabs-custom">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#tab_1" data-toggle="tab">Update Information</a></li>
-						<li><a href="#tab_2" data-toggle="tab">Update Photo</a></li>
-						<li><a href="#tab_3" data-toggle="tab">Update Password</a></li>
+						<li class="active"><a href="#tab_1" data-toggle="tab">Cập Nhật Thông Tin</a></li>
+						<li><a href="#tab_2" data-toggle="tab">Cập Nhật Ảnh</a></li>
+						<li><a href="#tab_3" data-toggle="tab">Cập Nhật Mật Khẩu</a></li>
 					</ul>
 					<div class="tab-content">
           				<div class="tab-pane active" id="tab_1">
@@ -166,9 +166,9 @@ foreach ($result as $row) {
 							<div class="box box-info">
 								<div class="box-body">
 									<div class="form-group">
-										<label for="" class="col-sm-2 control-label">Name <span>*</span></label>
+										<label for="" class="col-sm-2 control-label">Tên <span>*</span></label>
 										<?php
-										if($_SESSION['user']['role'] == 'Super Admin') {
+										if($_SESSION['user']['role'] == 'Quản Trị Viên Cao Cấp') {
 											?>
 												<div class="col-sm-4">
 													<input type="text" class="form-control" name="full_name" value="<?php echo $full_name; ?>">
@@ -185,16 +185,16 @@ foreach ($result as $row) {
 										
 									</div>
 									<div class="form-group">
-							            <label for="" class="col-sm-2 control-label">Existing Photo</label>
+							            <label for="" class="col-sm-2 control-label">Ảnh Hiện Tại</label>
 							            <div class="col-sm-6" style="padding-top:6px;">
 							                <img src="../assets/uploads/<?php echo $photo; ?>" class="existing-photo" width="140">
 							            </div>
 							        </div>
 									
 									<div class="form-group">
-										<label for="" class="col-sm-2 control-label">Email Address <span>*</span></label>
+										<label for="" class="col-sm-2 control-label">Địa Chỉ Email <span>*</span></label>
 										<?php
-										if($_SESSION['user']['role'] == 'Super Admin') {
+										if($_SESSION['user']['role'] == 'Quản Trị Viên Cao Cấp') {
 											?>
 												<div class="col-sm-4">
 													<input type="email" class="form-control" name="email" value="<?php echo $email; ?>">
@@ -211,13 +211,13 @@ foreach ($result as $row) {
 										
 									</div>
 									<div class="form-group">
-										<label for="" class="col-sm-2 control-label">Phone </label>
+										<label for="" class="col-sm-2 control-label">Số Điện Thoại </label>
 										<div class="col-sm-4">
 											<input type="text" class="form-control" name="phone" value="<?php echo $phone; ?>">
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="" class="col-sm-2 control-label">Role <span>*</span></label>
+										<label for="" class="col-sm-2 control-label">Vai Trò<span>*</span></label>
 										<div class="col-sm-4" style="padding-top:7px;">
 											<?php echo $role; ?>
 										</div>
@@ -225,7 +225,7 @@ foreach ($result as $row) {
 									<div class="form-group">
 										<label for="" class="col-sm-2 control-label"></label>
 										<div class="col-sm-6">
-											<button type="submit" class="btn btn-success pull-left" name="form1">Update Information</button>
+											<button type="submit" class="btn btn-success pull-left" name="form1">Cập Nhật Thông Tin</button>
 										</div>
 									</div>
 								</div>
@@ -237,7 +237,7 @@ foreach ($result as $row) {
 							<div class="box box-info">
 								<div class="box-body">
 									<div class="form-group">
-							            <label for="" class="col-sm-2 control-label">New Photo</label>
+							            <label for="" class="col-sm-2 control-label">Ảnh Mới</label>
 							            <div class="col-sm-6" style="padding-top:6px;">
 							                <input type="file" name="photo">
 							            </div>
@@ -245,7 +245,7 @@ foreach ($result as $row) {
 							        <div class="form-group">
 										<label for="" class="col-sm-2 control-label"></label>
 										<div class="col-sm-6">
-											<button type="submit" class="btn btn-success pull-left" name="form2">Update Photo</button>
+											<button type="submit" class="btn btn-success pull-left" name="form2">Cập Nhật Ảnh</button>
 										</div>
 									</div>
 								</div>
@@ -257,13 +257,13 @@ foreach ($result as $row) {
 							<div class="box box-info">
 								<div class="box-body">
 									<div class="form-group">
-										<label for="" class="col-sm-2 control-label">Password </label>
+										<label for="" class="col-sm-2 control-label">Mật Khẩu</label>
 										<div class="col-sm-4">
 											<input type="password" class="form-control" name="password">
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="" class="col-sm-2 control-label">Retype Password </label>
+										<label for="" class="col-sm-2 control-label">Nhập Lại Mật Khẩu</label>
 										<div class="col-sm-4">
 											<input type="password" class="form-control" name="re_password">
 										</div>
@@ -271,7 +271,7 @@ foreach ($result as $row) {
 							        <div class="form-group">
 										<label for="" class="col-sm-2 control-label"></label>
 										<div class="col-sm-6">
-											<button type="submit" class="btn btn-success pull-left" name="form3">Update Password</button>
+											<button type="submit" class="btn btn-success pull-left" name="form3">Cập Nhật Mật Khẩu</button>
 										</div>
 									</div>
 								</div>

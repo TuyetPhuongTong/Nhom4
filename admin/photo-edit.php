@@ -62,10 +62,10 @@ if(!isset($_REQUEST['id'])) {
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Chỉnh sửa ảnh</h1>
+		<h1>Chỉnh Sửa Ảnh</h1>
 	</div>
 	<div class="content-header-right">
-		<a href="photo.php" class="btn btn-primary btn-sm">Xem tất cả</a>
+		<a href="photo.php" class="btn btn-primary btn-sm">Xem Tất Cả</a>
 	</div>
 </section>
 
@@ -102,13 +102,13 @@ foreach ($result as $row) {
 				<div class="box box-info">
 					<div class="box-body">
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Chú thích ảnh<span>*</span></label>
+							<label for="" class="col-sm-2 control-label">Chú Thích Ảnh<span>*</span></label>
 							<div class="col-sm-4">
 								<input type="text" class="form-control" name="caption" value="<?php echo $caption; ?>">
 							</div>
 						</div>
 						<div class="form-group">
-				            <label for="" class="col-sm-2 control-label">Ảnh hiện tại</label>
+				            <label for="" class="col-sm-2 control-label">Ảnh Hiện Tại</label>
 				            <div class="col-sm-6" style="padding-top:6px;">
 				                <img src="../assets/uploads/<?php echo $photo; ?>" class="existing-photo" style="width:300px;">
 
@@ -116,7 +116,7 @@ foreach ($result as $row) {
 				            </div>
 				        </div>
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Tải ảnh mới lên <span>*</span></label>
+							<label for="" class="col-sm-2 control-label">Tải Ảnh Mới Lên <span>*</span></label>
 							<div class="col-sm-4" style="padding-top:6px;">
 								<input type="file" name="photo">
 							</div>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Sản Phẩm</title>
+    <link rel="stylesheet" href="sp.css">
+</head>
+<body>
+
+    <!-- Notification Bar -->
+    <div class="notification-bar">
+        <p>Đặt quà và giao hàng miễn phí cho đơn từ 1.000.000 VND</p>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <a href="#login">Đăng nhập</a>
+            <a href="#register">Đăng ký</a>
+        </div>
+        <div class="logo">
+            <img src="ĐÔ.png" alt="Logo">
+        </div>
+        <div class="header-right">
+            <a href="#cart">Giỏ hàng</a>
+            <a href="#search">Tìm kiếm</a>
+        </div>
+    </header>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#home">Trang chủ</a></li>
+            <li><a href="#products">Sản phẩm</a></li>
+            <li><a href="#blog">Bài viết</a></li>
+            <li><a href="#about">Về chúng tôi</a></li>
+            <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Sidebar for Filters and Categories -->
+        <aside class="sidebar">
+            <h3>Danh Mục Sản Phẩm</h3>
+            <ul class="category-list">
+                <li><a href="#category1">Sản phẩm A</a></li>
+                <li><a href="#category2">Sản phẩm B</a></li>
+                <li><a href="#category3">Sản phẩm C</a></li>
+            </ul>
+
+            <h3>Bộ Lọc</h3>
+            <form action="#" method="get" class="filter-form">
+                <div class="filter-option">
+                    <label for="price">Lọc theo giá:</label>
+                    <input type="range" id="price" name="price" min="0" max="1000" step="10" value="500">
+                    <p id="price-value">Giá: 500 VND</p>
+                </div>
+
+                <div class="filter-option">
+                    <label for="flavor">Lọc theo hương vị:</label>
+                    <select id="flavor" name="flavor">
+                        <option value="chocolate">Socola</option>
+                        <option value="vanilla">Vani</option>
+                        <option value="strawberry">Dâu</option>
+                    </select>
+                </div>
+
+                <button type="submit">Áp dụng bộ lọc</button>
+            </form>
+        </aside>
+
+        <!-- Product Grid -->
+        <section class="product-grid">
+            <h2>Sản phẩm nổi bật</h2>
+            <div class="product-container">
+                <!-- Example Product -->
+                <div class="product-card">
+                    <img src="sp1.png" alt="Sản phẩm 1">
+                    <h3>Sản phẩm 1</h3>
+                    <p>Giá: 200.000 VND</p>
+                    <button class="btn-add-to-cart">Thêm vào giỏ</button>
+                </div>
+
+                <div class="product-card">
+                    <img src="sp2.png" alt="Sản phẩm 2">
+                    <h3>Sản phẩm 2</h3>
+                    <p>Giá: 250.000 VND</p>
+                    <button class="btn-add-to-cart">Thêm vào giỏ</button>
+                </div>
+
+                <!-- Add more products here -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Liên hệ</h4>
+                <p>Địa chỉ: 123 Đường ABC, TP. Hồ Chí Minh</p>
+                <p>Email: contact@chocolatestore.com</p>
+                <p>Hotline: 0909 123 456</p>
+            </div>
+            <div class="footer-column">
+                <h4>Theo dõi chúng tôi</h4>
+                <ul class="social-links">
+                    <li><a href="#facebook">Facebook</a></li>
+                    <li><a href="#instagram">Instagram</a></li>
+                    <li><a href="#twitter">Twitter</a></li>
+                    <li><a href="#youtube">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+

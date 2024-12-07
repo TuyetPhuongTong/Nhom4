@@ -1,12 +1,12 @@
 <?php require_once('header.php'); ?>
 
 <?php
-// Check if the customer is logged in or not
+// Kiểm Tra Xem Khách Hàng Đã Đăng Nhập Hay Chưa
 if(!isset($_SESSION['customer'])) {
     header('location: '.BASE_URL.'logout.php');
     exit;
 } else {
-    // If customer is logged in, but admin make him inactive, then force logout this user.
+    // Nếu Khách Hàng Đã Đăng Nhập Nhưng Bị Admin Vô Hiệu Hóa, Buộc Khách Hàng Đăng Xuất
     $statement = $pdo->prepare("SELECT * FROM tbl_customer WHERE cust_id=? AND cust_status=?");
     $statement->execute(array($_SESSION['customer']['cust_id'],0));
     $total = $statement->rowCount();
@@ -42,9 +42,8 @@ if(!isset($_SESSION['customer'])) {
                             </thead>
                             <tbody>
 
-
             <?php
-            /* ===================== Pagination Code Starts ================== */
+            /* ===================== Bắt Đầu Phân Trang ================== */
             $adjacents = 5;
 
             $statement = $pdo->prepare("SELECT * FROM tbl_payment WHERE customer_email=? ORDER BY id DESC");
@@ -75,9 +74,9 @@ if(!isset($_SESSION['customer'])) {
             {   
                 $pagination .= "<div class=\"pagination\">";
                 if ($page > 1) 
-                    $pagination.= "<a href=\"$targetpage?page=$prev\">&#171; previous</a>";
+                    $pagination.= "<a href=\"$targetpage?page=$prev\">&#171; Trang Trước</a>";
                 else
-                    $pagination.= "<span class=\"disabled\">&#171; previous</span>";    
+                    $pagination.= "<span class=\"disabled\">&#171; Trang Trước</span>";    
                 if ($lastpage < 7 + ($adjacents * 2))
                 {   
                     for ($counter = 1; $counter <= $lastpage; $counter++)
@@ -134,14 +133,13 @@ if(!isset($_SESSION['customer'])) {
                     }
                 }
                 if ($page < $counter - 1) 
-                    $pagination.= "<a href=\"$targetpage?page=$next\">next &#187;</a>";
+                    $pagination.= "<a href=\"$targetpage?page=$next\">Trang Sau &#187;</a>";
                 else
-                    $pagination.= "<span class=\"disabled\">next &#187;</span>";
+                    $pagination.= "<span class=\"disabled\">Trang Sau &#187;</span>";
                 $pagination.= "</div>\n";       
             } 
-            /* ===================== Pagination Code Ends ================== */
+            /* ===================== Kết Thúc Phân Trang ================== */
             ?>
-
 
                                 <?php
                                 $tip = $page*10-10;
@@ -156,11 +154,11 @@ if(!isset($_SESSION['customer'])) {
                                             $statement1->execute(array($row['payment_id']));
                                             $result1 = $statement1->fetchAll(PDO::FETCH_ASSOC);
                                             foreach ($result1 as $row1) {
-                                                echo 'Product Name: '.$row1['product_name'];
-                                                echo '<br>Size: '.$row1['size'];
-                                                echo '<br>Color: '.$row1['color'];
-                                                echo '<br>Quantity: '.$row1['quantity'];
-                                                echo '<br>Unit Price: $'.$row1['unit_price'];
+                                                echo 'Tên Sản Phẩm: '.$row1['product_name'];
+                                                echo '<br>Kích Cỡ: '.$row1['size'];
+                                                echo '<br>Màu Sắc: '.$row1['color'];
+                                                echo '<br>Số Lượng: '.$row1['quantity'];
+                                                echo '<br>Đơn Giá: $'.$row1['unit_price'];
                                                 echo '<br><br>';
                                             }
                                             ?>

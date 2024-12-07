@@ -6,12 +6,12 @@ if(isset($_POST['form1'])) {
 
 	if(empty($_POST['title'])) {
 		$valid = 0;
-		$error_message .= 'Title can not be empty<br>';
+		$error_message .= 'Tiêu đề không được bỏ trống<br>';
 	}
 
 	if(empty($_POST['content'])) {
 		$valid = 0;
-		$error_message .= 'Content can not be empty<br>';
+		$error_message .= 'Nội dung không được bỏ trống<br>';
 	}
 
 	$path = $_FILES['photo']['name'];
@@ -22,11 +22,11 @@ if(isset($_POST['form1'])) {
         $file_name = basename( $path, '.' . $ext );
         if( $ext!='jpg' && $ext!='png' && $ext!='jpeg' && $ext!='gif' ) {
             $valid = 0;
-            $error_message .= 'You must have to upload jpg, jpeg, gif or png file<br>';
+            $error_message .= 'Bạn phải tải lên tệp định dạng jpg, jpeg, gif hoặc png<br>';
         }
     } else {
     	$valid = 0;
-        $error_message .= 'You must have to select a photo<br>';
+        $error_message .= 'Bạn phải chọn một ảnh<br>';
     }
 
 	if($valid == 1) {
@@ -47,7 +47,7 @@ if(isset($_POST['form1'])) {
 		$statement = $pdo->prepare("INSERT INTO tbl_service (title,content,photo) VALUES (?,?,?)");
 		$statement->execute(array($_POST['title'],$_POST['content'],$final_name));
 			
-		$success_message = 'Service is added successfully!';
+		$success_message = 'Dịch vụ đã được thêm thành công!';
 
 		unset($_POST['title']);
 		unset($_POST['content']);
@@ -102,7 +102,7 @@ if(isset($_POST['form1'])) {
 						<div class="form-group">
 							<label for="" class="col-sm-2 control-label">Photo <span>*</span></label>
 							<div class="col-sm-9" style="padding-top:5px">
-								<input type="file" name="photo">(Only jpg, jpeg, gif and png are allowed)
+								<input type="file" name="photo">(Chỉ chấp nhận các tệp jpg, jpeg, gif và png)
 							</div>
 						</div>
 						<div class="form-group">

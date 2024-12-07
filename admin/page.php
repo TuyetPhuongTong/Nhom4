@@ -40,7 +40,7 @@ if(isset($_POST['form_about'])) {
                 unlink('../assets/uploads/'.$about_banner);
             }
 
-            // Cập nhật dữ liệu
+            // Lưu ảnh mới
             $final_name = 'about-banner'.'.'.$ext;
             move_uploaded_file( $path_tmp, '../assets/uploads/'.$final_name );
 

@@ -1,5 +1,5 @@
 <?php require_once('header.php'); ?>
-<!-- fetching row banner login -->
+<!-- Lấy Dữ Liệu Banner Đăng Nhập -->
 <?php
 $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
 $statement->execute();
@@ -8,7 +8,7 @@ foreach ($result as $row) {
     $banner_login = $row['banner_login'];
 }
 ?>
-<!-- login form -->
+<!-- Form Đăng Nhập -->
 <?php
 if(isset($_POST['form1'])) {
         
@@ -28,11 +28,11 @@ if(isset($_POST['form1'])) {
             $row_password = $row['cust_password'];
         }
 
-        if($total==0) {
+        if($total == 0) {
             $error_message .= LANG_VALUE_133.'<br>';
         } else {
-            //using MD5 form
-            if( $row_password != md5($cust_password) ) {
+            // Sử Dụng Mã Hóa MD5
+            if($row_password != md5($cust_password)) {
                 $error_message .= LANG_VALUE_139.'<br>';
             } else {
                 if($cust_status == 0) {
@@ -60,7 +60,6 @@ if(isset($_POST['form1'])) {
             <div class="col-md-12">
                 <div class="user-content">
 
-                    
                     <form action="" method="post">
                         <?php $csrf->echoInputField(); ?>                  
                         <div class="row">

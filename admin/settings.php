@@ -10,13 +10,13 @@ if(isset($_POST['form1'])) {
 
     if($path == '') {
         $valid = 0;
-        $error_message .= 'You must have to select a photo<br>';
+        $error_message .= 'Bạn phải chọn một ảnh<br>';
     } else {
         $ext = pathinfo( $path, PATHINFO_EXTENSION );
         $file_name = basename( $path, '.' . $ext );
         if( $ext!='jpg' && $ext!='png' && $ext!='jpeg' && $ext!='gif' ) {
             $valid = 0;
-            $error_message .= 'You must have to upload jpg, jpeg, gif or png file<br>';
+            $error_message .= 'Bạn phải tải lên tệp định dạng jpg, jpeg, gif hoặc png<br>';
         }
     }
 
@@ -38,7 +38,7 @@ if(isset($_POST['form1'])) {
         $statement = $pdo->prepare("UPDATE tbl_settings SET logo=? WHERE id=1");
         $statement->execute(array($final_name));
 
-        $success_message = 'Logo is updated successfully.';
+        $success_message = 'Logo đã được cập nhật thành công!';
         
     }
 }
@@ -51,13 +51,13 @@ if(isset($_POST['form2'])) {
 
     if($path == '') {
         $valid = 0;
-        $error_message .= 'You must have to select a photo<br>';
+        $error_message .= 'Bạn phải chọn một ảnh<br>';
     } else {
         $ext = pathinfo( $path, PATHINFO_EXTENSION );
         $file_name = basename( $path, '.' . $ext );
         if( $ext!='jpg' && $ext!='png' && $ext!='jpeg' && $ext!='gif' ) {
             $valid = 0;
-            $error_message .= 'You must have to upload jpg, jpeg, gif or png file<br>';
+            $error_message .= 'Bạn phải tải lên tệp định dạng jpg, jpeg, gif hoặc png<br>';
         }
     }
 
@@ -79,7 +79,7 @@ if(isset($_POST['form2'])) {
         $statement = $pdo->prepare("UPDATE tbl_settings SET favicon=? WHERE id=1");
         $statement->execute(array($final_name));
 
-        $success_message = 'Favicon is updated successfully.';
+        $success_message = 'Biểu tượng trang web đã được cập nhật thành công!';
         
     }
 }
@@ -90,7 +90,7 @@ if(isset($_POST['form3'])) {
     $statement = $pdo->prepare("UPDATE tbl_settings SET newsletter_on_off=?, footer_copyright=?, contact_address=?, contact_email=?, contact_phone=?, contact_map_iframe=? WHERE id=1");
     $statement->execute(array($_POST['newsletter_on_off'],$_POST['footer_copyright'],$_POST['contact_address'],$_POST['contact_email'],$_POST['contact_phone'],$_POST['contact_map_iframe']));
 
-    $success_message = 'General content settings is updated successfully.';
+    $success_message = 'Cài đặt nội dung chung đã được cập nhật thành công.';
     
 }
 //Email Settings
@@ -99,7 +99,7 @@ if(isset($_POST['form4'])) {
     $statement = $pdo->prepare("UPDATE tbl_settings SET receive_email=?, receive_email_subject=?,receive_email_thank_you_message=?, forget_password_message=? WHERE id=1");
     $statement->execute(array($_POST['receive_email'],$_POST['receive_email_subject'],$_POST['receive_email_thank_you_message'],$_POST['forget_password_message']));
 
-    $success_message = 'Contact form settings information is updated successfully.';
+    $success_message = 'Thông tin cài đặt biểu mẫu liên hệ đã được cập nhật thành công.';
 }
 
 //Can not finish this section, leave it
@@ -108,7 +108,7 @@ if(isset($_POST['form5'])) {
     $statement = $pdo->prepare("UPDATE tbl_settings SET total_featured_product_home=?, total_latest_product_home=?, total_popular_product_home=? WHERE id=1");
     $statement->execute(array($_POST['total_featured_product_home'],$_POST['total_latest_product_home'],$_POST['total_popular_product_home']));
 
-    $success_message = 'Sidebar settings is updated successfully.';
+    $success_message = 'Cài đặt thanh bên đã được cập nhật thành công.';
 }
 
 
@@ -117,7 +117,7 @@ if(isset($_POST['form6_0'])) {
     $statement = $pdo->prepare("UPDATE tbl_settings SET home_service_on_off=?, home_welcome_on_off=?, home_featured_product_on_off=?, home_latest_product_on_off=?, home_popular_product_on_off=? WHERE id=1");
     $statement->execute(array($_POST['home_service_on_off'],$_POST['home_welcome_on_off'],$_POST['home_featured_product_on_off'],$_POST['home_latest_product_on_off'],$_POST['home_popular_product_on_off']));
 
-    $success_message = 'Section On-Off Settings is updated successfully.';
+    $success_message = 'Cài đặt bật/tắt phần đã được cập nhật thành công.';
 }
 
 
@@ -126,7 +126,7 @@ if(isset($_POST['form6'])) {
     $statement = $pdo->prepare("UPDATE tbl_settings SET meta_title_home=?, meta_keyword_home=?, meta_description_home=? WHERE id=1");
     $statement->execute(array($_POST['meta_title_home'],$_POST['meta_keyword_home'],$_POST['meta_description_home']));
 
-    $success_message = 'Home Meta settings is updated successfully.';
+    $success_message = 'Cài đặt Meta trang chủ đã được cập nhật thành công.';
 }
 
 if(isset($_POST['form6_7'])) {
@@ -135,22 +135,22 @@ if(isset($_POST['form6_7'])) {
 
     if(empty($_POST['cta_title'])) {
         $valid = 0;
-        $error_message .= 'Call to Action Title can not be empty<br>';
+        $error_message .= 'Tiêu đề Call to Action không được để trống.<br>';
     }
 
     if(empty($_POST['cta_content'])) {
         $valid = 0;
-        $error_message .= 'Call to Action Content can not be empty<br>';
+        $error_message .= 'Nội dung Call to Action không được để trống<br>';
     }
 
     if(empty($_POST['cta_read_more_text'])) {
         $valid = 0;
-        $error_message .= 'Call to Action Read More Text can not be empty<br>';
+        $error_message .= 'Văn bản "Đọc thêm" của Call to Action không được để trống<br>';
     }
 
     if(empty($_POST['cta_read_more_url'])) {
         $valid = 0;
-        $error_message .= 'Call to Action Read More URL can not be empty<br>';
+        $error_message .= 'URL "Đọc thêm" của Call to Action không được để trống<br>';
     }
 
     $path = $_FILES['cta_photo']['name'];
@@ -161,7 +161,7 @@ if(isset($_POST['form6_7'])) {
         $file_name = basename( $path, '.' . $ext );
         if( $ext!='jpg' && $ext!='png' && $ext!='jpeg' && $ext!='gif' ) {
             $valid = 0;
-            $error_message .= 'You must have to upload jpg, jpeg, gif or png file<br>';
+            $error_message .= 'Bạn phải tải lên tệp định dạng jpg, jpeg, gif hoặc png<br>';
         }
     }
 
@@ -190,7 +190,7 @@ if(isset($_POST['form6_7'])) {
             $statement->execute(array($_POST['cta_title'],$_POST['cta_content'],$_POST['cta_read_more_text'],$_POST['cta_read_more_url']));
         }
 
-        $success_message = 'Call to Action Data is updated successfully.';
+        $success_message = 'Dữ liệu Call to Action Data đã được cập nhật thành công.';
         
     }
 }
@@ -201,12 +201,12 @@ if(isset($_POST['form6_4'])) {
 
     if(empty($_POST['featured_product_title'])) {
         $valid = 0;
-        $error_message .= 'Featured Product Title can not be empty<br>';
+        $error_message .= 'Tiêu đề sản phẩm nổi bật không được để trống<br>';
     }
 
     if(empty($_POST['featured_product_subtitle'])) {
         $valid = 0;
-        $error_message .= 'Featured Product SubTitle can not be empty<br>';
+        $error_message .= 'Phụ đề sản phẩm nổi bật không được để trống<br>';
     }
 
     if($valid == 1) {
@@ -215,7 +215,7 @@ if(isset($_POST['form6_4'])) {
         $statement = $pdo->prepare("UPDATE tbl_settings SET featured_product_title=?,featured_product_subtitle=? WHERE id=1");
         $statement->execute(array($_POST['featured_product_title'],$_POST['featured_product_subtitle']));
 
-        $success_message = 'Featured Product Data is updated successfully.';
+        $success_message = 'Dữ liệu sản phẩm nổi bật đã được cập nhật thành công.';
         
     }
 }
@@ -226,12 +226,12 @@ if(isset($_POST['form6_5'])) {
 
     if(empty($_POST['latest_product_title'])) {
         $valid = 0;
-        $error_message .= 'Latest Product Title can not be empty<br>';
+        $error_message .= 'Tiêu đề sản phẩm mới nhất không được để trống<br>';
     }
 
     if(empty($_POST['latest_product_subtitle'])) {
         $valid = 0;
-        $error_message .= 'Latest Product SubTitle can not be empty<br>';
+        $error_message .= 'Phụ đề sản phẩm mới nhất không được để trống<br>';
     }
 
     if($valid == 1) {
@@ -240,7 +240,7 @@ if(isset($_POST['form6_5'])) {
         $statement = $pdo->prepare("UPDATE tbl_settings SET latest_product_title=?,latest_product_subtitle=? WHERE id=1");
         $statement->execute(array($_POST['latest_product_title'],$_POST['latest_product_subtitle']));
 
-        $success_message = 'Latest Product Data is updated successfully.';
+        $success_message = 'Dữ liệu sản phẩm mới nhất đã được cập nhật thành công.';
         
     }
 }
@@ -251,12 +251,12 @@ if(isset($_POST['form6_6'])) {
 
     if(empty($_POST['popular_product_title'])) {
         $valid = 0;
-        $error_message .= 'Popular Product Title can not be empty<br>';
+        $error_message .= 'Tiêu đề sản phẩm phổ biến không được để trống<br>';
     }
 
     if(empty($_POST['popular_product_subtitle'])) {
         $valid = 0;
-        $error_message .= 'Popular Product SubTitle can not be empty<br>';
+        $error_message .= 'Phụ đề sản phẩm phổ biến không được để trống<br>';
     }
 
     if($valid == 1) {
@@ -265,7 +265,7 @@ if(isset($_POST['form6_6'])) {
         $statement = $pdo->prepare("UPDATE tbl_settings SET popular_product_title=?,popular_product_subtitle=? WHERE id=1");
         $statement->execute(array($_POST['popular_product_title'],$_POST['popular_product_subtitle']));
 
-        $success_message = 'Popular Product Data is updated successfully.';
+        $success_message = 'Dữ liệu sản phẩm phổ biến đã được cập nhật thành công.';
         
     }
 }
@@ -360,7 +360,7 @@ if(isset($_POST['form6_3'])) {
         $statement = $pdo->prepare("UPDATE tbl_settings SET newsletter_text=? WHERE id=1");
         $statement->execute(array($_POST['newsletter_text']));
         
-        $success_message = 'Newsletter Text is updated successfully.';
+        $success_message = 'Bản tin đã được cập nhật thành công.';
  
 }
 
@@ -372,13 +372,13 @@ if(isset($_POST['form7_1'])) {
 
     if($path == '') {
         $valid = 0;
-        $error_message .= 'You must have to select a photo<br>';
+        $error_message .= 'Bạn phải chọn một ảnh<br>';
     } else {
         $ext = pathinfo( $path, PATHINFO_EXTENSION );
         $file_name = basename( $path, '.' . $ext );
         if( $ext!='jpg' && $ext!='png' && $ext!='jpeg' && $ext!='gif' ) {
             $valid = 0;
-            $error_message .= 'You must have to upload jpg, jpeg, gif or png file<br>';
+            $error_message .= 'Bạn phải tải lên tệp có định dạng jpg, jpeg, gif hoặc png.<br>';
         }
     }
 
@@ -400,7 +400,7 @@ if(isset($_POST['form7_1'])) {
         $statement = $pdo->prepare("UPDATE tbl_settings SET banner_login=? WHERE id=1");
         $statement->execute(array($final_name));
 
-        $success_message = 'Login Page Banner is updated successfully.';
+        $success_message = 'Banner trang Đăng nhập đã được cập nhật thành công.';
         
     }
 }
@@ -413,13 +413,13 @@ if(isset($_POST['form7_2'])) {
 
     if($path == '') {
         $valid = 0;
-        $error_message .= 'You must have to select a photo<br>';
+        $error_message .= 'Bạn phải chọn một ảnh<br>';
     } else {
         $ext = pathinfo( $path, PATHINFO_EXTENSION );
         $file_name = basename( $path, '.' . $ext );
         if( $ext!='jpg' && $ext!='png' && $ext!='jpeg' && $ext!='gif' ) {
             $valid = 0;
-            $error_message .= 'You must have to upload jpg, jpeg, gif or png file<br>';
+            $error_message .= 'Bạn phải tải lên tệp có định dạng jpg, jpeg, gif hoặc png.<br>';
         }
     }
 
@@ -441,7 +441,7 @@ if(isset($_POST['form7_2'])) {
         $statement = $pdo->prepare("UPDATE tbl_settings SET banner_registration=? WHERE id=1");
         $statement->execute(array($final_name));
 
-        $success_message = 'Registration Page Banner is updated successfully.';
+        $success_message = 'Banner trang Đăng ký đã được cập nhật thành công.';
         
     }
 }
@@ -454,13 +454,13 @@ if(isset($_POST['form7_3'])) {
 
     if($path == '') {
         $valid = 0;
-        $error_message .= 'You must have to select a photo<br>';
+        $error_message .= 'Bạn phải chọn một ảnh.<br>';
     } else {
         $ext = pathinfo( $path, PATHINFO_EXTENSION );
         $file_name = basename( $path, '.' . $ext );
         if( $ext!='jpg' && $ext!='png' && $ext!='jpeg' && $ext!='gif' ) {
             $valid = 0;
-            $error_message .= 'You must have to upload jpg, jpeg, gif or png file<br>';
+            $error_message .= 'Bạn phải tải lên tệp có định dạng jpg, jpeg, gif hoặc png.<br>';
         }
     }
 
@@ -482,7 +482,7 @@ if(isset($_POST['form7_3'])) {
         $statement = $pdo->prepare("UPDATE tbl_settings SET banner_forget_password=? WHERE id=1");
         $statement->execute(array($final_name));
 
-        $success_message = 'Forget Password Page Banner is updated successfully.';
+        $success_message = 'Banner trang Quên mật khẩu đã được cập nhật thành công.';
         
     }
 }
@@ -495,13 +495,13 @@ if(isset($_POST['form7_4'])) {
 
     if($path == '') {
         $valid = 0;
-        $error_message .= 'You must have to select a photo<br>';
+        $error_message .= 'Bạn phải chọn một ảnh.<br>';
     } else {
         $ext = pathinfo( $path, PATHINFO_EXTENSION );
         $file_name = basename( $path, '.' . $ext );
         if( $ext!='jpg' && $ext!='png' && $ext!='jpeg' && $ext!='gif' ) {
             $valid = 0;
-            $error_message .= 'You must have to upload jpg, jpeg, gif or png file<br>';
+            $error_message .= 'Bạn phải tải lên tệp có định dạng jpg, jpeg, gif hoặc png.<br>';
         }
     }
 
@@ -523,7 +523,7 @@ if(isset($_POST['form7_4'])) {
         $statement = $pdo->prepare("UPDATE tbl_settings SET banner_reset_password=? WHERE id=1");
         $statement->execute(array($final_name));
 
-        $success_message = 'Reset Password Page Banner is updated successfully.';
+        $success_message = 'Banner trang Đổi mật khẩu đã được cập nhật thành công.';
         
     }
 }
@@ -537,13 +537,13 @@ if(isset($_POST['form7_6'])) {
 
     if($path == '') {
         $valid = 0;
-        $error_message .= 'You must have to select a photo<br>';
+        $error_message .= 'Bạn phải chọn một ảnh.<br>';
     } else {
         $ext = pathinfo( $path, PATHINFO_EXTENSION );
         $file_name = basename( $path, '.' . $ext );
         if( $ext!='jpg' && $ext!='png' && $ext!='jpeg' && $ext!='gif' ) {
             $valid = 0;
-            $error_message .= 'You must have to upload jpg, jpeg, gif or png file<br>';
+            $error_message .= 'Bạn phải tải lên tệp có định dạng jpg, jpeg, gif hoặc png.<br>';
         }
     }
 
@@ -565,7 +565,7 @@ if(isset($_POST['form7_6'])) {
         $statement = $pdo->prepare("UPDATE tbl_settings SET banner_search=? WHERE id=1");
         $statement->execute(array($final_name));
 
-        $success_message = 'Search Page Banner is updated successfully.';
+        $success_message = 'Banner trang Tìm kiếm đã được cập nhật thành công.';
         
     }
 }
@@ -578,13 +578,13 @@ if(isset($_POST['form7_7'])) {
 
     if($path == '') {
         $valid = 0;
-        $error_message .= 'You must have to select a photo<br>';
+        $error_message .= 'Bạn phải chọn một ảnh.<br>';
     } else {
         $ext = pathinfo( $path, PATHINFO_EXTENSION );
         $file_name = basename( $path, '.' . $ext );
         if( $ext!='jpg' && $ext!='png' && $ext!='jpeg' && $ext!='gif' ) {
             $valid = 0;
-            $error_message .= 'You must have to upload jpg, jpeg, gif or png file<br>';
+            $error_message .= 'Bạn phải tải lên tệp có định dạng jpg, jpeg, gif hoặc png.<br>';
         }
     }
 
@@ -606,7 +606,7 @@ if(isset($_POST['form7_7'])) {
         $statement = $pdo->prepare("UPDATE tbl_settings SET banner_cart=? WHERE id=1");
         $statement->execute(array($final_name));
 
-        $success_message = 'Cart Page Banner is updated successfully.';
+        $success_message = 'Banner trang Giỏ hàng đã được cập nhật thành công.';
         
     }
 }
@@ -619,13 +619,13 @@ if(isset($_POST['form7_8'])) {
 
     if($path == '') {
         $valid = 0;
-        $error_message .= 'You must have to select a photo<br>';
+        $error_message .= 'Bạn phải chọn một ảnh.<br>';
     } else {
         $ext = pathinfo( $path, PATHINFO_EXTENSION );
         $file_name = basename( $path, '.' . $ext );
         if( $ext!='jpg' && $ext!='png' && $ext!='jpeg' && $ext!='gif' ) {
             $valid = 0;
-            $error_message .= 'You must have to upload jpg, jpeg, gif or png file<br>';
+            $error_message .= 'Bạn phải tải lên tệp có định dạng jpg, jpeg, gif hoặc png.<br>';
         }
     }
 
@@ -647,7 +647,7 @@ if(isset($_POST['form7_8'])) {
         $statement = $pdo->prepare("UPDATE tbl_settings SET banner_checkout=? WHERE id=1");
         $statement->execute(array($final_name));
 
-        $success_message = 'Checkout Page Banner is updated successfully.';
+        $success_message = 'Banner trang Thanh toán đã được cập nhật thành công.';
         
     }
 }
@@ -660,13 +660,13 @@ if(isset($_POST['form7_9'])) {
 
     if($path == '') {
         $valid = 0;
-        $error_message .= 'You must have to select a photo<br>';
+        $error_message .= 'Bạn phải chọn một ảnh.<br>';
     } else {
         $ext = pathinfo( $path, PATHINFO_EXTENSION );
         $file_name = basename( $path, '.' . $ext );
         if( $ext!='jpg' && $ext!='png' && $ext!='jpeg' && $ext!='gif' ) {
             $valid = 0;
-            $error_message .= 'You must have to upload jpg, jpeg, gif or png file<br>';
+            $error_message .= 'Bạn phải tải lên tệp có định dạng jpg, jpeg, gif hoặc png.<br>';
         }
     }
 
@@ -688,7 +688,7 @@ if(isset($_POST['form7_9'])) {
         $statement = $pdo->prepare("UPDATE tbl_settings SET banner_product_category=? WHERE id=1");
         $statement->execute(array($final_name));
 
-        $success_message = 'Product Category Page Banner is updated successfully.';
+        $success_message = 'Banner trang Sản phẩm đã được cập nhật thành công.';
         
     }
 }
@@ -701,13 +701,13 @@ if(isset($_POST['form7_10'])) {
 
     if($path == '') {
         $valid = 0;
-        $error_message .= 'You must have to select a photo<br>';
+        $error_message .= 'Bạn phải chọn một ảnh.<br>';
     } else {
         $ext = pathinfo( $path, PATHINFO_EXTENSION );
         $file_name = basename( $path, '.' . $ext );
         if( $ext!='jpg' && $ext!='png' && $ext!='jpeg' && $ext!='gif' ) {
             $valid = 0;
-            $error_message .= 'You must have to upload jpg, jpeg, gif or png file<br>';
+            $error_message .= 'Bạn phải tải lên tệp có định dạng jpg, jpeg, gif hoặc png.<br>';
         }
     }
 /*
@@ -739,7 +739,7 @@ if(isset($_POST['form9'])) {
     $statement = $pdo->prepare("UPDATE tbl_settings SET paypal_email=?, bank_detail=? WHERE id=1");
     $statement->execute(array($_POST['paypal_email'],$_POST['bank_detail']));
 
-    $success_message = 'Payment Settings is updated successfully.';
+    $success_message = 'Cài đặt Thanh toán đã được cập nhật thành công.';
 }
 
 if(isset($_POST['form10'])) {
@@ -747,7 +747,7 @@ if(isset($_POST['form10'])) {
     $statement = $pdo->prepare("UPDATE tbl_settings SET before_head=?, after_body=?, before_body=? WHERE id=1");
     $statement->execute(array($_POST['before_head'],$_POST['after_body'],$_POST['before_body']));
 
-    $success_message = 'Head and Body Script is updated successfully.';
+    $success_message = 'Script Head và Body đã được cập nhật thành công.';
 }
 
 /*
@@ -778,7 +778,7 @@ if(isset($_POST['form11'])) {
 
 <section class="content-header">
     <div class="content-header-left">
-        <h1>Website Settings</h1>
+        <h1>Cài đặt Trang Web</h1>
     </div>
 </section>
 
@@ -891,13 +891,13 @@ foreach ($result as $row) {
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_1" data-toggle="tab">Logo</a></li>
-                        <li><a href="#tab_2" data-toggle="tab">Favicon</a></li>
-                        <li><a href="#tab_3" data-toggle="tab">Footer & Contact</a></li>
-                        <li><a href="#tab_4" data-toggle="tab">Message Settings</a></li>
-                        <li><a href="#tab_5" data-toggle="tab">Products</a></li>
-                        <li><a href="#tab_6" data-toggle="tab">Home Settings</a></li>
-                        <li><a href="#tab_7" data-toggle="tab">Banner Settings</a></li>
-                        <li><a href="#tab_9" data-toggle="tab">Payment Settings</a></li>
+                        <li><a href="#tab_2" data-toggle="tab">Biểu tượng Website</a></li>
+                        <li><a href="#tab_3" data-toggle="tab">Chân trang & Liên hệ</a></li>
+                        <li><a href="#tab_4" data-toggle="tab">Cài đặt Tin nhắn</a></li>
+                        <li><a href="#tab_5" data-toggle="tab">Sản phẩm</a></li>
+                        <li><a href="#tab_6" data-toggle="tab">Cài đặt Trang chủ </a></li>
+                        <li><a href="#tab_7" data-toggle="tab">Cài đặt Banner </a></li>
+                        <li><a href="#tab_9" data-toggle="tab">Cài đặt Thanh toán</a></li>
                         <li><a href="#tab_10" data-toggle="tab">Head & Body Scripts</a></li>
                        <!--<li><a href="#tab_11" data-toggle="tab">Ads</a></li>-->
                     </ul>
@@ -909,13 +909,13 @@ foreach ($result as $row) {
                             <div class="box box-info">
                                 <div class="box-body">
                                     <div class="form-group">
-                                        <label for="" class="col-sm-2 control-label">Existing Photo</label>
+                                        <label for="" class="col-sm-2 control-label">Ảnh hiện tại</label>
                                         <div class="col-sm-6" style="padding-top:6px;">
                                             <img src="../assets/uploads/<?php echo $logo; ?>" class="existing-photo" style="height:80px;">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="" class="col-sm-2 control-label">New Photo</label>
+                                        <label for="" class="col-sm-2 control-label">Ảnh mới</label>
                                         <div class="col-sm-6" style="padding-top:6px;">
                                             <input type="file" name="photo_logo">
                                         </div>
@@ -923,7 +923,7 @@ foreach ($result as $row) {
                                     <div class="form-group">
                                         <label for="" class="col-sm-2 control-label"></label>
                                         <div class="col-sm-6">
-                                            <button type="submit" class="btn btn-success pull-left" name="form1">Update Logo</button>
+                                            <button type="submit" class="btn btn-success pull-left" name="form1">Cập nhật Logo</button>
                                         </div>
                                     </div>
                                 </div>
@@ -940,13 +940,13 @@ foreach ($result as $row) {
                             <div class="box box-info">
                                 <div class="box-body">
                                     <div class="form-group">
-                                        <label for="" class="col-sm-2 control-label">Existing Photo</label>
+                                        <label for="" class="col-sm-2 control-label">Ảnh hiện tại</label>
                                         <div class="col-sm-6" style="padding-top:6px;">
                                             <img src="../assets/uploads/<?php echo $favicon; ?>" class="existing-photo" style="height:40px;">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="" class="col-sm-2 control-label">New Photo</label>
+                                        <label for="" class="col-sm-2 control-label">Ảnh mới</label>
                                         <div class="col-sm-6" style="padding-top:6px;">
                                             <input type="file" name="photo_favicon">
                                         </div>
@@ -954,7 +954,7 @@ foreach ($result as $row) {
                                     <div class="form-group">
                                         <label for="" class="col-sm-2 control-label"></label>
                                         <div class="col-sm-6">
-                                            <button type="submit" class="btn btn-success pull-left" name="form2">Update Favicon</button>
+                                            <button type="submit" class="btn btn-success pull-left" name="form2">Cập nhật biểu tượng trang</button>
                                         </div>
                                     </div>
                                 </div>
@@ -969,35 +969,35 @@ foreach ($result as $row) {
                             <div class="box box-info">
                                 <div class="box-body">
                                     <div class="form-group">
-                                        <label for="" class="col-sm-2 control-label">Newsletter Section </label>
+                                        <label for="" class="col-sm-2 control-label">Phần Bản tin</label>
                                         <div class="col-sm-3">
                                             <select name="newsletter_on_off" class="form-control" style="width:auto;">
-                                                <option value="1" <?php if($newsletter_on_off == 1) {echo 'selected';} ?>>On</option>
-                                                <option value="0" <?php if($newsletter_on_off == 0) {echo 'selected';} ?>>Off</option>
+                                                <option value="1" <?php if($newsletter_on_off == 1) {echo 'selected';} ?>>Bật</option>
+                                                <option value="0" <?php if($newsletter_on_off == 0) {echo 'selected';} ?>>Tắt</option>
                                             </select>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="" class="col-sm-2 control-label">Footer - Copyright </label>
+                                        <label for="" class="col-sm-2 control-label">Chân trang - Bản quyền</label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="text" name="footer_copyright" value="<?php echo $footer_copyright; ?>">
                                         </div>
                                     </div>                              
                                     <div class="form-group">
-                                        <label for="" class="col-sm-2 control-label">Contact Address </label>
+                                        <label for="" class="col-sm-2 control-label">Địa chỉ Liên hệ </label>
                                         <div class="col-sm-6">
                                             <textarea class="form-control" name="contact_address" style="height:140px;"><?php echo $contact_address; ?></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="" class="col-sm-2 control-label">Contact Email </label>
+                                        <label for="" class="col-sm-2 control-label">Email Liên hệ</label>
                                         <div class="col-sm-6">
                                             <input type="text" class="form-control" name="contact_email" value="<?php echo $contact_email; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="" class="col-sm-2 control-label">Contact Phone Number </label>
+                                        <label for="" class="col-sm-2 control-label">Số điện thoại </label>
                                         <div class="col-sm-6">
                                             <input type="text" class="form-control" name="contact_phone" value="<?php echo $contact_phone; ?>">
                                         </div>
@@ -1009,7 +1009,7 @@ foreach ($result as $row) {
                                         </div>
                                     </div>-->
                                     <div class="form-group">
-                                        <label for="" class="col-sm-2 control-label">Contact Map iFrame </label>
+                                        <label for="" class="col-sm-2 control-label">Khung iFrame Bản đồ Liên hệ </label>
                                         <div class="col-sm-9">
                                             <textarea class="form-control" name="contact_map_iframe" style="height:200px;"><?php echo $contact_map_iframe; ?></textarea>
                                         </div>
@@ -1017,7 +1017,7 @@ foreach ($result as $row) {
                                     <div class="form-group">
                                         <label for="" class="col-sm-2 control-label"></label>
                                         <div class="col-sm-6">
-                                            <button type="submit" class="btn btn-success pull-left" name="form3">Update</button>
+                                            <button type="submit" class="btn btn-success pull-left" name="form3">Cập nhật</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1033,25 +1033,25 @@ foreach ($result as $row) {
                             <div class="box box-info">
                                 <div class="box-body">
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Contact Email Address</label>
+                                        <label for="" class="col-sm-3 control-label">Địa chỉ Email Liên hệ</label>
                                         <div class="col-sm-4">
                                             <input type="text" class="form-control" name="receive_email" value="<?php echo $receive_email; ?>">
                                         </div>
                                     </div>                                  
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Contact Email Subject</label>
+                                        <label for="" class="col-sm-3 control-label">Chủ đề Email Liên hệ</label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" name="receive_email_subject" value="<?php echo $receive_email_subject; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Contact Email Thank you message</label>
+                                        <label for="" class="col-sm-3 control-label">Lời cảm ơn trong Email Liên hệ</label>
                                         <div class="col-sm-8">
                                             <textarea class="form-control" name="receive_email_thank_you_message"><?php echo $receive_email_thank_you_message; ?></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Forget password Message</label>
+                                        <label for="" class="col-sm-3 control-label">Thông báo Quên Mật khẩu</label>
                                         <div class="col-sm-8">
                                             <textarea class="form-control" name="forget_password_message"><?php echo $forget_password_message; ?></textarea>
                                         </div>
@@ -1059,7 +1059,7 @@ foreach ($result as $row) {
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label"></label>
                                         <div class="col-sm-5">
-                                            <button type="submit" class="btn btn-success pull-left" name="form4">Update</button>
+                                            <button type="submit" class="btn btn-success pull-left" name="form4">Cập nhật</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1099,19 +1099,19 @@ foreach ($result as $row) {
                                         </div>
                                     </div>-->
                                     <div class="form-group">
-                                        <label for="" class="col-sm-4 control-label">Home Page (How many featured product?)<span>*</span></label>
+                                        <label for="" class="col-sm-4 control-label">Trang chủ (Có bao nhiêu sản phẩm nổi bật?)<span>*</span></label>
                                         <div class="col-sm-2">
                                             <input type="text" class="form-control" name="total_featured_product_home" value="<?php echo $total_featured_product_home; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="" class="col-sm-4 control-label">Home Page (How many latest product?)<span>*</span></label>
+                                        <label for="" class="col-sm-4 control-label">Trang chủ (Có bao nhiêu sản phẩm mới nhất?)<span>*</span></label>
                                         <div class="col-sm-2">
                                             <input type="text" class="form-control" name="total_latest_product_home" value="<?php echo $total_latest_product_home; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="" class="col-sm-4 control-label">Home Page (How many popular product?)<span>*</span></label>
+                                        <label for="" class="col-sm-4 control-label">Trang chủ (Có bao nhiêu sản phẩm phổ biến?)<span>*</span></label>
                                         <div class="col-sm-2">
                                             <input type="text" class="form-control" name="total_popular_product_home" value="<?php echo $total_popular_product_home; ?>">
                                         </div>
@@ -1119,7 +1119,7 @@ foreach ($result as $row) {
                                     <div class="form-group">
                                         <label for="" class="col-sm-4 control-label"></label>
                                         <div class="col-sm-6">
-                                            <button type="submit" class="btn btn-success pull-left" name="form5">Update</button>
+                                            <button type="submit" class="btn btn-success pull-left" name="form5">Cập nhật</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1135,12 +1135,12 @@ foreach ($result as $row) {
                         <div class="tab-pane" id="tab_6">
 
 
-                        	<h3>Sections On and Off</h3>
+                        	<h3>Bật/Tắt Các Phần</h3>
                             <form class="form-horizontal" action="" method="post">
                             <div class="box box-info">
                                 <div class="box-body">
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Service Section </label>
+                                        <label for="" class="col-sm-3 control-label">Phần Dịch Vụ </label>
                                         <div class="col-sm-4">
                                             <select name="home_service_on_off" class="form-control" style="width:auto;">
                                             	<option value="1" <?php if($home_service_on_off == 1) {echo 'selected';} ?>>On</option>
@@ -1149,7 +1149,7 @@ foreach ($result as $row) {
                                         </div>
                                     </div>      
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Welcome Section </label>
+                                        <label for="" class="col-sm-3 control-label">Phần Chào Mừng </label>
                                         <div class="col-sm-4">
                                             <select name="home_welcome_on_off" class="form-control" style="width:auto;">
                                             	<option value="1" <?php if($home_welcome_on_off == 1) {echo 'selected';} ?>>On</option>
@@ -1158,7 +1158,7 @@ foreach ($result as $row) {
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Featured Product Section </label>
+                                        <label for="" class="col-sm-3 control-label">Phần Sản Phẩm Nổi Bật </label>
                                         <div class="col-sm-4">
                                             <select name="home_featured_product_on_off" class="form-control" style="width:auto;">
                                             	<option value="1" <?php if($home_featured_product_on_off == 1) {echo 'selected';} ?>>On</option>
@@ -1167,7 +1167,7 @@ foreach ($result as $row) {
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Latest Product Section </label>
+                                        <label for="" class="col-sm-3 control-label">Phần Sản Phẩm Mới Nhất </label>
                                         <div class="col-sm-4">
                                             <select name="home_latest_product_on_off" class="form-control" style="width:auto;">
                                             	<option value="1" <?php if($home_latest_product_on_off == 1) {echo 'selected';} ?>>On</option>
@@ -1176,11 +1176,11 @@ foreach ($result as $row) {
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Popular Product Section </label>
+                                        <label for="" class="col-sm-3 control-label">Phần Sản Phẩm Phổ Biến </label>
                                         <div class="col-sm-4">
                                             <select name="home_popular_product_on_off" class="form-control" style="width:auto;">
-                                            	<option value="1" <?php if($home_popular_product_on_off == 1) {echo 'selected';} ?>>On</option>
-                                            	<option value="0" <?php if($home_popular_product_on_off == 0) {echo 'selected';} ?>>Off</option>
+                                            	<option value="1" <?php if($home_popular_product_on_off == 1) {echo 'selected';} ?>>Bật</option>
+                                            	<option value="0" <?php if($home_popular_product_on_off == 0) {echo 'selected';} ?>>Tắt</option>
                                             </select>
                                         </div>
                                     </div>
@@ -1206,7 +1206,7 @@ foreach ($result as $row) {
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label"></label>
                                         <div class="col-sm-6">
-                                            <button type="submit" class="btn btn-success pull-left" name="form6_0">Update</button>
+                                            <button type="submit" class="btn btn-success pull-left" name="form6_0">Cập nhật</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1214,24 +1214,24 @@ foreach ($result as $row) {
                             </form>
 
                             
-                            <h3>Meta Section</h3>
+                            <h3>Phần Meta</h3>
                             <form class="form-horizontal" action="" method="post">
                             <div class="box box-info">
                                 <div class="box-body">
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Meta Title </label>
+                                        <label for="" class="col-sm-3 control-label">Tiêu đề Meta</label>
                                         <div class="col-sm-8">
                                             <input type="text" name="meta_title_home" class="form-control" value="<?php echo $meta_title_home ?>">
                                         </div>
                                     </div>      
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Meta Keyword </label>
+                                        <label for="" class="col-sm-3 control-label">Từ khóa Meta </label>
                                         <div class="col-sm-8">
                                             <textarea class="form-control" name="meta_keyword_home" style="height:100px;"><?php echo $meta_keyword_home ?></textarea>
                                         </div>
                                     </div>  
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Meta Description </label>
+                                        <label for="" class="col-sm-3 control-label">Mô tả Meta </label>
                                         <div class="col-sm-8">
                                             <textarea class="form-control" name="meta_description_home" style="height:200px;"><?php echo $meta_description_home ?></textarea>
                                         </div>
@@ -1239,7 +1239,7 @@ foreach ($result as $row) {
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label"></label>
                                         <div class="col-sm-6">
-                                            <button type="submit" class="btn btn-success pull-left" name="form6">Update</button>
+                                            <button type="submit" class="btn btn-success pull-left" name="form6">Cập nhật</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1302,18 +1302,18 @@ foreach ($result as $row) {
 
 
 
-                            <h3>Featured Product Section</h3>
+                            <h3>Phần Sản phẩm nổi bật</h3>
                             <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                             <div class="box box-info">
                                 <div class="box-body">                                          
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Featured Product Title<span>*</span></label>
+                                        <label for="" class="col-sm-3 control-label">Tiêu đề sản phẩm nổi bật <span>*</span></label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" name="featured_product_title" value="<?php echo $featured_product_title; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Featured Product SubTitle<span>*</span></label>
+                                        <label for="" class="col-sm-3 control-label">Phụ đề sản phẩm nổi bật<span>*</span></label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" name="featured_product_subtitle" value="<?php echo $featured_product_subtitle; ?>">
                                         </div>
@@ -1321,7 +1321,7 @@ foreach ($result as $row) {
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label"></label>
                                         <div class="col-sm-6">
-                                            <button type="submit" class="btn btn-success pull-left" name="form6_4">Update</button>
+                                            <button type="submit" class="btn btn-success pull-left" name="form6_4">Cập nhật</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1329,18 +1329,18 @@ foreach ($result as $row) {
                             </form>
 
 
-                            <h3>Latest Product Section</h3>
+                            <h3>Phần Sản phẩm mới</h3>
                             <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                             <div class="box box-info">
                                 <div class="box-body">                                          
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Latest Product Title<span>*</span></label>
+                                        <label for="" class="col-sm-3 control-label">Tiêu đề sản phẩm mới<span>*</span></label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" name="latest_product_title" value="<?php echo $latest_product_title; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Latest Product SubTitle<span>*</span></label>
+                                        <label for="" class="col-sm-3 control-label">Phụ đề sản phẩm mới<span>*</span></label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" name="latest_product_subtitle" value="<?php echo $latest_product_subtitle; ?>">
                                         </div>
@@ -1348,7 +1348,7 @@ foreach ($result as $row) {
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label"></label>
                                         <div class="col-sm-6">
-                                            <button type="submit" class="btn btn-success pull-left" name="form6_5">Update</button>
+                                            <button type="submit" class="btn btn-success pull-left" name="form6_5">Cập nhật</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1356,18 +1356,18 @@ foreach ($result as $row) {
                             </form>
 
 
-                            <h3>Popular Product Section</h3>
+                            <h3>Phần Sản phẩm phổ biến</h3>
                             <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                             <div class="box box-info">
                                 <div class="box-body">                                          
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Popular Product Title<span>*</span></label>
+                                        <label for="" class="col-sm-3 control-label">Tiêu đề sản phẩm phổ biến<span>*</span></label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" name="popular_product_title" value="<?php echo $popular_product_title; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Popular Product SubTitle<span>*</span></label>
+                                        <label for="" class="col-sm-3 control-label">Phụ đề sản phẩm phổ biến<span>*</span></label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" name="popular_product_subtitle" value="<?php echo $popular_product_subtitle; ?>">
                                         </div>
@@ -1375,7 +1375,7 @@ foreach ($result as $row) {
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label"></label>
                                         <div class="col-sm-6">
-                                            <button type="submit" class="btn btn-success pull-left" name="form6_6">Update</button>
+                                            <button type="submit" class="btn btn-success pull-left" name="form6_6">Cập nhật</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1452,12 +1452,12 @@ foreach ($result as $row) {
                                     -->
                             
 
-                            <h3>Newsletter Section</h3>
+                            <h3>Phần Bản tin </h3>
                             <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                             <div class="box box-info">
                                 <div class="box-body">                                          
                                     <div class="form-group">
-                                        <label for="" class="col-sm-3 control-label">Newsletter Text</label>
+                                        <label for="" class="col-sm-3 control-label">Văn bản cho Bản tin</label>
                                         <div class="col-sm-8">
                                             <textarea name="newsletter_text" class="form-control" cols="30" rows="10" style="height: 120px;"><?php echo $newsletter_text; ?></textarea>
                                         </div>
@@ -1465,7 +1465,7 @@ foreach ($result as $row) {
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label"></label>
                                         <div class="col-sm-6">
-                                            <button type="submit" class="btn btn-success pull-left" name="form6_3">Update</button>
+                                            <button type="submit" class="btn btn-success pull-left" name="form6_3">Cập nhật</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1483,60 +1483,60 @@ foreach ($result as $row) {
                                 <tr>
                                     <form action="" method="post" enctype="multipart/form-data">
                                     <td style="width:50%">
-                                        <h4>Existing Login Page Banner</h4>
+                                        <h4>Banner trang đăng nhập hiện tại</h4>
                                         <p>
                                             <img src="<?php echo '../assets/uploads/'.$banner_login; ?>" alt="" style="width: 100%;height:auto;"> 
                                         </p>                                        
                                     </td>
                                     <td style="width:50%">
-                                        <h4>Change Login Page Banner</h4>
-                                        Select Photo<input type="file" name="photo">
-                                        <input type="submit" class="btn btn-primary btn-xs" value="Change" style="margin-top:10px;" name="form7_1">
+                                        <h4>Thay đổi banner trang đăng nhập</h4>
+                                        Chọn ảnh<input type="file" name="photo">
+                                        <input type="submit" class="btn btn-primary btn-xs" value="Thay dổi" style="margin-top:10px;" name="form7_1">
                                     </td>
                                     </form>
                                 </tr>
                                 <tr>
                                     <form action="" method="post" enctype="multipart/form-data">
                                     <td style="width:50%">
-                                        <h4>Existing Registration Page Banner</h4>
+                                        <h4>Banner trang đăng ký hiện tại</h4>
                                         <p>
                                             <img src="<?php echo '../assets/uploads/'.$banner_registration; ?>" alt="" style="width: 100%;height:auto;">  
                                         </p>                                        
                                     </td>
                                     <td style="width:50%">
-                                        <h4>Change Registration Page Banner</h4>
-                                        Select Photo<input type="file" name="photo">
-                                        <input type="submit" class="btn btn-primary btn-xs" value="Change" style="margin-top:10px;" name="form7_2">
+                                        <h4>Thay đổi banner trang đăng ký</h4>
+                                        Chọn ảnh<input type="file" name="photo">
+                                        <input type="submit" class="btn btn-primary btn-xs" value="Thay đổi" style="margin-top:10px;" name="form7_2">
                                     </td>
                                     </form>
                                 </tr>
                                 <tr>
                                     <form action="" method="post" enctype="multipart/form-data">
                                     <td style="width:50%">
-                                        <h4>Existing Forget Password Page Banner</h4>
+                                        <h4>Banner Trang Quên Mật Khẩu Hiện Tại</h4>
                                         <p>
                                             <img src="<?php echo '../assets/uploads/'.$banner_forget_password; ?>" alt="" style="width: 100%;height:auto;">   
                                         </p>                                        
                                     </td>
                                     <td style="width:50%">
-                                        <h4>Change Forget Password Page Banner</h4>
-                                        Select Photo<input type="file" name="photo">
-                                        <input type="submit" class="btn btn-primary btn-xs" value="Change" style="margin-top:10px;" name="form7_3">
+                                        <h4>Thay Đổi Biểu Ngữ Trang Quên Mật Khẩu</h4>
+                                        Chọn ảnh<input type="file" name="photo">
+                                        <input type="submit" class="btn btn-primary btn-xs" value="Thay đổi" style="margin-top:10px;" name="form7_3">
                                     </td>
                                     </form>
                                 </tr>
                                 <tr>
                                     <form action="" method="post" enctype="multipart/form-data">
                                     <td style="width:50%">
-                                        <h4>Existing Reset Password Page Banner</h4>
+                                        <h4>Banner Trang Đặt Lại Mật Khẩu Hiện Tại</h4>
                                         <p>
                                             <img src="<?php echo '../assets/uploads/'.$banner_reset_password; ?>" alt="" style="width: 100%;height:auto;">   
                                         </p>                                        
                                     </td>
                                     <td style="width:50%">
-                                        <h4>Change Reset Password Page Banner</h4>
-                                        Select Photo<input type="file" name="photo">
-                                        <input type="submit" class="btn btn-primary btn-xs" value="Change" style="margin-top:10px;" name="form7_4">
+                                        <h4>Thay Đổi Banner Trang Đặt Lại Mật Khẩu</h4>
+                                        Chọn ảnh<input type="file" name="photo">
+                                        <input type="submit" class="btn btn-primary btn-xs" value="Thay đổi" style="margin-top:10px;" name="form7_4">
                                     </td>
                                     </form>
                                 </tr>
@@ -1544,15 +1544,15 @@ foreach ($result as $row) {
                                 <tr>
                                     <form action="" method="post" enctype="multipart/form-data">
                                     <td style="width:50%">
-                                        <h4>Existing Search Page Banner</h4>
+                                        <h4>Banner Trang Tìm Kiếm Hiện Tại</h4>
                                         <p>
                                             <img src="<?php echo '../assets/uploads/'.$banner_search; ?>" alt="" style="width: 100%;height:auto;">  
                                         </p>                                        
                                     </td>
                                     <td style="width:50%">
-                                        <h4>Change Search Page Banner</h4>
-                                        Select Photo<input type="file" name="photo">
-                                        <input type="submit" class="btn btn-primary btn-xs" value="Change" style="margin-top:10px;" name="form7_6">
+                                        <h4>Thay Đổi Banner Trang Tìm Kiếm</h4>
+                                        Chọn ảnh<input type="file" name="photo">
+                                        <input type="submit" class="btn btn-primary btn-xs" value="Thay đổi" style="margin-top:10px;" name="form7_6">
                                     </td>
                                     </form>
                                 </tr>
@@ -1561,15 +1561,15 @@ foreach ($result as $row) {
                                 <tr>
                                     <form action="" method="post" enctype="multipart/form-data">
                                     <td style="width:50%">
-                                        <h4>Existing Cart Page Banner</h4>
+                                        <h4>Banner Trang Giỏ Hàng Hiện Tại</h4>
                                         <p>
                                             <img src="<?php echo '../assets/uploads/'.$banner_cart; ?>" alt="" style="width: 100%;height:auto;">  
                                         </p>                                        
                                     </td>
                                     <td style="width:50%">
-                                        <h4>Change Cart Page Banner</h4>
-                                        Select Photo<input type="file" name="photo">
-                                        <input type="submit" class="btn btn-primary btn-xs" value="Change" style="margin-top:10px;" name="form7_7">
+                                        <h4>Thay Đổi Banner Trang Giỏ Hàng</h4>
+                                        Chọn ảnh<input type="file" name="photo">
+                                        <input type="submit" class="btn btn-primary btn-xs" value="Thay đổi" style="margin-top:10px;" name="form7_7">
                                     </td>
                                     </form>
                                 </tr>
@@ -1578,15 +1578,15 @@ foreach ($result as $row) {
                                 <tr>
                                     <form action="" method="post" enctype="multipart/form-data">
                                     <td style="width:50%">
-                                        <h4>Existing Checkout Page Banner</h4>
+                                        <h4>Banner Trang Thanh Toán Hiện Tại</h4>
                                         <p>
                                             <img src="<?php echo '../assets/uploads/'.$banner_checkout; ?>" alt="" style="width: 100%;height:auto;">  
                                         </p>                                        
                                     </td>
                                     <td style="width:50%">
-                                        <h4>Change Checkout Page Banner</h4>
-                                        Select Photo<input type="file" name="photo">
-                                        <input type="submit" class="btn btn-primary btn-xs" value="Change" style="margin-top:10px;" name="form7_8">
+                                        <h4>Thay Đổi Banner Trang Thanh Toán</h4>
+                                        Chọn ảnh<input type="file" name="photo">
+                                        <input type="submit" class="btn btn-primary btn-xs" value="Thay đổi" style="margin-top:10px;" name="form7_8">
                                     </td>
                                     </form>
                                 </tr>
@@ -1594,15 +1594,15 @@ foreach ($result as $row) {
                                 <tr>
                                     <form action="" method="post" enctype="multipart/form-data">
                                     <td style="width:50%">
-                                        <h4>Existing Product Category Page Banner</h4>
+                                        <h4>Banner Trang Danh Mục Sản Phẩm Hiện Tại</h4>
                                         <p>
                                             <img src="<?php echo '../assets/uploads/'.$banner_product_category; ?>" alt="" style="width: 100%;height:auto;">  
                                         </p>                                        
                                     </td>
                                     <td style="width:50%">
-                                        <h4>Change Product Category Page Banner</h4>
-                                        Select Photo<input type="file" name="photo">
-                                        <input type="submit" class="btn btn-primary btn-xs" value="Change" style="margin-top:10px;" name="form7_9">
+                                        <h4>Thay Đổi Banner Trang Danh Mục Sản Phẩm</h4>
+                                        Chọn ảnh<input type="file" name="photo">
+                                        <input type="submit" class="btn btn-primary btn-xs" value="Thay đổi" style="margin-top:10px;" name="form7_9">
                                     </td>
                                     </form>
                                 </tr>
@@ -1638,7 +1638,7 @@ foreach ($result as $row) {
                                 <div class="box box-info">
                                     <div class="box-body">
                                         <div class="form-group">
-                                            <label for="" class="col-sm-2 control-label">PayPal - Business Email </label>
+                                            <label for="" class="col-sm-2 control-label">PayPal - Email Doanh nghiệp </label>
                                             <div class="col-sm-5">
                                                 <input type="text" name="paypal_email" class="form-control" value="<?php echo $paypal_email; ?>">
                                             </div>
@@ -1656,7 +1656,7 @@ foreach ($result as $row) {
                                             </div>
                                         </div> -->
                                         <div class="form-group">
-                                            <label for="" class="col-sm-2 control-label">Bank Information </label>
+                                            <label for="" class="col-sm-2 control-label">Thông tin ngân hàng </label>
                                             <div class="col-sm-5">
                                                 <textarea name="bank_detail" class="form-control" cols="30" rows="10"><?php echo $bank_detail; ?></textarea>
                                             </div>
@@ -1664,7 +1664,7 @@ foreach ($result as $row) {
                                         <div class="form-group">
                                             <label for="" class="col-sm-2 control-label"></label>
                                             <div class="col-sm-6">
-                                                <button type="submit" class="btn btn-success pull-left" name="form9">Update</button>
+                                                <button type="submit" class="btn btn-success pull-left" name="form9">Cập nhật</button>
                                             </div>
                                         </div>
                                     </div>
@@ -1678,19 +1678,19 @@ foreach ($result as $row) {
                                 <div class="box box-info">
                                     <div class="box-body">
                                         <div class="form-group">
-                                            <label for="" class="col-sm-2 control-label">Code before &lt;/head&gt; tag </label>
+                                            <label for="" class="col-sm-2 control-label">Mã Trước Thẻ &lt;/head&gt; tag </label>
                                             <div class="col-sm-8">
                                                 <textarea name="before_head" class="form-control" cols="30" rows="10"><?php echo $before_head; ?></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="" class="col-sm-2 control-label">Code after &lt;body&gt; tag </label>
+                                            <label for="" class="col-sm-2 control-label">Mã Sau Thẻ &lt;body&gt; tag </label>
                                             <div class="col-sm-8">
                                                 <textarea name="after_body" class="form-control" cols="30" rows="10"><?php echo $after_body; ?></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="" class="col-sm-2 control-label">Code before &lt;/body&gt; tag </label>
+                                            <label for="" class="col-sm-2 control-label">Mã Trước Thẻ &lt;/body&gt; tag </label>
                                             <div class="col-sm-8">
                                                 <textarea name="before_body" class="form-control" cols="30" rows="10"><?php echo $before_body; ?></textarea>
                                             </div>
@@ -1698,7 +1698,7 @@ foreach ($result as $row) {
                                         <div class="form-group">
                                             <label for="" class="col-sm-2 control-label"></label>
                                             <div class="col-sm-6">
-                                                <button type="submit" class="btn btn-success pull-left" name="form10">Update</button>
+                                                <button type="submit" class="btn btn-success pull-left" name="form10">Cập nhật</button>
                                             </div>
                                         </div>
                                     </div>

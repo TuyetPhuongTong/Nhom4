@@ -50,7 +50,7 @@ if(isset($_POST['form1'])) {
 
 <div class="page-banner" style="background-color:#444;background-image: url(assets/uploads/<?php echo $banner_login; ?>);">
     <div class="inner">
-        <h1><?php echo LANG_VALUE_10; ?></h1>
+        <h1><?php echo "Trang Đăng Nhập"; ?></h1>
     </div>
 </div>
 
@@ -74,18 +74,18 @@ if(isset($_POST['form1'])) {
                                 }
                                 ?>
                                 <div class="form-group">
-                                    <label for=""><?php echo "Email của bạn"; ?> *</label>
+                                    <label for=""><?php echo "Email Của Bạn"; ?> *</label>
                                     <input type="email" class="form-control" name="cust_email">
                                 </div>
                                 <div class="form-group">
-                                    <label for=""><?php echo "Mật khẩu của bạn"; ?> *</label>
+                                    <label for=""><?php echo "Mật Khẩu Của Bạn"; ?> *</label>
                                     <input type="password" class="form-control" name="cust_password">
                                 </div>
                                 <div class="form-group">
                                     <label for=""></label>
-                                    <input type="submit" class="btn btn-success" value="<?php echo "Đăng nhập"; ?>" name="form1">
+                                    <input type="submit" class="btn btn-success" value="<?php echo "Đăng Nhập"; ?>" name="form1">
                                 </div>
-                                <a href="forget-password.php" style="color:#e4144d;"><?php echo "Quên mật khẩu?"; ?></a>
+                                <a href="forget-password.php" style="color:#e4144d;"><?php echo "Quên Mật Khẩu?"; ?></a>
                             </div>
                         </div>                        
                     </form>

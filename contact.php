@@ -29,13 +29,13 @@ foreach ($result as $row) {
     <div class="container">
         <div class="row">            
             <div class="col-md-12">
-                <h3>Contact Form</h3>
+                <h3>Biểu mẫu liên hệ</h3>
                 <div class="row cform">
                     <div class="col-md-8">
                         <div class="well well-sm">
                             
                             <?php
-// After form submit checking everything for email sending
+// Xử lý khi biểu mẫu liên hệ được gửi
 if(isset($_POST['form_contact']))
 {
     $error_message = '';
@@ -55,53 +55,51 @@ if(isset($_POST['form_contact']))
     if(empty($_POST['visitor_name']))
     {
         $valid = 0;
-        $error_message .= 'Please enter your name.\n';
+        $error_message .= 'Vui lòng nhập tên của bạn.\n';
     }
 
     if(empty($_POST['visitor_phone']))
     {
         $valid = 0;
-        $error_message .= 'Please enter your phone number.\n';
+        $error_message .= 'Vui lòng nhập số điện thoại.\n';
     }
-
 
     if(empty($_POST['visitor_email']))
     {
         $valid = 0;
-        $error_message .= 'Please enter your email address.\n';
+        $error_message .= 'Vui lòng nhập địa chỉ email.\n';
     }
     else
     {
-        // Email validation check
+        // Kiểm tra định dạng email
         if(!filter_var($_POST['visitor_email'], FILTER_VALIDATE_EMAIL))
         {
             $valid = 0;
-            $error_message .= 'Please enter a valid email address.\n';
+            $error_message .= 'Vui lòng nhập email hợp lệ.\n';
         }
     }
 
     if(empty($_POST['visitor_message']))
     {
         $valid = 0;
-        $error_message .= 'Please enter your message.\n';
+        $error_message .= 'Vui lòng nhập nội dung tin nhắn.\n';
     }
 
     if($valid == 1)
     {
-        
         $visitor_name = strip_tags($_POST['visitor_name']);
         $visitor_email = strip_tags($_POST['visitor_email']);
         $visitor_phone = strip_tags($_POST['visitor_phone']);
         $visitor_message = strip_tags($_POST['visitor_message']);
 
-        // sending email
+        // Gửi email
         $to_admin = $receive_email;
         $subject = $receive_email_subject;
         $message = '
 <html><body>
 <table>
 <tr>
-<td>Name</td>
+<td>Tên</td>
 <td>'.$visitor_name.'</td>
 </tr>
 <tr>
@@ -109,11 +107,11 @@ if(isset($_POST['form_contact']))
 <td>'.$visitor_email.'</td>
 </tr>
 <tr>
-<td>Phone</td>
+<td>Số điện thoại</td>
 <td>'.$visitor_phone.'</td>
 </tr>
 <tr>
-<td>Comment</td>
+<td>Nội dung</td>
 <td>'.nl2br($visitor_message).'</td>
 </tr>
 </table>
@@ -125,11 +123,10 @@ if(isset($_POST['form_contact']))
                    "MIME-Version: 1.0\r\n" . 
                    "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-        // Sending email to admin                  
+        // Gửi email đến quản trị viên                  
         mail($to_admin, $subject, $message, $headers); 
         
         $success_message = $receive_email_thank_you_message;
-
     }
 }
 ?>
@@ -149,38 +146,38 @@ if(isset($_POST['form_contact']))
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="name">Name</label>
-                                        <input type="text" class="form-control" name="visitor_name" placeholder="Enter name">
+                                        <label for="name">Họ và tên</label>
+                                        <input type="text" class="form-control" name="visitor_name" placeholder="Nhập họ và tên">
                                     </div>
                                     <div class="form-group">
-                                        <label for="email">Email Address</label>
-                                        <input type="email" class="form-control" name="visitor_email" placeholder="Enter email address">
+                                        <label for="email">Địa chỉ email</label>
+                                        <input type="email" class="form-control" name="visitor_email" placeholder="Nhập địa chỉ email">
                                     </div>
                                     <div class="form-group">
-                                        <label for="email">Phone Number</label>
-                                        <input type="text" class="form-control" name="visitor_phone" placeholder="Enter phone number">
+                                        <label for="email">Số điện thoại</label>
+                                        <input type="text" class="form-control" name="visitor_phone" placeholder="Nhập số điện thoại">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="name">Message</label>
-                                        <textarea name="visitor_message" class="form-control" rows="9" cols="25" placeholder="Enter message"></textarea>
+                                        <label for="name">Nội dung</label>
+                                        <textarea name="visitor_message" class="form-control" rows="9" cols="25" placeholder="Nhập nội dung"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <input type="submit" value="Send Message" class="btn btn-primary pull-right" name="form_contact">
+                                    <input type="submit" value="Gửi tin nhắn" class="btn btn-primary pull-right" name="form_contact">
                                 </div>
                             </div>
                             </form>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <legend><span class="glyphicon glyphicon-globe"></span> Our office</legend>
+                        <legend><span class="glyphicon glyphicon-globe"></span> Văn phòng của chúng tôi</legend>
                         <address>
                             <?php echo nl2br($contact_address); ?>
                         </address>
                         <address>
-                            <strong>Phone:</strong><br>
+                            <strong>Số điện thoại:</strong><br>
                             <span><?php echo $contact_phone; ?></span>
                         </address>
                         <address>
@@ -190,7 +187,7 @@ if(isset($_POST['form_contact']))
                     </div>
                 </div>
 
-                <h3>Find Us On Map</h3>
+                <h3>Tìm chúng tôi trên bản đồ</h3>
                 <?php echo $contact_map_iframe; ?>
                 
             </div>

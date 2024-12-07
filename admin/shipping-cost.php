@@ -8,16 +8,16 @@ if(isset($_POST['form1'])) {
 
     if(empty($_POST['country_id'])) {
         $valid = 0;
-        $error_message .= 'You must have to select a country.<br>';
+        $error_message .= 'Bạn phải chọn một Tỉnh/Thành phố.<br>';
     }
 
     if($_POST['amount'] == '') {
         $valid = 0;
-        $error_message .= 'Amount can not be empty.<br>';
+        $error_message .= 'Số tiền không được bỏ trống.<br>';
     } else {
         if(!is_numeric($_POST['amount'])) {
             $valid = 0;
-            $error_message .= 'You must have to enter a valid number.<br>';
+            $error_message .= 'Bạn phải nhập một số hợp lệ.<br>';
         }
     }
 
@@ -25,7 +25,7 @@ if(isset($_POST['form1'])) {
         $statement = $pdo->prepare("INSERT INTO tbl_shipping_cost (country_id,amount) VALUES (?,?)");
         $statement->execute(array($_POST['country_id'],$_POST['amount']));
 
-        $success_message = 'Shipping cost is added successfully.';
+        $success_message = 'Chi phí vận chuyển đã được thêm thành công.';
     }
 
 }
@@ -36,11 +36,11 @@ if(isset($_POST['form2'])) {
 
     if($_POST['amount'] == '') {
         $valid = 0;
-        $error_message .= 'Amount can not be empty.<br>';
+        $error_message .= 'Số tiền không được bỏ trống.<br>';
     } else {
         if(!is_numeric($_POST['amount'])) {
             $valid = 0;
-            $error_message .= 'You must have to enter a valid number.<br>';
+            $error_message .= 'Bạn phải nhập một số hợp lệ.<br>';
         }
     }
 
@@ -49,7 +49,7 @@ if(isset($_POST['form2'])) {
         $statement = $pdo->prepare("UPDATE tbl_shipping_cost_all SET amount=? WHERE sca_id=1");
         $statement->execute(array($_POST['amount']));
 
-        $success_message = 'Shipping cost for rest of the world is updated successfully.';
+        $success_message = 'Chi phí vận chuyển cho các Tỉnh/Thành phố còn lại đã được cập nhật thành công.';
 
     }
 }
@@ -58,7 +58,7 @@ if(isset($_POST['form2'])) {
 
 <section class="content-header">
     <div class="content-header-left">
-        <h1>Add Shipping Cost</h1>
+        <h1>Thêm Phí Vận Chuyển</h1>
     </div>
 </section>
 
@@ -88,10 +88,10 @@ if(isset($_POST['form2'])) {
                 <div class="box box-info">
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="" class="col-sm-2 control-label">Select Country <span>*</span></label>
+                            <label for="" class="col-sm-2 control-label">Chọn Tỉnh/Thành phố <span>*</span></label>
                             <div class="col-sm-4">
                                 <select name="country_id" class="form-control select2">
-                                    <option value="">Select a country</option>
+                                    <option value="">Chọn một Tỉnh/Thành phố</option>
                                     <?php
                                     $statement = $pdo->prepare("SELECT * FROM tbl_country ORDER BY country_name ASC");
                                     $statement->execute();
@@ -115,7 +115,7 @@ if(isset($_POST['form2'])) {
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="" class="col-sm-2 control-label">Amount <span>*</span></label>
+                            <label for="" class="col-sm-2 control-label">Số tiền <span>*</span></label>
                             <div class="col-sm-4">
                                 <input type="text" class="form-control" name="amount">
                             </div>
@@ -123,7 +123,7 @@ if(isset($_POST['form2'])) {
                         <div class="form-group">
                             <label for="" class="col-sm-2 control-label"></label>
                             <div class="col-sm-6">
-                                <button type="submit" class="btn btn-success pull-left" name="form1">Add</button>
+                                <button type="submit" class="btn btn-success pull-left" name="form1">Thêm</button>
                             </div>
                         </div>
                     </div>
@@ -141,7 +141,7 @@ if(isset($_POST['form2'])) {
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>View Shipping Costs</h1>
+		<h1>Xem Chi Phí Vận Chuyển</h1>
 	</div>
 </section>
 
@@ -159,9 +159,9 @@ if(isset($_POST['form2'])) {
 			<thead>
 			    <tr>
 			        <th>#</th>
-			        <th>Country Name</th>
-                    <th>Country Amount</th>
-			        <th>Action</th>
+			        <th>Tên Tỉnh/Thành phố</th>
+                    <th>Số tiền</th>
+			        <th>Hành động</th>
 			    </tr>
 			</thead>
             <tbody>
@@ -182,8 +182,8 @@ if(isset($_POST['form2'])) {
 	                    <td><?php echo $row['country_name']; ?></td>
                         <td><?php echo $row['amount']; ?></td>
 	                    <td>
-	                        <a href="shipping-cost-edit.php?id=<?php echo $row['shipping_cost_id']; ?>" class="btn btn-primary btn-xs">Edit</a>
-	                        <a href="#" class="btn btn-danger btn-xs" data-href="shipping-cost-delete.php?id=<?php echo $row['shipping_cost_id']; ?>" data-toggle="modal" data-target="#confirm-delete">Delete</a>
+	                        <a href="shipping-cost-edit.php?id=<?php echo $row['shipping_cost_id']; ?>" class="btn btn-primary btn-xs">Chỉnh sửa</a>
+	                        <a href="#" class="btn btn-danger btn-xs" data-href="shipping-cost-delete.php?id=<?php echo $row['shipping_cost_id']; ?>" data-toggle="modal" data-target="#confirm-delete">Xóa</a>
 	                    </td>
 	                </tr>
             		<?php
@@ -201,7 +201,7 @@ if(isset($_POST['form2'])) {
 
 <section class="content-header">
     <div class="content-header-left">
-        <h1>Shipping Cost (Rest of the world)</h1>
+        <h1>Chi phí vận chuyển (Các Tỉnh Thành còn lại)</h1>
     </div>
 </section>
 
@@ -223,7 +223,7 @@ if(isset($_POST['form2'])) {
                 <div class="box box-info">
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="" class="col-sm-2 control-label">Amount <span>*</span></label>
+                            <label for="" class="col-sm-2 control-label">Số tiền <span>*</span></label>
                             <div class="col-sm-4">
                                 <input type="text" class="form-control" name="amount" value="<?php echo $amount; ?>">
                             </div>
@@ -231,7 +231,7 @@ if(isset($_POST['form2'])) {
                         <div class="form-group">
                             <label for="" class="col-sm-2 control-label"></label>
                             <div class="col-sm-6">
-                                <button type="submit" class="btn btn-success pull-left" name="form2">Update</button>
+                                <button type="submit" class="btn btn-success pull-left" name="form2">Cập nhật</button>
                             </div>
                         </div>
                     </div>
@@ -249,14 +249,14 @@ if(isset($_POST['form2'])) {
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Delete Confirmation</h4>
+                <h4 class="modal-title" id="myModalLabel">Xác nhận xóa</h4>
             </div>
             <div class="modal-body">
-                Are you sure want to delete this item?
+                Bạn có chắc chắn muốn xóa mục này không?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-danger btn-ok">Delete</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                <a class="btn btn-danger btn-ok">Xóa</a>
             </div>
         </div>
     </div>

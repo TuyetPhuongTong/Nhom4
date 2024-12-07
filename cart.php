@@ -10,7 +10,7 @@ foreach ($result as $row) {
 ?>
 
 <?php
-$error_message = '';
+$ThongBaoLoi = ''; // Thông Báo Lỗi
 if(isset($_POST['form1'])) {
 
     $i = 0;
@@ -39,7 +39,7 @@ if(isset($_POST['form1'])) {
         $arr3[$i] = $val;
     }
     
-    $allow_update = 1;
+    $ChoPhepCapNhat = 1; // Cho Phép Cập Nhật
     for($i=1;$i<=count($arr1);$i++) {
         for($j=1;$j<=count($table_product_id);$j++) {
             if($arr1[$i] == $table_product_id[$j]) {
@@ -48,19 +48,19 @@ if(isset($_POST['form1'])) {
             }
         }
         if($table_quantity[$temp_index] < $arr2[$i]) {
-        	$allow_update = 0;
-            $error_message .= '"'.$arr2[$i].'" items are not available for "'.$arr3[$i].'"\n';
+        	$ChoPhepCapNhat = 0;
+            $ThongBaoLoi .= '"'.$arr2[$i].'" Món Hàng Không Đủ Số Lượng Cho "'.$arr3[$i].'"\n';
         } else {
             $_SESSION['cart_p_qty'][$i] = $arr2[$i];
         }
     }
-    $error_message .= '\nOther items quantity are updated successfully!';
+    $ThongBaoLoi .= '\nCác Món Hàng Khác Đã Được Cập Nhật Thành Công!';
     ?>
     
-    <?php if($allow_update == 0): ?>
-    	<script>alert('<?php echo $error_message; ?>');</script>
+    <?php if($ChoPhepCapNhat == 0): ?>
+    	<script>alert('<?php echo $ThongBaoLoi; ?>');</script>
 	<?php else: ?>
-		<script>alert('All Items Quantity Update is Successful!');</script>
+		<script>alert('Cập Nhật Số Lượng Tất Cả Các Món Hàng Thành Công!');</script>
 	<?php endif; ?>
     <?php
 
@@ -80,8 +80,8 @@ if(isset($_POST['form1'])) {
 			<div class="col-md-12">
 
                 <?php if(!isset($_SESSION['cart_p_id'])): ?>
-                    <?php echo '<h2 class="text-center">Cart is Empty!!</h2></br>'; ?>
-                    <?php echo '<h4 class="text-center">Add products to the cart in order to view it here.</h4>'; ?>
+                    <?php echo '<h2 class="text-center">Giỏ Hàng Đang Trống!!</h2></br>'; ?>
+                    <?php echo '<h4 class="text-center">Thêm Sản Phẩm Vào Giỏ Để Hiển Thị Tại Đây.</h4>'; ?>
                 <?php else: ?>
                 <form action="" method="post">
                     <?php $csrf->echoInputField(); ?>
@@ -99,7 +99,7 @@ if(isset($_POST['form1'])) {
                             <th class="text-center" style="width: 100px;"><?php echo LANG_VALUE_83; ?></th>
                         </tr>
                         <?php
-                        $table_total_price = 0;
+                        $TongTienBang = 0;
 
                         $i=0;
                         foreach($_SESSION['cart_p_id'] as $key => $value) 
@@ -181,10 +181,10 @@ if(isset($_POST['form1'])) {
                             </td>
                             <td class="text-right">
                                 <?php
-                                $row_total_price = $arr_cart_p_current_price[$i]*$arr_cart_p_qty[$i];
-                                $table_total_price = $table_total_price + $row_total_price;
+                                $TongTienHang = $arr_cart_p_current_price[$i]*$arr_cart_p_qty[$i];
+                                $TongTienBang = $TongTienBang + $TongTienHang;
                                 ?>
-                                <?php echo LANG_VALUE_1; ?><?php echo $row_total_price; ?>
+                                <?php echo LANG_VALUE_1; ?><?php echo $TongTienHang; ?>
                             </td>
                             <td class="text-center">
                                 <a onclick="return confirmDelete();" href="cart-item-delete.php?id=<?php echo $arr_cart_p_id[$i]; ?>&size=<?php echo $arr_cart_size_id[$i]; ?>&color=<?php echo $arr_cart_color_id[$i]; ?>" class="trash"><i class="fa fa-trash" style="color:red;"></i></a>
@@ -192,8 +192,8 @@ if(isset($_POST['form1'])) {
                         </tr>
                         <?php endfor; ?>
                         <tr>
-                            <th colspan="7" class="total-text">Total</th>
-                            <th class="total-amount"><?php echo LANG_VALUE_1; ?><?php echo $table_total_price; ?></th>
+                            <th colspan="7" class="total-text">Tổng</th>
+                            <th class="total-amount"><?php echo LANG_VALUE_1; ?><?php echo $TongTienBang; ?></th>
                             <th></th>
                         </tr>
                     </table> 
@@ -215,6 +215,5 @@ if(isset($_POST['form1'])) {
 		</div>
 	</div>
 </div>
-
 
 <?php require_once('footer.php'); ?>

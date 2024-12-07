@@ -74,18 +74,18 @@ if(isset($_POST['form1'])) {
                                 }
                                 ?>
                                 <div class="form-group">
-                                    <label for=""><?php echo LANG_VALUE_94; ?> *</label>
+                                    <label for=""><?php echo "Email của bạn"; ?> *</label>
                                     <input type="email" class="form-control" name="cust_email">
                                 </div>
                                 <div class="form-group">
-                                    <label for=""><?php echo LANG_VALUE_96; ?> *</label>
+                                    <label for=""><?php echo "Mật khẩu của bạn"; ?> *</label>
                                     <input type="password" class="form-control" name="cust_password">
                                 </div>
                                 <div class="form-group">
                                     <label for=""></label>
-                                    <input type="submit" class="btn btn-success" value="<?php echo LANG_VALUE_4; ?>" name="form1">
+                                    <input type="submit" class="btn btn-success" value="<?php echo "Đăng nhập"; ?>" name="form1">
                                 </div>
-                                <a href="forget-password.php" style="color:#e4144d;"><?php echo LANG_VALUE_97; ?>?</a>
+                                <a href="forget-password.php" style="color:#e4144d;"><?php echo "Quên mật khẩu?"; ?></a>
                             </div>
                         </div>                        
                     </form>

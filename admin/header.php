@@ -143,7 +143,7 @@ if(!isset($_SESSION['user'])) {
 			            <i class="fa fa-picture-o"></i> <span>Quản lý Sliders</span>
 			          </a>
 			        </li>
-					<li class="treeview <?php if( ($cur_page == 'order.php') ) {echo 'active';} ?>">
+					<li class="treeview <?php if( ($cur_page == 'add_post.php') ) {echo 'active';} ?>">
                         <a href="order.php">
                             <i class="fa fa-sticky-note"></i> <span>Quản lý bài viết</span>
                         </a>

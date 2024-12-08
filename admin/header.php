@@ -144,7 +144,7 @@ if(!isset($_SESSION['user'])) {
 			          </a>
 			        </li>
 					<li class="treeview <?php if( ($cur_page == 'add_post.php') ) {echo 'active';} ?>">
-                        <a href="order.php">
+                        <a href="add_post.php">
                             <i class="fa fa-sticky-note"></i> <span>Quản lý bài viết</span>
                         </a>
                     </li>

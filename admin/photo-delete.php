@@ -34,4 +34,3 @@ $statement->execute(array($_REQUEST['id']));
 
 header('location: photo.php');
 ?>
-/HIHI

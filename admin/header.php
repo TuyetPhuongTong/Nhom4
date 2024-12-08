@@ -143,11 +143,11 @@ if(!isset($_SESSION['user'])) {
 			            <i class="fa fa-picture-o"></i> <span>Quản lý Sliders</span>
 			          </a>
 			        </li>
-					<li class="treeview <?php if( ($cur_page == 'subscriber.php')||($cur_page == 'subscriber.php') ) {echo 'active';} ?>">
-			          <a href="subscriber.php">
-			            <i class="fa fa-hand-o-right"></i> <span>Quản lý bài viết</span>
-			          </a>
-			        </li>
+					<li class="treeview <?php if( ($cur_page == 'order.php') ) {echo 'active';} ?>">
+                        <a href="order.php">
+                            <i class="fa fa-sticky-note"></i> <span>Quản lý bài viết</span>
+                        </a>
+                    </li>
                     <!-- Biểu tượng sẽ được hiển thị trên Shop -->
 			        <li class="treeview <?php if( ($cur_page == 'service.php') ) {echo 'active';} ?>">
 			          <a href="service.php">

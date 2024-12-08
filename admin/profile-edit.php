@@ -287,4 +287,3 @@ foreach ($result as $row) {
 </section>
 
 <?php require_once('footer.php'); ?>
-//HIHI

@@ -33,4 +33,4 @@ $statement = $pdo->prepare("DELETE FROM tbl_photo WHERE id=?");
 $statement->execute(array($_REQUEST['id']));
 
 header('location: photo.php');
-?>//hi
+?>

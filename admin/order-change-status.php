@@ -22,4 +22,3 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['task']) ) {
 
 	header('location: order.php');
 ?>
-//hi

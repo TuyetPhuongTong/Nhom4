@@ -110,4 +110,3 @@ if(isset($_POST['form1'])) {
 </section>
 
 <?php require_once('footer.php'); ?>
-//HIHI

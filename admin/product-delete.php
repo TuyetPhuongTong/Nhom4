@@ -71,4 +71,3 @@ if(!isset($_REQUEST['id'])) {
 
 	header('location: product.php');
 ?>
-//eh

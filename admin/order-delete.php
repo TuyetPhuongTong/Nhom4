@@ -57,4 +57,4 @@ if(!isset($_REQUEST['id'])) {
 	$statement->execute(array($_REQUEST['id']));
     // Chuyển hướng đến trang đơn hàng
 	header('location: order.php');
-?>//
+?>//hi

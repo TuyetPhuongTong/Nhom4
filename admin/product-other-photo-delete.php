@@ -37,4 +37,4 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['id1']) ) {
 	$statement->execute(array($_REQUEST['id']));
     // Chuyển hướng quay lại trang chỉnh sửa sản phẩm
 	header('location: product-edit.php?id='.$_REQUEST['id1']);
-?>
+?>//HIHI

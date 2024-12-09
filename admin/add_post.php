@@ -2,6 +2,7 @@
 require_once('header.php');
 ////he
 ///???!
+//hh
 if (isset($_POST['form_add_post'])) {
     $valid = 1;
 

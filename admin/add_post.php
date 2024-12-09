@@ -38,3 +38,4 @@ if (isset($_POST['form_add_post'])) {
     <textarea name="post_content" class="form-control"></textarea>
     <button type="submit" name="form_add_post" class="btn btn-primary">Thêm bài viết</button>
 </form>
+//giang an cut

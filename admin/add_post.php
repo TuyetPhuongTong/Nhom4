@@ -1,9 +1,5 @@
 <?php
 require_once('header.php');
-////he
-///???!
-///???
-///3
 if (isset($_POST['form_add_post'])) {
     $valid = 1;
 

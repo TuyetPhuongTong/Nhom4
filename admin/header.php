@@ -39,6 +39,168 @@ if(!isset($_SESSION['user'])) {
 	<link rel="stylesheet" href="css/on-off-switch.css"/>
 	<link rel="stylesheet" href="css/summernote.css">
 	<link rel="stylesheet" href="style.css">
+	<style>
+/* Reset mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f9f9; /* Nền xanh nhạt */
+    color: #333;
+    font-size: 16px;
+    line-height: 1.8;
+    overflow-x: hidden; /* Không cho cuộn ngang */
+}
+
+/* Header */
+.main-header {
+    background-color: #006666; /* Màu xanh đậm */
+    color: #FF6600; /* Chữ màu cam */
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.main-header .logo {
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #FF6600; /* Chữ màu cam */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.main-header .navbar-custom-menu a {
+    color: #FF6600; /* Chữ màu cam */
+    margin-left: 20px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.main-header .navbar-custom-menu a:hover {
+    color: #fff; /* Chữ màu trắng khi hover */
+}
+
+/* Sidebar */
+.sidebar {
+    width: 240px;
+    background-color: #006666; /* Thanh màu xanh */
+    color: #FF6600; /* Chữ màu cam */
+    position: fixed;
+    top: 65px; /* Đẩy xuống dưới header */
+    left: 0;
+    bottom: 0;
+    padding-top: 20px;
+    overflow-y: auto; /* Chỉ cuộn dọc */
+    box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0 10px;
+}
+
+.sidebar-menu li {
+    margin-bottom: 15px;
+}
+
+.sidebar-menu li a {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #FF6600; /* Chữ màu cam */
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar-menu li a:hover {
+    background-color: #FF6600; /* Nền cam khi hover */
+    color: #fff; /* Chữ màu trắng */
+    transform: translateX(10px); /* Hiệu ứng di chuyển */
+}
+
+/* Nội dung */
+.content-wrapper {
+    margin-left: 240px; /* Chừa không gian cho sidebar */
+    margin-top: 80px; /* Đẩy nội dung xuống dưới header */
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: calc(100vh - 80px); /* Đảm bảo nội dung không bị đè */
+    overflow-y: auto; /* Cuộn nội dung nếu cần */
+}
+
+.content-wrapper h1 {
+    font-size: 30px;
+    color: #FF6600; /* Chữ màu cam */
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Nút bấm */
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #006666; /* Màu xanh */
+    color: #FF6600; /* Chữ màu cam */
+}
+
+.btn-primary:hover {
+    background-color: #004d4d; /* Xanh đậm hơn */
+    color: #fff; /* Chữ màu trắng khi hover */
+    transform: scale(1.05); /* Hiệu ứng phóng to */
+}
+
+/* Footer */
+.main-footer {
+    background-color: #006666; /* Thanh màu xanh */
+    color: #FF6600; /* Chữ màu cam */
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: calc(100% - 240px); /* Tránh bị sidebar đè lên */
+    font-size: 14px;
+    margin-left: 240px; /* Chừa không gian cho sidebar */
+}
+
+.main-footer a {
+    color: #FF6600; /* Chữ màu cam */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.main-footer a:hover {
+    text-decoration: underline;
+    color: #fff; /* Trắng khi hover */
+}
+</style>
 
 </head>
 
@@ -49,7 +211,7 @@ if(!isset($_SESSION['user'])) {
 		<header class="main-header">
 
 			<a href="index.php" class="logo">
-				<span class="logo-lg">eCommerce PHP</span>
+				<span class="logo-lg">Đô Si La Mi</span>
 			</a>
 
 			<nav class="navbar navbar-static-top">

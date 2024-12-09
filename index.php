@@ -344,10 +344,15 @@ foreach ($result as $row)
     margin-top: 10px;
 }
 
-/* 'Add to Cart' button and out-of-stock message */
+/* 'Add to Cart' button */
 .product-carousel .text p {
     margin: 0; /* Remove default margin */
     padding: 10px 0; /* Add padding for spacing */
+    flex-shrink: 0; /* Prevent shrinking of the button */
+    min-height: 50px; /* Set a fixed height for consistent button size */
+    display: flex;
+    align-items: center; /* Vertically align the button */
+    justify-content: center; /* Horizontally align the button */
 }
 
 .product-carousel .text p a {

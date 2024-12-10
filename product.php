@@ -126,7 +126,7 @@ if(isset($_POST['form_add_to_cart'])) {
 		$current_p_qty = $row['p_qty'];
 	}
 	if($_POST['p_qty'] > $current_p_qty):
-		$temp_msg = 'Sorry! There are only '.$current_p_qty.' item(s) in stock';
+		$temp_msg = 'Xin lỗi! Nó là duy nhất '.$current_p_qty.' item(s) in stock';
 		?>
 		<script type="text/javascript">alert('<?php echo $temp_msg; ?>');</script>
 		<?php
@@ -290,14 +290,137 @@ if($success_message1 != '') {
 }
 ?>
 
+<style> 
+/* Set a vibrant red and teal color scheme */
+body {
+    background-color: #f9f9f9; /* Light background for the whole page */
+}
 
+.page {
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.breadcrumb {
+    background-color: #f4f4f4;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+.breadcrumb ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.breadcrumb li {
+    display: inline;
+    margin-right: 5px;
+}
+
+.breadcrumb li a {
+    color: #CC3300;
+    text-decoration: none;
+}
+
+.breadcrumb li a:hover {
+    color: #006666; /* Teal color for hover effect */
+}
+
+.product {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.prod-slider li {
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+}
+
+.prod-pager-thumb {
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    background-position: center;
+    margin: 5px;
+}
+
+.p-title h2 {
+    color: #CC3300;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.p-review .rating i {
+    color: #CC3300;
+}
+
+.p-short-des p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.p-price span {
+    font-size: 18px;
+    color: #CC3300;
+}
+
+.p-quantity input {
+    width: 50px;
+    padding: 5px;
+    border: 1px solid #006666; /* Teal border for input fields */
+    border-radius: 5px;
+}
+
+.btn-cart input[type="submit"] {
+    background-color: #CC3300;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.btn-cart input[type="submit"]:hover {
+    background-color: #006666; /* Teal color for hover effect */
+}
+
+.share .sharethis-inline-share-buttons {
+    margin-top: 10px;
+}
+
+/* Tabs */
+.nav-tabs li a {
+    color: #006666; /* Teal color for inactive tabs */
+    font-weight: bold;
+}
+
+.nav-tabs li.active a {
+    color: #ffffff;
+    background-color: #CC3300; /* Red background for active tab */
+    border-radius: 5px;
+}
+
+.nav-tabs li a:hover {
+    background-color: #006666; /* Teal color for hover effect */
+    color: white;
+}
+
+</style>
 <div class="page">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
                 <div class="breadcrumb mb_30">
                     <ul>
-                        <li><a href="<?php echo BASE_URL; ?>">Home</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>">Trang chủ</a></li>
                         <li>></li>
                         <li><a href="<?php echo BASE_URL.'product-category.php?id='.$tcat_id.'&type=top-category' ?>"><?php echo $tcat_name; ?></a></li>
                         <li>></li>

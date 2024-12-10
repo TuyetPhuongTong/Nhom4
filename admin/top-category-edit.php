@@ -22,7 +22,7 @@ if(isset($_POST['form1'])) {
     	$total = $statement->rowCount();							
     	if($total) {
     		$valid = 0;
-        	$error_message .= 'Tên danh mục cấp cao đã tồn tại<br>';
+        	$error_message .= 'Tên danh mục sản phẩm đã tồn tại<br>';
     	}
     }
 
@@ -31,7 +31,7 @@ if(isset($_POST['form1'])) {
 		$statement = $pdo->prepare("UPDATE tbl_top_category SET tcat_name=?,show_on_menu=? WHERE tcat_id=?");
 		$statement->execute(array($_POST['tcat_name'],$_POST['show_on_menu'],$_REQUEST['id']));
 
-    	$success_message = 'Danh mục cấp cao đã được cập nhật thành công.';
+    	$success_message = 'Danh mục sản phẩm đã được cập nhật thành công.';
     }
 }
 ?>
@@ -55,7 +55,7 @@ if(!isset($_REQUEST['id'])) {
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Chỉnh sửa Danh mục cấp cao</h1>
+		<h1>Chỉnh sửa Danh mục sản phẩm</h1>
 	</div>
 	<div class="content-header-right">
 		<a href="top-category.php" class="btn btn-primary btn-sm">Xem tất cả</a>
@@ -97,7 +97,7 @@ foreach ($result as $row) {
 
             <div class="box-body">
                 <div class="form-group">
-                    <label for="" class="col-sm-2 control-label">Tên danh mục cấp cao <span>*</span></label>
+                    <label for="" class="col-sm-2 control-label">Tên danh mục sản phẩm <span>*</span></label>
                     <div class="col-sm-4">
                         <input type="text" class="form-control" name="tcat_name" value="<?php echo $tcat_name; ?>">
                     </div>

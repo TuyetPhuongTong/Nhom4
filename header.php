@@ -395,14 +395,16 @@ foreach ($result as $row) {
 
 
 
-<div class="nav">
+<div class="nav" style="background-color: #7f572e; color: #f6dbab;">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 pl_0 pr_0">
-				<div class="menu-container">
+				<div class="menu-container" style="text-align: center;">
 					<div class="menu">
-						<ul>
-							<li><a href="index.php">Home</a></li>
+						<ul style="list-style-type: none; padding: 0; margin: 0; background-color: #7f572e;">
+							<li style="display: inline-block; margin-right: 10px; background-color: #7f572e;">
+								<a href="index.php" style="color: #f6dbab; font-size: 16px; text-decoration: none; padding: 10px 15px; display: inline-block;">Home</a>
+							</li>
 							
 							<?php
 							$statement = $pdo->prepare("SELECT * FROM tbl_top_category WHERE show_on_menu=1");
@@ -410,23 +412,33 @@ foreach ($result as $row) {
 							$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 							foreach ($result as $row) {
 								?>
-								<li><a href="product-category.php?id=<?php echo $row['tcat_id']; ?>&type=top-category"><?php echo $row['tcat_name']; ?></a>
-									<ul>
+								<li style="display: inline-block; margin-right: 20px; background-color: #7f572e;">
+									<a href="product-category.php?id=<?php echo $row['tcat_id']; ?>&type=top-category" style="color: #f6dbab; font-size: 16px; text-decoration: none; padding: 10px 15px; display: inline-block;">
+										<?php echo $row['tcat_name']; ?>
+									</a>
+									<ul style="list-style-type: none; padding: 0; background-color: #7f572e;">
 										<?php
 										$statement1 = $pdo->prepare("SELECT * FROM tbl_mid_category WHERE tcat_id=?");
 										$statement1->execute(array($row['tcat_id']));
 										$result1 = $statement1->fetchAll(PDO::FETCH_ASSOC);
 										foreach ($result1 as $row1) {
 											?>
-											<li><a href="product-category.php?id=<?php echo $row1['mcat_id']; ?>&type=mid-category"><?php echo $row1['mcat_name']; ?></a>
-												<ul>
+											<li style="display: inline-block; margin-right: 20px; background-color: #7f572e;">
+												<a href="product-category.php?id=<?php echo $row1['mcat_id']; ?>&type=mid-category" style="color: #f6dbab; font-size: 16px; text-decoration: none; padding: 10px 15px; display: inline-block;">
+													<?php echo $row1['mcat_name']; ?>
+												</a>
+												<ul style="list-style-type: none; padding: 0; background-color: #7f572e;">
 													<?php
 													$statement2 = $pdo->prepare("SELECT * FROM tbl_end_category WHERE mcat_id=?");
 													$statement2->execute(array($row1['mcat_id']));
 													$result2 = $statement2->fetchAll(PDO::FETCH_ASSOC);
 													foreach ($result2 as $row2) {
 														?>
-														<li><a href="product-category.php?id=<?php echo $row2['ecat_id']; ?>&type=end-category"><?php echo $row2['ecat_name']; ?></a></li>
+														<li style="display: inline-block; margin-right: 20px; background-color: #7f572e;">
+															<a href="product-category.php?id=<?php echo $row2['ecat_id']; ?>&type=end-category" style="color: #f6dbab; font-size: 16px; text-decoration: none; padding: 10px 15px; display: inline-block;">
+																<?php echo $row2['ecat_name']; ?>
+															</a>
+														</li>
 														<?php
 													}
 													?>
@@ -455,10 +467,22 @@ foreach ($result as $row) {
 							}
 							?>
 
-							<li><a href="about.php"><?php echo $about_title; ?></a></li>
-							<li><a href="faq.php"><?php echo $faq_title; ?></a></li>
+							<li style="display: inline-block; margin-right: 20px; background-color: #7f572e;">
+								<a href="about.php" style="color: #f6dbab; font-size: 16px; text-decoration: none; padding: 10px 15px; display: inline-block;">
+									<?php echo $about_title; ?>
+								</a>
+							</li>
+							<li style="display: inline-block; margin-right: 20px; background-color: #7f572e;">
+								<a href="faq.php" style="color: #f6dbab; font-size: 16px; text-decoration: none; padding: 10px 15px; display: inline-block;">
+									<?php echo $faq_title; ?>
+								</a>
+							</li>
 
-							<li><a href="contact.php"><?php echo $contact_title; ?></a></li>
+							<li style="display: inline-block; margin-right: 20px; background-color: #7f572e;">
+								<a href="contact.php" style="color: #f6dbab; font-size: 16px; text-decoration: none; padding: 10px 15px; display: inline-block;">
+									<?php echo $contact_title; ?>
+								</a>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -466,3 +490,5 @@ foreach ($result as $row) {
 		</div>
 	</div>
 </div>
+
+

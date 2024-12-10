@@ -372,7 +372,7 @@ body {
 }
 
 .p-quantity{
-    color: #CC3300;
+    color: #006666;
 }
 
 .p-quantity input[type="number"]:hover,
@@ -429,6 +429,108 @@ body {
 .nav-tabs li a:hover {
     background-color: #006666; /* Teal color for hover effect */
     color: white;
+}
+.item {
+    margin: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.item .thumb {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    border-bottom: 1px solid #ddd;
+}
+
+.item .thumb .photo {
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    transition: transform 0.3s;
+}
+
+.item .thumb:hover .photo {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+.item .thumb .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.item .thumb:hover .overlay {
+    opacity: 1;
+}
+
+.item .text {
+    padding: 15px;
+    text-align: center;
+}
+
+.item .text h3 a {
+    color: #006666; /* Teal for product title */
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+}
+
+.item .text h3 a:hover {
+    color: #CC3300; /* Red-orange on hover */
+}
+
+.item .text h4 {
+    color: #CC3300; /* Red-orange for price */
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.item .text h4 del {
+    color: #888; /* Gray for old price */
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+.item .text .rating {
+    margin: 10px 0;
+}
+
+.item .text .rating i {
+    color: #FFCC00; /* Yellow for stars */
+    margin: 0 2px;
+    font-size: 16px;
+}
+
+.item .text p a {
+    display: inline-block;
+    background-color:  #CC3300; /* Teal background for button */
+    color: #fff; /* White text */
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.item .text p a:hover {
+    background-color:#006666; /* Red-orange on hover */
 }
 
 </style>

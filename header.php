@@ -253,7 +253,7 @@ foreach ($result as $row) {
 					</ul>
 				</div>
 			</div>
-			<div> Giao hàng</div>
+			
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div class="right">
 					<ul>
@@ -277,66 +277,123 @@ foreach ($result as $row) {
 </div>
 
 
-<div class="header">
-	<div class="container">
-		<div class="row inner">
-		<div class="col-md-4 logo">
-				<a href="index.php"><img src="assets/uploads/<?php echo $logo; ?>" alt="logo image"></a>
-			</div>
-			<div class="col-md-5 right">
-				<ul>
-					
-					<?php
-					if(isset($_SESSION['customer'])) {
-						?>
-						<li><i class="fa fa-user"></i> <?php echo LANG_VALUE_13; ?> <?php echo $_SESSION['customer']['cust_name']; ?></li>
-						<li><a href="dashboard.php"><i class="fa fa-home"></i> <?php echo LANG_VALUE_89; ?></a></li>
-						<?php
-					} else {
-						?>
-						<li><a href="login.php"><i class="fa fa-sign-in"></i> <?php echo LANG_VALUE_9; ?></a></li>
-						<li><a href="registration.php"><i class="fa fa-user-plus"></i> <?php echo LANG_VALUE_15; ?></a></li>
-						<?php	
-					}
-					?>
-
-					<li><a href="cart.php"><i class="fa fa-shopping-cart"></i> <?php echo LANG_VALUE_18; ?> (<?php echo LANG_VALUE_1; ?><?php
-					if(isset($_SESSION['cart_p_id'])) {
-						$table_total_price = 0;
-						$i=0;
-	                    foreach($_SESSION['cart_p_qty'] as $key => $value) 
-	                    {
-	                        $i++;
-	                        $arr_cart_p_qty[$i] = $value;
-	                    }                    $i=0;
-	                    foreach($_SESSION['cart_p_current_price'] as $key => $value) 
-	                    {
-	                        $i++;
-	                        $arr_cart_p_current_price[$i] = $value;
-	                    }
-	                    for($i=1;$i<=count($arr_cart_p_qty);$i++) {
-	                    	$row_total_price = $arr_cart_p_current_price[$i]*$arr_cart_p_qty[$i];
-	                        $table_total_price = $table_total_price + $row_total_price;
-	                    }
-						echo $table_total_price;
-					} else {
-						echo '0.00';
-					}
-					?>)</a></li>
-				</ul>
-			</div>
-			<div class="col-md-3 search-area">
-				<form class="navbar-form navbar-left" role="search" action="search-result.php" method="get">
-					<?php $csrf->echoInputField(); ?>
-					<div class="form-group">
-						<input type="text" class="form-control search-top" placeholder="<?php echo LANG_VALUE_2; ?>" name="search_text">
-					</div>
-					<button type="submit" class="btn btn-danger"><?php echo LANG_VALUE_3; ?></button>
-				</form>
-			</div>
-		</div>
-	</div>
+<div class="header" style="background-color: #f6dbab; font-family: 'Noto Serif Display', serif; color: #7f572e; height:auto ">
+    <div class="container">
+        <div class="row inner" style="display: flex; align-items: center; justify-content: space-between;">
+            <!-- Đăng nhập và Đăng ký - Căn trái, cùng một dòng -->
+            <div class="col-md-4" style="text-align: left;">
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; align-items: center; gap:25px">
+                    <?php
+                    if(isset($_SESSION['customer'])) {
+                        ?>
+                        <li><i class="fa fa-user" style="font-size: 20px; font-weight: bold;"></i> Xin chào, <?php echo $_SESSION['customer']['cust_name']; ?></li>
+                        <li><a href="dashboard.php" style="color: #7f572e; font-size: 18px; font-weight: bold; margin-left: 15px;"><i class="fa fa-home" style="font-size: 20px; font-weight: bold;"></i> Trang cá nhân</a></li>
+                        <?php
+                    } else {
+                        ?>
+                        <li><a href="login.php" style="color: #7f572e; font-size: 14px;  font-weight: bold; margin-right: 15px;"><i class="fa fa-sign-in" style="font-size: 20px;"></i> Đăng nhập</a></li>
+                        <li><a href="registration.php" style="color: #7f572e; font-size: 14px; font-weight: bold"><i class="fa fa-user-plus" style="font-size: 20px;"></i> Đăng ký</a></li>
+                        <?php	
+                    }
+                    ?>
+                </ul>
+            </div>
+            
+            <!-- Logo - Căn giữa, phóng to -->
+            <div class="col-md-4 text-center logo" style="margin: 0; ">
+                <a href="index.php">
+                    <img src="https://i.pinimg.com/736x/22/c0/1f/22c01fe247baa414f9315311e987a035.jpg" alt="logo image" style="max-width: 250px; margin: 0;">
+                </a>
+            </div>
+            
+            <!-- Giỏ hàng -->
+            <div class="col-md-2 text-center"style="display: flex; justify-content: flex-end; align-items: center; gap: 15px;">
+                <a href="cart.php" style="color: #7f572e; font-size: 14px; font-weight: bold;">
+                    <i class="fa fa-shopping-cart" style="font-size: 20px;;"></i> Giỏ hàng 
+                    (<?php echo LANG_VALUE_1; ?><?php
+                    if(isset($_SESSION['cart_p_id'])) {
+                        $table_total_price = 0;
+                        $i = 0;
+                        foreach($_SESSION['cart_p_qty'] as $key => $value) {
+                            $i++;
+                            $arr_cart_p_qty[$i] = $value;
+                        }
+                        $i = 0;
+                        foreach($_SESSION['cart_p_current_price'] as $key => $value) {
+                            $i++;
+                            $arr_cart_p_current_price[$i] = $value;
+                        }
+                        for($i = 1; $i <= count($arr_cart_p_qty); $i++) {
+                            $row_total_price = $arr_cart_p_current_price[$i] * $arr_cart_p_qty[$i];
+                            $table_total_price = $table_total_price + $row_total_price;
+                        }
+                        echo $table_total_price;
+                    } else {
+                        echo '0.00';
+                    }
+                    ?>)
+                </a>
+            </div>
+            
+            <!-- Tìm kiếm (icon kính lúp và tô màu ô tìm kiếm) -->
+            <div class="col-md-2 text-center search-area"style="display: flex; justify-content: flex-end; align-items: center; gap: 15px;">
+                <form class="navbar-form navbar-left" role="search" action="search-result.php" method="get">
+                    <?php $csrf->echoInputField(); ?>
+                    <div class="form-group">
+                        <input type="text" class="form-control search-top" placeholder="Tìm kiếm sản phẩm" name="search_text" style="color: #7f572e; border: 1px solid #7f572e; font-size: 14px; padding: 5px;">
+                    </div>
+                    <button type="submit" class="btn btn-danger" style="background-color: #7f572e; border: none; font-size: 12px;">
+                        <i class="fa fa-search" style="font-size: 18px;"></i>
+                    </button>
+                </form>
+            </div>
+     
+        </div>
+    </div>
 </div>
+
+<!-- responsive -->
+<style>
+    /* Responsive - Màn hình nhỏ */
+    @media (max-width: 767px) {
+        .header .row {
+            flex-direction: column;
+            align-items: center;
+        }
+        .header .col-md-12 {
+            width: 100%;
+            text-align: center;
+        }
+        .header .logo img {
+            max-width: 200px;
+        }
+        .header .search-area {
+            margin-top: 15px;
+        }
+        .header .search-top {
+            width: 100%;
+        }
+        .header .btn-danger {
+            width: auto;
+        }
+
+    }
+    
+    /* Responsive - Màn hình rất nhỏ */
+    @media (max-width: 480px) {
+        .header .search-area form .form-group input {
+            font-size: 12px;
+            padding: 5px;
+        }
+        .header .search-area button {
+            font-size: 10px;
+            padding: 5px;
+        }
+    }
+</style>
+
+
+
 
 <div class="nav">
 	<div class="container">

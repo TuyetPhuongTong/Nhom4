@@ -371,6 +371,24 @@ body {
     color: #CC3300;
 }
 
+.p-quantity{
+    color: #CC3300;
+}
+
+.p-quantity input[type="number"]:hover,
+.p-quantity input[type="number"]:focus {
+    border-color: #006666; /* Teal border on hover or focus */
+    outline: none;
+}
+
+/* Labels for Size, Color, and Quantity */
+.p-quantity label {
+    color: #CC3300; /* Red label color */
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
 .p-quantity input {
     width: 50px;
     padding: 5px;
@@ -546,7 +564,7 @@ body {
                                             foreach ($result as $row) {
                                                 if(in_array($row['size_id'],$size)) {
                                                     ?>
-                                                    <option value="<?php echo $row['size_id']; ?>"><?php echo $row['size_name']; ?></option>
+                                                    <option value="<?php echo $row['size_id']; ?>"><?php  echo $row['size_name']; ?></option>
                                                     <?php
                                                 }
                                             }

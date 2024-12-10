@@ -23,7 +23,7 @@ if (isset($_POST['form1'])) {
         $ext = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
         if ($ext != 'jpg' && $ext != 'png' && $ext != 'jpeg' && $ext != 'gif') {
             $valid = 0;
-            $error_message .= 'Chỉ được phép tải lên tệp ảnh định dạng jpg, png, jpeg, gif.<br>';
+            $error_message .= 'Chỉ được phép tải lên tệp ảnh định dạng jpg, png, jpeg, hoặc gif.<br>';
         } else {
             $photo = 'post-' . time() . '.' . $ext;
             move_uploaded_file($_FILES['photo']['tmp_name'], 'uploads/' . $photo);
@@ -64,6 +64,7 @@ if (isset($_POST['form1'])) {
 </section>
 
 <section class="content">
+
     <div class="row">
         <div class="col-md-12">
 
@@ -117,6 +118,7 @@ if (isset($_POST['form1'])) {
             </form>
         </div>
     </div>
+
 </section>
 
 <?php require_once('footer.php'); ?>

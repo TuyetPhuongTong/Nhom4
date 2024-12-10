@@ -2,7 +2,7 @@
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Xem Màu Sắc</h1>
+		<h1>Xem Độ Đậm Cacao</h1>
 	</div>
 	<div class="content-header-right">
 		<a href="color-add.php" class="btn btn-primary btn-sm">Thêm Mới</a>
@@ -20,7 +20,7 @@
 			<thead>
 			    <tr>
 			        <th>#</th>
-			        <th>Tên Màu</th>
+			        <th>% Cacao</th>
 			        <th>Hành Động</th>
 			    </tr>
 			</thead>

@@ -22,7 +22,6 @@
 								<th>Slug</th>
 								<th>Ngày đăng</th>
 								<th>Ảnh</th>
-								<th>Chuyên mục</th>
 								<th>Lượt xem</th>
 								<th>Hành động</th>
 							</tr>
@@ -31,9 +30,7 @@
 							<?php
 							$i = 0;
 							$statement = $pdo->prepare("
-								SELECT p.*, c.category_name 
-								FROM tbl_post p 
-								LEFT JOIN tbl_category c ON p.category_id = c.category_id
+								SELECT * FROM tbl_post
 							");
 							$statement->execute();
 							$result = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -53,7 +50,6 @@
 											<span>Không có ảnh</span>
 										<?php endif; ?>
 									</td>
-									<td><?php echo htmlspecialchars($row['category_name'] ?? 'Không có'); ?></td>
 									<td><?php echo $row['total_view']; ?></td>
 									<td>
 										<a href="post-edit.php?id=<?php echo $row['post_id']; ?>" class="btn btn-primary btn-xs">Sửa</a>
@@ -89,4 +85,4 @@
     </div>
 </div>
 
-<?php require_once('footer.php'); ?>
+<?php require_once('footer.php'); ?> 

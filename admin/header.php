@@ -277,12 +277,12 @@ body {
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="size.php"><i class="fa fa-circle-o"></i> Kích cỡ</a></li>
-                            <li><a href="color.php"><i class="fa fa-circle-o"></i> Màu sắc</a></li>
+                            <li><a href="color.php"><i class="fa fa-circle-o"></i> Độ đậm Cacao</a></li>
                             <li><a href="country.php"><i class="fa fa-circle-o"></i> Quốc gia</a></li>
                             <li><a href="shipping-cost.php"><i class="fa fa-circle-o"></i>Phí vận chuyển</a></li>
-                            <li><a href="top-category.php"><i class="fa fa-circle-o"></i> Danh mục sản phẩm cao nhất</a></li>
-                            <li><a href="mid-category.php"><i class="fa fa-circle-o"></i> Danh mục sản phẩm trung trình</a></li>
-                            <li><a href="end-category.php"><i class="fa fa-circle-o"></i> Danh mục sản phẩm thấp nhất</a></li>
+                            <li><a href="top-category.php"><i class="fa fa-circle-o"></i> Danh mục sản phẩm</a></li>
+                            <li><a href="mid-category.php"><i class="fa fa-circle-o"></i> Danh mục sản phẩm con</a></li>
+                            <li><a href="end-category.php"><i class="fa fa-circle-o"></i> Danh mục sản phẩm phụ</a></li>
                         </ul>
                     </li>
 
@@ -306,8 +306,8 @@ body {
 			            <i class="fa fa-picture-o"></i> <span>Quản lý Sliders</span>
 			          </a>
 			        </li>
-					<li class="treeview <?php if( ($cur_page == 'add_post.php') ) {echo 'active';} ?>">
-                        <a href="add_post.php">
+					<li class="treeview <?php if( ($cur_page == 'post.php') ) {echo 'active';} ?>">
+                        <a href="post.php">
                             <i class="fa fa-sticky-note"></i> <span>Quản lý bài viết</span>
                         </a>
                     </li>

@@ -23,6 +23,15 @@ if ($posts) {
 } else {
     echo '<p>Hiện chưa có bài viết nào.</p>';
 }
+foreach ($posts as $post) {
+    echo '<div class="blog-post">';
+    echo '<h2>' . htmlspecialchars($post['title']) . '</h2>';
+    echo '<p>' . nl2br(htmlspecialchars(substr($post['content'], 0, 200))) . '...</p>'; // Hiển thị 200 ký tự đầu tiên
+    echo '<a href="blog-detail.php?id=' . $post['id'] . '">Đọc thêm</a>'; // Liên kết tới chi tiết bài viết
+    echo '<p><small>Ngày đăng: ' . $post['created_at'] . '</small></p>';
+    echo '</div>';
+    echo '<hr>';
+}
 ?>
 
 <?php require_once('footer.php'); ?>

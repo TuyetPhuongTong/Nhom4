@@ -1,27 +1,54 @@
 <?php require_once('header.php'); ?>
 
 <?php
-if(isset($_POST['form1'])) {
+if (isset($_POST['form1'])) {
     $valid = 1;
+    $error_message = '';
 
-    if(empty($_POST['post_title'])) {
+    // Kiểm tra tiêu đề
+    if (empty($_POST['post_title'])) {
         $valid = 0;
-        $error_message .= 'Tiêu đề không được để trống<br>';
+        $error_message .= 'Tiêu đề không được để trống.<br>';
     }
 
-    if(empty($_POST['post_content'])) {
+    // Kiểm tra nội dung
+    if (empty($_POST['post_content'])) {
         $valid = 0;
-        $error_message .= 'Nội dung không được để trống<br>';
+        $error_message .= 'Nội dung không được để trống.<br>';
     }
 
-    if($valid == 1) {
-        // Insert new post into the database
-        $statement = $pdo->prepare("INSERT INTO tbl_post (post_title, post_content, post_date) VALUES (?, ?, NOW())");
-        $statement->execute(array($_POST['post_title'], $_POST['post_content']));
-        
+    // Kiểm tra hình ảnh
+    $photo = '';
+    if ($_FILES['photo']['name'] != '') {
+        $ext = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
+        if ($ext != 'jpg' && $ext != 'png' && $ext != 'jpeg' && $ext != 'gif') {
+            $valid = 0;
+            $error_message .= 'Chỉ được phép tải lên tệp ảnh định dạng jpg, png, jpeg, gif.<br>';
+        } else {
+            $photo = 'post-' . time() . '.' . $ext;
+            move_uploaded_file($_FILES['photo']['tmp_name'], 'uploads/' . $photo);
+        }
+    }
+
+    if ($valid == 1) {
+        // Thêm bài viết vào cơ sở dữ liệu
+        $statement = $pdo->prepare("
+            INSERT INTO tbl_post 
+            (post_title, post_slug, post_content, post_date, photo, total_view) 
+            VALUES (?, ?, ?, NOW(), ?, ?)
+        ");
+        $statement->execute(array(
+            $_POST['post_title'],
+            $_POST['post_slug'],
+            $_POST['post_content'],
+            $photo,
+            0 // Total view mặc định là 0
+        ));
+
         $success_message = 'Bài viết đã được thêm thành công!';
 
         unset($_POST['post_title']);
+        unset($_POST['post_slug']);
         unset($_POST['post_content']);
     }
 }
@@ -40,33 +67,43 @@ if(isset($_POST['form1'])) {
     <div class="row">
         <div class="col-md-12">
 
-            <?php if($error_message): ?>
+            <?php if ($error_message): ?>
             <div class="callout callout-danger">
-                <p>
-                    <?php echo $error_message; ?>
-                </p>
+                <p><?php echo $error_message; ?></p>
             </div>
             <?php endif; ?>
 
-            <?php if($success_message): ?>
+            <?php if ($success_message): ?>
             <div class="callout callout-success">
                 <p><?php echo $success_message; ?></p>
             </div>
             <?php endif; ?>
 
-            <form class="form-horizontal" action="" method="post">
+            <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                 <div class="box box-info">
                     <div class="box-body">
                         <div class="form-group">
                             <label for="" class="col-sm-2 control-label">Tiêu đề <span>*</span></label>
                             <div class="col-sm-6">
-                                <input type="text" autocomplete="off" class="form-control" name="post_title" value="<?php if(isset($_POST['post_title'])){echo $_POST['post_title'];} ?>">
+                                <input type="text" autocomplete="off" class="form-control" name="post_title" value="<?php if (isset($_POST['post_title'])) echo $_POST['post_title']; ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">Slug</label>
+                            <div class="col-sm-6">
+                                <input type="text" autocomplete="off" class="form-control" name="post_slug" value="<?php if (isset($_POST['post_slug'])) echo $_POST['post_slug']; ?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-sm-2 control-label">Nội dung <span>*</span></label>
                             <div class="col-sm-9">
-                                <textarea class="form-control" name="post_content" id="editor1" style="height:200px;"><?php if(isset($_POST['post_content'])){echo $_POST['post_content'];} ?></textarea>
+                                <textarea class="form-control" name="post_content" id="editor1" style="height:200px;"><?php if (isset($_POST['post_content'])) echo $_POST['post_content']; ?></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">Ảnh</label>
+                            <div class="col-sm-6">
+                                <input type="file" class="form-control" name="photo">
                             </div>
                         </div>
                         <div class="form-group">

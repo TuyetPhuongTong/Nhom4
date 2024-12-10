@@ -242,21 +242,27 @@ foreach ($result as $row) {
 </div>-->
 
 <!-- top bar -->
-<div class="top">
+<div class="top" style="background-color: #7f572e; color: #f6dbab; padding: 10px 0;">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-6 col-sm-6 col-xs-12">
-				<div class="left">
-					<ul>
-						<li><i class="fa fa-phone"></i> <?php echo $contact_phone; ?></li>
-						<li><i class="fa fa-envelope-o"></i> <?php echo $contact_email; ?></li>
+			<div class="col-md-4 col-sm-4 col-xs-12">
+				<div class="left" style="text-align: center;">
+					<ul style="list-style: none; margin: 0; padding: 0;">
+						<li style="display: inline-block; margin-right: 15px; color: #f6dbab;">
+							<i class="fa fa-phone" style="margin-right: 5px; color: #f6dbab;"></i><?php echo $contact_phone; ?>
+						</li>	
 					</ul>
 				</div>
 			</div>
+			<div class="col-md-4 col-sm-4 col-xs-12">
+				<div class="middle" style="text-align: center; color: #f6dbab; font-size: 14px;">
+				         Đặt quà & Giao hàng miễn phí cho đơn từ 1.000.000 VND
+				</div>
+			</div>
 			
-			<div class="col-md-6 col-sm-6 col-xs-12">
-				<div class="right">
-					<ul>
+			<div class="col-md-4 col-sm-4 col-xs-12">
+				<div class="right" style="text-align: right;">
+					<ul style="list-style: none; margin: 0; padding: 0;">
 						<?php
 						$statement = $pdo->prepare("SELECT * FROM tbl_social");
 						$statement->execute();
@@ -264,7 +270,11 @@ foreach ($result as $row) {
 						foreach ($result as $row) {
 							?>
 							<?php if($row['social_url'] != ''): ?>
-							<li><a href="<?php echo $row['social_url']; ?>"><i class="<?php echo $row['social_icon']; ?>"></i></a></li>
+							<li style="display: inline-block; margin-left: 15px;">
+								<a href="<?php echo $row['social_url']; ?>" style="color: #f6dbab; text-decoration: none; font-size: 16px;">
+									<i class="<?php echo $row['social_icon']; ?>"></i>
+								</a>
+							</li>
 							<?php endif; ?>
 							<?php
 						}
@@ -277,6 +287,7 @@ foreach ($result as $row) {
 </div>
 
 
+<!-- header -->
 <div class="header" style="background-color: #f6dbab; font-family: 'Roboto', serif; color: #7f572e; height:auto ">
     <div class="container">
         <div class="row inner" style="display: flex; align-items: center; justify-content: space-between;">
@@ -393,7 +404,7 @@ foreach ($result as $row) {
 </style>
 
 
-
+<!-- under header -->
 
 <div class="nav" style="background-color: #7f572e; color: #f6dbab;">
 	<div class="container">

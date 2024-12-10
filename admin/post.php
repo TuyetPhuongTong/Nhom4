@@ -64,7 +64,6 @@ if (isset($_POST['form_add_post'])) {
     }
 
 }
-?
 
 <section class="content-header">
     <div class="content-header-left">

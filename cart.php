@@ -1,5 +1,5 @@
 <?php require_once('header.php'); ?>
-//hau an cut
+
 <?php
 $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
 $statement->execute();

@@ -5,12 +5,12 @@
 if(isset($_POST['form1'])) {
 	$valid = 1;
 
-    // Kiểm tra nếu trường "Tên màu" bị trống
+    // Kiểm tra nếu trường "% Cacao" bị trống
     if(empty($_POST['color_name'])) {
         $valid = 0;
-        $error_message .= "Tên màu không được để trống<br>";
+        $error_message .= "% Cacao không được để trống<br>";
     } else {
-		// Kiểm tra trùng lặp tên màu
+		// Kiểm tra trùng lặp % Cacao
     	// Lấy tên màu hiện tại từ cơ sở dữ liệu
     	$statement = $pdo->prepare("SELECT * FROM tbl_color WHERE color_id=?");
 		$statement->execute(array($_REQUEST['id']));
@@ -25,7 +25,7 @@ if(isset($_POST['form1'])) {
     	$total = $statement->rowCount();							
     	if($total) {
     		$valid = 0;
-        	$error_message .= 'Tên màu đã tồn tại<br>';
+        	$error_message .= '% Cacao đã tồn tại<br>';
     	}
     }
 
@@ -34,7 +34,7 @@ if(isset($_POST['form1'])) {
 		$statement = $pdo->prepare("UPDATE tbl_color SET color_name=? WHERE color_id=?");
 		$statement->execute(array($_POST['color_name'],$_REQUEST['id']));
 
-    	$success_message = 'Màu đã được cập nhật thành công.';
+    	$success_message = '% Cacao đã được cập nhật thành công.';
     }
 }
 ?>
@@ -59,7 +59,7 @@ if(!isset($_REQUEST['id'])) {
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Chỉnh sửa màu</h1>
+		<h1>Chỉnh sửa % Cacao</h1>
 	</div>
 	<div class="content-header-right">
 		<a href="color.php" class="btn btn-primary btn-sm">Xem tất cả</a>
@@ -67,7 +67,7 @@ if(!isset($_REQUEST['id'])) {
 </section>
 
 <?php							
-// Lấy tên màu hiện tại
+// Lấy % cacao hiện tại
 foreach ($result as $row) {
 	$color_name = $row['color_name'];
 }
@@ -100,7 +100,7 @@ foreach ($result as $row) {
 
             <div class="box-body">
                 <div class="form-group">
-                    <label for="" class="col-sm-2 control-label">Tên màu <span>*</span></label>
+                    <label for="" class="col-sm-2 control-label">% Cacao <span>*</span></label>
                     <div class="col-sm-4">
                         <input type="text" class="form-control" name="color_name" value="<?php echo $color_name; ?>">
                     </div>

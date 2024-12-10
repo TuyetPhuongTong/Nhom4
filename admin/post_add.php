@@ -15,15 +15,12 @@ if(isset($_POST['form1'])) {
     }
 
     if($valid == 1) {
-    
-        // Thực hiện câu lệnh INSERT vào bảng tbl_posts
-        $statement = $pdo->prepare("INSERT INTO tbl_posts (post_title, post_content) VALUES (?, ?)");
+        // Insert new post into the database
+        $statement = $pdo->prepare("INSERT INTO tbl_post (post_title, post_content, post_date) VALUES (?, ?, NOW())");
         $statement->execute(array($_POST['post_title'], $_POST['post_content']));
         
-        // Thông báo thành công
         $success_message = 'Bài viết đã được thêm thành công!';
-        
-        // Xóa dữ liệu trong form sau khi thêm bài viết thành công
+
         unset($_POST['post_title']);
         unset($_POST['post_content']);
     }
@@ -35,7 +32,7 @@ if(isset($_POST['form1'])) {
         <h1>Thêm Bài Viết</h1>
     </div>
     <div class="content-header-right">
-        <a href="post.php" class="btn btn-primary btn-sm">Xem Tất Cả Bài Viết</a>
+        <a href="post.php" class="btn btn-primary btn-sm">Xem Tất Cả</a>
     </div>
 </section>
 
@@ -83,7 +80,6 @@ if(isset($_POST['form1'])) {
             </form>
         </div>
     </div>
-
 </section>
 
 <?php require_once('footer.php'); ?>

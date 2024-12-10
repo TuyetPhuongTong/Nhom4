@@ -121,159 +121,136 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 }
 ?>
 <style>
-/* General styles for the product section */
-.product.bg-gray {
-    background-color: #f7f7f7; /* Light gray background */
-}
-
-.product .headline h2,
-.product .headline h3 {
-    color: #006666; /* Blue-green color for the headlines */
-}
-
-/* Product carousel container */
-.product-carousel {
-    display: flex;
-    overflow: auto;
-}
-
-/* Individual product item */
-.product-carousel .item {
-    margin-right: 15px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Distribute content evenly */
-    height: 100%; /* Ensure uniform height for all items */
-}
-
-/* Product image styling */
-.product-carousel .thumb .photo {
+   /* General Page Styling */
+   .page-banner {
     background-size: cover;
     background-position: center;
-    height: 200px;
-}
-
-/* Overlay effect on the product image */
-.product-carousel .thumb .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
-}
-
-/* Text area for the product name and price */
-.product-carousel .text {
-    padding: 15px;
-    background-color: #fff;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Ensures text and button spacing */
-    height: 100%;
+    padding: 100px 0;
+    color: #ffffff;
 }
 
-/* Product name styling */
-.product-carousel .text h3 {
-    margin: 0;
-    flex-grow: 1; /* Allow product name to take available space */
-    display: flex;
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
-}
-
-.product-carousel .text h3 a {
-    color: #006666; /* Blue-green color for the product name */
-    font-size: 18px;
+.page-banner .inner h1 {
+    font-size: 36px;
     font-weight: bold;
-    text-decoration: none;
-    display: inline-block;
+    color: #CC3300; /* Use the red color for the heading */
 }
 
-.product-carousel .text h3 a:hover {
-    color: #CC3300; /* Orange-red hover color for the product name */
+.page .container {
+    padding: 30px;
 }
 
-/* Price styling */
-.product-carousel .text h4 {
-    color: #CC3300; /* Orange-red color for the price */
-    font-size: 16px;
-    margin-bottom: 15px;
+.product-cat h3 {
+    font-size: 28px;
+    color: #006666; /* Use the green color for category headings */
+    margin-bottom: 20px;
 }
 
-/* Strikethrough styling for old price */
-.product-carousel .text h4 del {
-    color: #999;
-}
-
-/* Rating stars */
-.product-carousel .text .rating {
-    margin-top: 10px;
-}
-
-/* 'Add to Cart' button styling */
-.product-carousel .text p {
-    margin: 0;
-    padding: 10px 0; /* Add padding for spacing */
-    flex-shrink: 0; /* Prevent shrinking of the button */
-    min-height: 50px; /* Fixed height for consistent button size */
-    display: flex;
-    align-items: center; /* Vertically align the button */
-    justify-content: center; /* Horizontally align the button */
-}
-
-.product-carousel .text p a {
-    color: #fff;
-    background-color: #CC3300; /* Orange-red background for 'Add to Cart' */
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    display: inline-block;
-    width: 100%; /* Full width button */
-    text-align: center;
-    font-weight: bold;
-}
-
-.product-carousel .text p a:hover {
-    background-color: #006666; /* Blue-green background on hover */
-}
-
-/* Ensure 'Add to Cart' buttons are the same height */
-.product-carousel .item {
-    display: flex;
-    flex-direction: column;
-}
-
-.product-carousel .item .text {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Ensure equal spacing */
-    height: 100%;
-}
-
-.product-carousel .item .text p {
-    margin-top: auto; /* Push the "Add to Cart" button to the bottom */
-}
-
-/* Out of stock styling */
-.product-carousel .out-of-stock .inner {
-    background-color: #CC3300; /* Orange-red background for out-of-stock */
-    color: #fff;
-    font-size: 14px;
-    padding: 10px;
-    text-align: center;
-}
-
-/* Hover effects for product items */
-.product-carousel .item:hover {
-    transform: scale(1.05);
+/* Product Listing */
+.product-cat .item-product-cat {
+    margin-bottom: 30px;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    overflow: hidden;
     transition: all 0.3s ease;
 }
 
+.product-cat .item-product-cat:hover {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+.product-cat .thumb .photo {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+}
+
+.product-cat .text {
+    padding: 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.product-cat .text h3 a {
+    font-size: 18px;
+    font-weight: bold;
+    color: #006666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.product-cat .text h3 a:hover {
+    color: #CC3300; /* Change to red color on hover */
+}
+
+.product-cat .text h4 {
+    font-size: 16px;
+    color: #CC3300;
+    margin-top: 10px;
+}
+
+.product-cat .rating {
+    margin-top: 10px;
+    color: #f39c12;
+}
+
+.product-cat .out-of-stock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.product-cat .out-of-stock .inner {
+    font-weight: bold;
+}
+
+/* Button Style */
+.product-cat .text p a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #CC3300;
+    color: #ffffff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.product-cat .text p a:hover {
+    background-color: #006666; /* Red color on hover */
+}
+
+/* Aligning items equally in the grid */
+.product-cat .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.product-cat .item-product-cat {
+    flex: 0 0 calc(33.333% - 20px);
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .product-cat .item-product-cat {
+        flex: 0 0 calc(50% - 20px); /* For smaller screens, display 2 items per row */
+    }
+}
+
+@media (max-width: 480px) {
+    .product-cat .item-product-cat {
+        flex: 0 0 100%; /* For mobile screens, display 1 item per row */
+    }
+}   
 </style>
 <div class="page-banner" style="background-image: url(assets/uploads/<?php echo $banner_product_category; ?>)">
     <div class="inner">
@@ -406,7 +383,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
                                                 <?php if($row['p_qty'] == 0): ?>
                                                     <div class="out-of-stock">
                                                         <div class="inner">
-                                                            Out Of Stock
+                                                            Hết hàng
                                                         </div>
                                                     </div>
                                                 <?php else: ?>

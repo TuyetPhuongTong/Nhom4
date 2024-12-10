@@ -400,11 +400,8 @@ foreach ($result as $row) {
 
 							<li><a href="about.php"><?php echo $about_title; ?></a></li>
 							<li><a href="faq.php"><?php echo $faq_title; ?></a></li>
-
 							<li><a href="contact.php"><?php echo $contact_title; ?></a></li>
-							<li class="nav-item">
-                            <a class="nav-link" href="blog.php">Blog</a></li>
-
+                            <li><a href="blog.php"><?php echo $blog_title; ?></a></li>
 						</ul>
 					</div>
 				</div>

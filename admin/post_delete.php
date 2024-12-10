@@ -1,6 +1,6 @@
 <?php
 require_once('header.php');
-
+//
 // Kiểm tra nếu `id` không tồn tại
 if(!isset($_REQUEST['id'])) {
     header('location: logout.php');

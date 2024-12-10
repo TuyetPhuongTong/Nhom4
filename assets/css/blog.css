@@ -5,32 +5,65 @@
     box-sizing: border-box;
 }
 
-/* Hiệu ứng cho menu điều hướng */
-.nav {
-    list-style: none;
+/* General container */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+/* Hiển thị bài viết theo dạng lưới */
+.posts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Bố cục từng bài viết */
+.post-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: #333;
-    padding: 10px 20px;
-    margin: 0;
+    flex-direction: column;
+    transition: transform 0.2s ease;
 }
 
-.nav-item {
-    margin-right: 15px;
+.post-card:hover {
+    transform: translateY(-5px);
 }
 
-.nav-link {
-    color: #f6dbab;
-    font-size: 16px;
+.post-thumbnail img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.post-content {
+    padding: 10px;
+    flex-grow: 1;
+}
+
+.post-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.btn {
+    display: inline-block;
     text-decoration: none;
-    transition: color 0.3s ease, transform 0.2s ease;
-    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-align: center;
 }
 
-.nav-link:hover {
-    color: #fff;
-    background-color: #555;
-    transform: translateY(-2px);
+.btn:hover {
+    background-color: #0056b3;
 }

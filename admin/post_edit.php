@@ -1,5 +1,5 @@
 <?php require_once('header.php'); ?>
-//
+
 <?php
 if(isset($_POST['form1'])) {
 	$valid = 1;

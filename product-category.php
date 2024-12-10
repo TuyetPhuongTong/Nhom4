@@ -386,6 +386,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
                                                             Hết hàng
                                                         </div>
                                                     </div>
+
                                                 <?php else: ?>
                                                     <p><a href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-shopping-cart"></i> <?php echo LANG_VALUE_154; ?></a></p>
                                                 <?php endif; ?>

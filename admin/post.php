@@ -1,5 +1,5 @@
 <?php require_once('header.php'); ?>
-
+//
 <section class="content-header">
 	<div class="content-header-left">
 		<h1>Quản lý Bài Viết</h1>

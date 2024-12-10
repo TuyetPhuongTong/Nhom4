@@ -20,10 +20,7 @@ if (isset($_POST['form1'])) {
     // Kiểm tra hình ảnh
     $photo = '';
     if ($_FILES['photo']['name'] != '') {
-        // Lấy phần mở rộng của tệp ảnh
         $ext = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
-
-        // Kiểm tra loại tệp ảnh
         if ($ext != 'jpg' && $ext != 'png' && $ext != 'jpeg' && $ext != 'gif') {
             $valid = 0;
             $error_message .= 'Chỉ được phép tải lên tệp ảnh định dạng jpg, png, jpeg, hoặc gif.<br>';
@@ -34,7 +31,7 @@ if (isset($_POST['form1'])) {
             // Kiểm tra nếu thư mục uploads không tồn tại, tạo nó
             $upload_dir = 'uploads/';
             if (!file_exists($upload_dir)) {
-                mkdir($upload_dir, 0755, true);  // Tạo thư mục với quyền 0755
+                mkdir($upload_dir, 0755, true);  // Tạo thư mục nếu không tồn tại
             }
 
             // Di chuyển tệp từ thư mục tạm đến thư mục uploads
@@ -80,6 +77,7 @@ if (isset($_POST['form1'])) {
 </section>
 
 <section class="content">
+
     <div class="row">
         <div class="col-md-12">
 

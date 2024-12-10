@@ -64,7 +64,7 @@ if (isset($_POST['form_add_post'])) {
     }
 
 }
-?>
+?
 
 <section class="content-header">
     <div class="content-header-left">
@@ -76,7 +76,7 @@ if (isset($_POST['form_add_post'])) {
 // Lấy dữ liệu bài viết
 $statement = $pdo->prepare("SELECT * FROM tbl_post WHERE post_id=1");
 $statement->execute();
-$result = $statement->fetch(PDO::FETCH_ASSOC);  
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);   
 
 $post_title = $result['post_title'] ?? '';
 $post_slug = $result['post_slug'] ?? '';

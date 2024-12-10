@@ -253,6 +253,7 @@ foreach ($result as $row) {
 					</ul>
 				</div>
 			</div>
+			<div> Giao hàng</div>
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div class="right">
 					<ul>
@@ -279,10 +280,9 @@ foreach ($result as $row) {
 <div class="header">
 	<div class="container">
 		<div class="row inner">
-			<div class="col-md-4 logo">
+		<div class="col-md-4 logo">
 				<a href="index.php"><img src="assets/uploads/<?php echo $logo; ?>" alt="logo image"></a>
 			</div>
-			
 			<div class="col-md-5 right">
 				<ul>
 					

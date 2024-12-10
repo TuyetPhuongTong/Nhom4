@@ -277,7 +277,7 @@ foreach ($result as $row) {
 </div>
 
 
-<div class="header" style="background-color: #f6dbab; font-family: 'Noto Serif Display', serif; color: #7f572e; height:auto ">
+<div class="header" style="background-color: #f6dbab; font-family: 'Roboto', serif; color: #7f572e; height:auto ">
     <div class="container">
         <div class="row inner" style="display: flex; align-items: center; justify-content: space-between;">
             <!-- Đăng nhập và Đăng ký - Căn trái, cùng một dòng -->

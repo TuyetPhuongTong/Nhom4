@@ -344,12 +344,12 @@ foreach ($result as $row)
     margin-top: 10px;
 }
 
-/* 'Add to Cart' button */
+/* 'Add to Cart' button styling */
 .product-carousel .text p {
-    margin: 0; /* Remove default margin */
+    margin: 0;
     padding: 10px 0; /* Add padding for spacing */
     flex-shrink: 0; /* Prevent shrinking of the button */
-    min-height: 50px; /* Set a fixed height for consistent button size */
+    min-height: 50px; /* Fixed height for consistent button size */
     display: flex;
     align-items: center; /* Vertically align the button */
     justify-content: center; /* Horizontally align the button */
@@ -369,6 +369,23 @@ foreach ($result as $row)
 
 .product-carousel .text p a:hover {
     background-color: #006666; /* Blue-green background on hover */
+}
+
+/* Ensure 'Add to Cart' buttons are the same height */
+.product-carousel .item {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-carousel .item .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensure equal spacing */
+    height: 100%;
+}
+
+.product-carousel .item .text p {
+    margin-top: auto; /* Push the "Add to Cart" button to the bottom */
 }
 
 /* Out of stock styling */

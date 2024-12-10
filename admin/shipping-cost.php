@@ -194,7 +194,7 @@ if(isset($_POST['form2'])) {
         </div>
       </div> 
 
-      <h4 style="background: #dd4b39;color:#fff;padding:10px 20px;">NB: If a country does not exist in the above list, the following "Rest of the World" shipping cost will be applied upon that.</h4>
+      <h4 style="background: #dd4b39;color:#fff;padding:10px 20px;">Lưu ý: Nếu một quốc gia không tồn tại trong danh sách trên, chi phí vận chuyển "Phần còn lại của thế giới" sau đây sẽ được áp dụng cho quốc gia đó.</h4>
 
 </section>
 

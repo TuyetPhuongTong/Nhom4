@@ -16,7 +16,6 @@ if (isset($_POST['form1'])) {
         $valid = 0;
         $error_message .= 'Nội dung không được để trống.<br>';
     }
-
     // Kiểm tra hình ảnh
     $photo = '';
     if ($_FILES['photo']['name'] != '') {
@@ -33,7 +32,6 @@ if (isset($_POST['form1'])) {
             if (!file_exists($upload_dir)) {
                 mkdir($upload_dir, 0755, true);  // Tạo thư mục nếu không tồn tại
             }
-
             // Di chuyển tệp từ thư mục tạm đến thư mục uploads
             if (!move_uploaded_file($_FILES['photo']['tmp_name'], $upload_dir . $photo)) {
                 $valid = 0;

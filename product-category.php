@@ -120,7 +120,138 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     }   
 }
 ?>
+<style>
+   /* General Page Styling */
+   .page-banner {
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 100px 0;
+    color: #ffffff;
+}
 
+.page-banner .inner h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #CC3300; /* Use the red color for the heading */
+}
+
+.page .container {
+    padding: 30px;
+}
+
+.product-cat h3 {
+    font-size: 28px;
+    color: #006666; /* Use the green color for category headings */
+    margin-bottom: 20px;
+}
+
+/* Product Listing */
+.product-cat .item-product-cat {
+    margin-bottom: 30px;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.product-cat .item-product-cat:hover {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+.product-cat .thumb .photo {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+}
+
+.product-cat .text {
+    padding: 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.product-cat .text h3 a {
+    font-size: 18px;
+    font-weight: bold;
+    color: #006666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.product-cat .text h3 a:hover {
+    color: #CC3300; /* Change to red color on hover */
+}
+
+.product-cat .text h4 {
+    font-size: 16px;
+    color: #CC3300;
+    margin-top: 10px;
+}
+
+.product-cat .rating {
+    margin-top: 10px;
+    color: #f39c12;
+}
+
+.product-cat .out-of-stock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.product-cat .out-of-stock .inner {
+    font-weight: bold;
+}
+
+/* Button Style */
+.product-cat .text p a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #CC3300;
+    color: #ffffff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.product-cat .text p a:hover {
+    background-color: #006666; /* Red color on hover */
+}
+
+/* Aligning items equally in the grid */
+.product-cat .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.product-cat .item-product-cat {
+    flex: 0 0 calc(33.333% - 20px);
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .product-cat .item-product-cat {
+        flex: 0 0 calc(50% - 20px); /* For smaller screens, display 2 items per row */
+    }
+}
+
+@media (max-width: 480px) {
+    .product-cat .item-product-cat {
+        flex: 0 0 100%; /* For mobile screens, display 1 item per row */
+    }
+}   
+</style>
 <div class="page-banner" style="background-image: url(assets/uploads/<?php echo $banner_product_category; ?>)">
     <div class="inner">
         <h1><?php echo LANG_VALUE_50; ?> <?php echo $title; ?></h1>
@@ -252,9 +383,10 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
                                                 <?php if($row['p_qty'] == 0): ?>
                                                     <div class="out-of-stock">
                                                         <div class="inner">
-                                                            Out Of Stock
+                                                            Hết hàng
                                                         </div>
                                                     </div>
+
                                                 <?php else: ?>
                                                     <p><a href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-shopping-cart"></i> <?php echo LANG_VALUE_154; ?></a></p>
                                                 <?php endif; ?>

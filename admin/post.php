@@ -1,176 +1,92 @@
 <?php require_once('header.php'); ?>
 
-<?php
-$error_message = '';
-$success_message = '';
-
-if (isset($_POST['form_add_post'])) {
-    $valid = 1;
-
-    // Kiểm tra tiêu đề bài viết
-    if (empty($_POST['post_title'])) {
-        $valid = 0;
-        $error_message .= 'Tiêu đề không được để trống<br>';
-    }
-
-    // Kiểm tra nội dung bài viết
-    if (empty($_POST['post_content'])) {
-        $valid = 0;
-        $error_message .= 'Nội dung không được để trống<br>';
-    }
-
-    // Kiểm tra file upload
-    $path = $_FILES['post_banner']['name'];
-    $path_tmp = $_FILES['post_banner']['tmp_name'];
-
-    if ($path != '') {
-        $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
-        $allowed_extensions = ['jpg', 'png', 'jpeg', 'gif'];
-        if (!in_array($ext, $allowed_extensions)) {
-            $valid = 0;
-            $error_message .= 'Bạn phải tải lên tệp jpg, jpeg, gif hoặc png<br>';
-        }
-    }
-
-    if ($valid == 1) {
-        $final_name = '';
-
-        if ($path != '') {
-            // Xóa ảnh hiện tại
-            $statement = $pdo->prepare("SELECT photo FROM tbl_post WHERE id=1");
-            $statement->execute();
-            $result = $statement->fetch(PDO::FETCH_ASSOC);
-            if (!empty($result['photo']) && file_exists('../assets/uploads/' . $result['photo'])) {
-                unlink('../assets/uploads/' . $result['photo']);
-            }
-
-            // Lưu ảnh mới
-            $final_name = 'banner-' . time() . '.' . $ext;
-            move_uploaded_file($path_tmp, '../assets/uploads/' . $final_name);
-        }
-
-        // Cập nhật cơ sở dữ liệu
-         $statement = $pdo->prepare("UPDATE tbl_post SET post_id=?, post_title=?,post_slug=?,post_content=?,post_date=?,photo=?,category_id=?,total_view=?,meta_title=? WHERE post_id=1");
-         $statement->execute(array($_POST['post_id'],$_POST['post_title'],$_POST['post_slug'],$_POST['post_content'],$final_name?:$photo,$_POST['post_date'],$_POST['category_id'],$_POST['total_view'],$_POST['meta_title']));
-     } else {
-//CẬP NHẬT DỮ LIỆU
-          $statement = $pdo->prepare("UPDATE tbl_post SET post_id=?,post_title=?,post_slug=?,post_content=?,post_date=?,photo=?,category_id=?,total_view=?,meta_title=? WHERE post_id=1");
-          $statement->execute(array($_POST['post_id'],$_POST['post_title'],$_POST['post_slug'],$_POST['post_content'],$_POST['post_date'],$_POST['photo'],$_POST['category_id'],$_POST['total_view'],$_POST['meta_title']));
-     }
-     if ($statement->rowCount() > 0) {
-        $success_message = 'Thông tin bài viết đã được cập nhật thành công.';
-    } else {
-        $error_message = 'Không có thay đổi nào được thực hiện.';
-    }
-}
-?>
 <section class="content-header">
-    <div class="content-header-left">
-        <h1>Quản lý bài viết</h1>
-    </div>
+	<div class="content-header-left">
+		<h1>Quản lý Bài Viết</h1>
+	</div>
+	<div class="content-header-right">
+		<a href="post-add.php" class="btn btn-primary btn-sm">Thêm Bài Viết</a>
+	</div>
 </section>
-
-<?php
-// Lấy dữ liệu bài viết
-$statement = $pdo->prepare("SELECT * FROM tbl_post WHERE post_id=1");
-$statement->execute();
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);   
-
-$post_title = $result['post_title'] ?? '';
-$post_slug = $result['post_slug'] ?? '';
-$post_content = $result['post_content'] ?? '';
-$post_date = $result['post_date'] ?? '';
-$photo = $result['photo'] ?? '';
-$category_id = $result['category_id'] ?? '';
-$total_view = $result['total_view'] ?? '';
-$meta_title = $result['meta_title'] ?? '';
-?>
 
 <section class="content">
-    <div class="row">
-        <div class="col-md-12">
-            <?php if (!empty($error_message)): ?>
-            <div class="alert alert-danger">
-                <p><?php echo $error_message; ?></p>
-            </div>
-            <?php endif; ?>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box box-info">
+				<div class="box-body table-responsive">
+					<table id="example1" class="table table-bordered table-hover table-striped">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Tiêu đề</th>
+								<th>Slug</th>
+								<th>Ngày đăng</th>
+								<th>Ảnh</th>
+								<th>Chuyên mục</th>
+								<th>Lượt xem</th>
+								<th>Hành động</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+							$i = 0;
+							$statement = $pdo->prepare("
+								SELECT p.*, c.category_name 
+								FROM tbl_post p 
+								LEFT JOIN tbl_category c ON p.category_id = c.category_id
+							");
+							$statement->execute();
+							$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-            <?php if (!empty($success_message)): ?>
-            <div class="alert alert-success">
-                <p><?php echo $success_message; ?></p>
+							foreach ($result as $row) {
+								$i++;
+								?>
+								<tr>
+									<td><?php echo $i; ?></td>
+									<td><?php echo htmlspecialchars($row['post_title']); ?></td>
+									<td><?php echo htmlspecialchars($row['post_slug']); ?></td>
+									<td><?php echo date('d-m-Y', strtotime($row['post_date'])); ?></td>
+									<td>
+										<?php if($row['photo']): ?>
+											<img src="uploads/<?php echo $row['photo']; ?>" alt="Ảnh" style="width:50px;">
+										<?php else: ?>
+											<span>Không có ảnh</span>
+										<?php endif; ?>
+									</td>
+									<td><?php echo htmlspecialchars($row['category_name'] ?? 'Không có'); ?></td>
+									<td><?php echo $row['total_view']; ?></td>
+									<td>
+										<a href="post-edit.php?id=<?php echo $row['post_id']; ?>" class="btn btn-primary btn-xs">Sửa</a>
+										<a href="#" class="btn btn-danger btn-xs" data-href="post-delete.php?id=<?php echo $row['post_id']; ?>" data-toggle="modal" data-target="#confirm-delete">Xóa</a>
+									</td>
+								</tr>
+								<?php
+							}
+							?>							
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Xác nhận xóa</h4>
             </div>
-            <?php endif; ?>
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn xóa bài viết này không?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                <a class="btn btn-danger btn-ok">Xóa</a>
+            </div>
         </div>
     </div>
-
-    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
-        <div class="box box-info">
-            <div class="box-body">
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">Tiêu Đề Bài Viết *</label>
-                    <div class="col-sm-5">
-                        <input class="form-control" type="text" name="post_title" value="<?php echo htmlspecialchars($post_title); ?>">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">Slug *</label>
-                    <div class="col-sm-5">
-                        <input class="form-control" type="text" name="post_slug" value="<?php echo htmlspecialchars($post_slug); ?>">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">Nội Dung Bài Viết *</label>
-                    <div class="col-sm-8">
-                        <textarea class="form-control" name="post_content" rows="5"><?php echo htmlspecialchars($post_content); ?></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">Ảnh Banner Hiện Tại</label>
-                    <div class="col-sm-6">
-                        <?php if ($photo): ?>
-                        <img src="../assets/uploads/<?php echo $photo; ?>" alt="" style="height:80px;">
-                        <?php endif; ?>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">Ảnh Banner Mới</label>
-                    <div class="col-sm-6">
-                        <input type="file" name="post_banner">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">Ngày Đăng *</label>
-                    <div class="col-sm-5">
-                        <input class="form-control" type="date" name="post_date" value="<?php echo $post_date; ?>">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">Thể Loại *</label>
-                    <div class="col-sm-5">
-                        <input class="form-control" type="number" name="category_id" value="<?php echo $category_id; ?>">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">Lượt Xem *</label>
-                    <div class="col-sm-5">
-                        <input class="form-control" type="number" name="total_view" value="<?php echo $total_view; ?>">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">Tiêu Đề Meta *</label>
-                    <div class="col-sm-8">
-                        <input class="form-control" type="text" name="meta_title" value="<?php echo htmlspecialchars($meta_title); ?>">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label"></label>
-                    <div class="col-sm-6">
-                        <button type="submit" class="btn btn-success" name="form_add_post">Cập Nhật</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-</section>
+</div>
 
 <?php require_once('footer.php'); ?>

@@ -35,7 +35,7 @@ if(isset($_POST['form1'])) {
         <h1>Thêm Bài Viết</h1>
     </div>
     <div class="content-header-right">
-        <a href="posts.php" class="btn btn-primary btn-sm">Xem Tất Cả Bài Viết</a>
+        <a href="post.php" class="btn btn-primary btn-sm">Xem Tất Cả Bài Viết</a>
     </div>
 </section>
 

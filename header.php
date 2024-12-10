@@ -402,8 +402,13 @@ foreach ($result as $row) {
 				<div class="menu-container" style="text-align: center;">
 					<div class="menu">
 						<ul style="list-style-type: none; padding: 0; margin: 0; background-color: #7f572e;">
+<<<<<<< HEAD
 							<li style="display: inline-block; margin-right: 20px; background-color: #7f572e;">
 								<a href="index.php" style="color: #f6dbab; font-size: 16px; text-decoration: none; padding: 10px 15px; display: inline-block;">Home</a>
+=======
+							<li style="display: inline-block; margin-right: 10px; background-color: #7f572e;">
+								<a href="index.php" style="color: #f6dbab; font-size: 16px; text-decoration: none; padding: 10px 15px; display: inline-block;">Trang chủ</a>
+>>>>>>> 2a7837d0f88d0b01aa4bbeff92f3023b23edd369
 							</li>
 							
 							<?php

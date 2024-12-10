@@ -75,7 +75,7 @@ body {
 .main-header .logo {
     font-size: 24px;
     font-weight: 700;
-    text-transform: uppercase;
+    text-transform: uppercase; 
     color: #FF6600; /* Chữ màu cam */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
@@ -203,6 +203,7 @@ body {
 </style>
 
 </head>
+
 
 <body class="hold-transition fixed skin-blue sidebar-mini">
 

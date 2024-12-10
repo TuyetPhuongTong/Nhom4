@@ -305,8 +305,8 @@ body {
 			            <i class="fa fa-picture-o"></i> <span>Quản lý Sliders</span>
 			          </a>
 			        </li>
-					<li class="treeview <?php if( ($cur_page == 'add_post.php') ) {echo 'active';} ?>">
-                        <a href="add_post.php">
+					<li class="treeview <?php if( ($cur_page == 'post.php') ) {echo 'active';} ?>">
+                        <a href="post.php">
                             <i class="fa fa-sticky-note"></i> <span>Quản lý bài viết</span>
                         </a>
                     </li>

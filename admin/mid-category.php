@@ -2,7 +2,7 @@
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Xem các danh mục cấp trung bình</h1>
+		<h1>Xem các danh mục sản phẩm con</h1>
 	</div>
 	<div class="content-header-right">
 		<a href="mid-category-add.php" class="btn btn-primary btn-sm">Thêm mới</a>
@@ -23,8 +23,8 @@
 			<thead>
 			    <tr>
 			        <th>#</th>
-			        <th>Tên danh mục cấp trung bình</th>
-                    <th>Tên danh mục cấp cao nhất</th>
+			        <th>Tên danh mục sản phẩm con</th>
+                    <th>Tên danh mục sản phẩm</th>
 			        <th>Hành động</th>
 			    </tr>
 			</thead>
@@ -46,7 +46,7 @@
 	                    <td><?php echo $row['mcat_name']; ?></td>
                         <td><?php echo $row['tcat_name']; ?></td>
 	                    <td>
-	                        <a href="mid-category-edit.php?id=<?php echo $row['mcat_id']; ?>" class="btn btn-primary btn-xs">Sửa</a>
+	                        <a href="mid-category-edit.php?id=<?php echo $row['mcat_id']; ?>" class="btn btn-primary btn-xs">Chỉnh sửa</a>
 	                        <a href="#" class="btn btn-danger btn-xs" data-href="mid-category-delete.php?id=<?php echo $row['mcat_id']; ?>" data-toggle="modal" data-target="#confirm-delete">Xóa</a>
 	                    </td>
 	                </tr>
@@ -71,10 +71,10 @@
             </div>
             <div class="modal-body">
                 <p>Bạn có chắc chắn muốn xóa mục này không?</p>
-                <p style="color:red;">Hãy cẩn thận! Tất cả các sản phẩm và danh mục cấp cuối trong danh mục cấp trung này sẽ bị xóa khỏi tất cả các bảng như bảng đơn hàng, bảng thanh toán, bảng kích thước, bảng màu, bảng đánh giá, v.v.</p>
+                <p style="color:red;">Hãy cẩn thận! Tất cả các sản phẩm và danh mục sản phẩm phụ trong danh mục sản phẩm con này sẽ bị xóa khỏi tất cả các bảng như bảng đơn hàng, bảng thanh toán, bảng kích thước, bảng màu, bảng đánh giá, v.v.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
                 <a class="btn btn-danger btn-ok">Xóa</a>
             </div>
         </div>

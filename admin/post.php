@@ -56,21 +56,19 @@ if (isset($_POST['form_add_post'])) {
         }
 
         // Cập nhật cơ sở dữ liệu
-        $statement = $pdo->prepare("UPDATE tbl_post SET post_title=?, post_slug=?, post_content=?, post_date=?, photo=?, category_id=?, total_view=?, meta_title=? WHERE id=1");
-        $statement->execute([
-            $_POST['post_title'],
-            $_POST['post_slug'],
-            $_POST['post_content'],
-            $_POST['post_date'],
-            $final_name,
-            $_POST['category_id'],
-            $_POST['total_view'],
-            $_POST['meta_title']
-        ]);
+         // Cập nhật cơ sở dữ liệu
+         $statement = $pdo->prepare("UPDATE tbl_post SET post_id=?, post_title=?,post_lug=?,post_content=?,post_day=?,photo=?,category_id=?,total_view=?,meta_title=? WHERE id=1");
+         $statement->execute(array($_POST['post_id'],$_POST['post_title'],$_POST['post_content'],$final_name,$_POST['photo'],$_POST['post_day'],$_POST['category_id'],$_POST['total_view'],$_POST['meta_title']));
+     } else {
+//CẬP NHẬT DỮ LIỆU
+          $statement = $pdo->prepare("UPDATE tbl_post SET post_id=?, post_title=?,post_lug=?,post_content=?,post_day=?,photo=?,category_id=?,total_view=?,meta_title=? WHERE id=1");
+          $statement->execute(array($_POST['post_id'],$_POST['post_title'],$_POST['post_content'],$_POST['photo'],$_POST['post_day'],$_POST['category_id'],$_POST['total_view'],$_POST['meta_title']));
+
+
+     }
 
         $success_message = 'Thông tin bài viết đã được cập nhật thành công.';
     }
-}
 ?>
 
 <section class="content-header">
@@ -83,6 +81,9 @@ if (isset($_POST['form_add_post'])) {
 // Lấy dữ liệu bài viết
 $statement = $pdo->prepare("SELECT * FROM tbl_post WHERE id=1");
 $statement->execute();
+if (!$statement->execute(array(...))) {
+    print_r($statement->errorInfo()); // In ra lỗi chi tiết
+}
 $result = $statement->fetch(PDO::FETCH_ASSOC);
 
 $post_title = $result['post_title'] ?? '';

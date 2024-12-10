@@ -69,7 +69,6 @@ if (isset($_POST['form_add_post'])) {
 
         $success_message = 'Thông tin bài viết đã được cập nhật thành công.';
     }
-}
 ?>
 
 <section class="content-header">

@@ -47,12 +47,6 @@ if (isset($_POST['form_add_post'])) {
             // Lưu ảnh mới
             $final_name = 'banner-' . time() . '.' . $ext;
             move_uploaded_file($path_tmp, '../assets/uploads/' . $final_name);
-        } else {
-            // Nếu không có ảnh mới, lấy ảnh hiện tại
-            $statement = $pdo->prepare("SELECT photo FROM tbl_post WHERE id=1");
-            $statement->execute();
-            $result = $statement->fetch(PDO::FETCH_ASSOC);
-            $final_name = $result['photo'] ?? ''; // Giữ nguyên ảnh hiện tại
         }
 
         // Cập nhật cơ sở dữ liệu

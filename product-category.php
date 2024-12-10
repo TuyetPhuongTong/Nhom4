@@ -120,6 +120,161 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     }   
 }
 ?>
+<style>
+/* General styles for the product section */
+.product.bg-gray {
+    background-color: #f7f7f7; /* Light gray background */
+}
+
+.product .headline h2,
+.product .headline h3 {
+    color: #006666; /* Blue-green color for the headlines */
+}
+
+/* Product carousel container */
+.product-carousel {
+    display: flex;
+    overflow: auto;
+}
+
+/* Individual product item */
+.product-carousel .item {
+    margin-right: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribute content evenly */
+    height: 100%; /* Ensure uniform height for all items */
+}
+
+/* Product image styling */
+.product-carousel .thumb .photo {
+    background-size: cover;
+    background-position: center;
+    height: 200px;
+}
+
+/* Overlay effect on the product image */
+.product-carousel .thumb .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Text area for the product name and price */
+.product-carousel .text {
+    padding: 15px;
+    background-color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures text and button spacing */
+    height: 100%;
+}
+
+/* Product name styling */
+.product-carousel .text h3 {
+    margin: 0;
+    flex-grow: 1; /* Allow product name to take available space */
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
+.product-carousel .text h3 a {
+    color: #006666; /* Blue-green color for the product name */
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.product-carousel .text h3 a:hover {
+    color: #CC3300; /* Orange-red hover color for the product name */
+}
+
+/* Price styling */
+.product-carousel .text h4 {
+    color: #CC3300; /* Orange-red color for the price */
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* Strikethrough styling for old price */
+.product-carousel .text h4 del {
+    color: #999;
+}
+
+/* Rating stars */
+.product-carousel .text .rating {
+    margin-top: 10px;
+}
+
+/* 'Add to Cart' button styling */
+.product-carousel .text p {
+    margin: 0;
+    padding: 10px 0; /* Add padding for spacing */
+    flex-shrink: 0; /* Prevent shrinking of the button */
+    min-height: 50px; /* Fixed height for consistent button size */
+    display: flex;
+    align-items: center; /* Vertically align the button */
+    justify-content: center; /* Horizontally align the button */
+}
+
+.product-carousel .text p a {
+    color: #fff;
+    background-color: #CC3300; /* Orange-red background for 'Add to Cart' */
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    width: 100%; /* Full width button */
+    text-align: center;
+    font-weight: bold;
+}
+
+.product-carousel .text p a:hover {
+    background-color: #006666; /* Blue-green background on hover */
+}
+
+/* Ensure 'Add to Cart' buttons are the same height */
+.product-carousel .item {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-carousel .item .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensure equal spacing */
+    height: 100%;
+}
+
+.product-carousel .item .text p {
+    margin-top: auto; /* Push the "Add to Cart" button to the bottom */
+}
+
+/* Out of stock styling */
+.product-carousel .out-of-stock .inner {
+    background-color: #CC3300; /* Orange-red background for out-of-stock */
+    color: #fff;
+    font-size: 14px;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Hover effects for product items */
+.product-carousel .item:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+</style>
 <div class="page-banner" style="background-image: url(assets/uploads/<?php echo $banner_product_category; ?>)">
     <div class="inner">
         <h1><?php echo LANG_VALUE_50; ?> <?php echo $title; ?></h1>

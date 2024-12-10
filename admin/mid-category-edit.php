@@ -6,12 +6,12 @@ if(isset($_POST['form1'])) {
 
     if(empty($_POST['tcat_id'])) {
         $valid = 0;
-        $error_message .= "Bạn phải chọn một danh mục cấp cao nhất<br>";
+        $error_message .= "Bạn phải chọn một danh mục sản phẩm<br>";
     }
 
     if(empty($_POST['mcat_name'])) {
         $valid = 0;
-        $error_message .= "Tên danh mục cấp trung không được để trống<br>";
+        $error_message .= "Tên danh mục sản phẩm con không được để trống<br>";
     }
 
     if($valid == 1) {    	
@@ -19,7 +19,7 @@ if(isset($_POST['form1'])) {
 		$statement = $pdo->prepare("UPDATE tbl_mid_category SET mcat_name=?,tcat_id=? WHERE mcat_id=?");
 		$statement->execute(array($_POST['mcat_name'],$_POST['tcat_id'],$_REQUEST['id']));
 
-    	$success_message = 'Danh mục trung cấp đã được cập nhật thành công.';
+    	$success_message = 'Danh mục sản phẩm con đã được cập nhật thành công.';
     }
 }
 ?>
@@ -43,7 +43,7 @@ if(!isset($_REQUEST['id'])) {
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Chỉnh sửa danh mục cấp độ trung bình</h1>
+		<h1>Chỉnh sửa danh mục sản phẩm con</h1>
 	</div>
 	<div class="content-header-right">
 		<a href="mid-category.php" class="btn btn-primary btn-sm">Xem tất cả</a>
@@ -85,10 +85,10 @@ foreach ($result as $row) {
 
             <div class="box-body">
                 <div class="form-group">
-                    <label for="" class="col-sm-3 control-label">Tên danh mục cấp cao nhất <span>*</span></label>
+                    <label for="" class="col-sm-3 control-label">Tên danh mục sản phẩm <span>*</span></label>
                     <div class="col-sm-4">
                         <select name="tcat_id" class="form-control select2">
-                            <option value="">Chọn danh mục cấp cao nhất</option>
+                            <option value="">Chọn danh mục sản phẩm</option>
                             <?php
                             $statement = $pdo->prepare("SELECT * FROM tbl_top_category ORDER BY tcat_name ASC");
                             $statement->execute();
@@ -103,7 +103,7 @@ foreach ($result as $row) {
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="" class="col-sm-3 control-label">Tên danh mục cấp trung bình <span>*</span></label>
+                    <label for="" class="col-sm-3 control-label">Tên danh mục sản phẩm con <span>*</span></label>
                     <div class="col-sm-4">
                         <input type="text" class="form-control" name="mcat_name" value="<?php echo $mcat_name; ?>">
                     </div>
@@ -139,7 +139,7 @@ foreach ($result as $row) {
             Bạn có chắc chắn muốn xóa mục này không?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
                 <a class="btn btn-danger btn-ok">Xóa</a>
             </div>
         </div>

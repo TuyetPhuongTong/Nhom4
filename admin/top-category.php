@@ -2,7 +2,7 @@
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Xem Danh Mục Cấp Cao Nhất</h1>
+		<h1>Xem Danh Mục Sản Phẩm</h1>
 	</div>
 	<div class="content-header-right">
 		<a href="top-category-add.php" class="btn btn-primary btn-sm">Thêm Mới</a>
@@ -21,7 +21,7 @@
 			<thead>
 			    <tr>
 			        <th>#</th>
-			        <th>Tên Danh Mục Cấp Cao Nhất</th>
+			        <th>Tên Danh Mục Sản Phẩm</th>
                     <th>Hiển thị trên Menu?</th>
 			        <th>Hành Động</th>
 			    </tr>
@@ -48,7 +48,7 @@
                             ?>
                         </td>
 	                    <td>
-	                        <a href="top-category-edit.php?id=<?php echo $row['tcat_id']; ?>" class="btn btn-primary btn-xs">Sửa</a>
+	                        <a href="top-category-edit.php?id=<?php echo $row['tcat_id']; ?>" class="btn btn-primary btn-xs">Chỉnh sửa</a>
 	                        <a href="#" class="btn btn-danger btn-xs" data-href="top-category-delete.php?id=<?php echo $row['tcat_id']; ?>" data-toggle="modal" data-target="#confirm-delete">Xóa</a>
 	                    </td>
 	                </tr>
@@ -71,7 +71,7 @@
             </div>
             <div class="modal-body">
                 <p>Bạn có chắc chắn muốn xóa mục này không?</p>
-                <p style="color:red;">Hãy cẩn thận! Tất cả sản phẩm, danh mục cấp trung và cấp cuối thuộc danh mục cấp cao này sẽ bị xóa khỏi tất cả các bảng như bảng đơn hàng, bảng thanh toán, bảng kích thước, bảng màu, bảng đánh giá, v.v.</p>
+                <p style="color:red;">Hãy cẩn thận! Tất cả sản phẩm, danh mục sản phẩm con và danh mục sản phẩm phụ thuộc danh mục sản phẩm này sẽ bị xóa khỏi tất cả các bảng như bảng đơn hàng, bảng thanh toán, bảng kích thước, bảng màu, bảng đánh giá, v.v.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>

@@ -81,10 +81,7 @@ if (isset($_POST['form_add_post'])) {
 // Lấy dữ liệu bài viết
 $statement = $pdo->prepare("SELECT * FROM tbl_post WHERE id=1");
 $statement->execute();
-if (!$statement->execute(array(...))) {
-    print_r($statement->errorInfo()); // In ra lỗi chi tiết
-}
-$result = $statement->fetch(PDO::FETCH_ASSOC);
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);  
 
 $post_title = $result['post_title'] ?? '';
 $post_slug = $result['post_slug'] ?? '';

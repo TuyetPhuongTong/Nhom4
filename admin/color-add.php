@@ -6,16 +6,16 @@ if(isset($_POST['form1'])) {
 
     if(empty($_POST['color_name'])) {
         $valid = 0;
-        $error_message .= "Tên màu không được để trống<br>";
+        $error_message .= "% Cacao không được để trống<br>";
     } else {
-    	// Kiểm tra trùng lặp tên màu
+    	// Kiểm tra trùng lặp % cacao
     	$statement = $pdo->prepare("SELECT * FROM tbl_color WHERE color_name=?");
     	$statement->execute(array($_POST['color_name']));
     	$total = $statement->rowCount();
     	if($total)
     	{
     		$valid = 0;
-        	$error_message .= "Tên màu đã tồn tại<br>";
+        	$error_message .= "% Cacao đã tồn tại<br>";
     	}
     }
 
@@ -25,14 +25,14 @@ if(isset($_POST['form1'])) {
 		$statement = $pdo->prepare("INSERT INTO tbl_color (color_name) VALUES (?)");
 		$statement->execute(array($_POST['color_name']));
 	
-    	$success_message = 'Màu đã được thêm thành công.';
+    	$success_message = '% Cacao đã được thêm thành công.';
     }
 }
 ?>
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Thêm Màu</h1>
+		<h1>Thêm % Cacao</h1>
 	</div>
 	<div class="content-header-right">
 		<a href="color.php" class="btn btn-primary btn-sm">Xem Tất Cả</a>
@@ -66,7 +66,7 @@ if(isset($_POST['form1'])) {
 				<div class="box box-info">
 					<div class="box-body">
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Tên Màu <span>*</span></label>
+							<label for="" class="col-sm-2 control-label">% Cacao <span>*</span></label>
 							<div class="col-sm-4">
 								<input type="text" class="form-control" name="color_name">
 							</div>
@@ -74,7 +74,7 @@ if(isset($_POST['form1'])) {
 						<div class="form-group">
 							<label for="" class="col-sm-2 control-label"></label>
 							<div class="col-sm-6">
-								<button type="submit" class="btn btn-success pull-left" name="form1">Gửi</button>
+								<button type="submit" class="btn btn-success pull-left" name="form1">Thêm</button>
 							</div>
 						</div>
 					</div>

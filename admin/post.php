@@ -62,9 +62,8 @@ if (isset($_POST['form_add_post'])) {
     } else {
         $error_message = 'Không có thay đổi nào được thực hiện.';
     }
-
 }
-
+?>
 <section class="content-header">
     <div class="content-header-left">
         <h1>Quản lý bài viết</h1>

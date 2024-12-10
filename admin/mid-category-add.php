@@ -6,12 +6,12 @@ if(isset($_POST['form1'])) {
 
     if(empty($_POST['tcat_id'])) {
         $valid = 0;
-        $error_message .= "You must have to select a top level category<br>";
+        $error_message .= "Bạn phải chọn danh mục sản phẩm<br>";
     }
 
     if(empty($_POST['mcat_name'])) {
         $valid = 0;
-        $error_message .= "Tên danh mục cấp trung không được để trống<br>";
+        $error_message .= "Tên danh mục sản phẩm con không được để trống<br>";
     }
 
     if($valid == 1) {
@@ -20,14 +20,14 @@ if(isset($_POST['form1'])) {
 		$statement = $pdo->prepare("INSERT INTO tbl_mid_category (mcat_name,tcat_id) VALUES (?,?)");
 		$statement->execute(array($_POST['mcat_name'],$_POST['tcat_id']));
 	
-    	$success_message = 'Đã thêm thành công danh mục trung cấp.';
+    	$success_message = 'Đã thêm thành công danh mục sản phẩm con.';
     }
 }
 ?>
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Thêm danh mục cấp trung bình</h1>
+		<h1>Thêm danh mục sản phẩm con</h1>
 	</div>
 	<div class="content-header-right">
 		<a href="mid-category.php" class="btn btn-primary btn-sm">Xem tất cả</a>
@@ -61,10 +61,10 @@ if(isset($_POST['form1'])) {
 				<div class="box box-info">
 					<div class="box-body">
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Tên danh mục cấp cao nhất <span>*</span></label>
+							<label for="" class="col-sm-3 control-label">Tên danh mục sản phẩm <span>*</span></label>
 							<div class="col-sm-4">
 								<select name="tcat_id" class="form-control select2">
-									<option value="">Chọn danh mục cấp cao nhất</option>
+									<option value="">Chọn danh mục sản phẩm</option>
 									<?php
 									$statement = $pdo->prepare("SELECT * FROM tbl_top_category ORDER BY tcat_name ASC");
 									$statement->execute();
@@ -79,7 +79,7 @@ if(isset($_POST['form1'])) {
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Tên danh mục cấp trung bình<span>*</span></label>
+							<label for="" class="col-sm-3 control-label">Tên danh mục sản phẩm con<span>*</span></label>
 							<div class="col-sm-4">
 								<input type="text" class="form-control" name="mcat_name">
 							</div>
@@ -88,7 +88,7 @@ if(isset($_POST['form1'])) {
 						<div class="form-group">
 							<label for="" class="col-sm-3 control-label"></label>
 							<div class="col-sm-6">
-								<button type="submit" class="btn btn-success pull-left" name="form1">Gửi</button>
+								<button type="submit" class="btn btn-success pull-left" name="form1">Thêm</button>
 							</div>
 						</div>
 					</div>

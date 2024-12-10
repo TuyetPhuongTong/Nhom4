@@ -2,7 +2,7 @@
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Xem Danh Mục Cấp Cuối</h1>
+		<h1>Xem Danh Mục Sản Phẩm Phụ</h1>
 	</div>
 	<div class="content-header-right">
 		<a href="end-category-add.php" class="btn btn-primary btn-sm">Thêm Mới</a>
@@ -22,9 +22,9 @@
 			<thead>
 			    <tr>
 			        <th>#</th>
-			        <th>Tên Danh Mục Cấp Cuối</th>
-                    <th>Tên Danh Mục Cấp Trung</th>
-                    <th>Tên Danh Mục Cấp Cao</th>
+			        <th>Tên Danh Mục Sản Phẩm Phụ</th>
+                    <th>Tên Danh Mục Sản Phẩm Con</th>
+                    <th>Tên Danh Mục Sản Phẩm</th>
 			        <th>Hành Động</th>
 			    </tr>
 			</thead>

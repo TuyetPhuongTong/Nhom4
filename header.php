@@ -101,7 +101,7 @@ foreach ($result as $row) {
 	<link rel="stylesheet" href="assets/css/select2.min.css">
 	<link rel="stylesheet" href="assets/css/main.css">
 	<link rel="stylesheet" href="assets/css/responsive.css">
-
+	<link rel="stylesheet" href="assets/css/blog.css">
 	<?php
 
 	$statement = $pdo->prepare("SELECT * FROM tbl_page WHERE id=1");
@@ -493,6 +493,11 @@ foreach ($result as $row) {
 								</a>
 							</li>
 							<li style="display: inline-block; margin-right: 20px; background-color: #7f572e;">
+								<a href="blog.php" style="color: #f6dbab; font-size: 16px; text-decoration: none; padding: 10px 15px; display: inline-block;">
+									<?php echo $blog_title; ?>
+								</a>
+							</li>
+							<li style="display: inline-block; margin-right: 20px; background-color: #7f572e;">
 								<a href="faq.php" style="color: #f6dbab; font-size: 16px; text-decoration: none; padding: 10px 15px; display: inline-block;">
 									<?php echo $faq_title; ?>
 								</a>
@@ -503,6 +508,7 @@ foreach ($result as $row) {
 									<?php echo $contact_title; ?>
 								</a>
 							</li>
+							
 						</ul>
 					</div>
 				</div>

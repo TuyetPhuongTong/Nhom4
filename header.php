@@ -290,7 +290,7 @@ foreach ($result as $row) {
 <!-- header -->
 <div class="header" style="background-color: #f6dbab; font-family: 'Roboto', serif; color: #7f572e; height:auto ">
     <div class="container">
-        <div class="row inner" style="display: flex; align-items: center; justify-content: space-between;">
+        <div class="row inner headerHeight" style="display: flex; align-items: center; justify-content: space-between;">
             <!-- Đăng nhập và Đăng ký - Căn trái, cùng một dòng -->
             <div class="col-md-4" style="text-align: left;">
                 <ul style="list-style: none; padding: 0; margin: 0; display: flex; align-items: center; gap:25px">
@@ -313,7 +313,7 @@ foreach ($result as $row) {
             <!-- Logo - Căn giữa, phóng to -->
             <div class="col-md-4 text-center logo" style="margin: 0; ">
                 <a href="index.php">
-                    <img src="https://i.pinimg.com/736x/22/c0/1f/22c01fe247baa414f9315311e987a035.jpg" alt="logo image" style="max-width: 250px; margin: 0;">
+                    <img src="https://i.pinimg.com/736x/22/c0/1f/22c01fe247baa414f9315311e987a035.jpg" alt="logo image" style="width: auto; height: 27dvh; margin: 0;">
                 </a>
             </div>
             
@@ -365,8 +365,15 @@ foreach ($result as $row) {
 
 <!-- responsive -->
 <style>
+	.headerHeight {
+		height: 27dvh !important;
+	}
     /* Responsive - Màn hình nhỏ */
     @media (max-width: 767px) {
+		.headerHeight {
+			height: 50dvh !important; 
+
+		}
         .header .row {
             flex-direction: column;
             align-items: center;

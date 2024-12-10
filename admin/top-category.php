@@ -48,7 +48,7 @@
                             ?>
                         </td>
 	                    <td>
-	                        <a href="top-category-edit.php?id=<?php echo $row['tcat_id']; ?>" class="btn btn-primary btn-xs">Sửa</a>
+	                        <a href="top-category-edit.php?id=<?php echo $row['tcat_id']; ?>" class="btn btn-primary btn-xs">Chỉnh sửa</a>
 	                        <a href="#" class="btn btn-danger btn-xs" data-href="top-category-delete.php?id=<?php echo $row['tcat_id']; ?>" data-toggle="modal" data-target="#confirm-delete">Xóa</a>
 	                    </td>
 	                </tr>

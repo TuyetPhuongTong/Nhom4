@@ -225,7 +225,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 }
 
 .product-cat .text p a:hover {
-    background-color: #f9f9f9; /* Red color on hover */
+    background-color: #006666; /* Red color on hover */
 }
 
 
@@ -266,7 +266,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     min-height: 50px; /* Đảm bảo chiều cao tiêu đề đồng nhất */
     font-size: 18px;
     font-weight: bold;
-    color:  #f9f9f9;
+    color: #006666;
     margin-bottom: 10px;
 }
 
@@ -293,7 +293,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 }
 
 .product-cat .text p a:hover {
-    background-color: #f9f9f9;
+    background-color: #006666;
 }
 
 @media (max-width: 768px) {

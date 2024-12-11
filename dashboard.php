@@ -1,12 +1,12 @@
 <?php require_once('header.php'); ?>
 
 <?php
-// Check if the customer is logged in or not
+// Kiểm tra khách hàng đăng nhập chưa
 if(!isset($_SESSION['customer'])) {
     header('location: '.BASE_URL.'logout.php');
     exit;
 } else {
-    // If customer is logged in, but admin make him inactive, then force logout this user.
+    // Nếu khách hàng đã đăng nhập nhưng quản trị viên không hoạt động thì buộc người dùng này đăng xuất.
     $statement = $pdo->prepare("SELECT * FROM tbl_customer WHERE cust_id=? AND cust_status=?");
     $statement->execute(array($_SESSION['customer']['cust_id'],0));
     $total = $statement->rowCount();
@@ -26,7 +26,7 @@ if(!isset($_SESSION['customer'])) {
             <div class="col-md-12">
                 <div class="user-content">
                     <h3 class="text-center">
-                        <?php echo LANG_VALUE_90; ?>
+                        <?php echo "Chào mừng đến với Trang cá nhân"; ?>
                     </h3>
                 </div>                
             </div>

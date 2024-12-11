@@ -1,7 +1,5 @@
 <?php require_once('header.php'); ?>
 
-<?php require_once('header.php'); ?>
-
 <?php
 // Lấy thông tin từ bảng tbl_page
 $statement = $pdo->prepare("SELECT * FROM tbl_page WHERE id=1");
@@ -22,9 +20,10 @@ if ($post && !empty($post['photo'])) {
 }
 ?>
 
-<div class="page-banner" style="background-image: url(assets/uploads/<?php echo $blog_banner; ?>);">
-    <p>URL của ảnh nền: assets/uploads/<?php echo $blog_banner; ?></p>
+<div class="page-banner" style="background-image: url(assets/uploads/<?php echo htmlspecialchars($blog_banner); ?>); background-size: cover; background-position: center center; height: 300px;">
+    <p>URL của ảnh nền: assets/uploads/<?php echo htmlspecialchars($blog_banner); ?></p>
 </div>
+
 <div class="container">
     <h1 style="text-align: center; margin-bottom: 20px;">Bài viết nổi bật</h1>
     <div class="posts-container">
@@ -46,12 +45,16 @@ if ($post && !empty($post['photo'])) {
                                     <div class="post-item">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <img src="assets/uploads/<?php echo $post['photo']; ?>" class="img-fluid" alt="<?php echo $post['post_title']; ?>">
+                                                <?php if (!empty($post['photo']) && file_exists('assets/uploads/'.$post['photo'])) { ?>
+                                                    <img src="assets/uploads/<?php echo htmlspecialchars($post['photo']); ?>" class="img-fluid" alt="<?php echo htmlspecialchars($post['post_title']); ?>">
+                                                <?php } else { ?>
+                                                    <img src="assets/uploads/default.jpg" class="img-fluid" alt="Ảnh mặc định">
+                                                <?php } ?>
                                             </div>
                                             <div class="col-md-8">
-                                                <h2><?php echo $post['post_title']; ?></h2>
+                                                <h2><?php echo htmlspecialchars($post['post_title']); ?></h2>
                                                 <p><?php echo $short_content; ?></p>
-                                                <a href="blog.php?post_slug=<?php echo $post['post_slug']; ?>" class="btn btn-primary">Xem thêm</a>
+                                                <a href="blog.php?post_slug=<?php echo htmlspecialchars($post['post_slug']); ?>" class="btn btn-primary">Xem thêm</a>
                                             </div>
                                         </div>
                                     </div>
@@ -68,8 +71,12 @@ if ($post && !empty($post['photo'])) {
                             if ($post) {
                                 ?>
                                 <div class="post-detail">
-                                    <h1><?php echo $post['post_title']; ?></h1>
-                                    <img src="assets/uploads/<?php echo $post['photo']; ?>" class="img-fluid" alt="<?php echo $post['post_title']; ?>">
+                                    <h1><?php echo htmlspecialchars($post['post_title']); ?></h1>
+                                    <?php if (!empty($post['photo']) && file_exists('assets/uploads/'.$post['photo'])) { ?>
+                                        <img src="assets/uploads/<?php echo htmlspecialchars($post['photo']); ?>" class="img-fluid" alt="<?php echo htmlspecialchars($post['post_title']); ?>">
+                                    <?php } else { ?>
+                                        <img src="assets/uploads/default.jpg" class="img-fluid" alt="Ảnh mặc định">
+                                    <?php } ?>
                                     <p><?php echo $post['post_content']; ?></p>
                                     <a href="blog.php" class="btn btn-secondary">Quay lại</a>
                                 </div>

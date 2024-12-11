@@ -485,8 +485,8 @@ foreach ($result as $row) {
 
 							<li style="display: inline-block; margin-right: 10px; background-color: #7f572e;">
 								<a href="index.php" style="color: #f6dbab; font-size: 16px; text-decoration: none; padding: 10px 15px; display: inline-block;">Trang chủ</a>
-
 							</li>
+							
 							
 							<?php
 							$statement = $pdo->prepare("SELECT * FROM tbl_top_category WHERE show_on_menu=1");
@@ -578,5 +578,6 @@ foreach ($result as $row) {
 		</div>
 	</div>
 </div>
+
 
 

@@ -7,22 +7,7 @@ $statement->execute();
 $page = $statement->fetch(PDO::FETCH_ASSOC);
 $blog_title = $page['blog_title'];
 $blog_meta_title = $page['blog_meta_title'];
-
-// Lấy ảnh từ bảng tbl_post (bài viết mới nhất)
-$statement = $pdo->prepare("SELECT photo FROM tbl_post ORDER BY post_date DESC LIMIT 1");
-$statement->execute();
-$post = $statement->fetch(PDO::FETCH_ASSOC);
-
-if ($post && !empty($post['photo'])) {
-    $blog_banner = $post['photo'];
-} else {
-    $blog_banner = 'default.jpg'; // Ảnh mặc định nếu không có ảnh
-}
 ?>
-
-<div class="page-banner" style="background-image: url('assets/uploads/<?php echo $blog_banner; ?>');">
-    <p>URL của ảnh nền: assets/uploads/<?php echo $blog_banner; ?></p>
-</div>
 
 <div class="container">
     <h1 style="text-align: center; margin-bottom: 20px;"><?php echo $blog_title; ?></h1>

@@ -2,10 +2,6 @@
 // Kết nối file header.php
 require_once('header.php');
 
-// Kết nối đến cơ sở dữ liệu
-$pdo = new PDO('mysql:host=localhost;dbname=your_database', 'username', 'password');
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
 // Lấy thông tin trang từ bảng tbl_page
 $statement = $pdo->prepare("SELECT * FROM tbl_page WHERE id=1");
 $statement->execute();
@@ -80,7 +76,7 @@ $blog_meta_title = $page['blog_meta_title'];
                                     <img src="assets/uploads/<?php echo htmlspecialchars($post_photo, ENT_QUOTES, 'UTF-8'); ?>" 
                                          class="img-fluid" 
                                          alt="<?php echo htmlspecialchars($post['post_title'], ENT_QUOTES, 'UTF-8'); ?>">
-                                    <p><?php echo htmlspecialchars($post['post_content'], ENT_QUOTES, 'UTF-8'); ?></p>
+                                    <p><?php echo $post['post_content']; ?></p>
                                     <a href="blog.php" class="btn btn-secondary">Quay lại</a>
                                 </div>
                             <?php } else { ?>

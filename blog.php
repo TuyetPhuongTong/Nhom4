@@ -1,7 +1,5 @@
 <?php require_once('header.php'); ?>
 
-<?php require_once('header.php'); ?>
-
 <?php
 // Lấy thông tin từ bảng tbl_page
 $statement = $pdo->prepare("SELECT * FROM tbl_page WHERE id=1");
@@ -18,15 +16,16 @@ $post = $statement->fetch(PDO::FETCH_ASSOC);
 if ($post && !empty($post['photo'])) {
     $blog_banner = $post['photo'];
 } else {
-    $blog_banner = 'default.jpg'; // Ảnh mặc định
+    $blog_banner = 'default.jpg'; // Ảnh mặc định nếu không có ảnh
 }
 ?>
 
-<div class="page-banner" style="background-image: url(assets/uploads/<?php echo $blog_banner; ?>);">
+<div class="page-banner" style="background-image: url('assets/uploads/<?php echo $blog_banner; ?>');">
     <p>URL của ảnh nền: assets/uploads/<?php echo $blog_banner; ?></p>
 </div>
+
 <div class="container">
-    <h1 style="text-align: center; margin-bottom: 20px;">Bài viết nổi bật</h1>
+    <h1 style="text-align: center; margin-bottom: 20px;"><?php echo $blog_title; ?></h1>
     <div class="posts-container">
         <div class="page">
             <div class="container">
@@ -41,12 +40,15 @@ if ($post && !empty($post['photo'])) {
                                 $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
 
                                 foreach ($posts as $post) {
+                                    // Cắt bớt nội dung để hiển thị phần mô tả ngắn
                                     $short_content = mb_strimwidth(strip_tags($post['post_content']), 0, 200, "...");
+                                    // Kiểm tra ảnh, nếu không có ảnh thì sử dụng ảnh mặc định
+                                    $post_photo = !empty($post['photo']) ? $post['photo'] : 'default.jpg';
                                     ?>
                                     <div class="post-item">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <img src="assets/uploads/<?php echo $post['photo']; ?>" class="img-fluid" alt="<?php echo $post['post_title']; ?>">
+                                                <img src="assets/uploads/<?php echo $post_photo; ?>" class="img-fluid" alt="<?php echo $post['post_title']; ?>">
                                             </div>
                                             <div class="col-md-8">
                                                 <h2><?php echo $post['post_title']; ?></h2>
@@ -66,10 +68,12 @@ if ($post && !empty($post['photo'])) {
                             $post = $statement->fetch(PDO::FETCH_ASSOC);
 
                             if ($post) {
+                                // Kiểm tra ảnh, nếu không có ảnh thì sử dụng ảnh mặc định
+                                $post_photo = !empty($post['photo']) ? $post['photo'] : 'default.jpg';
                                 ?>
                                 <div class="post-detail">
                                     <h1><?php echo $post['post_title']; ?></h1>
-                                    <img src="assets/uploads/<?php echo $post['photo']; ?>" class="img-fluid" alt="<?php echo $post['post_title']; ?>">
+                                    <img src="assets/uploads/<?php echo $post_photo; ?>" class="img-fluid" alt="<?php echo $post['post_title']; ?>">
                                     <p><?php echo $post['post_content']; ?></p>
                                     <a href="blog.php" class="btn btn-secondary">Quay lại</a>
                                 </div>

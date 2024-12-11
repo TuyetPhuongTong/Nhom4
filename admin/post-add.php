@@ -16,23 +16,29 @@ if (isset($_POST['form1'])) {
         $valid = 0;
         $error_message .= 'Nội dung không được để trống.<br>';
     }
+
     // Kiểm tra hình ảnh
     $photo = '';
     if ($_FILES['photo']['name'] != '') {
         $ext = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
+
+        // Kiểm tra định dạng ảnh
         if ($ext != 'jpg' && $ext != 'png' && $ext != 'jpeg' && $ext != 'gif') {
             $valid = 0;
             $error_message .= 'Chỉ được phép tải lên tệp ảnh định dạng jpg, png, jpeg, hoặc gif.<br>';
         } else {
-            // Tạo tên tệp duy nhất cho ảnh
+            // Tạo tên tệp duy nhất cho ảnh để tránh trùng lặp
             $photo = 'post-' . time() . '.' . $ext;
 
-            // Kiểm tra nếu thư mục uploads không tồn tại, tạo nó
+            // Đường dẫn thư mục lưu ảnh
             $upload_dir = 'uploads/';
+            
+            // Kiểm tra và tạo thư mục uploads nếu chưa tồn tại
             if (!file_exists($upload_dir)) {
-                mkdir($upload_dir, 0755, true);  // Tạo thư mục nếu không tồn tại
+                mkdir($upload_dir, 0755, true);  // Tạo thư mục uploads nếu không tồn tại
             }
-            // Di chuyển tệp từ thư mục tạm đến thư mục uploads
+
+            // Di chuyển tệp ảnh từ thư mục tạm đến thư mục uploads
             if (!move_uploaded_file($_FILES['photo']['tmp_name'], $upload_dir . $photo)) {
                 $valid = 0;
                 $error_message .= 'Lỗi khi tải ảnh lên.<br>';
@@ -40,8 +46,8 @@ if (isset($_POST['form1'])) {
         }
     }
 
+    // Nếu tất cả hợp lệ, thực hiện lưu bài viết vào cơ sở dữ liệu
     if ($valid == 1) {
-        // Thêm bài viết vào cơ sở dữ liệu
         $statement = $pdo->prepare("
             INSERT INTO tbl_post 
             (post_title, post_slug, post_content, post_date, photo, total_view) 
@@ -51,8 +57,8 @@ if (isset($_POST['form1'])) {
             $_POST['post_title'],
             $_POST['post_slug'],
             $_POST['post_content'],
-            $photo,
-            0 // Total view mặc định là 0
+            $photo, // Lưu tên tệp ảnh vào cơ sở dữ liệu
+            0 // Tổng lượt xem mặc định là 0
         ));
 
         $success_message = 'Bài viết đã được thêm thành công!';
@@ -132,4 +138,4 @@ if (isset($_POST['form1'])) {
 
 </section>
 
-<?php require_once('footer.php'); ?>
+<?php require_once('footer.php'); ?> 

@@ -58,7 +58,7 @@ if(!isset($_SESSION['customer'])) {
 
 /* Nút gửi */
 .user-content .btn-primary {
-    background-color: #CC3333; /* Màu nền đỏ */
+    background-color: #006666; /* Màu nền đỏ */
     border: none; /* Xóa đường viền mặc định */
     color: #FFFFFF; /* Màu chữ trắng */
     padding: 10px 20px; /* Khoảng cách bên trong nút */
@@ -69,7 +69,7 @@ if(!isset($_SESSION['customer'])) {
 }
 
 .user-content .btn-primary:hover {
-    background-color: #990000; /* Đổi màu nền sang đỏ đậm khi di chuột qua */
+    background-color: #CC3300; /* Đổi màu nền sang đỏ đậm khi di chuột qua */
     color: #FFFFFF; /* Giữ màu chữ trắng */
 }
 

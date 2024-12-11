@@ -15,19 +15,16 @@ $blog_meta_title = $page['blog_meta_title'];
         <h1><?php echo $blog_title; ?></h1>
     </div>
 </div>
-
-<div class="page">
+                    <div class="container">
+    <h1 style="text-align: center; margin-bottom: 20px;">Bài viết nổi bật</h1>
+    <div class="posts-container">
+    <div class="page">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <?php if (!isset($_GET['post_slug'])) { ?>
                     <!-- Danh sách bài viết -->
                     <div class="post-list">
-                    <div class="container">
-    <h1 style="text-align: center; margin-bottom: 20px;">Bài viết nổi bật</h1>
-    <div class="posts-container">
-        <b>
-        </b>
                         <?php
                         $statement = $pdo->prepare("SELECT * FROM tbl_post ORDER BY post_date DESC");
                         $statement->execute();

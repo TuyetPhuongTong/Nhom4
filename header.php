@@ -494,9 +494,6 @@ foreach ($result as $row) {
 							</li>
 							<li style="display: inline-block; margin-right: 20px; background-color: #7f572e; ">
 								<a href="blog.php" style="color: #f6dbab; font-size: 16px; text-decoration: none; padding: 10px 15px; display: inline-block;">
-									<!-- Phần tiêu đề blog -->
-									<div style="padding: 10px; text-align: center;">
-										<h4 style="margin: 0; color: #f6dbab; font-size: 18px;">
 											<?php echo $blog_title; ?>
 										</h4>
 									</div>

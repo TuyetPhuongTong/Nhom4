@@ -130,7 +130,97 @@ if(isset($_POST['form_contact']))
     }
 }
 ?>
-                
+<style>
+ /* Thiết kế chung cho biểu mẫu liên hệ */
+.cform .form-control {
+    border: 1px solid #CC3300;
+    border-radius: 4px;
+    color: #006666;
+}
+
+.cform .form-control:focus {
+    border-color: #006666;
+    box-shadow: 0 0 5px rgba(0, 102, 102, 0.5);
+}
+
+.cform label {
+    color: #006666;
+    font-weight: bold;
+}
+
+.cform .btn-primary {
+    background-color: #CC3300;
+    border-color: #CC3300;
+    color: #fff;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.cform .btn-primary:hover {
+    background-color: #006666;
+    border-color: #006666;
+    color: #fff;
+}
+
+.cform .btn-primary:focus {
+    background-color: #CC3300;
+    border-color: #CC3300;
+}
+
+/* Thiết kế phần thông tin văn phòng */
+address {
+    color: #006666;
+    font-style: normal;
+    line-height: 1.5;
+}
+
+address strong {
+    color: #CC3300;
+}
+
+address a {
+    color: #006666;
+    text-decoration: none;
+}
+
+address a:hover {
+    text-decoration: underline;
+}
+
+/* Thiết kế phần bản đồ */
+.page .container h3 {
+    color: #CC3300;
+    border-bottom: 2px solid #006666;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+/* Thiết kế tiêu đề trang */
+.page-banner {
+    color: #fff;
+    background-size: cover;
+    text-align: center;
+    padding: 50px 0;
+}
+
+.page-banner h1 {
+    color: #CC3300;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Thiết kế hộp thông báo */
+.well {
+    border: 1px solid #006666;
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+.well-sm {
+    border: 1px solid #CC3300;
+    background-color: #fff8f5;
+}
+
+
+</style>           
                 <?php
                 if($error_message != '') {
                     echo "<script>alert('".$error_message."')</script>";

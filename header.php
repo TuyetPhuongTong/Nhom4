@@ -492,9 +492,17 @@ foreach ($result as $row) {
 									<?php echo $about_title; ?>
 								</a>
 							</li>
-							<li style="display: inline-block; margin-right: 20px; background-color: #7f572e;">
-								<a href="blog.php" style="color: #f6dbab; font-size: 16px; text-decoration: none; padding: 10px 15px; display: inline-block;">
-									<?php echo $blog_title; ?>
+							<li style="display: inline-block; margin-right: 20px; background-color: #7f572e; border-radius: 8px; overflow: hidden;">
+								<a href="blog.php" style="color: #f6dbab; font-size: 16px; text-decoration: none; display: block; position: relative; overflow: hidden;">
+									<div style="position: relative; padding-bottom: 56.25%; background-color: #333; display: block;">
+										<!-- Thêm hình ảnh ở đây -->
+										<img src="path_to_your_image.jpg" alt="Blog Image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+									</div>
+									<div style="position: absolute; top: 50%; left: 0; width: 100%; text-align: center; transform: translateY(-50%);">
+										<h4 style="margin: 0; color: #f6dbab; background-color: rgba(0, 0, 0, 0.6); padding: 10px; font-size: 18px;">
+											<?php echo $blog_title; ?>
+										</h4>
+									</div>
 								</a>
 							</li>
 							<li style="display: inline-block; margin-right: 20px; background-color: #7f572e;">

@@ -26,6 +26,8 @@ $blog_meta_title = $page['blog_meta_title'];
                     <div class="container">
     <h1 style="text-align: center; margin-bottom: 20px;">Bài viết nổi bật</h1>
     <div class="posts-container">
+        <b>
+        </b>
                         <?php
                         $statement = $pdo->prepare("SELECT * FROM tbl_post ORDER BY post_date DESC");
                         $statement->execute();

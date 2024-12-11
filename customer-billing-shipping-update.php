@@ -82,7 +82,119 @@ if (isset($_POST['form1'])) {
 
 }
 ?>
+<style>
+    /* Tổng quan */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+}
 
+/* Tiêu đề chính */
+h3 {
+    color: #006666;
+    border-bottom: 2px solid #CC3300;
+    padding-bottom: 5px;
+}
+
+/* Form */
+.form-group label {
+    font-weight: bold;
+    color: #006666;
+}
+
+.form-control {
+    border: 1px solid #006666;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* Nút */
+.btn-primary {
+    background-color: #006666;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #CC3300;
+    cursor: pointer;
+}
+
+/* Thông báo */
+.error {
+    color: #CC3300;
+    border: 1px solid #CC3300;
+    background-color: #ffe6e6;
+    border-radius: 5px;
+}
+
+.success {
+    color: #006666;
+    border: 1px solid #006666;
+    background-color: #e6f7f7;
+    border-radius: 5px;
+}
+
+/* Sidebar */
+.customer-sidebar {
+    background-color: #006666;
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.customer-sidebar a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.customer-sidebar a:hover {
+    color: #CC3300;
+}
+
+/* Table nếu có */
+.table {
+    border: 1px solid #006666;
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.table th {
+    background-color: #006666;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+}
+
+.table td {
+    border: 1px solid #006666;
+    padding: 10px;
+}
+
+/* Padding và khoảng cách */
+.container {
+    padding: 20px;
+}
+
+.row {
+    margin-bottom: 20px;
+}
+
+/* Input focus */
+.form-control:focus {
+    border-color: #CC3300;
+    outline: none;
+    box-shadow: 0 0 5px rgba(204, 51, 0, 0.5);
+}
+
+</style>
 <div class="page">
     <div class="container">
         <div class="row">            

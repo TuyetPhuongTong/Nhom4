@@ -493,9 +493,7 @@ foreach ($result as $row) {
 								</a>
 							</li>
 							<li style="display: inline-block; margin-right: 20px; background-color: #7f572e; border-radius: 8px; overflow: hidden; width: 250px;">
-								<a href="blog.php" style="color: #f6dbab; font-size: 16px; text-decoration: none; display: block; position: relative;">
-									<!-- Phần ảnh -->
-								
+								<a href="blog.php" style="color: #f6dbab; font-size: 16px; text-decoration: none; padding: 10px 15px; display: inline-block;">
 									<!-- Phần tiêu đề blog -->
 									<div style="padding: 10px; text-align: center;">
 										<h4 style="margin: 0; color: #f6dbab; font-size: 18px;">

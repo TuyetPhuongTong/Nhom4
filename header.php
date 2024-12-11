@@ -492,9 +492,9 @@ foreach ($result as $row) {
 									<?php echo $about_title; ?>
 								</a>
 							</li>
-							<li style="display: inline-block; margin-right: 20px; background-color: #7f572e;">
-								<a href="blog.php" style="color: #f6dbab; font-size: 16px; text-decoration: none; padding: 10px 15px; display: inline-block;">
-									<?php echo $blog_title; ?>
+							<li style="display: inline-block; margin-right: 20px; background-color: #7f572e; border-radius: 8px; overflow: hidden;">
+								<a href="blog.php" style="color: #f6dbab; font-size: 16px; text-decoration: none; display: block; padding: 10px 15px; text-align: center; transition: background-color 0.3s ease; border-radius: 8px;">
+									<span style=" font-size: 16px; display: block; margin-bottom: 5px;"><?php echo $blog_title; ?></span>
 								</a>
 							</li>
 							<li style="display: inline-block; margin-right: 20px; background-color: #7f572e;">

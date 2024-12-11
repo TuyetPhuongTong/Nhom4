@@ -17,13 +17,18 @@ if (isset($_POST['form1'])) {
         $error_message .= 'Nội dung không được để trống.<br>';
     }
 
+    // Tạo slug nếu không có
+    if (empty($_POST['post_slug'])) {
+        $_POST['post_slug'] = strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $_POST['post_title']));
+    }
+
     // Kiểm tra hình ảnh
     $photo = '';
     if ($_FILES['photo']['name'] != '') {
         $ext = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
 
         // Kiểm tra định dạng ảnh
-        if ($ext != 'jpg' && $ext != 'png' && $ext != 'jpeg' && $ext != 'gif') {
+        if (!in_array($ext, ['jpg', 'png', 'jpeg', 'gif'])) {
             $valid = 0;
             $error_message .= 'Chỉ được phép tải lên tệp ảnh định dạng jpg, png, jpeg, hoặc gif.<br>';
         } else {
@@ -31,14 +36,15 @@ if (isset($_POST['form1'])) {
             $photo = 'post-' . time() . '.' . $ext;
 
             // Đường dẫn thư mục lưu ảnh
-            $upload_dir = 'uploads/';
-            
-            // Kiểm tra và tạo thư mục uploads nếu chưa tồn tại
+            $upload_dir = '../assets/uploads/
+            ';
+
+            // Kiểm tra và tạo thư mục nếu chưa tồn tại
             if (!file_exists($upload_dir)) {
-                mkdir($upload_dir, 0755, true);  // Tạo thư mục uploads nếu không tồn tại
+                mkdir($upload_dir, 0755, true);
             }
 
-            // Di chuyển tệp ảnh từ thư mục tạm đến thư mục uploads
+            // Di chuyển tệp ảnh từ thư mục tạm đến thư mục đích
             if (!move_uploaded_file($_FILES['photo']['tmp_name'], $upload_dir . $photo)) {
                 $valid = 0;
                 $error_message .= 'Lỗi khi tải ảnh lên.<br>';
@@ -48,18 +54,14 @@ if (isset($_POST['form1'])) {
 
     // Nếu tất cả hợp lệ, thực hiện lưu bài viết vào cơ sở dữ liệu
     if ($valid == 1) {
-        $statement = $pdo->prepare("
-            INSERT INTO tbl_post 
-            (post_title, post_slug, post_content, post_date, photo, total_view) 
-            VALUES (?, ?, ?, NOW(), ?, ?)
-        ");
-        $statement->execute(array(
+        $statement = $pdo->prepare("INSERT INTO tbl_post (post_title, post_slug, post_content, post_date, photo, total_view) VALUES (?, ?, ?, NOW(), ?, ?)");
+        $statement->execute([
             $_POST['post_title'],
             $_POST['post_slug'],
             $_POST['post_content'],
-            $photo, // Lưu tên tệp ảnh vào cơ sở dữ liệu
+            $photo,
             0 // Tổng lượt xem mặc định là 0
-        ));
+        ]);
 
         $success_message = 'Bài viết đã được thêm thành công!';
 
@@ -81,7 +83,6 @@ if (isset($_POST['form1'])) {
 </section>
 
 <section class="content">
-
     <div class="row">
         <div class="col-md-12">
 
@@ -135,7 +136,6 @@ if (isset($_POST['form1'])) {
             </form>
         </div>
     </div>
-
 </section>
 
-<?php require_once('footer.php'); ?> 
+<?php require_once('footer.php'); ?>

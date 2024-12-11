@@ -1,32 +1,31 @@
-<?php require_once('header.php'); ?>
-
-<?php require_once('header.php'); ?>
-
 <?php
-// Lấy thông tin từ bảng tbl_page
+// Kết nối file header.php
+require_once('header.php');
+
+// Lấy thông tin trang từ bảng tbl_page
 $statement = $pdo->prepare("SELECT * FROM tbl_page WHERE id=1");
 $statement->execute();
 $page = $statement->fetch(PDO::FETCH_ASSOC);
 $blog_title = $page['blog_title'];
 $blog_meta_title = $page['blog_meta_title'];
-
-// Lấy ảnh từ bảng tbl_post (bài viết mới nhất)
-$statement = $pdo->prepare("SELECT photo FROM tbl_post ORDER BY post_date DESC LIMIT 1");
-$statement->execute();
-$post = $statement->fetch(PDO::FETCH_ASSOC);
-
-if ($post && !empty($post['photo'])) {
-    $blog_banner = $post['photo'];
-} else {
-    $blog_banner = 'default.jpg'; // Ảnh mặc định
-}
 ?>
 
-<div class="page-banner" style="background-image: url(assets/uploads/<?php echo $blog_banner; ?>);">
-    <p>URL của ảnh nền: assets/uploads/<?php echo $blog_banner; ?></p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo htmlspecialchars($blog_meta_title, ENT_QUOTES, 'UTF-8'); ?></title>
+    <link rel="stylesheet" href="blog.css">
+</head>
+<body>
+
 <div class="container">
-    <h1 style="text-align: center; margin-bottom: 20px;">Bài viết nổi bật</h1>
+    <!-- Tiêu đề của Blog -->
+    <h1 style="text-align: center; margin-bottom: 20px;">
+        <?php echo htmlspecialchars($blog_title, ENT_QUOTES, 'UTF-8'); ?>
+    </h1>
+
     <div class="posts-container">
         <div class="page">
             <div class="container">
@@ -42,23 +41,27 @@ if ($post && !empty($post['photo'])) {
 
                                 foreach ($posts as $post) {
                                     $short_content = mb_strimwidth(strip_tags($post['post_content']), 0, 200, "...");
+                                    $post_photo = !empty($post['photo']) ? $post['photo'] : 'default.jpg';
                                     ?>
                                     <div class="post-item">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <img src="assets/uploads/<?php echo $post['photo']; ?>" class="img-fluid" alt="<?php echo $post['post_title']; ?>">
+                                                <img src="assets/uploads/<?php echo htmlspecialchars($post_photo, ENT_QUOTES, 'UTF-8'); ?>" 
+                                                     class="img-fluid" 
+                                                     alt="<?php echo htmlspecialchars($post['post_title'], ENT_QUOTES, 'UTF-8'); ?>">
                                             </div>
                                             <div class="col-md-8">
-                                                <h2><?php echo $post['post_title']; ?></h2>
-                                                <p><?php echo $short_content; ?></p>
-                                                <a href="blog.php?post_slug=<?php echo $post['post_slug']; ?>" class="btn btn-primary">Xem thêm</a>
+                                                <h2><?php echo htmlspecialchars($post['post_title'], ENT_QUOTES, 'UTF-8'); ?></h2>
+                                                <p><?php echo htmlspecialchars($short_content, ENT_QUOTES, 'UTF-8'); ?></p>
+                                                <a href="blog.php?post_slug=<?php echo urlencode($post['post_slug']); ?>" 
+                                                   class="btn btn-primary">Xem thêm</a>
                                             </div>
                                         </div>
                                     </div>
                                     <hr>
                                 <?php } ?>
                             </div>
-                        <?php } else { 
+                        <?php } else {
                             // Hiển thị chi tiết bài viết
                             $post_slug = $_GET['post_slug'];
                             $statement = $pdo->prepare("SELECT * FROM tbl_post WHERE post_slug = ?");
@@ -66,10 +69,13 @@ if ($post && !empty($post['photo'])) {
                             $post = $statement->fetch(PDO::FETCH_ASSOC);
 
                             if ($post) {
+                                $post_photo = !empty($post['photo']) ? $post['photo'] : 'default.jpg';
                                 ?>
                                 <div class="post-detail">
-                                    <h1><?php echo $post['post_title']; ?></h1>
-                                    <img src="assets/uploads/<?php echo $post['photo']; ?>" class="img-fluid" alt="<?php echo $post['post_title']; ?>">
+                                    <h1><?php echo htmlspecialchars($post['post_title'], ENT_QUOTES, 'UTF-8'); ?></h1>
+                                    <img src="assets/uploads/<?php echo htmlspecialchars($post_photo, ENT_QUOTES, 'UTF-8'); ?>" 
+                                         class="img-fluid" 
+                                         alt="<?php echo htmlspecialchars($post['post_title'], ENT_QUOTES, 'UTF-8'); ?>">
                                     <p><?php echo $post['post_content']; ?></p>
                                     <a href="blog.php" class="btn btn-secondary">Quay lại</a>
                                 </div>
@@ -87,4 +93,10 @@ if ($post && !empty($post['photo'])) {
     </div>
 </div>
 
-<?php require_once('footer.php'); ?>
+<?php
+// Kết nối file footer.php
+require_once('footer.php');
+?>
+
+</body>
+</html>

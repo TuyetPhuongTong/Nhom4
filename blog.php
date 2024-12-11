@@ -11,9 +11,6 @@ $blog_meta_title = $page['blog_meta_title'];
 ?>
 
 <div class="page-banner" style="background-image: url(assets/uploads/<?php echo $blog_banner; ?>);">
-    <div class="inner">
-        <h1><?php echo $blog_title; ?></h1>
-    </div>
 </div>
                     <div class="container">
     <h1 style="text-align: center; margin-bottom: 20px;">Bài viết nổi bật</h1>
@@ -26,7 +23,7 @@ $blog_meta_title = $page['blog_meta_title'];
                     <!-- Danh sách bài viết -->
                     <div class="post-list">
                     <p>
-                        
+
                     </p>
                         <?php
                         $statement = $pdo->prepare("SELECT * FROM tbl_post ORDER BY post_date DESC");

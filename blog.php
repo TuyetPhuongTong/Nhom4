@@ -16,35 +16,6 @@ if ($page) {
 }
 ?>
 
-<style>
-    .post-item img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        max-height: 200px;
-        border-radius: 5px;
-    }
-
-    .post-item .col-md-4 {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .post-item {
-        margin-bottom: 20px;
-    }
-
-    .post-item h2 {
-        font-size: 20px;
-        margin-top: 10px;
-    }
-
-    .post-item p {
-        font-size: 14px;
-        line-height: 1.5;
-    }
-</style>
 
 <div class="container">
     <h1 style="text-align: center; margin-bottom: 20px;"><?php echo htmlspecialchars($blog_title); ?></h1>

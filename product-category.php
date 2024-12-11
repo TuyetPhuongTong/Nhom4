@@ -133,7 +133,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 .page-banner .inner h1 {
     font-size: 36px;
     font-weight: bold;
-    color: #FFDAB9; /* Use the red color for the heading */
+    color: #CC3300; /* Use the red color for the heading */
 }
 
 .page .container {

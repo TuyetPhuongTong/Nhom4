@@ -21,10 +21,7 @@ $blog_meta_title = $page['blog_meta_title'];
             <div class="col-md-12">
                 <?php if (!isset($_GET['post_slug'])) { ?>
                     <!-- Danh sách bài viết -->
-                    <div class="post-list">
-                    <p>
-
-                    </p>
+                  <p>  <div class="post-list"></p>
                         <?php
                         $statement = $pdo->prepare("SELECT * FROM tbl_post ORDER BY post_date DESC");
                         $statement->execute();

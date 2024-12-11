@@ -19,7 +19,7 @@ if(!isset($_SESSION['cart_p_id'])) {
 <div class="page-banner" style="background-image: url(assets/uploads/<?php echo $banner_checkout; ?>)">
     <div class="overlay"></div>
     <div class="page-banner-inner">
-        <h1><?php echo LANG_VALUE_22; ?></h1>
+        <h1><?php echo "Thanh toán"; ?></h1>
     </div>
 </div>
 
@@ -34,18 +34,18 @@ if(!isset($_SESSION['cart_p_id'])) {
                     </p>
                 <?php else: ?>
 
-                <h3 class="special"><?php echo LANG_VALUE_26; ?></h3>
+                <h3 class="special"><?php echo "Chi tiết đơn hàng"; ?></h3>
                 <div class="cart">
                     <table class="table table-responsive table-hover table-bordered">
                         <tr>
-                            <th><?php echo '#' ?></th>
-                            <th><?php echo LANG_VALUE_8; ?></th>
-                            <th><?php echo LANG_VALUE_47; ?></th>
-                            <th><?php echo LANG_VALUE_157; ?></th>
-                            <th><?php echo LANG_VALUE_158; ?></th>
-                            <th><?php echo LANG_VALUE_159; ?></th>
-                            <th><?php echo LANG_VALUE_55; ?></th>
-                            <th class="text-right"><?php echo LANG_VALUE_82; ?></th>
+                            <th><?php echo "STT" ?></th>
+                            <th><?php echo "Hình ảnh"; ?></th>
+                            <th><?php echo "Tên sản phẩm"; ?></th>
+                            <th><?php echo "Kích cỡ"; ?></th>
+                            <th><?php echo "Độ đậm Cacao"; ?></th>
+                            <th><?php echo "Giá tiền"; ?></th>
+                            <th><?php echo "Số lượng"; ?></th>
+                            <th class="text-right"><?php echo "Thành tiền"; ?></th>
                         </tr>
                          <?php
                         $table_total_price = 0;
@@ -134,7 +134,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                         </tr>
                         <?php endfor; ?>           
                         <tr>
-                            <th colspan="7" class="total-text"><?php echo LANG_VALUE_81; ?></th>
+                            <th colspan="7" class="total-text"><?php echo "Tạm tính"; ?></th>
                             <th class="total-amount"><?php echo $table_total_price; ?><?php echo "₫"; ?></th>
                         </tr>
                         <?php
@@ -156,11 +156,11 @@ if(!isset($_SESSION['cart_p_id'])) {
                         }                        
                         ?>
                         <tr>
-                            <td colspan="7" class="total-text"><?php echo LANG_VALUE_84; ?></td>
+                            <td colspan="7" class="total-text"><?php echo "Phí vận chuyển"; ?></td>
                             <td class="total-amount"><?php echo $shipping_cost; ?><?php echo "₫"; ?></td>
                         </tr>
                         <tr>
-                            <th colspan="7" class="total-text"><?php echo LANG_VALUE_82; ?></th>
+                            <th colspan="7" class="total-text"><?php echo "Tổng tiền"; ?></th>
                             <th class="total-amount">
                                 <?php
                                 $final_total = $table_total_price+$shipping_cost;
@@ -176,22 +176,22 @@ if(!isset($_SESSION['cart_p_id'])) {
                 <div class="billing-address">
                     <div class="row">
                         <div class="col-md-6">
-                            <h3 class="special"><?php echo LANG_VALUE_161; ?></h3>
+                            <h3 class="special"><?php echo "Thông tin hóa đơn"; ?></h3>
                             <table class="table table-responsive table-bordered table-hover table-striped bill-address">
                                 <tr>
-                                    <td><?php echo LANG_VALUE_102; ?></td>
+                                    <td><?php echo "Tên khách hàng"; ?></td>
                                     <td><?php echo $_SESSION['customer']['cust_b_name']; ?></p></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_103; ?></td>
+                                    <td><?php echo "Tên công ty"; ?></td>
                                     <td><?php echo $_SESSION['customer']['cust_b_cname']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_104; ?></td>
+                                    <td><?php echo "Số điện thoại"; ?></td>
                                     <td><?php echo $_SESSION['customer']['cust_b_phone']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_106; ?></td>
+                                    <td><?php echo "Quốc gia"; ?></td>
                                     <td>
                                         <?php
                                         $statement = $pdo->prepare("SELECT * FROM tbl_country WHERE country_id=?");
@@ -204,42 +204,42 @@ if(!isset($_SESSION['cart_p_id'])) {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_105; ?></td>
+                                    <td><?php echo "Địa chỉ"; ?></td>
                                     <td>
                                         <?php echo nl2br($_SESSION['customer']['cust_b_address']); ?>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_107; ?></td>
+                                    <td><?php echo "Thành phố"; ?></td>
                                     <td><?php echo $_SESSION['customer']['cust_b_city']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_108; ?></td>
+                                    <td><?php echo "Tỉnh thành/Quận/Huyện"; ?></td>
                                     <td><?php echo $_SESSION['customer']['cust_b_state']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_109; ?></td>
+                                    <td><?php echo "Mã bưu điện"; ?></td>
                                     <td><?php echo $_SESSION['customer']['cust_b_zip']; ?></td>
                                 </tr>                                
                             </table>
                         </div>
                         <div class="col-md-6">
-                            <h3 class="special"><?php echo LANG_VALUE_162; ?></h3>
+                            <h3 class="special"><?php echo "Địa chỉ giao hàng"; ?></h3>
                             <table class="table table-responsive table-bordered table-hover table-striped bill-address">
                                 <tr>
-                                    <td><?php echo LANG_VALUE_102; ?></td>
+                                    <td><?php echo "Tên khách hàng"; ?></td>
                                     <td><?php echo $_SESSION['customer']['cust_s_name']; ?></p></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_103; ?></td>
+                                    <td><?php echo "Tên công ty"; ?></td>
                                     <td><?php echo $_SESSION['customer']['cust_s_cname']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_104; ?></td>
+                                    <td><?php echo "Số điện thoại"; ?></td>
                                     <td><?php echo $_SESSION['customer']['cust_s_phone']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_106; ?></td>
+                                    <td><?php echo "Quốc gia"; ?></td>
                                     <td>
                                         <?php
                                         $statement = $pdo->prepare("SELECT * FROM tbl_country WHERE country_id=?");
@@ -252,21 +252,21 @@ if(!isset($_SESSION['cart_p_id'])) {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_105; ?></td>
+                                    <td><?php echo "Địa chỉ"; ?></td>
                                     <td>
                                         <?php echo nl2br($_SESSION['customer']['cust_s_address']); ?>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_107; ?></td>
+                                    <td><?php echo "Thành phố"; ?></td>
                                     <td><?php echo $_SESSION['customer']['cust_s_city']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_108; ?></td>
+                                    <td><?php echo "Tỉnh thành/Quận/Huyện"; ?></td>
                                     <td><?php echo $_SESSION['customer']['cust_s_state']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_109; ?></td>
+                                    <td><?php echo "Mã bưu điện"; ?></td>
                                     <td><?php echo $_SESSION['customer']['cust_s_zip']; ?></td>
                                 </tr> 
                             </table>
@@ -278,12 +278,12 @@ if(!isset($_SESSION['cart_p_id'])) {
 
                 <div class="cart-buttons">
                     <ul>
-                        <li><a href="cart.php" class="btn btn-primary"><?php echo LANG_VALUE_21; ?></a></li>
+                        <li><a href="cart.php" class="btn btn-primary"><?php echo "Quay lại Giỏ hàng"; ?></a></li>
                     </ul>
                 </div>
 
 				<div class="clear"></div>
-                <h3 class="special"><?php echo LANG_VALUE_33; ?></h3>
+                <h3 class="special"><?php echo "Phần Thanh toán"; ?></h3>
                 <div class="row">
                     
                     	<?php
@@ -312,7 +312,7 @@ if(!isset($_SESSION['cart_p_id'])) {
 		                <?php if($checkout_access == 0): ?>
 		                	<div class="col-md-12">
 				                <div style="color:red;font-size:22px;margin-bottom:50px;">
-			                        You must have to fill up all the billing and shipping information from your dashboard panel in order to checkout the order. Please fill up the information going to <a href="customer-billing-shipping-update.php" style="color:red;text-decoration:underline;">this link</a>.
+			                        Bạn phải điền đầy đủ thông tin hóa đơn và thông tin vận chuyển trong phần quản trị Tài khoản của tôi để Thanh toán. Vui lòng điền thông tin này ở <a href="customer-billing-shipping-update.php" style="color:red;text-decoration:underline;">Tài khoản của tôi</a>.
 			                    </div>
 	                    	</div>
 	                	<?php else: ?>
@@ -321,24 +321,24 @@ if(!isset($_SESSION['cart_p_id'])) {
 	                            <div class="row">
 
 	                                <div class="col-md-12 form-group">
-	                                    <label for=""><?php echo LANG_VALUE_34; ?> *</label>
+	                                    <label for=""><?php echo "Chọn phương thức thanh toán"; ?> *</label>
 	                                    <select name="payment_method" class="form-control select2" id="advFieldsStatus">
-	                                        <option value=""><?php echo LANG_VALUE_35; ?></option>
-	                                        <option value="PayPal"><?php echo LANG_VALUE_36; ?></option>
-	                                        <option value="Bank Deposit"><?php echo LANG_VALUE_38; ?></option>
+	                                        <option value=""><?php echo "Chọn một phương thức"; ?></option>
+	                                        <option value="PayPal"><?php echo "PayPal"; ?></option>
+	                                        <option value="Bank Deposit"><?php echo "Ngân hàng"; ?></option>
 	                                    </select>
 	                                </div>
 
                                     <form class="paypal" action="<?php echo BASE_URL; ?>payment/paypal/payment_process.php" method="post" id="paypal_form" target="_blank">
                                         <input type="hidden" name="cmd" value="_xclick" />
                                         <input type="hidden" name="no_note" value="1" />
-                                        <input type="hidden" name="lc" value="UK" />
-                                        <input type="hidden" name="currency_code" value="USD" />
+                                        <input type="hidden" name="lc" value="VN" />
+                                        <input type="hidden" name="currency_code" value="VND" />
                                         <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest" />
 
                                         <input type="hidden" name="final_total" value="<?php echo $final_total; ?>">
                                         <div class="col-md-12 form-group">
-                                            <input type="submit" class="btn btn-primary" value="<?php echo LANG_VALUE_46; ?>" name="form1">
+                                            <input type="submit" class="btn btn-primary" value="<?php echo "Thanh toán ngay"; ?>" name="form1">
                                         </div>
                                     </form>
 
@@ -347,7 +347,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                                     <form action="payment/bank/init.php" method="post" id="bank_form">
                                         <input type="hidden" name="amount" value="<?php echo $final_total; ?>">
                                         <div class="col-md-12 form-group">
-                                            <label for=""><?php echo LANG_VALUE_43; ?></span></label><br>
+                                            <label for=""><?php echo "Gửi chi tiết"; ?></span></label><br>
                                             <?php
                                             $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
                                             $statement->execute();
@@ -358,11 +358,11 @@ if(!isset($_SESSION['cart_p_id'])) {
                                             ?>
                                         </div>
                                         <div class="col-md-12 form-group">
-                                            <label for=""><?php echo LANG_VALUE_44; ?> <br><span style="font-size:12px;font-weight:normal;">(<?php echo LANG_VALUE_45; ?>)</span></label>
+                                            <label for=""><?php echo "Thông tin giao dịch"; ?> <br><span style="font-size:12px;font-weight:normal;">(<?php echo "ID giao dịch và mọi thông tin cần chính xác"; ?>)</span></label>
                                             <textarea name="transaction_info" class="form-control" cols="30" rows="10"></textarea>
                                         </div>
                                         <div class="col-md-12 form-group">
-                                            <input type="submit" class="btn btn-primary" value="<?php echo LANG_VALUE_46; ?>" name="form3">
+                                            <input type="submit" class="btn btn-primary" value="<?php echo "Thanh toán ngay"; ?>" name="form3">
                                         </div>
                                     </form>
 	                                

@@ -180,7 +180,7 @@ if(isset($_POST['form2'])) {
 					<tr>
 	                    <td><?php echo $i; ?></td>
 	                    <td><?php echo $row['country_name']; ?></td>
-                        <td><?php echo $row['amount']; ?></td>
+                        <td><?php echo $row['amount']; ?>₫</td>
 	                    <td>
 	                        <a href="shipping-cost-edit.php?id=<?php echo $row['shipping_cost_id']; ?>" class="btn btn-primary btn-xs">Chỉnh sửa</a>
 	                        <a href="#" class="btn btn-danger btn-xs" data-href="shipping-cost-delete.php?id=<?php echo $row['shipping_cost_id']; ?>" data-toggle="modal" data-target="#confirm-delete">Xóa</a>

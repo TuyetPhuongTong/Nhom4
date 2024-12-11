@@ -1,5 +1,6 @@
 <?php require_once('header.php'); ?>
 
+
 <?php
 $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
 $statement->execute();
@@ -147,7 +148,21 @@ foreach ($result as $row)
                                 <div class="overlay"></div>
                             </div>
                             <div class="text">
-                                <h3><a href="product.php?id=<?php echo $row['p_id']; ?>"><?php echo $row['p_name']; ?></a></h3>
+                                <h3>
+                                <a href="product.php?id=<?php echo $row['p_id']; ?>">
+                                    <?php 
+                                        $productName = $row['p_name'];
+                                        if (strlen($productName) > 7) 
+                                        {
+                                            echo substr($productName, 0, 15) . '...';
+                                        } 
+                                        else 
+                                        {
+                                        echo $productName;
+                                        }
+                                    ?>
+                                </a>
+                                </h3>
                                 <h4>
                                 <?php echo $row['p_current_price']; ?>₫
                                     <?php if($row['p_old_price'] != ''): ?>
@@ -431,7 +446,18 @@ foreach ($result as $row)
                                 <div class="overlay"></div>
                             </div>
                             <div class="text">
-                                <h3><a href="product.php?id=<?php echo $row['p_id']; ?>"><?php echo $row['p_name']; ?></a></h3>
+                                <h3>
+                                    <a href="product.php?id=<?php echo $row['p_id']; ?>">
+                                        <?php 
+                                        $productName = $row['p_name'];
+                                        if (strlen($productName) > 7) {
+                                            echo substr($productName, 0, 15) . '...';
+                                        } else {
+                                            echo $productName;
+                                        }
+                                        ?>
+                                    </a>
+                                </h3>
                                 <h4>
                                     <?php echo $row['p_current_price']; ?> ₫
                                     <?php if($row['p_old_price'] != ''): ?>
@@ -562,7 +588,18 @@ foreach ($result as $row)
                                 <div class="overlay"></div>
                             </div>
                             <div class="text">
-                                <h3><a href="product.php?id=<?php echo $row['p_id']; ?>"><?php echo $row['p_name']; ?></a></h3>
+                            <h3>
+                                    <a href="product.php?id=<?php echo $row['p_id']; ?>">
+                                        <?php 
+                                        $productName = $row['p_name'];
+                                        if (strlen($productName) > 7) {
+                                            echo substr($productName, 0, 15) . '...';
+                                        } else {
+                                            echo $productName;
+                                        }
+                                        ?>
+                                    </a>
+                                </h3>
                                 <h4>
                                     <?php echo $row['p_current_price']; ?>₫
                                     <?php if($row['p_old_price'] != ''): ?>

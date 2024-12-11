@@ -44,7 +44,7 @@
 									<td><?php echo date('d-m-Y', strtotime($row['post_date'])); ?></td>
 									<td>
 										<?php if($row['photo']): ?>
-											<img src="uploads/<?php echo $row['photo']; ?>" alt="Ảnh" style="width:50px;">
+											<img src="assets/<?php echo $row['photo']; ?>" alt="Ảnh" style="width:50px;">
 										<?php else: ?>
 											<span>Không có ảnh</span>
 										<?php endif; ?>

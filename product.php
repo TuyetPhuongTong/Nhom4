@@ -92,11 +92,11 @@ if(isset($_POST['form_review'])) {
     $total = $statement->rowCount();
     
     if($total) {
-        $error_message = LANG_VALUE_68; 
+        $error_message = "Bạn đã đánh giá rồi!"; 
     } else {
         $statement = $pdo->prepare("INSERT INTO tbl_rating (p_id,cust_id,comment,rating) VALUES (?,?,?,?)");
         $statement->execute(array($_REQUEST['id'],$_SESSION['customer']['cust_id'],$_POST['comment'],$_POST['rating']));
-        $success_message = LANG_VALUE_163;    
+        $success_message = "Đánh giá đã được gửi thành công!";    
     }
     
 }
@@ -657,7 +657,7 @@ body {
                                 <div class="row">
                                     <?php if(isset($size)): ?>
                                     <div class="col-md-12 mb_20">
-                                        <?php echo LANG_VALUE_52; ?> <br>
+                                        <?php echo "Lựa chọn kích cỡ"; ?> <br>
                                         <select name="size_id" class="form-control select2" style="width:auto;">
                                             <?php
                                             $statement = $pdo->prepare("SELECT * FROM tbl_size");
@@ -677,7 +677,7 @@ body {
 
                                     <?php if(isset($color)): ?>
                                     <div class="col-md-12">
-                                        <?php echo LANG_VALUE_53; ?> <br>
+                                        <?php echo "Lựa chọn % cacao"; ?> <br>
                                         <select name="color_id" class="form-control select2" style="width:auto;">
                                             <?php
                                             $statement = $pdo->prepare("SELECT * FROM tbl_color");
@@ -699,7 +699,7 @@ body {
                                 
                             </div>
 							<div class="p-price">
-                                <span style="font-size:14px;"><?php echo LANG_VALUE_54; ?></span><br>
+                                <span style="font-size:14px;"><?php echo "Giá Sản phẩm"; ?></span><br>
                                 <span>
                                     <?php if($p_old_price!=''): ?>
                                         <del><?php echo $p_old_price; ?><?php echo "₫"; ?></del>
@@ -711,15 +711,15 @@ body {
                             <input type="hidden" name="p_name" value="<?php echo $p_name; ?>">
                             <input type="hidden" name="p_featured_photo" value="<?php echo $p_featured_photo; ?>">
 							<div class="p-quantity">
-                                <?php echo LANG_VALUE_55; ?> <br>
+                                <?php echo "Số lượng"; ?> <br>
 								<input type="number" class="input-text qty" step="1" min="1" max="" name="p_qty" value="1" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric">
 							</div>
 							<div class="btn-cart btn-cart1">
-                                <input type="submit" value="<?php echo LANG_VALUE_154; ?>" name="form_add_to_cart">
+                                <input type="submit" value="<?php echo "Thêm vào Giỏ hàng "; ?>" name="form_add_to_cart">
 							</div>
                             </form>
 							<div class="share">
-                                <?php echo LANG_VALUE_58; ?> <br>
+                                <?php echo "Chia sẻ sản phẩm này"; ?> <br>
 								<div class="sharethis-inline-share-buttons"></div>
 							</div>
 						</div>
@@ -729,11 +729,11 @@ body {
 						<div class="col-md-12">
 							<!-- Nav tabs -->
 							<ul class="nav nav-tabs" role="tablist">
-								<li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab"><?php echo LANG_VALUE_59; ?></a></li>
-								<li role="presentation"><a href="#feature" aria-controls="feature" role="tab" data-toggle="tab"><?php echo LANG_VALUE_60; ?></a></li>
-                                <li role="presentation"><a href="#condition" aria-controls="condition" role="tab" data-toggle="tab"><?php echo LANG_VALUE_61; ?></a></li>
-                                <li role="presentation"><a href="#return_policy" aria-controls="return_policy" role="tab" data-toggle="tab"><?php echo LANG_VALUE_62; ?></a></li>
-                               <!-- <li role="presentation"><a href="#review" aria-controls="review" role="tab" data-toggle="tab"><?php echo LANG_VALUE_63; ?></a></li> -->
+								<li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab"><?php echo "Mô tả sản phẩm"; ?></a></li>
+								<li role="presentation"><a href="#feature" aria-controls="feature" role="tab" data-toggle="tab"><?php echo "Thành phần"; ?></a></li>
+                                <li role="presentation"><a href="#condition" aria-controls="condition" role="tab" data-toggle="tab"><?php echo "Cách bảo quản"; ?></a></li>
+                                <li role="presentation"><a href="#return_policy" aria-controls="return_policy" role="tab" data-toggle="tab"><?php echo "Chính sách đổi trả"; ?></a></li>
+                               <!-- <li role="presentation"><a href="#review" aria-controls="review" role="tab" data-toggle="tab"><?php echo "Đánh giá"; ?></a></li> -->
 							</ul>
 
 							<!-- Tab panes -->
@@ -742,7 +742,7 @@ body {
 									<p>
                                         <?php
                                         if($p_description == '') {
-                                            echo LANG_VALUE_70;
+                                            echo "Không tìm thấy mô tả";
                                         } else {
                                             echo $p_description;
                                         }
@@ -753,7 +753,7 @@ body {
                                     <p>
                                         <?php
                                         if($p_feature == '') {
-                                            echo LANG_VALUE_71;
+                                            echo "Không tìm thấy thành phần";
                                         } else {
                                             echo $p_feature;
                                         }
@@ -764,7 +764,7 @@ body {
                                     <p>
                                         <?php
                                         if($p_condition == '') {
-                                            echo LANG_VALUE_72;
+                                            echo "Không tìm thấy cách bảo quản";
                                         } else {
                                             echo $p_condition;
                                         }
@@ -775,7 +775,7 @@ body {
                                     <p>
                                         <?php
                                         if($p_return_policy == '') {
-                                            echo LANG_VALUE_73;
+                                            echo "Không tìm thấy chính sách đổi trả";
                                         } else {
                                             echo $p_return_policy;
                                         }
@@ -794,7 +794,7 @@ body {
                                         $statement->execute(array($_REQUEST['id']));
                                         $total = $statement->rowCount();
                                         ?>
-                                        <h2><?php echo LANG_VALUE_63; ?> (<?php echo $total; ?>)</h2>
+                                        <h2><?php echo "Đánh giá"; ?> (<?php echo $total; ?>)</h2>
                                         <?php
                                         if($total) {
                                             $j=0;
@@ -802,18 +802,18 @@ body {
                                             foreach ($result as $row) {
                                                 $j++;
                                                 ?>
-                                                <div class="mb_10"><b><u><?php echo LANG_VALUE_64; ?> <?php echo $j; ?></u></b></div>
+                                                <div class="mb_10"><b><u><?php echo "Đánh giá"; ?> <?php echo $j; ?></u></b></div>
                                                 <table class="table table-bordered">
                                                     <tr>
-                                                        <th style="width:170px;"><?php echo LANG_VALUE_75; ?></th>
+                                                        <th style="width:170px;"><?php echo "Tên khách hàng"; ?></th>
                                                         <td><?php echo $row['cust_name']; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo LANG_VALUE_76; ?></th>
+                                                        <th><?php echo "Bình luận"; ?></th>
                                                         <td><?php echo $row['comment']; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo LANG_VALUE_78; ?></th>
+                                                        <th><?php echo "Đánh giá"; ?></th>
                                                         <td>
                                                             <div class="rating">
                                                                 <?php
@@ -834,11 +834,11 @@ body {
                                                 <?php
                                             }
                                         } else {
-                                            echo LANG_VALUE_74;
+                                            echo "Không tìm thấy bài đánh giá";
                                         }
                                         ?>
                                         
-                                        <h2><?php echo LANG_VALUE_65; ?></h2>
+                                        <h2><?php echo "Để lại đánh giá"; ?></h2>
                                         <?php
                                         if($error_message != '') {
                                             echo "<script>alert('".$error_message."')</script>";
@@ -866,19 +866,19 @@ body {
                                                 <input type="radio" name="rating" class="rating" value="5" checked>
                                             </div>                                            
                                             <div class="form-group">
-                                                <textarea name="comment" class="form-control" cols="30" rows="10" placeholder="Write your comment (optional)" style="height:100px;"></textarea>
+                                                <textarea name="comment" class="form-control" cols="30" rows="10" placeholder="Để lại bình luận của bạn (nếu có)" style="height:100px;"></textarea>
                                             </div>
-                                            <input type="submit" class="btn btn-default" name="form_review" value="<?php echo LANG_VALUE_67; ?>">
+                                            <input type="submit" class="btn btn-default" name="form_review" value="<?php echo "Gửi đánh giá"; ?>">
                                             </form>
                                             <?php else: ?>
-                                                <span style="color:red;"><?php echo LANG_VALUE_68; ?></span>
+                                                <span style="color:red;"><?php echo "Bạn đã đánh giá rồi!"; ?></span>
                                             <?php endif; ?>
 
 
                                         <?php else: ?>
                                             <p class="error">
-												<?php echo LANG_VALUE_69; ?> <br>
-												<a href="login.php" style="color:red;text-decoration: underline;"><?php echo LANG_VALUE_9; ?></a>
+												<?php echo "Bạn phải đăng nhập để đưa ra đánh giá"; ?> <br>
+												<a href="login.php" style="color:red;text-decoration: underline;"><?php echo "Đăng nhập"; ?></a>
 											</p>
                                         <?php endif; ?>                         
                                     </div>
@@ -900,8 +900,8 @@ body {
         <div class="row">
             <div class="col-md-12">
                 <div class="headline">
-                    <h2><?php echo LANG_VALUE_155; ?></h2>
-                    <h3><?php echo LANG_VALUE_156; ?></h3>
+                    <h2><?php echo "Sản phẩm liên quan"; ?></h2>
+                    <h3><?php echo "Hãy cùng khám phá"; ?></h3>
                 </div>
             </div>
         </div>
@@ -1000,7 +1000,7 @@ body {
                                     }
                                     ?>
                                 </div>
-                                <p><a href="product.php?id=<?php echo $row['p_id']; ?>"><?php echo LANG_VALUE_154; ?></a></p>
+                                <p><a href="product.php?id=<?php echo $row['p_id']; ?>"><?php echo "Thêm vào Giỏ hàng"; ?></a></p>
                             </div>
                         </div>
                         <?php

@@ -321,7 +321,7 @@ foreach ($result as $row) {
             <div class="col-md-2 text-center"style="display: flex; justify-content: flex-end; align-items: center; gap: 15px;">
                 <a href="cart.php" style="color: #7f572e; font-size: 14px; font-weight: bold;">
                     <i class="fa fa-shopping-cart" style="font-size: 20px;;"></i> Giỏ hàng 
-                    (<?php echo LANG_VALUE_1; ?><?php
+                    (<?php
                     if(isset($_SESSION['cart_p_id'])) {
                         $table_total_price = 0;
                         $i = 0;
@@ -342,7 +342,7 @@ foreach ($result as $row) {
                     } else {
                         echo '0.00';
                     }
-                    ?>)
+                    ?><?php echo "₫"; ?>)
                 </a>
             </div>
             

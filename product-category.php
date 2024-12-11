@@ -127,13 +127,13 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     background-position: center;
     text-align: center;
     padding: 100px 0;
-    color: #ffffff;
+    color: #FFA500;
 }
 
 .page-banner .inner h1 {
     font-size: 36px;
     font-weight: bold;
-    color: #CC3300; /* Use the red color for the heading */
+    color: #FFA500; /* Use the red color for the heading */
 }
 
 .page .container {

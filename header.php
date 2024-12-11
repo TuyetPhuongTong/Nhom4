@@ -232,7 +232,68 @@ foreach ($result as $row) {
 	<script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5993ef01e2587a001253a261&product=inline-share-buttons"></script>
 
 <?php echo $before_head; ?>
+<!-- Tạo popup -->
+<div id="promo-popup" class="popup-overlay">
+  <div class="popup-content">
+    <span class="close-btn" id="close-popup">&times;</span>
+    <h2>Khuyến mãi đặc biệt!</h2>
+    <p>Giảm giá 50% cho tất cả sản phẩm. Chỉ trong hôm nay!</p>
+    <a href="/sale" class="btn">Xem ngay</a>
+  </div>
+</div>
+<!-- css cho popup -->
+<style>
+	/* Overlay bao phủ toàn màn hình */
+.popup-overlay {
+  display: none; /* Mặc định ẩn */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+}
 
+/* Hộp thông báo */
+.popup-content {
+  position: relative;
+  width: 400px;
+  max-width: 90%;
+  margin: 100px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+/* Nút đóng popup */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Nút CTA */
+.popup-content .btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #ff5733;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.popup-content .btn:hover {
+  background-color: #006666;
+}
+
+</style>
 </head>
 <body>
 

@@ -106,11 +106,34 @@ foreach ($result as $row) {
         }
     }
 </script>
+<!-- Mở và đóng popup -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const popup = document.getElementById("promo-popup");
+    const closeBtn = document.getElementById("close-popup");
+
+    // Hiển thị popup sau khi tải trang
+    setTimeout(() => {
+        popup.style.display = "block";
+    }, 1000); // Hiển thị sau 1 giây
+
+    // Đóng popup khi nhấn nút đóng
+    closeBtn.addEventListener("click", () => {
+        popup.style.display = "none";
+    });
+
+    // Đóng popup khi nhấp ra ngoài vùng popup
+    window.addEventListener("click", (e) => {
+        if (e.target === popup) {
+            popup.style.display = "none";
+        }
+    });
+});
+</script>
+
 <?php echo $before_body; ?>
 </body>
 </html>
-
-
 
 <!-- footer nè -->
 <footer style="background-color: #7f572e; color: #f6dbab; padding: 20px 0; font-family: Arial, sans-serif;">

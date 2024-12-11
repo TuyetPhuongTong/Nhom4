@@ -1,5 +1,7 @@
 <?php require_once('header.php'); ?>
 
+<?php require_once('header.php'); ?>
+
 <?php
 // Lấy thông tin từ bảng tbl_page
 $statement = $pdo->prepare("SELECT * FROM tbl_page WHERE id=1");
@@ -8,14 +10,20 @@ $page = $statement->fetch(PDO::FETCH_ASSOC);
 $blog_title = $page['blog_title'];
 $blog_meta_title = $page['blog_meta_title'];
 
-// Lấy ảnh từ bảng tbl_post (ví dụ: bài viết mới nhất)
+// Lấy ảnh từ bảng tbl_post (bài viết mới nhất)
 $statement = $pdo->prepare("SELECT photo FROM tbl_post ORDER BY post_date DESC LIMIT 1");
 $statement->execute();
 $post = $statement->fetch(PDO::FETCH_ASSOC);
-$blog_banner = $post['photo']; // Sử dụng ảnh từ cột photo của bài viết
+
+if ($post && !empty($post['photo'])) {
+    $blog_banner = $post['photo'];
+} else {
+    $blog_banner = 'default.jpg'; // Ảnh mặc định
+}
 ?>
 
 <div class="page-banner" style="background-image: url(assets/uploads/<?php echo $blog_banner; ?>);">
+    <p>URL của ảnh nền: assets/uploads/<?php echo $blog_banner; ?></p>
 </div>
 <div class="container">
     <h1 style="text-align: center; margin-bottom: 20px;">Bài viết nổi bật</h1>

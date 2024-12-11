@@ -6,17 +6,17 @@ if(isset($_POST['form1'])) {
 
     if(empty($_POST['tcat_id'])) {
         $valid = 0;
-        $error_message .=  "Bạn phải chọn một danh mục cấp cao<br>";
+        $error_message .=  "Bạn phải chọn một danh mục sản phẩm<br>";
     }
 
     if(empty($_POST['mcat_id'])) {
         $valid = 0;
-        $error_message .= "Bạn phải chọn một danh mục cấp giữa<br>";
+        $error_message .= "Bạn phải chọn một danh mục sản phẩm con<br>";
     }
 
     if(empty($_POST['ecat_id'])) {
         $valid = 0;
-        $error_message .= "Bạn phải chọn một danh mục cấp cuối<br>";
+        $error_message .= "Bạn phải chọn một danh mục sản phẩm phụ<br>";
     }
 
     if(empty($_POST['p_name'])) {
@@ -192,10 +192,10 @@ if(isset($_POST['form1'])) {
 				<div class="box box-info">
 					<div class="box-body">
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Tên Danh Mục Cấp Cao  <span>*</span></label>
+							<label for="" class="col-sm-3 control-label">Tên Danh Mục Sản Phẩm  <span>*</span></label>
 							<div class="col-sm-4">
 								<select name="tcat_id" class="form-control select2 top-cat">
-									<option value="">Chọn Danh Mục Cấp Cao</option>
+									<option value="">Chọn Danh Mục Sản Phẩm</option>
 									<?php
 									$statement = $pdo->prepare("SELECT * FROM tbl_top_category ORDER BY tcat_name ASC");
 									$statement->execute();
@@ -210,18 +210,18 @@ if(isset($_POST['form1'])) {
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Tên Danh Mục Cấp Trung <span>*</span></label>
+							<label for="" class="col-sm-3 control-label">Tên Danh Mục Sản Phẩm Con <span>*</span></label>
 							<div class="col-sm-4">
 								<select name="mcat_id" class="form-control select2 mid-cat">
-									<option value="">Chọn Danh Mục Cấp Trung</option>
+									<option value="">Chọn Danh Mục Sản Phẩm Con</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Tên Danh Mục Cấp Cuối <span>*</span></label>
+							<label for="" class="col-sm-3 control-label">Tên Danh Mục Sản Phẩm Phụ <span>*</span></label>
 							<div class="col-sm-4">
 								<select name="ecat_id" class="form-control select2 end-cat">
-									<option value="">Chọn Danh Mục Cấp Cuối</option>
+									<option value="">Chọn Danh Mục Sản Phẩm Phụ</option>
 								</select>
 							</div>
 						</div>
@@ -232,13 +232,13 @@ if(isset($_POST['form1'])) {
 							</div>
 						</div>	
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Giá Cũ  <br><span style="font-size:10px;font-weight:normal;">(Đơn vị VNĐ)</span></label>
+							<label for="" class="col-sm-3 control-label">Giá Cũ <br><span style="font-size:10px;font-weight:normal;">(Đơn vị VNĐ)</span></label>
 							<div class="col-sm-4">
 								<input type="text" name="p_old_price" class="form-control">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Giá Hiện Tại  <span>*</span><br><span style="font-size:10px;font-weight:normal;">(Đơn vị VNĐ)</span></label>
+							<label for="" class="col-sm-3 control-label">Giá Hiện Tại <span>*</span><br><span style="font-size:10px;font-weight:normal;">(Đơn vị VNĐ)</span></label>
 							<div class="col-sm-4">
 								<input type="text" name="p_current_price" class="form-control">
 							</div>
@@ -267,7 +267,7 @@ if(isset($_POST['form1'])) {
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Chọn Màu Sắc</label>
+							<label for="" class="col-sm-3 control-label">Chọn % Cacao</label>
 							<div class="col-sm-4">
 								<select name="color[]" class="form-control select2" multiple="multiple">
 									<?php
@@ -322,13 +322,13 @@ if(isset($_POST['form1'])) {
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Tính Năng</label>
+							<label for="" class="col-sm-3 control-label">Thành phần</label>
 							<div class="col-sm-8">
 								<textarea name="p_feature" class="form-control" cols="30" rows="10" id="editor3"></textarea>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Điều Kiện</label>
+							<label for="" class="col-sm-3 control-label">Cách bảo quản</label>
 							<div class="col-sm-8">
 								<textarea name="p_condition" class="form-control" cols="30" rows="10" id="editor4"></textarea>
 							</div>

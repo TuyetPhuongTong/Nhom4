@@ -702,9 +702,9 @@ body {
                                 <span style="font-size:14px;"><?php echo LANG_VALUE_54; ?></span><br>
                                 <span>
                                     <?php if($p_old_price!=''): ?>
-                                        <del><?php echo LANG_VALUE_1; ?><?php echo $p_old_price; ?></del>
+                                        <del><?php echo $p_old_price; ?><?php echo "₫"; ?></del>
                                     <?php endif; ?> 
-                                        <?php echo LANG_VALUE_1; ?><?php echo $p_current_price; ?>
+                                        <?php echo $p_current_price; ?><?php echo "₫"; ?>
                                 </span>
                             </div>
                             <input type="hidden" name="p_current_price" value="<?php echo $p_current_price; ?>">
@@ -924,10 +924,10 @@ body {
                             <div class="text">
                                 <h3><a href="product.php?id=<?php echo $row['p_id']; ?>"><?php echo $row['p_name']; ?></a></h3>
                                 <h4>
-                                    <?php echo LANG_VALUE_1; ?><?php echo $row['p_current_price']; ?> 
+                                    <?php echo $row['p_current_price']; ?><?php echo "₫"; ?>
                                     <?php if($row['p_old_price'] != ''): ?>
                                     <del>
-                                        <?php echo LANG_VALUE_1; ?><?php echo $row['p_old_price']; ?>
+                                    <?php echo $row['p_old_price']; ?><?php echo "₫"; ?>
                                     </del>
                                     <?php endif; ?>
                                 </h4>

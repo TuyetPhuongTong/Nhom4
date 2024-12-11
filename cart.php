@@ -70,7 +70,7 @@ if(isset($_POST['form1'])) {
 <div class="page-banner" style="background-image: url(assets/uploads/<?php echo $banner_cart; ?>)">
     <div class="overlay"></div>
     <div class="page-banner-inner">
-        <h1><?php echo LANG_VALUE_18; ?></h1>
+        <h1><?php echo "Giỏ hàng của tôi"; ?></h1>
     </div>
 </div>
 
@@ -88,15 +88,15 @@ if(isset($_POST['form1'])) {
 				<div class="cart">
                     <table class="table table-responsive table-hover table-bordered">
                         <tr>
-                            <th><?php echo '#' ?></th>
-                            <th><?php echo LANG_VALUE_8; ?></th>
-                            <th><?php echo LANG_VALUE_47; ?></th>
-                            <th><?php echo LANG_VALUE_157; ?></th>
-                            <th><?php echo LANG_VALUE_158; ?></th>
-                            <th><?php echo LANG_VALUE_159; ?></th>
-                            <th><?php echo LANG_VALUE_55; ?></th>
-                            <th class="text-right"><?php echo LANG_VALUE_82; ?></th>
-                            <th class="text-center" style="width: 100px;"><?php echo LANG_VALUE_83; ?></th>
+                            <th><?php echo "STT" ?></th>
+                            <th><?php echo "Hình ảnh"; ?></th>
+                            <th><?php echo "Tên sản phẩm"; ?></th>
+                            <th><?php echo "Kích cỡ"; ?></th>
+                            <th><?php echo "Độ đậm Cacao"; ?></th>
+                            <th><?php echo "Giá tiền"; ?></th>
+                            <th><?php echo "Số lượng"; ?></th>
+                            <th class="text-right"><?php echo "Thành tiền"; ?></th>
+                            <th class="text-center" style="width: 100px;"><?php  echo "Hành động"; ?></th>
                         </tr>
                         <?php
                         $TongTienBang = 0;
@@ -173,7 +173,7 @@ if(isset($_POST['form1'])) {
                             <td><?php echo $arr_cart_p_name[$i]; ?></td>
                             <td><?php echo $arr_cart_size_name[$i]; ?></td>
                             <td><?php echo $arr_cart_color_name[$i]; ?></td>
-                            <td><?php echo LANG_VALUE_1; ?><?php echo $arr_cart_p_current_price[$i]; ?></td>
+                            <td><?php echo $arr_cart_p_current_price[$i]; ?><?php echo "₫"; ?></td>
                             <td>
                                 <input type="hidden" name="product_id[]" value="<?php echo $arr_cart_p_id[$i]; ?>">
                                 <input type="hidden" name="product_name[]" value="<?php echo $arr_cart_p_name[$i]; ?>">
@@ -184,7 +184,7 @@ if(isset($_POST['form1'])) {
                                 $TongTienHang = $arr_cart_p_current_price[$i]*$arr_cart_p_qty[$i];
                                 $TongTienBang = $TongTienBang + $TongTienHang;
                                 ?>
-                                <?php echo LANG_VALUE_1; ?><?php echo $TongTienHang; ?>
+                               <?php echo $TongTienHang; ?> <?php echo "₫"; ?>
                             </td>
                             <td class="text-center">
                                 <a onclick="return confirmDelete();" href="cart-item-delete.php?id=<?php echo $arr_cart_p_id[$i]; ?>&size=<?php echo $arr_cart_size_id[$i]; ?>&color=<?php echo $arr_cart_color_id[$i]; ?>" class="trash"><i class="fa fa-trash" style="color:red;"></i></a>
@@ -193,7 +193,7 @@ if(isset($_POST['form1'])) {
                         <?php endfor; ?>
                         <tr>
                             <th colspan="7" class="total-text">Tổng</th>
-                            <th class="total-amount"><?php echo LANG_VALUE_1; ?><?php echo $TongTienBang; ?></th>
+                            <th class="total-amount"><?php echo $TongTienBang; ?><?php echo "₫"; ?></th>
                             <th></th>
                         </tr>
                     </table> 
@@ -201,9 +201,9 @@ if(isset($_POST['form1'])) {
 
                 <div class="cart-buttons">
                     <ul>
-                        <li><input type="submit" value="<?php echo LANG_VALUE_20; ?>" class="btn btn-primary" name="form1"></li>
-                        <li><a href="index.php" class="btn btn-primary"><?php echo LANG_VALUE_85; ?></a></li>
-                        <li><a href="checkout.php" class="btn btn-primary"><?php echo LANG_VALUE_23; ?></a></li>
+                        <li><input type="submit" value="<?php echo "Cập nhật Giỏ hàng"; ?>" class="btn btn-primary" name="form1"></li>
+                        <li><a href="index.php" class="btn btn-primary"><?php echo "Tiếp tục mua hàng"; ?></a></li>
+                        <li><a href="checkout.php" class="btn btn-primary"><?php echo "Tiến hành thanh toán"; ?></a></li>
                     </ul>
                 </div>
                 </form>

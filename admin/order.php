@@ -79,7 +79,7 @@ Mã thanh toán:'.$row['payment_id'].'<br>
 <br><b><u>Product Item '.$i.'</u></b><br>
 Tên sản phẩm: '.$row['product_name'].'<br>
 Kích thước: '.$row['size'].'<br>
-Màu sắc: '.$row['color'].'<br>
+Độ đậm Cacao: '.$row['color'].'<br>
 Số lượng: '.$row['quantity'].'<br>
 Giá mỗi sản phẩm: '.$row['unit_price'].'<br>
             ';
@@ -214,7 +214,7 @@ if($success_message != '') {
                            foreach ($result1 as $row1) {
                                 echo '<b>Sản phẩm:</b> '.$row1['product_name'];
                                 echo '<br>(<b>Kích thước:</b> '.$row1['size'];
-                                echo ', <b>Màu sắc:</b> '.$row1['color'].')';
+                                echo ', <b>Độ đậm Cacao:</b> '.$row1['color'].')';
                                 echo '<br>(<b>Số lượng:</b> '.$row1['quantity'];
                                 echo ', <b>Đơn giá:</b> '.$row1['unit_price'].')';
                                 echo '<br><br>';
@@ -243,7 +243,7 @@ if($success_message != '') {
                         		<b>Thông Tin Giao Dịch:</b> <br><?php echo $row['bank_transaction_info']; ?><br>
                         	<?php endif; ?>
                         </td>
-                        <td>$<?php echo $row['paid_amount']; ?></td>
+                        <td><?php echo $row['paid_amount']; ?>₫</td>
                         <td>
                             <?php echo $row['payment_status']; ?>
                             <br><br>

@@ -492,7 +492,7 @@ foreach ($result as $row) {
 									<?php echo $about_title; ?>
 								</a>
 							</li>
-							<li style="display: inline-block; margin-right: 20px; background-color: #7f572e; border-radius: 8px; overflow: hidden;">
+							<li style="display: inline-block; margin-right: 20px; background-color: #7f572e; ">
 								<a href="blog.php" style="color: #f6dbab; font-size: 16px; text-decoration: none; display: block; position: relative; overflow: hidden;">
 									<div style="position: relative; padding-bottom: 56.25%; background-color: #333; display: block;">
 										<!-- Thêm hình ảnh ở đây -->

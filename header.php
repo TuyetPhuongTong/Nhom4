@@ -492,21 +492,11 @@ foreach ($result as $row) {
 									<?php echo $about_title; ?>
 								</a>
 							</li>
-							<li style="display: inline-block; margin-right: 20px; background-color: #7f572e; border-radius: 8px; overflow: hidden; width: 250px;">
-    <a href="blog.php" style="color: #f6dbab; font-size: 16px; text-decoration: none; display: block; position: relative;">
-        <!-- Phần ảnh -->
-        <div style="position: relative; padding-bottom: 56.25%; background-color: #333; display: block;">
-            <!-- Thêm hình ảnh ở đây -->
-            <img src="path_to_your_image.jpg" alt="Blog Image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-bottom: 2px solid #f6dbab;">
-        </div>
-        <!-- Phần tiêu đề blog -->
-        <div style="padding: 10px; text-align: center;">
-            <h4 style="margin: 0; color: #f6dbab; font-size: 18px;">
-                <?php echo $blog_title; ?>
-            </h4>
-        </div>
-    </a>
-</li>
+							<li style="display: inline-block; margin-right: 20px; background-color: #7f572e; border-radius: 8px; overflow: hidden;">
+								<a href="blog.php" style="color: #f6dbab; font-size: 16px; text-decoration: none; display: block; padding: 10px 15px; text-align: center; transition: background-color 0.3s ease; border-radius: 8px;">
+									<span style="font-weight: bold; font-size: 18px; display: block; margin-bottom: 5px;"><?php echo $blog_title; ?></span>
+								</a>
+							</li>
 							<li style="display: inline-block; margin-right: 20px; background-color: #7f572e;">
 								<a href="faq.php" style="color: #f6dbab; font-size: 16px; text-decoration: none; padding: 10px 15px; display: inline-block;">
 									<?php echo $faq_title; ?>

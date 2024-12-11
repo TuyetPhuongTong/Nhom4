@@ -38,12 +38,12 @@ if(isset($_POST['form1'])) {
                 $result = $statement->fetch(PDO::FETCH_ASSOC);
 
                 if($result['photo'] != '') {
-                    unlink('assets/uploads/'.$result['photo']);
+                    unlink('../assets/uploads/'.$result['photo']);
                 }
 
                 // Upload ảnh mới
                 $final_name = 'post-'.time().'.'.$ext;
-                if (move_uploaded_file($path_tmp, 'assets/uploads/'.$final_name)) {
+                if (move_uploaded_file($path_tmp, '../assets/uploads/'.$final_name)) {
                     // Cập nhật bài viết với ảnh mới
                     $statement = $pdo->prepare("UPDATE tbl_post SET post_title=?, post_content=?, photo=? WHERE post_id=?");
                     $statement->execute(array($_POST['post_title'], $_POST['post_content'], $final_name, $_REQUEST['id']));
@@ -127,7 +127,7 @@ $photo = $row['photo'];
                             <div class="col-sm-6">
                                 <input type="file" class="form-control" name="photo">
                                 <?php if($photo): ?>
-                                <img src="assets/uploads/<?php echo $photo; ?>" alt="Ảnh bài viết" style="width:200px; margin-top:10px;">
+                                <img src="../assets/uploads//<?php echo $photo; ?>" alt="Ảnh bài viết" style="width:200px; margin-top:10px;">
                                 <?php endif; ?>
                             </div>
                         </div>

@@ -173,7 +173,7 @@ if(isset($_POST['form1'])) {
                             <td><?php echo $arr_cart_p_name[$i]; ?></td>
                             <td><?php echo $arr_cart_size_name[$i]; ?></td>
                             <td><?php echo $arr_cart_color_name[$i]; ?></td>
-                            <td><?php echo LANG_VALUE_1; ?><?php echo $arr_cart_p_current_price[$i]; ?></td>
+                            <td><?php echo $arr_cart_p_current_price[$i]; ?><?php echo "₫"; ?></td>
                             <td>
                                 <input type="hidden" name="product_id[]" value="<?php echo $arr_cart_p_id[$i]; ?>">
                                 <input type="hidden" name="product_name[]" value="<?php echo $arr_cart_p_name[$i]; ?>">
@@ -184,7 +184,7 @@ if(isset($_POST['form1'])) {
                                 $TongTienHang = $arr_cart_p_current_price[$i]*$arr_cart_p_qty[$i];
                                 $TongTienBang = $TongTienBang + $TongTienHang;
                                 ?>
-                                <?php echo LANG_VALUE_1; ?><?php echo $TongTienHang; ?>
+                               <?php echo $TongTienHang; ?> <?php echo "₫"; ?>
                             </td>
                             <td class="text-center">
                                 <a onclick="return confirmDelete();" href="cart-item-delete.php?id=<?php echo $arr_cart_p_id[$i]; ?>&size=<?php echo $arr_cart_size_id[$i]; ?>&color=<?php echo $arr_cart_color_id[$i]; ?>" class="trash"><i class="fa fa-trash" style="color:red;"></i></a>
@@ -193,7 +193,7 @@ if(isset($_POST['form1'])) {
                         <?php endfor; ?>
                         <tr>
                             <th colspan="7" class="total-text">Tổng</th>
-                            <th class="total-amount"><?php echo LANG_VALUE_1; ?><?php echo $TongTienBang; ?></th>
+                            <th class="total-amount"><?php echo $TongTienBang; ?><?php echo "₫"; ?></th>
                             <th></th>
                         </tr>
                     </table> 

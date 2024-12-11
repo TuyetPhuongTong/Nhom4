@@ -311,7 +311,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 </style>
 <div class="page-banner" style="background-image: url(assets/uploads/<?php echo $banner_product_category; ?>)">
     <div class="inner">
-        <h1><?php echo LANG_VALUE_50; ?> <?php echo $title; ?></h1>
+        <h1><?php echo "Danh mục"; ?> <?php echo $title; ?></h1>
     </div>
 </div>
 
@@ -323,7 +323,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
             </div>
             <div class="col-md-9">
                 
-                <h3><?php echo LANG_VALUE_51; ?> "<?php echo $title; ?>"</h3>
+                <h3><?php echo "Tất cả sản phẩm"; ?> "<?php echo $title; ?>"</h3>
                 <div class="product product-cat">
 
                     <div class="row">
@@ -344,7 +344,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
                         endfor;
 
                         if($prod_count==0) {
-                            echo '<div class="pl_15">'.LANG_VALUE_153.'</div>';
+                            echo '<div class="pl_15">'."Không tìm thấy sản phẩm".'</div>';
                         } else {
                             for($ii=0;$ii<count($final_ecat_ids);$ii++) {
                                 $statement = $pdo->prepare("SELECT * FROM tbl_product WHERE ecat_id=? AND p_is_active=?");
@@ -445,7 +445,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
                                                     </div>
 
                                                 <?php else: ?>
-                                                    <p><a href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-shopping-cart"></i> <?php echo LANG_VALUE_154; ?></a></p>
+                                                    <p><a href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-shopping-cart"></i> <?php echo "Thêm vào Giỏ hàng"; ?></a></p>
                                                 <?php endif; ?>
                                             </div>
                                         </div>

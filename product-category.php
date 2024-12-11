@@ -361,10 +361,10 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
                                             <div class="text">
                                                 <h3><a href="product.php?id=<?php echo $row['p_id']; ?>"><?php echo $row['p_name']; ?></a></h3>
                                                 <h4>
-                                                    <?php echo LANG_VALUE_1; ?><?php echo $row['p_current_price']; ?> 
+                                                   <?php echo $row['p_current_price']; ?>  <?php echo"₫"; ?>
                                                     <?php if($row['p_old_price'] != ''): ?>
                                                     <del>
-                                                        <?php echo LANG_VALUE_1; ?><?php echo $row['p_old_price']; ?>
+                                                        <?php echo $row['p_old_price']; ?><?php echo "₫"; ?>
                                                     </del>
                                                     <?php endif; ?>
                                                 </h4>

@@ -175,7 +175,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 .product-cat .text {
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #FFDAB9;
     text-align: center;
     flex-grow: 1;
     display: flex;

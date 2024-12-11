@@ -8,6 +8,48 @@ $page = $statement->fetch(PDO::FETCH_ASSOC);
 $blog_title = $page['blog_title'];
 $blog_meta_title = $page['blog_meta_title'];
 ?>
+<style>
+    .post-item img {
+        width: 100%; /* Đảm bảo ảnh chiếm toàn bộ chiều rộng của cột */
+        height: auto; /* Tự động điều chỉnh chiều cao để giữ tỉ lệ */
+        object-fit: cover; /* Cắt ảnh nếu cần để giữ hình ảnh cân đối */
+        max-height: 200px; /* Đặt chiều cao tối đa để ảnh không quá lớn */
+        border-radius: 5px; /* Bo góc ảnh cho đẹp hơn */
+    }
+
+    .post-item .col-md-4 {
+        display: flex; /* Đảm bảo nội dung ảnh được căn giữa */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .post-item {
+        margin-bottom: 20px; /* Thêm khoảng cách giữa các bài viết */
+    }
+
+    .post-item h2 {
+        font-size: 20px; /* Đặt kích thước chữ tiêu đề */
+        margin-top: 10px;
+    }
+
+    .post-item p {
+        font-size: 14px; /* Làm nội dung mô tả nhỏ gọn hơn */
+        line-height: 1.5;
+    }
+</style>
+
+<div class="post-item">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="assets/uploads/<?php echo $post_photo; ?>" class="img-fluid" alt="<?php echo $post['post_title']; ?>">
+        </div>
+        <div class="col-md-8">
+            <h2><?php echo $post['post_title']; ?></h2>
+            <p><?php echo $short_content; ?></p>
+            <a href="blog.php?post_slug=<?php echo $post['post_slug']; ?>" class="btn btn-primary">Xem thêm</a>
+        </div>
+    </div>
+</div>
 
 <div class="container">
     <h1 style="text-align: center; margin-bottom: 20px;"><?php echo $blog_title; ?></h1>

@@ -478,9 +478,9 @@ foreach ($result as $row) {
 <div class="nav" style="background-color: #7f572e; color: #f6dbab;">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12 pl_0 pr_0">
+			<div class="col-md-12 pl_0 pr_0" style="background-color: #7f572e;">
 				<div class="menu-container" style="text-align: center;">
-					<div class="menu">
+					<div class="menu" style="background-color: #7f572e;">
 						<ul style="list-style-type: none; padding: 0; margin: 0; background-color: #7f572e;">
 
 							<li style="display: inline-block; margin-right: 10px; background-color: #7f572e;">
@@ -551,7 +551,7 @@ foreach ($result as $row) {
 
 							<li style="display: inline-block; margin-right: 20px; background-color: #7f572e;">
 								<a href="about.php" style="color: #f6dbab; font-size: 16px; text-decoration: none; padding: 10px 15px; display: inline-block;">
-									<?php echo $about_title; ?>
+									Giới thiệu
 								</a>
 							</li>
 							<li style="display: inline-block; margin-right: 20px; background-color: #7f572e; border-radius: 8px; overflow: hidden;">
@@ -578,4 +578,5 @@ foreach ($result as $row) {
 		</div>
 	</div>
 </div>
+
 

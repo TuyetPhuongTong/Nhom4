@@ -106,36 +106,59 @@ foreach ($result as $row) {
         }
     }
 </script>
+<!-- Mở và đóng popup -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const popup = document.getElementById("promo-popup");
+    const closeBtn = document.getElementById("close-popup");
+
+    // Hiển thị popup sau khi tải trang
+    setTimeout(() => {
+        popup.style.display = "block";
+    }, 1000); // Hiển thị sau 1 giây
+
+    // Đóng popup khi nhấn nút đóng
+    closeBtn.addEventListener("click", () => {
+        popup.style.display = "none";
+    });
+
+    // Đóng popup khi nhấp ra ngoài vùng popup
+    window.addEventListener("click", (e) => {
+        if (e.target === popup) {
+            popup.style.display = "none";
+        }
+    });
+});
+</script>
+
 <?php echo $before_body; ?>
 </body>
 </html>
 
-
-
 <!-- footer nè -->
 <footer style="background-color: #7f572e; color: #f6dbab; padding: 20px 0; font-family: Arial, sans-serif;">
-  <div style="display: flex; justify-content: space-between; gap: 20px; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
     <!-- Cột 1: Liên hệ -->
-    <div style="flex: 1;">
+    <div style="flex: 1 ; min-width: 250px;">
 	<h3 style="margin-bottom: 10px; font-size: 18px; color: #f6dbab; border-bottom: 1.5px solid #f6dbab; padding-bottom: 10px;">Liên hệ</h3>
-      <p>Địa chỉ: 123 Đường ABC, TP. Hồ Chí Minh</p>
-      <p>Email: contact@chocolatestore.com</p>
-      <p>Hotline: 0909 123 456</p>
+      <p>Địa chỉ: 279 Nguyễn Tri Phương, phường 5, quận 10, TP. Hồ Chí Minh</p>
+      <p>Email: phuongtong.31221023099@st.ueh.edu.vn</p>
+      <p>Hotline: +84 975 326 249</p>
     </div>
 
     <!-- Cột 2: Theo dõi chúng tôi -->
-    <div style="flex: 1;">
+    <div style="flex: 1 ; min-width: 250px;">
 	<h3 style="margin-bottom: 10px; font-size: 18px; color: #f6dbab; border-bottom: 1.5px solid #f6dbab; padding-bottom: 10px;">Theo dõi chúng tôi</h3>
       <ul style="list-style: none; padding: 0;">
-        <li style="margin-bottom: 5px;"><a href="#" style="text-decoration: none; color: #f6dbab;">Facebook</a></li>
-        <li style="margin-bottom: 5px;"><a href="#" style="text-decoration: none; color: #f6dbab;">Instagram</a></li>
-        <li style="margin-bottom: 5px;"><a href="#" style="text-decoration: none; color: #f6dbab;">Twitter</a></li>
-        <li style="margin-bottom: 5px;"><a href="#" style="text-decoration: none; color: #f6dbab;">YouTube</a></li>
+        <li style="margin-bottom: 5px;"><a href="https://www.facebook.com/" style="text-decoration: none; color: #f6dbab;">Facebook</a></li>
+        <li style="margin-bottom: 5px;"><a href="https://www.instagram.com/" style="text-decoration: none; color: #f6dbab;">Instagram</a></li>
+        <li style="margin-bottom: 5px;"><a href="https://x.com/?lang=vi" style="text-decoration: none; color: #f6dbab;">Twitter</a></li>
+        <li style="margin-bottom: 5px;"><a href="https://www.youtube.com/" style="text-decoration: none; color: #f6dbab;">YouTube</a></li>
       </ul>
     </div>
 
     <!-- Cột 3: Liên kết nhanh -->
-    <div style="flex: 1;">
+    <div style="flex: 1 ; min-width: 250px;">
 	<h3 style="margin-bottom: 10px; font-size: 18px; color: #f6dbab; border-bottom: 1.5px solid #f6dbab; padding-bottom: 10px;">Liên kết nhanh</h3>
       <ul style="list-style: none; padding: 0;">
         <li style="margin-bottom: 5px;"><a href="#" style="text-decoration: none; color: #f6dbab;">Trang chủ</a></li>
@@ -146,8 +169,8 @@ foreach ($result as $row) {
     </div>
 
     <!-- Cột 4: Đăng ký nhận tin -->
-    <!-- <div style="flex: 1;">
-      <h3 style="margin-bottom: 10px; font-size: 18px; color: #fefaf4;">Đăng ký nhận tin</h3>
+     <div style="flex: 1; min-width: 250px;">
+      <!-- <h3 style="margin-bottom: 10px; font-size: 18px; color: #fefaf4;">Đăng ký nhận tin</h3>
       <p>Nhận thông tin ưu đãi và sản phẩm mới nhất!</p>
       <form style="display: flex; flex-direction: column;">
         <input type="email" placeholder="Nhập email của bạn" required 
@@ -252,13 +275,12 @@ foreach ($result as $row) {
 				</div>
 				</form>
 				
-
-
 <?php endif; ?>
-
-  </div>
-  <hr style="border: 1px solid #f6dbab; margin-top: 20px; margin-bottom: 20px; width: 100%; margin-left: auto; margin-right: auto;"/>
-  <div style="text-align: center; margin-top: 20px; font-size: 14px;">
-    <p>© 2024 Đô Si La Mi. All rights reserved.</p>
-  </div>
+</div>
 </footer>
+<div style="background-color: #7f572e; color: #f6dbab; text-align: center; font-size: 14px; padding: 0;">
+  <hr style="background-color: #7f572e; border: 1px solid #f6dbab; margin: 0; width: 100%;"/>
+  <p style="margin: 0; padding: 10px 0;">© 2024 Đô Si La Mi. All rights reserved.</p>
+</div>
+
+ 

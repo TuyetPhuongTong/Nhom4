@@ -36,7 +36,7 @@ if (isset($_POST['form1'])) {
             $photo = 'post-' . time() . '.' . $ext;
 
             // Đường dẫn thư mục lưu ảnh
-            $upload_dir = 'assets/uploads/';
+            $upload_dir = '../uploads/layout/';
 
             // Kiểm tra và tạo thư mục nếu chưa tồn tại
             if (!file_exists($upload_dir)) {

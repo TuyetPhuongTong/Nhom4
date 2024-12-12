@@ -8,7 +8,99 @@ foreach ($result as $row) {
     $banner_registration = $row['banner_registration'];
 }
 ?>
+<style> 
+/* Form container styling */
+.user-content form {
+    background: #ffffff;
+    border: 2px solid #006666;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
 
+/* Input fields styling */
+.user-content form .form-group input,
+.user-content form .form-group select,
+.user-content form .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #006666;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.user-content form .form-group input:focus,
+.user-content form .form-group select:focus,
+.user-content form .form-group textarea:focus {
+    border-color: #CC3300;
+    box-shadow: 0px 0px 8px rgba(204, 51, 0, 0.5);
+}
+
+/* Label styling */
+.user-content form .form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #006666;
+}
+
+/* Nút Submit ban đầu */
+.user-content form .btn {
+    background-color: #006666;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hiệu ứng Hover */
+.user-content form .btn:hover {
+    background-color: #CC3300;
+    transform: scale(1.05); /* Tạo hiệu ứng phóng to nhẹ */
+}
+
+/* Hiệu ứng khi nút được bấm */
+.user-content form .btn:active {
+    background-color: #a02a00; /* Màu tối hơn khi nhấn */
+    transform: scale(1); /* Quay lại kích thước ban đầu */
+}
+
+
+/* Error and success message styling */
+.user-content .error {
+    color: #CC3300;
+    border: 1px solid #CC3300;
+    background-color: #ffe6e6;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.user-content .success {
+    color: #006666;
+    border: 1px solid #006666;
+    background-color: #e6f9f9;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .user-content form .col-md-6 {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
+
+</style>
 <?php
 if (isset($_POST['form1'])) {
 
@@ -16,66 +108,66 @@ if (isset($_POST['form1'])) {
 
     if(empty($_POST['cust_name'])) {
         $valid = 0;
-        $error_message .= LANG_VALUE_123."<br>";
+        $error_message .= "Tên khách hàng không được để trống"."<br>";
     }
 
     if(empty($_POST['cust_email'])) {
         $valid = 0;
-        $error_message .= LANG_VALUE_131."<br>";
+        $error_message .= "Email không được để trống"."<br>";
     } else {
         if (filter_var($_POST['cust_email'], FILTER_VALIDATE_EMAIL) === false) {
             $valid = 0;
-            $error_message .= LANG_VALUE_134."<br>";
+            $error_message .= "Địa chỉ email phải hợp lệ"."<br>";
         } else {
             $statement = $pdo->prepare("SELECT * FROM tbl_customer WHERE cust_email=?");
             $statement->execute(array($_POST['cust_email']));
             $total = $statement->rowCount();                            
             if($total) {
                 $valid = 0;
-                $error_message .= LANG_VALUE_147."<br>";
+                $error_message .= "Địa chỉ email đã tồn tại"."<br>";
             }
         }
     }
 
     if(empty($_POST['cust_phone'])) {
         $valid = 0;
-        $error_message .= LANG_VALUE_124."<br>";
+        $error_message .= "Số điện thoại không được để trống"."<br>";
     }
 
     if(empty($_POST['cust_address'])) {
         $valid = 0;
-        $error_message .= LANG_VALUE_125."<br>";
+        $error_message .= "Địa chỉ không được để trống"."<br>";
     }
 
     if(empty($_POST['cust_country'])) {
         $valid = 0;
-        $error_message .= LANG_VALUE_126."<br>";
+        $error_message .= "Bạn phải chọn một quốc gia"."<br>";
     }
 
     if(empty($_POST['cust_city'])) {
         $valid = 0;
-        $error_message .= LANG_VALUE_127."<br>";
+        $error_message .= "Thành phố không được để trống"."<br>";
     }
 
     if(empty($_POST['cust_state'])) {
         $valid = 0;
-        $error_message .= LANG_VALUE_128."<br>";
+        $error_message .= "Tỉnh thành/Quận/Huyện không được để trống"."<br>";
     }
 
     if(empty($_POST['cust_zip'])) {
         $valid = 0;
-        $error_message .= LANG_VALUE_129."<br>";
+        $error_message .= "Mã bưu điện không được để trống"."<br>";
     }
 
     if( empty($_POST['cust_password']) || empty($_POST['cust_re_password']) ) {
         $valid = 0;
-        $error_message .= LANG_VALUE_138."<br>";
+        $error_message .= "Mật khẩu không được để trống"."<br>";
     }
 
     if( !empty($_POST['cust_password']) && !empty($_POST['cust_re_password']) ) {
         if($_POST['cust_password'] != $_POST['cust_re_password']) {
             $valid = 0;
-            $error_message .= LANG_VALUE_139."<br>";
+            $error_message .= "Mật khẩu không đúng"."<br>";
         }
     }
 
@@ -154,10 +246,10 @@ if (isset($_POST['form1'])) {
         // Send email for confirmation of the account
         $to = $_POST['cust_email'];
         
-        $subject = LANG_VALUE_150;
+        $subject = "Email xác nhận đăng ký cho ĐÔ SI LA MI";
         $verify_link = BASE_URL.'verify.php?email='.$to.'&token='.$token;
         $message = '
-'.LANG_VALUE_151.'<br><br>
+'."Cảm ơn bạn đã đăng ký! Tài khoản của bạn đã được tạo. Để kích hoạt tài khoản của bạn, hãy nhấp vào liên kết bên dưới:".'<br><br>
 
 <a href="'.$verify_link.'">'.$verify_link.'</a>';
 
@@ -179,14 +271,14 @@ if (isset($_POST['form1'])) {
         unset($_POST['cust_state']);
         unset($_POST['cust_zip']);
 
-        $success_message = LANG_VALUE_152;
+        $success_message = "Đăng ký của bạn đã hoàn tất. Vui lòng kiểm tra địa chỉ email của bạn để làm theo quy trình xác nhận đăng ký của bạn";
     }
 }
 ?>
 
 <div class="page-banner" style="background-color:#444;background-image: url(assets/uploads/<?php echo $banner_registration; ?>);">
     <div class="inner">
-        <h1><?php echo LANG_VALUE_16; ?></h1>
+        <h1><?php echo "Khách hàng đăng ký"; ?></h1>
     </div>
 </div>
 
@@ -214,27 +306,27 @@ if (isset($_POST['form1'])) {
                                 ?>
 
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_102; ?> *</label>
+                                    <label for=""><?php echo "Tên khách hàng"; ?> *</label>
                                     <input type="text" class="form-control" name="cust_name" value="<?php if(isset($_POST['cust_name'])){echo $_POST['cust_name'];} ?>">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_103; ?></label>
+                                    <label for=""><?php echo "Tên công ty"; ?></label>
                                     <input type="text" class="form-control" name="cust_cname" value="<?php if(isset($_POST['cust_cname'])){echo $_POST['cust_cname'];} ?>">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_94; ?> *</label>
+                                    <label for=""><?php echo "Địa chỉ email"; ?> *</label>
                                     <input type="email" class="form-control" name="cust_email" value="<?php if(isset($_POST['cust_email'])){echo $_POST['cust_email'];} ?>">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_104; ?> *</label>
+                                    <label for=""><?php echo "Số điện thoại"; ?> *</label>
                                     <input type="text" class="form-control" name="cust_phone" value="<?php if(isset($_POST['cust_phone'])){echo $_POST['cust_phone'];} ?>">
                                 </div>
                                 <div class="col-md-12 form-group">
-                                    <label for=""><?php echo LANG_VALUE_105; ?> *</label>
+                                    <label for=""><?php echo "Địa chỉ"; ?> *</label>
                                     <textarea name="cust_address" class="form-control" cols="30" rows="10" style="height:70px;"><?php if(isset($_POST['cust_address'])){echo $_POST['cust_address'];} ?></textarea>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_106; ?> *</label>
+                                    <label for=""><?php echo "Quốc gia"; ?> *</label>
                                     <select name="cust_country" class="form-control select2">
                                         <option value="">Select country</option>
                                     <?php
@@ -251,28 +343,28 @@ if (isset($_POST['form1'])) {
                                 </div>
                                 
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_107; ?> *</label>
+                                    <label for=""><?php echo "Thành phố"; ?> *</label>
                                     <input type="text" class="form-control" name="cust_city" value="<?php if(isset($_POST['cust_city'])){echo $_POST['cust_city'];} ?>">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_108; ?> *</label>
+                                    <label for=""><?php echo "Tỉnh thành/Quận/Huyện"; ?> *</label>
                                     <input type="text" class="form-control" name="cust_state" value="<?php if(isset($_POST['cust_state'])){echo $_POST['cust_state'];} ?>">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_109; ?> *</label>
+                                    <label for=""><?php echo "Mã bưu điện"; ?> *</label>
                                     <input type="text" class="form-control" name="cust_zip" value="<?php if(isset($_POST['cust_zip'])){echo $_POST['cust_zip'];} ?>">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_96; ?> *</label>
+                                    <label for=""><?php echo "Mật khẩu"; ?> *</label>
                                     <input type="password" class="form-control" name="cust_password">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_98; ?> *</label>
+                                    <label for=""><?php echo "Nhập lại mật khẩu"; ?> *</label>
                                     <input type="password" class="form-control" name="cust_re_password">
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label for=""></label>
-                                    <input type="submit" class="btn btn-danger" value="<?php echo LANG_VALUE_15; ?>" name="form1">
+                                    <input type="submit" class="btn btn-danger" value="<?php echo "Đăng ký"; ?>" name="form1">
                                 </div>
                             </div>
                         </div>                        

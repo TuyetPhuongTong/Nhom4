@@ -247,7 +247,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 }
 
 .product-cat .thumb .photo {
-    height: 250px;
+    height: 200px;
     background-size: cover;
     background-position: center;
 }

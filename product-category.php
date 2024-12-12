@@ -156,6 +156,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     justify-content: space-between; /* Đảm bảo nội dung được căn đều */
     align-items: stretch; /* Đảm bảo các phần tử bên trong có cùng chiều rộng */
     height: 100%; /* Đồng bộ chiều cao giữa các khối */
+    min-height: 420px; /* Đặt chiều cao tối thiểu để khối luôn đều */
     border: 1px solid #e1e1e1;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -180,15 +181,16 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;/* Đảm bảo nội dung không bị lệch */
 }
 
 .product-cat .text h3 a {
     font-size: 18px;
     font-weight: bold;
     color: #006666;
-    text-decoration: none;
+    margin-bottom: 10px;
     transition: color 0.3s ease;
+    min-height: 50px; /* Đặt chiều cao tối thiểu đồng nhất cho tiêu đề */
 }
 
 .product-cat .text h3 a:hover {
@@ -263,11 +265,11 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 }
 
 .product-cat .text h3 {
-    min-height: 50px; /* Đảm bảo chiều cao tiêu đề đồng nhất */
     font-size: 18px;
     font-weight: bold;
     color: #006666;
     margin-bottom: 10px;
+    min-height: 50px; /* Đặt chiều cao tối thiểu đồng nhất cho tiêu đề */
 }
 
 .product-cat .text h4 {
@@ -282,6 +284,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 .product-cat .text p a {
     display: inline-block;
+    width: 100%; /* Đảm bảo nút có chiều rộng đồng đều */
     padding: 10px 20px;
     background-color: #CC3300;
     color: #ffffff;

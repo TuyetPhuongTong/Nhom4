@@ -28,7 +28,7 @@ foreach ($result as $row) {
                 <p>
                     <?php echo $about_content; ?>
                 </p>
-                <a href="#" class="btn btn-primary" style="background-color: #d3ad57; color:aliceblue; text-align:center;margin-top: 20px; ">Tìm hiểu thêm về sô-cô-la của chúng tôi</a>
+                <a href="http://localhost/Nhom4/index.php" class="btn btn-primary" style="border:none; background-color: #d3ad57; color:aliceblue; text-align:center;margin-top: 20px; ">Tìm hiểu thêm về sô-cô-la của chúng tôi</a>
             </div>
             <div class="col-md-6">
                 <img src="https://maisonmarou.com/wp-content/uploads/2022/03/mm_ourchocolate_2.jpg" alt="Hạt Cacao" class="img-fluid" style="max-height:480px; width:auto;">

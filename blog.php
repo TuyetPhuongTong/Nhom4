@@ -19,7 +19,141 @@ $blog_meta_title = $page['blog_meta_title'];
     <link rel="stylesheet" href="blog.css">
 </head>
 <body>
+<style>
+/* Đặt nền và màu chữ chính */
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
 
+/* Tiêu đề blog */
+h1 {
+    color: #006666;
+}
+
+/* Nút */
+.btn-primary {
+    background-color: #006666;
+    border: none;
+    color: #fff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #004d4d;
+    color: #f0f0f0;
+}
+
+.btn-secondary {
+    background-color: #CC3300;
+    border: none;
+    color: #fff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #992600;
+    color: #f0f0f0;
+}
+
+/* Các bài viết */
+.post-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.post-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.post-item h2 {
+    color: #006666;
+    transition: color 0.3s ease;
+}
+
+.post-item h2:hover {
+    color: #004d4d;
+}
+
+.post-item p {
+    color: #333;
+}
+
+.post-item img {
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.post-item img:hover {
+    transform: scale(1.05);
+}
+
+/* Bài viết chi tiết */
+.post-detail h1 {
+    color: #006666;
+    margin-bottom: 20px;
+}
+
+.post-detail img {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.post-detail img:hover {
+    transform: scale(1.05);
+}
+
+.alert-danger {
+    background-color: #CC3300;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* Đường kẻ ngang */
+hr {
+    border: 1px solid #006666;
+    margin: 20px 0;
+}
+
+/* Liên kết */
+a {
+    color: #006666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #CC3300;
+}
+/* Nút "Xem thêm" */
+.btn-primary {
+    background-color: #006666;
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #CC3300; /* Chuyển sang màu đỏ cam khi hover */
+    color: #fff; /* Đảm bảo chữ trắng vẫn rõ ràng */
+    transform: scale(1.05); /* Hiệu ứng phóng to nhẹ */
+}
+
+</style>
 <div class="container">
     <!-- Tiêu đề của Blog -->
     <h1 style="text-align: center; margin-bottom: 20px;">

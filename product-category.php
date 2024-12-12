@@ -243,6 +243,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: stretch;
     height: 100%; /* Đặt chiều cao đồng nhất */
 }
 

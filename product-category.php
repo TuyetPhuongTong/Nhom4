@@ -155,8 +155,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     flex-direction: column;
     justify-content: space-between; /* Đảm bảo nội dung được căn đều */
     align-items: stretch; /* Đảm bảo các phần tử bên trong có cùng chiều rộng */
-    height: auto; /* Đồng bộ chiều cao giữa các khối */
-    min-height: 430px; /* Đặt chiều cao tối thiểu để khối luôn đều */
+    height: 100%; /* Đồng bộ chiều cao giữa các khối */
     border: 1px solid #e1e1e1;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -181,15 +180,15 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;/* Đảm bảo nội dung không bị lệch */
+    justify-content: space-between;
 }
 
 .product-cat .text h3 a {
     font-size: 18px;
     font-weight: bold;
     color: #006666;
-    margin-bottom: 10px;
-    min-height: 50px; /* Đặt chiều cao tối thiểu đồng nhất cho tiêu đề */
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .product-cat .text h3 a:hover {
@@ -200,7 +199,6 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     font-size: 16px;
     color: #CC3300;
     margin-top: 10px;
-    min-height: 20px; /* Đặt chiều cao tối thiểu cho phần giá */
 }
 
 .product-cat .rating {
@@ -245,14 +243,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: stretch; /* Đảm bảo các phần tử bên trong có cùng chiều rộng */
-    height: auto; /* Đặt chiều cao đồng nhất */
-    min-height: 430px; /* Chiều cao tối thiểu */
-    border: 1px solid #e1e1e1;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    overflow: hidden;
-    transition: all 0.3s ease;
+    height: 100%; /* Đặt chiều cao đồng nhất */
 }
 
 .product-cat .thumb .photo {
@@ -272,11 +263,11 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 }
 
 .product-cat .text h3 {
+    min-height: 50px; /* Đảm bảo chiều cao tiêu đề đồng nhất */
     font-size: 18px;
     font-weight: bold;
     color: #006666;
     margin-bottom: 10px;
-    min-height: 50px; /* Đặt chiều cao tối thiểu đồng nhất cho tiêu đề */
 }
 
 .product-cat .text h4 {
@@ -291,7 +282,6 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 .product-cat .text p a {
     display: inline-block;
-    width: 100%; /* Đảm bảo nút có chiều rộng đồng đều */
     padding: 10px 20px;
     background-color: #CC3300;
     color: #ffffff;

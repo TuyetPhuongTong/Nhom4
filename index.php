@@ -120,6 +120,78 @@ foreach ($result as $row)
 </div>
 <?php endif; ?>
 
+<!-- banner quảng cáo -->
+<div class="container" style="margin-top: 40px;">
+       
+
+        <!-- Phần CTA -->
+        <div class="row section" style="background-image:url(https://i.pinimg.com/736x/b4/a8/bb/b4a8bbc3e705d16e996ad161d692eca5.jpg); " >
+            <div class="col-md-7" style="text-align: right; color:#f7f7f7;">
+                <h2 style="text-align: center; margin-top:4.5dvh; color:#fcd53f"> 🎄Mang Hương Vị Giáng Sinh Về Nhà!🌟</h2>
+                <h3 style="text-align:left; margin-left:10px"> Trải nghiệm món quà ngọt ngào và tinh tế từ thiên nhiên với Hộp Quà Tặng 6 Thanh Single Origin từ Đô Si La Mi.</h3>
+
+                <p style="margin-top: 15px; text-align:justify; margin-left:10px">
+                Giáng Sinh này, hãy trao gửi yêu thương qua món quà đầy ý nghĩa từ Đô Si La Mi – sự kết hợp hoàn hảo giữa chất lượng thượng hạng và hương vị tinh tế, được chế tác từ những hạt cacao nguyên bản tại các vùng đất nổi tiếng.   
+                </p>
+                <p style="text-align:justify;margin-left:10px">✨ Độc quyền mùa lễ hội: Mỗi thanh socola là một hành trình hương vị khác biệt, từ đắng nhẹ nhàng đến ngọt ngào cuốn hút.</p>
+                <p style="text-align:justify;margin-left:10px">🎁 Món quà sang trọng: Thiết kế hộp quà tinh xảo, phù hợp để tặng cho gia đình, bạn bè hay đối tác.</p>
+                <p style="text-align:justify;margin-left:10px">🍫 Chất lượng đỉnh cao: 100% nguyên liệu tự nhiên, không chỉ ngon mà còn tốt cho sức khỏe.</p>
+                <p style="text-align:justify;margin-left:10px"> Không chỉ là một món quà, đây còn là cách để bạn sẻ chia những khoảnh khắc ấm áp bên những người yêu thương.</p>
+                <a href="http://localhost/Nhom4/product.php?id=95" class="btn btn-primary" style="border:none; background-color:#fcd53f; color:#7f572e; text-align:left; margin-bottom:5px ">MUA NGAY</a>
+            </div>
+            <div class="col-md-5">
+                <img src="https://maisonmarou.com/wp-content/uploads/2023/11/6-single-origin-chocolate-bars-gift-box-christmas-edition-2048x2048.webp" alt="Hạt Cacao" class="img-fluid" style="height:auto; width:100%; ;">
+            </div>
+        </div>
+</div>
+<!DOCTYPE html>
+    <style>
+       @keyframes pulse {
+        0%, 100% {
+            transform: scale(1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        50% {
+            transform: scale(1.05);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+        }
+
+        a.btn-primary {
+        display: inline-block;
+        border: none;
+        background-color: #fcd53f;
+        color: #7f572e;
+        text-align: center;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 15px 30px;
+        border-radius: 8px;
+        margin-top: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+        animation: pulse 2s infinite; /* Hiệu ứng động */
+        transition: all 0.3s ease; /* Mượt mà khi hover */
+        }
+
+        a.btn-primary:hover {
+        background-color: #e8c12e;
+        color: #5f3d1e;
+        transform: scale(1.1); /* Phóng to thêm khi hover */
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        a.btn-primary:active {
+        transform: scale(1.05);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+    </style>
+
+
+
+
+<!-- carousel số 1 -->
 <?php if($home_featured_product_on_off == 1): ?>    
 <div class="product pt_70 pb_70">
     <div class="container">
@@ -419,6 +491,8 @@ foreach ($result as $row)
 }
 
 </style>
+
+<!-- carousel số 2 -->
 <div class="product bg-gray pt_70 pb_30">
     <div class="container">
         <div class="row">
@@ -559,7 +633,7 @@ foreach ($result as $row)
 </div>
 <?php endif; ?>
 
-
+<!-- carousel số 3 -->
 <?php if($home_popular_product_on_off == 1): ?>
 <div class="product pt_70 pb_70">
     <div class="container">

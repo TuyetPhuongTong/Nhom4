@@ -11,9 +11,10 @@ foreach ($result as $row) {
 }
 ?>
 
-<div class="page-banner" style="background-image: url(assets/uploads/<?php echo $about_banner; ?>);">
+<div class="page-banner" style="background-image: url('https://maisonmarou.com/wp-content/uploads/2022/03/mm_ourchocolate_1.jpg');">
     <div class="inner">
-        <h1><?php echo $about_title; ?></h1>
+        <h1>LÀM NÊN LOẠI SÔ-CÔ-LA
+        NGON NHẤT CÓ THỂ</h1>
     </div>
 </div>
 

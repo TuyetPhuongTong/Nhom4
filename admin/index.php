@@ -179,7 +179,7 @@ $total_order_complete_shipping_pending = $statement->rowCount();
 				  <div class="inner">
 					<h3><?php echo $total_top_category; ?></h3>
   
-					<p>Các danh mục hàng đầu</p>
+					<p>Danh mục sản phẩm</p>
 				  </div>
 				  <div class="icon">
 					<i class="ionicons ion-arrow-up-b"></i>
@@ -194,7 +194,7 @@ $total_order_complete_shipping_pending = $statement->rowCount();
 				  <div class="inner">
 					<h3><?php echo $total_mid_category; ?></h3>
   
-					<p>Hạng mục trung bình</p>
+					<p>Danh mục sản phẩm con</p>
 				  </div>
 				  <div class="icon">
 					<i class="ionicons ion-android-menu"></i>
@@ -209,7 +209,7 @@ $total_order_complete_shipping_pending = $statement->rowCount();
 				  <div class="inner">
 					<h3><?php echo $total_end_category; ?></h3>
   
-					<p>Danh mục cuối</p>
+					<p>Danh mục sản phẩm phụ</p>
 				  </div>
 				  <div class="icon">
 					<i class="ionicons ion-arrow-down-b"></i>

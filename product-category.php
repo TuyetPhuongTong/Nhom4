@@ -147,21 +147,27 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 }
 
 /* Product Listing */
-/* Container của từng khối sản phẩm */
+.product-cat .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
 .product-cat .item-product-cat {
     flex: 0 0 calc(33.333% - 20px); /* Căn đều 3 sản phẩm trên một hàng */
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Đảm bảo nội dung được căn đều */
-    height: 100%; /* Đồng bộ chiều cao giữa các khối */
+    justify-content: space-between;
+    height: 100%; /* Đồng bộ chiều cao */
     border: 1px solid #e1e1e1;
     border-radius: 10px;
     margin-bottom: 20px;
-    box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước */
     overflow: hidden;
     transition: all 0.3s ease;
 }
+
 .product-cat .item-product-cat:hover {
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     transform: translateY(-5px);
@@ -174,118 +180,41 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 }
 
 .product-cat .text {
-    padding: 20px;
-    background-color: #f9f9f9;
-    text-align: center;
-    flex-grow: 1;
+    flex-grow: 1; /* Đảm bảo text chiếm không gian còn lại */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-.product-cat .text h3 a {
-    font-size: 18px;
-    font-weight: bold;
-    color: #006666;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.product-cat .text h3 a:hover {
-    color: #CC3300; /* Change to red color on hover */
-}
-
-.product-cat .text h4 {
-    font-size: 16px;
-    color: #CC3300;
-    margin-top: 10px;
-    min-height: 20px; /* Đảm bảo phần giá đồng nhất chiều cao */
-}
-
-.product-cat .rating {
-    margin-top: 10px;
-    color: #f39c12;
-}
-
-/* Ensuring uniform button alignment */
-.product-cat .text p {
-    margin-top: auto;
-}
-
-.product-cat .text p a {
-    display: inline-block;
-    width: 100%; /* Ensures button is uniform in width */
-    padding: 10px 20px;
-    background-color: #CC3300;
-    color: #ffffff;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 16px;
-    text-align: center;
-    transition: background-color 0.3s ease;
-}
-
-.product-cat .text p a:hover {
-    background-color: #006666; /* Red color on hover */
-}
-
-
-/* Đảm bảo các khối sản phẩm có chiều cao đồng nhất */
-.product-cat .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.product-cat .item-product-cat {
-    flex: 0 0 calc(33.333% - 20px); /* Chia đều các khối sản phẩm */
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%; /* Đặt chiều cao đồng nhất */
-}
-
-.product-cat .thumb .photo {
-    height: 250px;
-    background-size: cover;
-    background-position: center;
-}
-
-.product-cat .text {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    flex-grow: 1; /* Đảm bảo phần text chiếm toàn bộ không gian còn lại */
     background-color: #f9f9f9;
     text-align: center;
     padding: 20px;
 }
 
 .product-cat .text h3 {
-    min-height: 50px; /* Đảm bảo chiều cao tiêu đề đồng nhất */
     font-size: 18px;
     font-weight: bold;
     color: #006666;
     margin-bottom: 10px;
 }
 
+.product-cat .text h3 a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.product-cat .text h3 a:hover {
+    color: #CC3300;
+}
+
 .product-cat .text h4 {
     font-size: 16px;
     color: #CC3300;
-    margin: 10px 0;
-    min-height: 20px; /* Đảm bảo phần giá đồng nhất chiều cao */
-}
-
-.product-cat .text p {
-    margin-top: auto; /* Đẩy nút xuống cuối khối */
+    margin-top: 10px;
 }
 
 .product-cat .text p a {
     display: inline-block;
-    width: 100%; /* Đảm bảo nút rộng bằng khối */
-    padding: 10px;
+    width: 100%; /* Uniform button width */
+    padding: 10px 20px;
     background-color: #CC3300;
     color: #ffffff;
     border-radius: 5px;
@@ -299,17 +228,19 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     background-color: #006666;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
     .product-cat .item-product-cat {
-        flex: 0 0 calc(50% - 20px); /* For smaller screens, display 2 items per row */
+        flex: 0 0 calc(50% - 20px); /* 2 items per row */
     }
 }
 
 @media (max-width: 480px) {
     .product-cat .item-product-cat {
-        flex: 0 0 100%; /* For mobile screens, display 1 item per row */
+        flex: 0 0 100%; /* 1 item per row */
     }
 }
+
    
 </style>
 <div class="page-banner" style="background-image: url(assets/uploads/<?php echo $banner_product_category; ?>)">

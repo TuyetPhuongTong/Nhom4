@@ -733,7 +733,7 @@ body {
 								<li role="presentation"><a href="#feature" aria-controls="feature" role="tab" data-toggle="tab"><?php echo "Thành phần"; ?></a></li>
                                 <li role="presentation"><a href="#condition" aria-controls="condition" role="tab" data-toggle="tab"><?php echo "Cách bảo quản"; ?></a></li>
                                 <li role="presentation"><a href="#return_policy" aria-controls="return_policy" role="tab" data-toggle="tab"><?php echo "Chính sách đổi trả"; ?></a></li>
-                               <!-- <li role="presentation"><a href="#review" aria-controls="review" role="tab" data-toggle="tab"><?php echo "Đánh giá"; ?></a></li> -->
+                               <li role="presentation"><a href="#review" aria-controls="review" role="tab" data-toggle="tab"><?php echo "Đánh giá"; ?></a></li>
 							</ul>
 
 							<!-- Tab panes -->

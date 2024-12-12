@@ -226,6 +226,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     font-size: 16px; /* Cỡ chữ */
     text-align: center; /* Căn giữa chữ */
     transition: background-color 0.3s ease; /* Hiệu ứng đổi màu nút bấm */
+    white-space: nowrap; /* Ngăn văn bản xuống dòng */
 }
 .product-cat .text p a:hover {
     background-color: #006666; /* Đổi sang màu xanh khi hover */

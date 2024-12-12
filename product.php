@@ -538,7 +538,7 @@ body {
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-                <div class="breadcrumb mb_30">
+                <div class="breadcrumb mb_30" style="margin-top: 2px;">
                     <ul>
                         <li><a href="<?php echo BASE_URL; ?>">Trang chủ</a></li>
                         <li>></li>

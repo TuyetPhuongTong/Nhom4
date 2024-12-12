@@ -319,7 +319,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 </style>
 <div class="page-banner" style="background-image: url(assets/uploads/<?php echo $banner_product_category; ?>)">
     <div class="inner">
-        <h1><?php echo "Danh mục"; ?> <?php echo $title; ?></h1>
+        <h1 style="color: #ffffff;"><?php echo "Danh mục"; ?> <?php echo $title; ?></h1>
     </div>
 </div>
 

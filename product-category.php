@@ -234,48 +234,54 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 /* Đảm bảo các khối sản phẩm có chiều cao đồng nhất */
 .product-cat .row {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
+    flex-wrap: wrap; /* Các phần tử sẽ xuống dòng khi hết không gian */
+    justify-content: space-between; /* Khoảng cách giữa các khối sản phẩm được chia đều */
+    gap: 20px; /* Khoảng cách giữa các khối */
+}
+
+.product-cat .row::after {
+    content: ""; /* Tạo phần tử giả ở cuối hàng */
+    flex: 0 0 calc(33.333% - 20px); /* Đảm bảo phần tử giả chiếm cùng kích thước với sản phẩm */
+    box-sizing: border-box;
 }
 
 .product-cat .item-product-cat {
-    flex: 0 0 calc(33.333% - 20px); /* Chia đều các khối sản phẩm */
-    box-sizing: border-box;
+    flex: 0 0 calc(33.333% - 20px); /* Chia mỗi khối sản phẩm thành 1/3 chiều rộng (trừ khoảng cách 20px) */
+    box-sizing: border-box; /* Bao gồm cả padding và viền khi tính kích thước khối */
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%; /* Đặt chiều cao đồng nhất */
+    flex-direction: column; /* Sắp xếp các phần tử bên trong khối từ trên xuống dưới */
+    justify-content: space-between; /* Khoảng cách giữa các phần tử bên trong khối được dàn đều */
+    height: 100%; /* Đặt chiều cao khối sản phẩm đồng nhất */
 }
 
 .product-cat .thumb .photo {
-    height: 250px;
-    background-size: cover;
-    background-position: center;
+    height: 250px; /* Đặt chiều cao cố định cho hình ảnh */
+    background-size: cover; /* Đảm bảo ảnh lấp đầy khung nhưng không bị méo */
+    background-position: center; /* Ảnh được căn giữa khung */
 }
 
 .product-cat .text {
-    flex-grow: 1; /* Đảm bảo phần text chiếm toàn bộ không gian còn lại */
+    flex-grow: 1; /* Phần văn bản chiếm không gian còn lại trong khối */
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    background-color: #f9f9f9;
-    text-align: center;
-    padding: 20px;
+    flex-direction: column; /* Sắp xếp các phần tử bên trong từ trên xuống dưới */
+    justify-content: flex-start; /* Bắt đầu từ phía trên */
+    background-color: #f9f9f9; /* Màu nền nhạt */
+    text-align: center; /* Căn giữa nội dung */
+    padding: 20px; /* Khoảng cách giữa nội dung và viền */
 }
 
 .product-cat .text h3 {
-    min-height: 50px; /* Đảm bảo chiều cao tiêu đề đồng nhất */
-    font-size: 18px;
-    font-weight: bold;
-    color: #006666;
-    margin-bottom: 10px;
+    min-height: 50px; /* Đảm bảo chiều cao tiêu đề luôn đồng nhất */
+    font-size: 18px; /* Kích thước chữ lớn */
+    font-weight: bold; /* Chữ đậm */
+    color: #006666; /* Màu xanh đậm */
+    margin-bottom: 10px; /* Khoảng cách phía dưới */
 }
 
 .product-cat .text h4 {
-    font-size: 16px;
-    color: #CC3300;
-    margin-top: 10px;
+    font-size: 16px; /* Kích thước chữ vừa */
+    color: #CC3300; /* Màu đỏ */
+    margin-top: 10px; /* Khoảng cách phía trên */
 }
 
 .product-cat .text p {
@@ -283,19 +289,19 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 }
 
 .product-cat .text p a {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #CC3300;
-    color: #ffffff;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 16px;
-    text-align: center;
-    transition: background-color 0.3s ease;
+    display: inline-block; /* Hiển thị nút dưới dạng khối */
+    padding: 10px 20px; /* Khoảng cách trong nút */
+    background-color: #CC3300; /* Màu nền đỏ */
+    color: #ffffff; /* Màu chữ trắng */
+    border-radius: 5px; /* Bo góc nút */
+    text-decoration: none; /* Loại bỏ gạch chân */
+    font-size: 16px; /* Kích thước chữ */
+    text-align: center; /* Căn giữa chữ */
+    transition: background-color 0.3s ease; /* Hiệu ứng đổi màu khi hover */
 }
 
 .product-cat .text p a:hover {
-    background-color: #006666;
+    background-color: #006666; /* Đổi màu nền sang xanh khi hover */
 }
 
 @media (max-width: 768px) {

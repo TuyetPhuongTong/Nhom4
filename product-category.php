@@ -123,82 +123,86 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 <style>
 /* General Page Styling */
 .page-banner {
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-    padding: 100px 0;
-    color: #ffffff;
+    background-size: cover; /* Ảnh nền sẽ phủ toàn bộ vùng chứa mà không bị co giãn sai tỷ lệ */
+    background-position: center; /* Căn giữa ảnh nền */
+    text-align: center; /* Căn giữa toàn bộ nội dung bên trong theo chiều ngang */
+    padding: 100px 0; /* Tạo khoảng cách trên và dưới của banner */
+    color: #ffffff; /* Đặt màu chữ trắng */
 }
 
 .page-banner .inner h1 {
-    font-size: 36px;
-    font-weight: bold;
-    color: #CC3300; /* Use the red color for the heading */
+    font-size: 36px; /* Cỡ chữ lớn cho tiêu đề */
+    font-weight: bold; /* In đậm tiêu đề */
+    color: #CC3300; /* Màu đỏ cho tiêu đề */
 }
 
 .page .container {
-    padding: 30px;
+    padding: 30px; /* Tạo khoảng cách giữa nội dung và viền container */
 }
 
 .product-cat h3 {
-    font-size: 28px;
-    color: #006666; /* Use the green color for category headings */
-    margin-bottom: 20px;
+    font-size: 28px; /* Cỡ chữ lớn cho tiêu đề danh mục */
+    color: #006666; /* Màu xanh cho tiêu đề danh mục */
+    margin-bottom: 20px; /* Tạo khoảng cách dưới tiêu đề */
+    height: 50px; /* Chiều cao cố định (tùy chỉnh theo ý bạn) */
+    line-height: 50px; /* Đảm bảo văn bản căn giữa theo chiều dọc */
+    overflow: hidden; /* Ẩn nội dung nếu dài hơn chiều cao */
+    text-overflow: ellipsis; /* Thêm dấu "..." nếu nội dung bị cắt */
+    white-space: nowrap; /* Không cho phép văn bản xuống dòng */
 }
 
 /* Product Listing */
 /* Container của từng khối sản phẩm */
 .product-cat .item-product-cat {
-    flex: 0 0 calc(33.333% - 20px); /* Căn đều 3 sản phẩm trên một hàng */
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Đảm bảo nội dung được căn đều */
-    align-items: stretch; /* Đảm bảo các phần tử bên trong có cùng chiều rộng */
-    height: 100%; /* Đồng bộ chiều cao giữa các khối */
-    border: 1px solid #e1e1e1;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    overflow: hidden;
-    transition: all 0.3s ease;
+    flex: 0 0 calc(33.333% - 20px); /* Mỗi khối sản phẩm chiếm 1/3 hàng, trừ khoảng cách giữa các khối */
+    box-sizing: border-box; /* Bao gồm cả padding và border trong chiều rộng/chiều cao */
+    display: flex; /* Áp dụng flexbox cho các phần tử con */
+    flex-direction: column; /* Các phần tử con xếp theo chiều dọc */
+    justify-content: space-between; /* Căn đều nội dung đầu và cuối */
+    align-items: stretch; /* Kéo giãn các phần tử con theo chiều ngang */
+    height: 100%; /* Đặt chiều cao đồng nhất cho tất cả các khối sản phẩm */
+    border: 1px solid #e1e1e1; /* Đặt viền màu xám nhạt */
+    border-radius: 10px; /* Bo tròn góc của khối */
+    margin-bottom: 20px; /* Tạo khoảng cách dưới mỗi khối sản phẩm */
+    overflow: hidden; /* Ẩn nội dung vượt ra ngoài khối */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển đổi mượt mà khi hover */
 }
 .product-cat .item-product-cat:hover {
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-5px);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng khi hover */
+    transform: translateY(-5px); /* Khối sản phẩm nâng lên khi hover */
 }
 
 .product-cat .thumb .photo {
-    height: 250px;
-    background-size: cover;
-    background-position: center;
+    height: 250px; /* Đặt chiều cao cố định cho hình ảnh */
+    background-size: cover; /* Ảnh nền phủ toàn bộ khối */
+    background-position: center; /* Căn giữa ảnh nền */
 }
-
+  
 .product-cat .text {
-    padding: 20px;
-    background-color: #f9f9f9;
-    text-align: center;
-    flex-grow: 1;
+    padding: 20px; /* Khoảng cách bên trong khối nội dung */
+    background-color: #f9f9f9; /* Màu nền nhạt */
+    text-align: center; /* Căn giữa nội dung theo chiều ngang */
+    flex-grow: 1; /* Phần nội dung sẽ tự động mở rộng để lấp đầy không gian */
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-direction: column; /* Xếp các phần tử con theo chiều dọc */
+    justify-content: space-between; /* Căn đều phần trên và dưới */
 }
 
 .product-cat .text h3 a {
-    font-size: 18px;
-    font-weight: bold;
-    color: #006666;
-    text-decoration: none;
-    transition: color 0.3s ease;
+    font-size: 18px; /* Cỡ chữ cho tên sản phẩm */
+    font-weight: bold; /* In đậm tên sản phẩm */
+    color: #006666; /* Màu xanh cho tiêu đề */
+    text-decoration: none; /* Xóa gạch chân */
+    transition: color 0.3s ease; /* Hiệu ứng đổi màu mượt khi hover */
 }
-
 .product-cat .text h3 a:hover {
-    color: #CC3300; /* Change to red color on hover */
+    color: #CC3300; /* Đổi sang màu đỏ khi hover */
 }
 
 .product-cat .text h4 {
-    font-size: 16px;
-    color: #CC3300;
-    margin-top: 10px;
+    font-size: 16px; /* Cỡ chữ giá sản phẩm */
+    color: #CC3300; /* Màu đỏ cho giá */
+    margin-top: 10px; /* Khoảng cách phía trên */
 }
 
 .product-cat .rating {
@@ -213,22 +217,19 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 .product-cat .text p a {
     display: inline-block;
-    width: 100%; /* Ensures button is uniform in width */
-    padding: 10px 20px;
-    background-color: #CC3300;
-    color: #ffffff;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 16px;
-    text-align: center;
-    transition: background-color 0.3s ease;
+    width: 100%; /* Nút bấm chiếm toàn bộ chiều ngang */
+    padding: 10px 20px; /* Kích thước nút bấm */
+    background-color: #CC3300; /* Màu đỏ nền nút */
+    color: #ffffff; /* Màu trắng chữ */
+    border-radius: 5px; /* Bo tròn nút bấm */
+    text-decoration: none; /* Xóa gạch chân */
+    font-size: 16px; /* Cỡ chữ */
+    text-align: center; /* Căn giữa chữ */
+    transition: background-color 0.3s ease; /* Hiệu ứng đổi màu nút bấm */
 }
-
 .product-cat .text p a:hover {
-    background-color: #006666; /* Red color on hover */
+    background-color: #006666; /* Đổi sang màu xanh khi hover */
 }
-
-
 /* Đảm bảo các khối sản phẩm có chiều cao đồng nhất */
 .product-cat .row {
     display: flex;

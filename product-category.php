@@ -155,8 +155,8 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     flex-direction: column;
     justify-content: space-between; /* Đảm bảo nội dung được căn đều */
     align-items: stretch; /* Đảm bảo các phần tử bên trong có cùng chiều rộng */
-    height: 100%; /* Đồng bộ chiều cao giữa các khối */
-    min-height: 420px; /* Đặt chiều cao tối thiểu để khối luôn đều */
+    height: auto; /* Đồng bộ chiều cao giữa các khối */
+    min-height: 430px; /* Đặt chiều cao tối thiểu để khối luôn đều */
     border: 1px solid #e1e1e1;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -189,7 +189,6 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     font-weight: bold;
     color: #006666;
     margin-bottom: 10px;
-    transition: color 0.3s ease;
     min-height: 50px; /* Đặt chiều cao tối thiểu đồng nhất cho tiêu đề */
 }
 
@@ -201,6 +200,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     font-size: 16px;
     color: #CC3300;
     margin-top: 10px;
+    min-height: 20px; /* Đặt chiều cao tối thiểu cho phần giá */
 }
 
 .product-cat .rating {
@@ -245,7 +245,14 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%; /* Đặt chiều cao đồng nhất */
+    align-items: stretch; /* Đảm bảo các phần tử bên trong có cùng chiều rộng */
+    height: auto; /* Đặt chiều cao đồng nhất */
+    min-height: 430px; /* Chiều cao tối thiểu */
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 .product-cat .thumb .photo {

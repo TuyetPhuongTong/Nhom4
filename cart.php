@@ -181,7 +181,8 @@ if(isset($_POST['form1'])) {
                             </td>
                             <td class="text-right">
                                 <?php
-                                $TongTienHang = $arr_cart_p_current_price[$i]*$arr_cart_p_qty[$i];
+                                 
+                                $TongTienHang = floatval($arr_cart_p_current_price[$i]) * intval($arr_cart_p_qty[$i]);
                                 $TongTienBang = $TongTienBang + $TongTienHang;
                                 ?>
                                <?php echo $TongTienHang; ?> <?php echo "₫"; ?>

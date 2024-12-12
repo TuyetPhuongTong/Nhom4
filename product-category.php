@@ -156,7 +156,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     flex-direction: column;
     justify-content: space-between; /* Đảm bảo nội dung được căn đều */
     align-items: stretch; /* Đảm bảo các phần tử bên trong có cùng chiều rộng */
-    height: 100%; /* Đồng bộ chiều cao giữa các khối */
+    height: 500px; /* Đồng bộ chiều cao giữa các khối */
     border: 1px solid #e1e1e1;
     border-radius: 10px;
     margin-bottom: 20px;

@@ -245,7 +245,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
-    height: 500px; /* Đặt chiều cao đồng nhất */
+    height: 600px; /* Đặt chiều cao đồng nhất */
 }
 
 .product-cat .thumb .photo {

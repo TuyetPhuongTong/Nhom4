@@ -168,7 +168,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 }
 
 .product-cat .thumb .photo {
-    height: 200px;
+    height: 250px;
     background-size: cover;
     background-position: center;
 }
@@ -243,8 +243,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: stretch;
-    height: 300px; /* Đặt chiều cao đồng nhất */
+    height: 100%; /* Đặt chiều cao đồng nhất */
 }
 
 .product-cat .thumb .photo {

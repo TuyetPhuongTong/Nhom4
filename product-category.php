@@ -151,7 +151,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 20px;
+    align-items: stretch; /* Kéo giãn các khối cho đồng bộ chiều cao */
 }
 
 .product-cat .item-product-cat {
@@ -194,6 +194,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     font-weight: bold;
     color: #006666;
     margin-bottom: 10px;
+    min-height: 60px; /* Chiều cao tối thiểu cho tên sản phẩm */
 }
 
 .product-cat .text h3 a {
@@ -209,6 +210,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     font-size: 16px;
     color: #CC3300;
     margin-top: 10px;
+    line-height: 1.5; /* Căn chỉnh chiều cao dòng */
 }
 
 .product-cat .text p a {

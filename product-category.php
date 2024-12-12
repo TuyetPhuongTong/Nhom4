@@ -154,11 +154,11 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* Đảm bảo nội dung được căn đều */
-    align-items: stretch; /* Đảm bảo các phần tử bên trong có cùng chiều rộng */
     height: 100%; /* Đồng bộ chiều cao giữa các khối */
     border: 1px solid #e1e1e1;
     border-radius: 10px;
     margin-bottom: 20px;
+    box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước */
     overflow: hidden;
     transition: all 0.3s ease;
 }
@@ -199,6 +199,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     font-size: 16px;
     color: #CC3300;
     margin-top: 10px;
+    min-height: 20px; /* Đảm bảo phần giá đồng nhất chiều cao */
 }
 
 .product-cat .rating {
@@ -253,10 +254,10 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 }
 
 .product-cat .text {
-    flex-grow: 1; /* Đảm bảo phần text chiếm toàn bộ không gian còn lại */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    flex-grow: 1; /* Đảm bảo phần text chiếm toàn bộ không gian còn lại */
     background-color: #f9f9f9;
     text-align: center;
     padding: 20px;
@@ -273,7 +274,8 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 .product-cat .text h4 {
     font-size: 16px;
     color: #CC3300;
-    margin-top: 10px;
+    margin: 10px 0;
+    min-height: 20px; /* Đảm bảo phần giá đồng nhất chiều cao */
 }
 
 .product-cat .text p {
@@ -282,7 +284,8 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 .product-cat .text p a {
     display: inline-block;
-    padding: 10px 20px;
+    width: 100%; /* Đảm bảo nút rộng bằng khối */
+    padding: 10px;
     background-color: #CC3300;
     color: #ffffff;
     border-radius: 5px;

@@ -152,6 +152,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     flex: 0 0 calc(33.333% - 20px); /* Căn đều 3 sản phẩm trên một hàng */
     box-sizing: border-box;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-between; /* Đảm bảo nội dung được căn đều */
     align-items: stretch; /* Đảm bảo các phần tử bên trong có cùng chiều rộng */
@@ -243,11 +244,12 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: stretch;
     height: 100%; /* Đặt chiều cao đồng nhất */
 }
 
 .product-cat .thumb .photo {
-    height: 200px;
+    height: 250px;
     background-size: cover;
     background-position: center;
 }

@@ -126,10 +126,10 @@ if(!isset($_SESSION['cart_p_id'])) {
                             <td><?php echo $arr_cart_p_qty[$i]; ?></td>
                             <td class="text-right">
                                 <?php
-                                $row_total_price = $arr_cart_p_current_price[$i]*$arr_cart_p_qty[$i];
+                                $row_total_price = floatval($arr_cart_p_current_price[$i]) * intval($arr_cart_p_qty[$i]*1000);
                                 $table_total_price = $table_total_price + $row_total_price;
                                 ?>
-                                <?php echo $row_total_price; ?><?php echo "₫"; ?>
+                                <?php echo number_format($row_total_price, 0, ',', ','); ?><?php echo "₫"; ?>
                             </td>
                         </tr>
                         <?php endfor; ?>           

@@ -178,6 +178,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     height: 250px;
     background-size: cover;
     background-position: center;
+    object-fit: cover;
 }
 
 .product-cat .text {
@@ -216,6 +217,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 .product-cat .text p {
     margin-top: auto;
     text-align: center;
+    min-height: 40px;
 }
 
 .product-cat .text p a {
@@ -252,7 +254,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
-    height: 100%;
+    height: auto;
 }
 
 .product-cat .thumb .photo {
@@ -287,6 +289,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 .product-cat .text p {
     margin-top: auto;
+    min-height: 40px;
 }
 
 .product-cat .text p a {

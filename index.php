@@ -94,7 +94,7 @@ foreach ($result as $row)
 
 
 <?php if($home_service_on_off == 1): ?>
-<div class="service bg-gray">
+<div class="service bg-gray" style="padding: 50px 0; background-color: #f9f9f9;">
     <div class="container">
         <div class="row">
             <?php
@@ -103,11 +103,13 @@ foreach ($result as $row)
                 $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
                 foreach ($result as $row) {
                     ?>
-                    <div class="col-md-4">
-                        <div class="item">
-                            <div class="photo"><img src="assets/uploads/<?php echo $row['photo']; ?>" width="150px" alt="<?php echo $row['title']; ?>"></div>
-                            <h3><?php echo $row['title']; ?></h3>
-                            <p>
+                    <div class="col-md-4" style="margin-bottom: 30px;">
+                        <div class="item" style="text-align: center; background: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
+                            <div class="photo" style="margin-bottom: 20px;">
+                                <img src="assets/uploads/<?php echo $row['photo']; ?>" width="150px" alt="<?php echo $row['title']; ?>" style="max-width: 100%; border-radius: 5px;">
+                            </div>
+                            <h3 style="font-size: 20px; font-weight: bold; color: #333;"><?php echo $row['title']; ?></h3>
+                            <p style="font-size: 14px; color: #666; line-height: 1.6;">
                                 <?php echo nl2br($row['content']); ?>
                             </p>
                         </div>

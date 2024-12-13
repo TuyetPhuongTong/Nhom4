@@ -121,11 +121,6 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 ?>
 <style>
 /* General Page Styling */
-/* General Page Styling */
-/* General Page Styling */
-/* General Page Styling */
-/* General Page Styling */
-/* General Page Styling */
 .page-banner {
     background-size: cover;
     background-position: center;
@@ -157,10 +152,9 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 /* Product Listing */
 .product-cat .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+    gap: 20px; /* 20px gap between items */
 }
 
 /* Container for each product block */
@@ -168,13 +162,9 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    flex: 1 1 calc(33.333% - 20px);
-    box-sizing: border-box;
-    min-height: 350px; /* Set minimum height to ensure equal height in the row */
+    min-height: 350px; /* Set minimum height */
     border: 1px solid #e1e1e1;
     border-radius: 10px;
-    margin-bottom: 20px;
-    overflow: hidden;
     background-color: #ffffff;
     transition: all 0.3s ease;
 }
@@ -254,14 +244,14 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
-    .product-cat .item-product-cat {
-        flex: 0 0 calc(50% - 20px); /* 2 items per row on smaller screens */
+    .product-cat .row {
+        grid-template-columns: repeat(2, 1fr); /* 2 items per row on smaller screens */
     }
 }
 
 @media (max-width: 480px) {
-    .product-cat .item-product-cat {
-        flex: 0 0 100%; /* 1 item per row on mobile screens */
+    .product-cat .row {
+        grid-template-columns: 1fr; /* 1 item per row on mobile screens */
     }
 }
 

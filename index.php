@@ -91,7 +91,6 @@ foreach ($result as $row)
     </a>
 
 </div>
-
 <?php if($home_service_on_off == 1): ?>
 <div class="service bg-gray" style="padding: 50px 0; background-color: #f9f9f9;">
     <div class="container">
@@ -107,7 +106,7 @@ foreach ($result as $row)
                             <div class="photo" style="margin-bottom: 20px;">
                                 <img src="assets/uploads/<?php echo $row['photo']; ?>" width="150px" alt="<?php echo $row['title']; ?>" style="max-width: 100%; border-radius: 5px;">
                             </div>
-                            <h3 style="font-size: 20px; font-weight: bold; color: #333;"><?php echo $row['title']; ?></h3>
+                            <h3 style="font-size: 20px; font-weight: bold; color: #007bff;"><?php echo $row['title']; ?></h3> <!-- Đổi màu chữ tiêu đề thành màu xanh -->
                             <p style="font-size: 14px; color: #666; line-height: 1.6;">
                                 <?php echo nl2br($row['content']); ?>
                             </p>
@@ -120,6 +119,7 @@ foreach ($result as $row)
     </div>
 </div>
 <?php endif; ?>
+
 <!-- banner quảng cáo -->
 <div class="container" style="margin-top: 40px;">
        

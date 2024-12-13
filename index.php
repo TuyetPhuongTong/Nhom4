@@ -102,11 +102,11 @@ foreach ($result as $row)
                 foreach ($result as $row) {
                     ?>
                     <div class="col-md-4" style="margin-bottom: 30px; display: flex; justify-content: center;">
-                        <div class="item" style="text-align: center; background: #fff; border: 1px solid #ddd; border-radius: 50%; padding: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; width: 250px; height: 250px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                            <div class="photo" style="margin-bottom: 20px; border-radius: 50%; overflow: hidden; width: 200px; height: 200px;">
-                                <img src="assets/uploads/<?php echo $row['photo']; ?>" alt="<?php echo $row['title']; ?>" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                        <div class="item" style="text-align: center; background: #fff; border: 1px solid #ddd; border-radius: 50%; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; width: 200px; height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                            <div class="photo" style="margin-bottom: 20px; border-radius: 50%; overflow: hidden;">
+                                <img src="assets/uploads/<?php echo $row['photo']; ?>" width="150px" alt="<?php echo $row['title']; ?>" style="max-width: 100%; height: 150px; object-fit: cover; border-radius: 50%;">
                             </div>
-                            <h3 style="font-size: 20px; font-weight: bold; color: #333;"><?php echo $row['title']; ?></h3>
+                            <h3 style="font-size: 18px; font-weight: bold; color: #333;"><?php echo $row['title']; ?></h3>
                             <p style="font-size: 14px; color: #666; line-height: 1.6;">
                                 <?php echo nl2br($row['content']); ?>
                             </p>

@@ -338,7 +338,7 @@ body {
 
 			        <li class="treeview <?php if( ($cur_page == 'social-media.php') ) {echo 'active';} ?>">
 			          <a href="social-media.php">
-			            <i class="fa fa-globe"></i> <span>Social Media</span>
+			            <i class="fa fa-globe"></i> <span>Mạng xã hội</span>
 			          </a>
 			        </li>
 

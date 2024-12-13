@@ -137,11 +137,11 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 }
 
 .page .container {
-    padding: 20px; /* Reduced padding */
+    padding: 15px; /* Reduced padding */
 }
 
 .product-cat h3 {
-    font-size: 24px; /* Reduced font size */
+    font-size: 22px; /* Reduced font size */
     color: #006666;
     margin-bottom: 15px; /* Smaller margin */
     height: 45px;
@@ -155,7 +155,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 .product-cat .row {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 items per row */
-    gap: 15px; /* Reduced gap */
+    gap: 10px; /* Reduced gap between items */
     width: 100%;
 }
 
@@ -164,31 +164,31 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 150px; /* Reduced height of product blocks */
+    min-height: 140px; /* Reduced height of product blocks */
     border: 1px solid #e1e1e1;
-    border-radius: 10px; /* Reduced border radius */
+    border-radius: 8px; /* Smaller border radius */
     background-color: #ffffff;
     transition: all 0.3s ease;
-    padding: 15px; /* Reduced padding inside product block */
+    padding: 10px; /* Reduced padding inside product block */
     box-sizing: border-box;
     width: 100%;
 }
 
 /* Hover effect for product block */
 .product-cat .item-product-cat:hover {
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Smaller shadow */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     transform: translateY(-3px); /* Slightly smaller hover effect */
 }
 
 .product-cat .thumb .photo {
-    height: 200px; /* Reduced height of image */
+    height: 180px; /* Smaller height for images */
     background-size: cover;
     background-position: center;
 }
 
 /* Content section of each product */
 .product-cat .text {
-    padding: 15px; /* Reduced padding */
+    padding: 10px; /* Reduced padding */
     background-color: #f9f9f9;
     text-align: center;
     flex-grow: 1;
@@ -199,7 +199,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 /* Title of each product */
 .product-cat .text h3 a {
-    font-size: 16px; /* Smaller font size for title */
+    font-size: 14px; /* Smaller font size for title */
     font-weight: bold;
     color: #006666;
     text-decoration: none;
@@ -212,14 +212,14 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 /* Product price */
 .product-cat .text h4 {
-    font-size: 14px; /* Smaller font size for price */
+    font-size: 12px; /* Smaller font size for price */
     color: #CC3300;
-    margin-top: 8px; /* Reduced margin */
+    margin-top: 8px;
 }
 
 /* Product rating */
 .product-cat .rating {
-    margin-top: 8px; /* Reduced margin */
+    margin-top: 8px;
     color: #f39c12;
 }
 
@@ -232,7 +232,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 .product-cat .text p a {
     display: inline-block;
     width: 100%;
-    padding: 8px 18px; /* Smaller button padding */
+    padding: 8px 15px; /* Smaller padding for buttons */
     background-color: #CC3300;
     color: #ffffff;
     border-radius: 5px;

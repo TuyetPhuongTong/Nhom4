@@ -272,7 +272,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 .product-cat .text h3 {
     min-height: 50px; /* Đảm bảo chiều cao tiêu đề luôn đồng nhất */
-    font-size: 18px; /* Kích thước chữ lớn */
+    font-size: 16px; /* Kích thước chữ lớn */
     font-weight: bold; /* Chữ đậm */
     color: #006666; /* Màu xanh đậm */
     margin-bottom: 10px; /* Khoảng cách phía dưới */

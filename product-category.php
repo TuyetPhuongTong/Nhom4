@@ -121,8 +121,6 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 ?>
 <style>
 /* General Page Styling */
-<style>
-/* General Page Styling */
 .page-banner {
     background-size: cover; /* Ảnh nền sẽ phủ toàn bộ vùng chứa mà không bị co giãn sai tỷ lệ */
     background-position: center; /* Căn giữa ảnh nền */
@@ -161,13 +159,14 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     flex-direction: column; /* Các phần tử con xếp theo chiều dọc */
     justify-content: space-between; /* Căn đều nội dung đầu và cuối */
     align-items: stretch; /* Kéo giãn các phần tử con theo chiều ngang */
-    height: 100%; /* Đặt chiều cao đồng nhất cho tất cả các khối sản phẩm */
+    min-height: 400px; /* Đảm bảo khối sản phẩm có chiều cao đồng nhất */
     border: 1px solid #e1e1e1; /* Đặt viền màu xám nhạt */
     border-radius: 10px; /* Bo tròn góc của khối */
     margin-bottom: 20px; /* Tạo khoảng cách dưới mỗi khối sản phẩm */
     overflow: hidden; /* Ẩn nội dung vượt ra ngoài khối */
     transition: all 0.3s ease; /* Hiệu ứng chuyển đổi mượt mà khi hover */
 }
+
 .product-cat .item-product-cat:hover {
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng khi hover */
     transform: translateY(-5px); /* Khối sản phẩm nâng lên khi hover */
@@ -178,7 +177,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     background-size: cover; /* Ảnh nền phủ toàn bộ khối */
     background-position: center; /* Căn giữa ảnh nền */
 }
-  
+
 .product-cat .text {
     padding: 20px; /* Khoảng cách bên trong khối nội dung */
     background-color: #f9f9f9; /* Màu nền nhạt */
@@ -196,6 +195,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     text-decoration: none; /* Xóa gạch chân */
     transition: color 0.3s ease; /* Hiệu ứng đổi màu mượt khi hover */
 }
+
 .product-cat .text h3 a:hover {
     color: #CC3300; /* Đổi sang màu đỏ khi hover */
 }
@@ -230,9 +230,11 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     transition: background-color 0.3s ease; /* Hiệu ứng đổi màu nút bấm */
     white-space: nowrap; /* Ngăn văn bản xuống dòng */
 }
+
 .product-cat .text p a:hover {
     background-color: #006666; /* Đổi sang màu xanh khi hover */
 }
+
 /* Đảm bảo các khối sản phẩm có chiều cao đồng nhất */
 .product-cat .row {
     display: flex;
@@ -241,83 +243,28 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     gap: 20px; /* Khoảng cách giữa các khối */
 }
 
-.product-cat .row::after {
-    content: ""; /* Tạo phần tử giả ở cuối hàng */
-    flex: 0 0 calc(33.333% - 20px); /* Đảm bảo phần tử giả chiếm cùng kích thước với sản phẩm */
-    box-sizing: border-box;
-}
-
-.product-cat .item-product-cat {
-    flex: 0 0 calc(33.333% - 20px); /* Chia mỗi khối sản phẩm thành 1/3 chiều rộng (trừ khoảng cách 20px) */
-    box-sizing: border-box; /* Bao gồm cả padding và viền khi tính kích thước khối */
+/* Sửa lại các khối sản phẩm để chiều cao đồng đều */
+.product-cat .row .item-product-cat {
+    flex: 0 0 calc(33.333% - 20px); /* Chiếm 1/3 chiều rộng */
+    min-height: 400px; /* Đảm bảo chiều cao đồng nhất cho tất cả các khối */
     display: flex;
-    flex-direction: column; /* Sắp xếp các phần tử bên trong khối từ trên xuống dưới */
-    justify-content: space-between; /* Khoảng cách giữa các phần tử bên trong khối được dàn đều */
-    height: 100%; /* Đặt chiều cao khối sản phẩm đồng nhất */
+    flex-direction: column;
+    justify-content: space-between; /* Căn đều nội dung trong khối */
 }
 
-.product-cat .thumb .photo {
-    height: 250px; /* Đặt chiều cao cố định cho hình ảnh */
-    background-size: cover; /* Đảm bảo ảnh lấp đầy khung nhưng không bị méo */
-    background-position: center; /* Ảnh được căn giữa khung */
-}
-
-.product-cat .text {
-    flex-grow: 1; /* Phần văn bản chiếm không gian còn lại trong khối */
-    display: flex;
-    flex-direction: column; /* Sắp xếp các phần tử bên trong từ trên xuống dưới */
-    justify-content: flex-start; /* Bắt đầu từ phía trên */
-    background-color: #f9f9f9; /* Màu nền nhạt */
-    text-align: center; /* Căn giữa nội dung */
-    padding: 20px; /* Khoảng cách giữa nội dung và viền */
-}
-
-.product-cat .text h3 {
-    min-height: 50px; /* Đảm bảo chiều cao tiêu đề luôn đồng nhất */
-    font-size: 18px; /* Kích thước chữ lớn */
-    font-weight: bold; /* Chữ đậm */
-    color: #006666; /* Màu xanh đậm */
-    margin-bottom: 10px; /* Khoảng cách phía dưới */
-}
-
-.product-cat .text h4 {
-    font-size: 16px; /* Kích thước chữ vừa */
-    color: #CC3300; /* Màu đỏ */
-    margin-top: 10px; /* Khoảng cách phía trên */
-}
-
-.product-cat .text p {
-    margin-top: auto; /* Đẩy nút xuống cuối khối */
-}
-
-.product-cat .text p a {
-    display: inline-block; /* Hiển thị nút dưới dạng khối */
-    padding: 10px 20px; /* Khoảng cách trong nút */
-    background-color: #CC3300; /* Màu nền đỏ */
-    color: #ffffff; /* Màu chữ trắng */
-    border-radius: 5px; /* Bo góc nút */
-    text-decoration: none; /* Loại bỏ gạch chân */
-    font-size: 16px; /* Kích thước chữ */
-    text-align: center; /* Căn giữa chữ */
-    transition: background-color 0.3s ease; /* Hiệu ứng đổi màu khi hover */
-}
-
-.product-cat .text p a:hover {
-    background-color: #006666; /* Đổi màu nền sang xanh khi hover */
-}
-
+/* Thay đổi layout cho các màn hình nhỏ */
 @media (max-width: 768px) {
     .product-cat .item-product-cat {
-        flex: 0 0 calc(50% - 20px); /* For smaller screens, display 2 items per row */
+        flex: 0 0 calc(50% - 20px); /* Hiển thị 2 sản phẩm mỗi hàng trên màn hình nhỏ */
     }
 }
 
 @media (max-width: 480px) {
     .product-cat .item-product-cat {
-        flex: 0 0 100%; /* For mobile screens, display 1 item per row */
+        flex: 0 0 100%; /* Hiển thị 1 sản phẩm mỗi hàng trên thiết bị di động */
     }
 }
-   
+
 </style>
 
 

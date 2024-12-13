@@ -106,7 +106,7 @@ foreach ($result as $row)
                             <div class="photo" style="margin-bottom: 20px;">
                                 <img src="assets/uploads/<?php echo $row['photo']; ?>" width="150px" alt="<?php echo $row['title']; ?>" style="max-width: 100%; border-radius: 5px;">
                             </div>
-                            <h3 style="font-size: 20px; font-weight: bold; color:rgb(239, 247, 99);"><?php echo $row['title']; ?></h3> <!-- Đổi màu chữ tiêu đề thành màu xanh -->
+                            <h3 style="font-size: 20px; font-weight: bold; color: #fcd53f;"><?php echo $row['title']; ?></h3> <!-- Đổi màu chữ tiêu đề thành màu xanh -->
                             <p style="font-size: 14px; color: #666; line-height: 1.6;">
                                 <?php echo nl2br($row['content']); ?>
                             </p>

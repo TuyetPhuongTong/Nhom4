@@ -126,26 +126,26 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     background-size: cover;
     background-position: center;
     text-align: center;
-    padding: 100px 0;
+    padding: 80px 0; /* Adjusted padding for a smaller banner */
     color: #ffffff;
 }
 
 .page-banner .inner h1 {
-    font-size: 36px;
+    font-size: 30px; /* Smaller font size for the header */
     font-weight: bold;
     color: #CC3300;
 }
 
 .page .container {
-    padding: 30px;
+    padding: 20px; /* Reduced padding */
 }
 
 .product-cat h3 {
-    font-size: 28px;
+    font-size: 24px; /* Reduced font size */
     color: #006666;
-    margin-bottom: 20px;
-    height: 50px;
-    line-height: 50px;
+    margin-bottom: 15px; /* Smaller margin */
+    height: 45px;
+    line-height: 45px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -155,8 +155,8 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 .product-cat .row {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 items per row */
-    gap: 20px; /* Tăng khoảng cách giữa các sản phẩm */
-    width: 100%; /* Đảm bảo rằng container của lưới chiếm đủ chiều rộng */
+    gap: 15px; /* Reduced gap */
+    width: 100%;
 }
 
 /* Container for each product block */
@@ -164,31 +164,31 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 50px; /* Tăng chiều cao khối sản phẩm */
+    min-height: 150px; /* Reduced height of product blocks */
     border: 1px solid #e1e1e1;
-    border-radius: 15px; /* Bo tròn góc nhiều hơn */
+    border-radius: 10px; /* Reduced border radius */
     background-color: #ffffff;
     transition: all 0.3s ease;
-    padding: 20px; /* Thêm padding bên trong khối */
-    box-sizing: border-box; /* Đảm bảo padding được tính trong chiều rộng */
-    width: 100%; /* Đảm bảo khối sản phẩm chiếm toàn bộ chiều rộng trong lưới */
+    padding: 15px; /* Reduced padding inside product block */
+    box-sizing: border-box;
+    width: 100%;
 }
 
 /* Hover effect for product block */
 .product-cat .item-product-cat:hover {
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-5px);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Smaller shadow */
+    transform: translateY(-3px); /* Slightly smaller hover effect */
 }
 
 .product-cat .thumb .photo {
-    height: 250px; /* Tăng chiều cao ảnh */
+    height: 200px; /* Reduced height of image */
     background-size: cover;
     background-position: center;
 }
 
 /* Content section of each product */
 .product-cat .text {
-    padding: 20px;
+    padding: 15px; /* Reduced padding */
     background-color: #f9f9f9;
     text-align: center;
     flex-grow: 1;
@@ -199,7 +199,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 /* Title of each product */
 .product-cat .text h3 a {
-    font-size: 20px; /* Tăng cỡ chữ tiêu đề */
+    font-size: 16px; /* Smaller font size for title */
     font-weight: bold;
     color: #006666;
     text-decoration: none;
@@ -212,14 +212,14 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 /* Product price */
 .product-cat .text h4 {
-    font-size: 18px; /* Tăng cỡ chữ giá sản phẩm */
+    font-size: 14px; /* Smaller font size for price */
     color: #CC3300;
-    margin-top: 10px;
+    margin-top: 8px; /* Reduced margin */
 }
 
 /* Product rating */
 .product-cat .rating {
-    margin-top: 10px;
+    margin-top: 8px; /* Reduced margin */
     color: #f39c12;
 }
 
@@ -232,12 +232,12 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 .product-cat .text p a {
     display: inline-block;
     width: 100%;
-    padding: 10px 20px; /* Tăng kích thước nút */
+    padding: 8px 18px; /* Smaller button padding */
     background-color: #CC3300;
     color: #ffffff;
-    border-radius: 5px; /* Bo góc nút nhiều hơn */
+    border-radius: 5px;
     text-decoration: none;
-    font-size: 16px; /* Tăng cỡ chữ nút */
+    font-size: 14px; /* Smaller font size for button */
     text-align: center;
     transition: background-color 0.3s ease;
     white-space: nowrap;
@@ -259,6 +259,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
         grid-template-columns: 1fr; /* 1 item per row on mobile screens */
     }
 }
+
 
 
 </style>

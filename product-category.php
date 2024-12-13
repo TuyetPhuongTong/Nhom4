@@ -148,9 +148,6 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     overflow: hidden; /* Ẩn nội dung nếu dài hơn chiều cao */
     text-overflow: ellipsis; /* Thêm dấu "..." nếu nội dung bị cắt */
     white-space: nowrap; /* Không cho phép văn bản xuống dòng */
-    display: block; /* Đảm bảo phần tử là block để áp dụng đúng overflow */
-    width: 100%; /* Đảm bảo chiều rộng của phần tử đủ để hiển thị */
-    font-family: Arial, sans-serif; /* Kiểm tra font chữ */
 }
 
 /* Product Listing */

@@ -121,42 +121,14 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 ?>
 <style>
 /* General Page Styling */
-/* General Page Styling */
-.page-banner {
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-    padding: 60px 0; /* Reduced padding for banner */
-    color: #ffffff;
-}
-
-.page-banner .inner h1 {
-    font-size: 28px; /* Smaller font size for header */
-    font-weight: bold;
-    color: #CC3300;
-}
-
-.page .container {
-    padding: 10px; /* Reduced padding for container */
-}
-
-.product-cat h3 {
-    font-size: 20px; /* Smaller font size for category titles */
-    color: #006666;
-    margin-bottom: 10px; /* Smaller margin */
-    height: 40px;
-    line-height: 40px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
 /* Product Listing */
 .product-cat .row {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 items per row */
-    gap: 10px; /* Reduced gap between items */
+    gap: 20px; /* Tăng khoảng cách giữa các sản phẩm */
     width: 100%;
+    grid-auto-rows: 1fr; /* Đảm bảo các hàng có chiều cao đều nhau */
+    grid-template-rows: auto; /* Đảm bảo chiều cao của hàng tự động điều chỉnh */
 }
 
 /* Container for each product block */

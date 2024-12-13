@@ -153,7 +153,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 /* Product Listing */
 /* Container của từng khối sản phẩm */
 .product-cat .item-product-cat {
-    flex: 0 0 calc(40% - 20px); /* Mỗi khối sản phẩm chiếm 1/3 hàng, trừ khoảng cách giữa các khối */
+    flex: 0 0 calc(33.333% - 20px); /* Mỗi khối sản phẩm chiếm 1/3 hàng, trừ khoảng cách giữa các khối */
     box-sizing: border-box; /* Bao gồm cả padding và border trong chiều rộng/chiều cao */
     display: flex; /* Áp dụng flexbox cho các phần tử con */
     flex-direction: column; /* Các phần tử con xếp theo chiều dọc */
@@ -212,6 +212,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 /* Ensuring uniform button alignment */
 .product-cat .text p {
     margin-top: auto;
+    text-align: center;
 }
 
 .product-cat .text p a {

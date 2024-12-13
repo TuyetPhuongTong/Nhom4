@@ -121,45 +121,6 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 ?>
 <style>
 /* General Page Styling */
-/* Định dạng thanh điều hướng */
-nav {
-    display: flex;
-    justify-content: center; /* Canh giữa các mục theo chiều ngang */
-    align-items: center; /* Canh giữa nội dung theo chiều dọc */
-    background-color: #8B4513; /* Màu nền của thanh điều hướng */
-    height: 60px; /* Chiều cao thanh điều hướng */
-    margin: 0;
-    padding: 0;
-}
-
-/* Định dạng danh sách menu */
-nav ul {
-    list-style: none; /* Xóa dấu chấm/bullet */
-    display: flex; /* Sắp xếp ngang các mục menu */
-    margin: 0;
-    padding: 0;
-}
-
-/* Định dạng từng mục menu */
-nav ul li {
-    padding: 0 20px; /* Khoảng cách giữa các mục menu */
-    text-align: center;
-}
-
-/* Định dạng liên kết */
-nav ul li a {
-    text-decoration: none; /* Loại bỏ gạch chân */
-    color: #ffffff; /* Màu chữ */
-    font-size: 16px; /* Kích thước chữ */
-    line-height: 60px; /* Canh giữa nội dung theo chiều dọc */
-    transition: color 0.3s ease; /* Hiệu ứng khi hover */
-}
-
-/* Hiệu ứng hover cho liên kết */
-nav ul li a:hover {
-    color: #f5e6d8; /* Màu chữ khi hover */
-}
-
 .page-banner {
     background-size: cover;
     background-position: center;

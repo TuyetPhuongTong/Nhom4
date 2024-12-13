@@ -128,6 +128,8 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     text-align: center;
     padding: 100px 0;
     color: #ffffff;
+    width: 100%; /* Đảm bảo banner không tràn ra ngoài */
+    box-sizing: border-box; /* Bao gồm padding trong chiều rộng */
 }
 
 .page-banner .inner h1 {
@@ -138,6 +140,8 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 .page .container {
     padding: 30px;
+    width: 100%; /* Đảm bảo container chiếm toàn bộ chiều rộng */
+    box-sizing: border-box; /* Đảm bảo không bị tràn */
 }
 
 .product-cat h3 {
@@ -155,7 +159,10 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 .product-cat .row {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 items per row */
-    gap: 30px; /* Tăng khoảng cách giữa các sản phẩm */
+    gap: 30px; /* 20px gap between items */
+    width: 100%; /* Đảm bảo chiều rộng của sản phẩm không tràn ra ngoài */
+    box-sizing: border-box;
+    padding: 0 10px; /* Thêm padding vào bên trái và phải nếu cần */
 }
 
 /* Container for each product block */
@@ -169,6 +176,8 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     background-color: #ffffff;
     transition: all 0.3s ease;
     padding: 20px; /* Thêm padding bên trong khối */
+    box-sizing: border-box; /* Đảm bảo padding được tính trong chiều rộng */
+    width: 100%; /* Đảm bảo khối sản phẩm chiếm toàn bộ chiều rộng trong lưới */
 }
 
 /* Hover effect for product block */
@@ -248,6 +257,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 @media (max-width: 768px) {
     .product-cat .row {
         grid-template-columns: repeat(2, 1fr); /* 2 items per row on smaller screens */
+        padding: 0 10px; /* Thêm padding bên phải và trái */
     }
 }
 
@@ -256,8 +266,6 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
         grid-template-columns: 1fr; /* 1 item per row on mobile screens */
     }
 }
-
-
 
 </style>
 <div class="page-banner" style="background-image: url(https://i.pinimg.com/736x/94/a9/9c/94a99cb922ebf9bfe925b2a191080a7b.jpg)">

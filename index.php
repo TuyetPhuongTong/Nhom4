@@ -118,9 +118,7 @@ foreach ($result as $row)
         </div>
     </div>
 </div>
-<?php endif; ?>
-
-
+<?php endif; ?> 
 
 <!-- banner quảng cáo -->
 <div class="container" style="margin-top: 40px;">

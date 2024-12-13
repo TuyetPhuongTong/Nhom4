@@ -309,11 +309,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 }
 
 /* Ensure products remain consistent in size */
-.product-cat .row::after {
-    content: "";
-    flex: 0 0 calc(33.333% - 20px);
-    box-sizing: border-box;
-}
+
 
 @media (max-width: 768px) {
     .product-cat .item-product-cat {

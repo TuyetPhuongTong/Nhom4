@@ -125,6 +125,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 /* General Page Styling */
 /* General Page Styling */
 /* General Page Styling */
+/* General Page Styling */
 .page-banner {
     background-size: cover;
     background-position: center;
@@ -167,9 +168,9 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    flex: 1 1 calc(33.333% - 20px); /* Adjust to take 1/3 space minus 20px for gap */
+    flex: 1 1 calc(33.333% - 20px);
     box-sizing: border-box;
-    height: 100%; /* Ensure consistent height */
+    min-height: 350px; /* Set minimum height to ensure equal height in the row */
     border: 1px solid #e1e1e1;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -263,6 +264,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
         flex: 0 0 100%; /* 1 item per row on mobile screens */
     }
 }
+
 
 
 </style>

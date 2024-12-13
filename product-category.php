@@ -317,9 +317,9 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 }
    
 </style>
-<div class="page-banner" style="background-image: url(assets/uploads/<?php echo $banner_product_category; ?>)">
+<div class="page-banner" style="background-image: url(https://i.pinimg.com/736x/94/a9/9c/94a99cb922ebf9bfe925b2a191080a7b.jpg)">
     <div class="inner">
-        <h1 style="color: #ffffff;"><?php echo "Danh mục"; ?> <?php echo $title; ?></h1>
+        <h1 style="color:#f6dbab;"><?php echo "Danh mục"; ?> <?php echo $title; ?></h1>
     </div>
 </div>
 

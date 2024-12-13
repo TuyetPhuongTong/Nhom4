@@ -154,10 +154,10 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 /* Product Listing */
 .product-cat .row {
     display: grid;
-    grid-template-columns: repeat(3, minmax(250px, 1fr)); /* 3 items per row, each with a minimum width of 250px */
+    grid-template-columns: repeat(3, 1fr); /* 3 items per row */
     gap: 20px; /* Tăng khoảng cách giữa các sản phẩm */
     width: 100%; /* Đảm bảo rằng container của lưới chiếm đủ chiều rộng */
-    grid-auto-rows: 1fr; /* Đảm bảo các hàng có chiều cao đều nhau */
+    grid-auto-rows: minmax(250px, auto); /* Đảm bảo chiều cao của các hàng là đồng đều và phù hợp với nội dung */
 }
 
 /* Container for each product block */
@@ -165,7 +165,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 250px; /* Điều chỉnh chiều cao sản phẩm để hiển thị rõ ràng */
+    min-height: 300px; /* Đảm bảo mỗi sản phẩm có chiều cao tối thiểu */
     border: 1px solid #e1e1e1;
     border-radius: 15px;
     background-color: #ffffff;
@@ -242,7 +242,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 /* Responsive for smaller screens */
 @media (max-width: 768px) {
     .product-cat .row {
-        grid-template-columns: repeat(2, minmax(200px, 1fr)); /* 2 items per row on smaller screens */
+        grid-template-columns: repeat(2, 1fr); /* 2 items per row on smaller screens */
     }
 }
 

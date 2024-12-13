@@ -230,17 +230,30 @@ foreach ($result as $row) {
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 
 	<script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5993ef01e2587a001253a261&product=inline-share-buttons"></script>
-
+	<?php echo $before_head; ?>
+<!-- Tạo popup -->
 <?php echo $before_head; ?>
 <!-- Tạo popup -->
 <div id="promo-popup" class="popup-overlay">
-  <div class="popup-content">
-    <span class="close-btn" id="close-popup">&times;</span>
-    <h2>Khuyến mãi đặc biệt!</h2>
-    <p>Giảm giá 50% cho tất cả sản phẩm. Chỉ trong hôm nay!</p>
-    <a href="/sale" class="btn">Xem ngay</a>
+  <div class="popup-content" 
+       style="background-image: url(https://www.dartchocolate.com/cdn/shop/files/bomb.jpg?v=1732004465); 
+              background-size: cover; 
+              background-position: center; 
+              background-repeat: no-repeat; 
+              width: 350px; 
+              height: 350px; 
+              display: flex; 
+              flex-direction: column; 
+              justify-content: flex-end; 
+              align-items: center; 
+              padding: 10px;">
+    <span class="close-btn" id="close-popup" style="align-self: flex-end;">&times;</span>    
+    <a href="http://localhost/Nhom4/product.php?id=97" class="btn" style="background-color:#d08e56; color:#f6dbab; text-decoration: none; padding: 10px 20px; border-radius: 5px;">Xem ngay</a>
   </div>
 </div>
+
+
+
 <!-- css cho popup -->
 <style>
 	/* Overlay bao phủ toàn màn hình */

@@ -122,6 +122,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 <style>
 /* General Page Styling */
 /* General Page Styling */
+/* General Page Styling */
 .page-banner {
     background-size: cover;
     background-position: center;
@@ -151,22 +152,37 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     white-space: nowrap;
 }
 
-/* Product Listing */
+/* Product Listing using CSS Grid */
+.product-cat .row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Chia thành 3 cột đều */
+    gap: 20px; /* Khoảng cách giữa các khối */
+}
+
+/* Adjust for smaller screens using media queries */
+@media (max-width: 768px) {
+    .product-cat .row {
+        grid-template-columns: repeat(2, 1fr); /* 2 cột cho màn hình nhỏ hơn */
+    }
+}
+
+@media (max-width: 480px) {
+    .product-cat .row {
+        grid-template-columns: 1fr; /* 1 cột cho màn hình nhỏ nhất */
+    }
+}
+
+/* Product item styling */
 .product-cat .item-product-cat {
-    flex: 0 0 calc(33.333% - 20px); 
-    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: stretch;
-    height: 100%;
     border: 1px solid #e1e1e1;
     border-radius: 10px;
-    margin-bottom: 20px;
     overflow: hidden;
+    background-color: #ffffff;
     transition: all 0.3s ease;
-    display: flex; /* Ensure each item-product-cat is a flex container */
-    flex-direction: column;
+    height: 100%; /* Đảm bảo chiều cao khối sản phẩm chiếm toàn bộ không gian */
 }
 
 .product-cat .item-product-cat:hover {
@@ -174,12 +190,14 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     transform: translateY(-5px);
 }
 
+/* Image styling */
 .product-cat .thumb .photo {
     height: 250px;
     background-size: cover;
     background-position: center;
 }
 
+/* Text and button styles */
 .product-cat .text {
     padding: 20px;
     background-color: #f9f9f9;
@@ -235,76 +253,6 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 .product-cat .text p a:hover {
     background-color: #006666;
 }
-
-/* Row adjustment */
-.product-cat .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-/* Adjust for better layout on smaller screens */
-.product-cat .item-product-cat {
-    flex: 0 0 calc(33.333% - 20px); 
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: stretch;
-    height: 100%;
-}
-
-.product-cat .thumb .photo {
-    height: 250px;
-    background-size: cover;
-    background-position: center;
-}
-
-.product-cat .text {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    background-color: #f9f9f9;
-    text-align: center;
-    padding: 20px;
-}
-
-.product-cat .text h3 {
-    min-height: 50px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #006666;
-    margin-bottom: 10px;
-}
-
-.product-cat .text h4 {
-    font-size: 16px;
-    color: #CC3300;
-    margin-top: 10px;
-}
-
-.product-cat .text p {
-    margin-top: auto;
-}
-
-.product-cat .text p a {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #CC3300;
-    color: #ffffff;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 16px;
-    text-align: center;
-    transition: background-color 0.3s ease;
-}
-
-.product-cat .text p a:hover {
-    background-color: #006666;
-}
-
 /* Ensure products remain consistent in size */
 .product-cat .row::after {
     content: "";

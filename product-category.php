@@ -185,7 +185,6 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     display: flex;
     flex-direction: column; /* Xếp các phần tử con theo chiều dọc */
     justify-content: space-between; /* Căn đều phần trên và dưới */
-    overflow: hidden;
 }
 
 .product-cat .text h3 a {

@@ -21,7 +21,7 @@ foreach ($result as $row) {
 }
 ?>
 
-<div class="page-banner" style="background-image: url(assets/uploads/<?php echo $banner_search; ?>);">
+<div class="page-banner" style="background-image: url(https://i.pinimg.com/736x/82/cd/4a/82cd4a8c262b9c774f0638d7fd88997a.jpg);">
     <div class="overlay"></div>
     <div class="inner">
         <h1>

@@ -67,7 +67,7 @@ if(isset($_POST['form1'])) {
 }
 ?>
 
-<div class="page-banner" style="background-image: url(assets/uploads/<?php echo $banner_cart; ?>)">
+<div class="page-banner" style="background-image: url(https://i.pinimg.com/736x/3b/e0/6d/3be06d9ac4093ddeb51b86ce2383658c.jpg)">
     <div class="overlay"></div>
     <div class="page-banner-inner">
         <h1><?php echo "Giỏ hàng của tôi"; ?></h1>

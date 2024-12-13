@@ -16,7 +16,7 @@ if(!isset($_SESSION['cart_p_id'])) {
 }
 ?>
 
-<div class="page-banner" style="background-image: url(assets/uploads/<?php echo $banner_checkout; ?>)">
+<div class="page-banner" style="background-image: url(https://i.pinimg.com/736x/12/af/bd/12afbdd09ba3498f17caaea68daa26f0.jpg)">
     <div class="overlay"></div>
     <div class="page-banner-inner">
         <h1><?php echo "Thanh toán"; ?></h1>

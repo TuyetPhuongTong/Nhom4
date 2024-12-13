@@ -27,7 +27,7 @@ if ( (!isset($_REQUEST['email'])) || (isset($_REQUEST['token'])) )
 }
 ?>
 
-<div class="page-banner" style="background-color:#444;">
+<div class="page-banner" style="background-image:url(https://i.pinimg.com/736x/82/cd/4a/82cd4a8c262b9c774f0638d7fd88997a.jpg)">
     <div class="inner">
         <h1>Đăng ký thành công</h1>
     </div>

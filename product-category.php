@@ -126,26 +126,26 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     background-size: cover;
     background-position: center;
     text-align: center;
-    padding: 80px 0; /* Adjusted padding for a smaller banner */
+    padding: 60px 0; /* Reduced padding for banner */
     color: #ffffff;
 }
 
 .page-banner .inner h1 {
-    font-size: 30px; /* Smaller font size for the header */
+    font-size: 28px; /* Smaller font size for header */
     font-weight: bold;
     color: #CC3300;
 }
 
 .page .container {
-    padding: 15px; /* Reduced padding */
+    padding: 10px; /* Reduced padding for container */
 }
 
 .product-cat h3 {
-    font-size: 22px; /* Reduced font size */
+    font-size: 20px; /* Smaller font size for category titles */
     color: #006666;
-    margin-bottom: 15px; /* Smaller margin */
-    height: 45px;
-    line-height: 45px;
+    margin-bottom: 10px; /* Smaller margin */
+    height: 40px;
+    line-height: 40px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -164,31 +164,31 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 140px; /* Reduced height of product blocks */
+    min-height: 120px; /* Reduced height of product blocks */
     border: 1px solid #e1e1e1;
-    border-radius: 8px; /* Smaller border radius */
+    border-radius: 6px; /* Smaller border radius */
     background-color: #ffffff;
     transition: all 0.3s ease;
-    padding: 10px; /* Reduced padding inside product block */
+    padding: 8px; /* Reduced padding inside product block */
     box-sizing: border-box;
     width: 100%;
 }
 
 /* Hover effect for product block */
 .product-cat .item-product-cat:hover {
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Smaller shadow effect */
     transform: translateY(-3px); /* Slightly smaller hover effect */
 }
 
 .product-cat .thumb .photo {
-    height: 180px; /* Smaller height for images */
+    height: 150px; /* Further reduced height for images */
     background-size: cover;
     background-position: center;
 }
 
 /* Content section of each product */
 .product-cat .text {
-    padding: 10px; /* Reduced padding */
+    padding: 8px; /* Reduced padding */
     background-color: #f9f9f9;
     text-align: center;
     flex-grow: 1;
@@ -199,7 +199,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 /* Title of each product */
 .product-cat .text h3 a {
-    font-size: 14px; /* Smaller font size for title */
+    font-size: 12px; /* Smaller font size for title */
     font-weight: bold;
     color: #006666;
     text-decoration: none;
@@ -212,14 +212,14 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 /* Product price */
 .product-cat .text h4 {
-    font-size: 12px; /* Smaller font size for price */
+    font-size: 10px; /* Smaller font size for price */
     color: #CC3300;
-    margin-top: 8px;
+    margin-top: 5px; /* Reduced top margin */
 }
 
 /* Product rating */
 .product-cat .rating {
-    margin-top: 8px;
+    margin-top: 5px;
     color: #f39c12;
 }
 
@@ -232,12 +232,12 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 .product-cat .text p a {
     display: inline-block;
     width: 100%;
-    padding: 8px 15px; /* Smaller padding for buttons */
+    padding: 6px 12px; /* Smaller padding for buttons */
     background-color: #CC3300;
     color: #ffffff;
-    border-radius: 5px;
+    border-radius: 4px; /* Smaller border radius for button */
     text-decoration: none;
-    font-size: 14px; /* Smaller font size for button */
+    font-size: 12px; /* Smaller font size for button */
     text-align: center;
     transition: background-color 0.3s ease;
     white-space: nowrap;

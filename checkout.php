@@ -135,7 +135,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                         <?php endfor; ?>           
                         <tr>
                             <th colspan="7" class="total-text"><?php echo "Tạm tính"; ?></th>
-                            <th class="total-amount"><?php echo $table_total_price; ?><?php echo "₫"; ?></th>
+                            <th class="total-amount"><?php echo number_format($table_total_price, 0, ',', ','); ?><?php echo "₫"; ?></th>
                         </tr>
                         <?php
                         $statement = $pdo->prepare("SELECT * FROM tbl_shipping_cost WHERE country_id=?");
@@ -144,20 +144,21 @@ if(!isset($_SESSION['cart_p_id'])) {
                         if($total) {
                             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
                             foreach ($result as $row) {
-                                $shipping_cost = $row['amount'];
+                                $shipping_cost = (float) $row['amount'];
                             }
                         } else {
                             $statement = $pdo->prepare("SELECT * FROM tbl_shipping_cost_all WHERE sca_id=1");
                             $statement->execute();
                             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
                             foreach ($result as $row) {
-                                $shipping_cost = $row['amount'];
+                                $shipping_cost = (float) $row['amount'];
                             }
-                        }                        
+                        }  
+                        $shipping_cost *= 1000;                       
                         ?>
                         <tr>
                             <td colspan="7" class="total-text"><?php echo "Phí vận chuyển"; ?></td>
-                            <td class="total-amount"><?php echo $shipping_cost; ?><?php echo "₫"; ?></td>
+                            <td class="total-amount"><?php echo number_format($shipping_cost, 0, ',', ','); ?><?php echo "₫"; ?></td>
                         </tr>
                         <tr>
                             <th colspan="7" class="total-text"><?php echo "Tổng tiền"; ?></th>
@@ -165,7 +166,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                                 <?php
                                 $final_total = $table_total_price+$shipping_cost;
                                 ?>
-                                <?php echo $final_total; ?><?php echo "₫"; ?>
+                                <?php echo number_format($final_total, 0, ',', ','); ?><?php echo "₫"; ?>
                             </th>
                         </tr>
                     </table> 

@@ -153,11 +153,10 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 /* Product Listing */
 .product-cat .row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 items per row */
-    gap: 20px; /* Tăng khoảng cách giữa các sản phẩm */
-    width: 100%; /* Đảm bảo rằng container của lưới chiếm đủ chiều rộng */
-    grid-auto-rows: minmax(250px, auto); /* Đảm bảo chiều cao của các hàng là đồng đều và phù hợp với nội dung */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
 }
 
 /* Container for each product block */
@@ -165,14 +164,14 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 300px; /* Đảm bảo mỗi sản phẩm có chiều cao tối thiểu */
+    min-height: 350px; /* Đảm bảo mỗi sản phẩm có chiều cao tối thiểu */
     border: 1px solid #e1e1e1;
     border-radius: 15px;
     background-color: #ffffff;
     transition: all 0.3s ease;
     padding: 20px; /* Thêm padding bên trong khối */
     box-sizing: border-box;
-    width: 100%; /* Đảm bảo khối sản phẩm chiếm toàn bộ chiều rộng trong lưới */
+    width: calc(33.333% - 20px); /* Đảm bảo mỗi sản phẩm chiếm 1/3 chiều rộng container */
 }
 
 /* Hover effect for product block */
@@ -200,7 +199,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 /* Title of each product */
 .product-cat .text h3 a {
-    font-size: 14px; /* Điều chỉnh cỡ chữ tiêu đề */
+    font-size: 14px;
     font-weight: bold;
     color: #006666;
     text-decoration: none;
@@ -213,7 +212,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 /* Product Price */
 .product-cat .text h4 {
-    font-size: 14px; /* Điều chỉnh cỡ chữ giá */
+    font-size: 14px;
     color: #CC3300;
     margin-top: 10px;
 }
@@ -230,7 +229,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     background-color: #CC3300;
     color: #ffffff;
     border-radius: 5px;
-    font-size: 14px; /* Điều chỉnh cỡ chữ */
+    font-size: 14px;
     text-align: center;
     transition: background-color 0.3s ease;
 }
@@ -241,14 +240,14 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 /* Responsive for smaller screens */
 @media (max-width: 768px) {
-    .product-cat .row {
-        grid-template-columns: repeat(2, 1fr); /* 2 items per row on smaller screens */
+    .product-cat .item-product-cat {
+        width: calc(50% - 20px); /* 2 items per row on smaller screens */
     }
 }
 
 @media (max-width: 480px) {
-    .product-cat .row {
-        grid-template-columns: 1fr; /* 1 item per row on mobile screens */
+    .product-cat .item-product-cat {
+        width: 100%; /* 1 item per row on mobile screens */
     }
 }
 

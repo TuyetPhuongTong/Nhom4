@@ -121,14 +121,43 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 ?>
 <style>
 /* General Page Styling */
+/* General Page Styling */
+.page-banner {
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 100px 0;
+    color: #ffffff;
+}
+
+.page-banner .inner h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #CC3300;
+}
+
+.page .container {
+    padding: 30px;
+}
+
+.product-cat h3 {
+    font-size: 28px;
+    color: #006666;
+    margin-bottom: 20px;
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 /* Product Listing */
 .product-cat .row {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+    grid-template-columns: repeat(3, minmax(250px, 1fr)); /* 3 items per row, each with a minimum width of 250px */
     gap: 20px; /* Tăng khoảng cách giữa các sản phẩm */
-    width: 100%;
+    width: 100%; /* Đảm bảo rằng container của lưới chiếm đủ chiều rộng */
     grid-auto-rows: 1fr; /* Đảm bảo các hàng có chiều cao đều nhau */
-    grid-template-rows: auto; /* Đảm bảo chiều cao của hàng tự động điều chỉnh */
 }
 
 /* Container for each product block */
@@ -136,31 +165,31 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 120px; /* Reduced height of product blocks */
+    min-height: 250px; /* Điều chỉnh chiều cao sản phẩm để hiển thị rõ ràng */
     border: 1px solid #e1e1e1;
-    border-radius: 6px; /* Smaller border radius */
+    border-radius: 15px;
     background-color: #ffffff;
     transition: all 0.3s ease;
-    padding: 8px; /* Reduced padding inside product block */
+    padding: 20px; /* Thêm padding bên trong khối */
     box-sizing: border-box;
-    width: 100%;
+    width: 100%; /* Đảm bảo khối sản phẩm chiếm toàn bộ chiều rộng trong lưới */
 }
 
 /* Hover effect for product block */
 .product-cat .item-product-cat:hover {
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Smaller shadow effect */
-    transform: translateY(-3px); /* Slightly smaller hover effect */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
 }
 
 .product-cat .thumb .photo {
-    height: 150px; /* Further reduced height for images */
+    height: 250px; /* Chiều cao ảnh */
     background-size: cover;
     background-position: center;
 }
 
-/* Content section of each product */
+/* Product Content */
 .product-cat .text {
-    padding: 8px; /* Reduced padding */
+    padding: 10px;
     background-color: #f9f9f9;
     text-align: center;
     flex-grow: 1;
@@ -171,7 +200,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 /* Title of each product */
 .product-cat .text h3 a {
-    font-size: 12px; /* Smaller font size for title */
+    font-size: 14px; /* Điều chỉnh cỡ chữ tiêu đề */
     font-weight: bold;
     color: #006666;
     text-decoration: none;
@@ -182,17 +211,11 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     color: #CC3300;
 }
 
-/* Product price */
+/* Product Price */
 .product-cat .text h4 {
-    font-size: 10px; /* Smaller font size for price */
+    font-size: 14px; /* Điều chỉnh cỡ chữ giá */
     color: #CC3300;
-    margin-top: 5px; /* Reduced top margin */
-}
-
-/* Product rating */
-.product-cat .rating {
-    margin-top: 5px;
-    color: #f39c12;
+    margin-top: 10px;
 }
 
 /* Button section */
@@ -203,26 +226,23 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 .product-cat .text p a {
     display: inline-block;
-    width: 100%;
-    padding: 6px 12px; /* Smaller padding for buttons */
+    padding: 10px 20px;
     background-color: #CC3300;
     color: #ffffff;
-    border-radius: 4px; /* Smaller border radius for button */
-    text-decoration: none;
-    font-size: 12px; /* Smaller font size for button */
+    border-radius: 5px;
+    font-size: 14px; /* Điều chỉnh cỡ chữ */
     text-align: center;
     transition: background-color 0.3s ease;
-    white-space: nowrap;
 }
 
 .product-cat .text p a:hover {
     background-color: #006666;
 }
 
-/* Responsive design for smaller screens */
+/* Responsive for smaller screens */
 @media (max-width: 768px) {
     .product-cat .row {
-        grid-template-columns: repeat(2, 1fr); /* 2 items per row on smaller screens */
+        grid-template-columns: repeat(2, minmax(200px, 1fr)); /* 2 items per row on smaller screens */
     }
 }
 
@@ -231,7 +251,6 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
         grid-template-columns: 1fr; /* 1 item per row on mobile screens */
     }
 }
-
 
 
 </style>

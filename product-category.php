@@ -148,6 +148,9 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     overflow: hidden; /* Ẩn nội dung nếu dài hơn chiều cao */
     text-overflow: ellipsis; /* Thêm dấu "..." nếu nội dung bị cắt */
     white-space: nowrap; /* Không cho phép văn bản xuống dòng */
+    display: block; /* Đảm bảo phần tử là block để áp dụng đúng overflow */
+    width: 100%; /* Đảm bảo chiều rộng của phần tử đủ để hiển thị */
+    font-family: Arial, sans-serif; /* Kiểm tra font chữ */
 }
 
 /* Product Listing */
@@ -194,11 +197,6 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     color: #006666; /* Màu xanh cho tiêu đề */
     text-decoration: none; /* Xóa gạch chân */
     transition: color 0.3s ease; /* Hiệu ứng đổi màu mượt khi hover */
-    display: inline-block; /* Đảm bảo phần tử có thể chiếm đủ không gian */
-    width: 100%; /* Đảm bảo phần tử chiếm toàn bộ chiều rộng */
-    white-space: nowrap; /* Ngăn văn bản xuống dòng */
-    overflow: hidden; /* Ẩn phần nội dung dài */
-    text-overflow: ellipsis; /* Thêm dấu "..." nếu nội dung bị cắt */
 }
 .product-cat .text h3 a:hover {
     color: #CC3300; /* Đổi sang màu đỏ khi hover */
@@ -257,7 +255,6 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     flex-direction: column; /* Sắp xếp các phần tử bên trong khối từ trên xuống dưới */
     justify-content: space-between; /* Khoảng cách giữa các phần tử bên trong khối được dàn đều */
     height: 100%; /* Đặt chiều cao khối sản phẩm đồng nhất */
-    overflow: hidden; /* Ẩn nội dung thừa */
 }
 
 .product-cat .thumb .photo {

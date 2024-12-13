@@ -123,6 +123,8 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 /* General Page Styling */
 /* General Page Styling */
 /* General Page Styling */
+/* General Page Styling */
+/* General Page Styling */
 .page-banner {
     background-size: cover;
     background-position: center;
@@ -152,52 +154,43 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     white-space: nowrap;
 }
 
-/* Product Listing using CSS Grid */
+/* Product Listing */
 .product-cat .row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Chia thành 3 cột đều */
-    gap: 20px; /* Khoảng cách giữa các khối */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
 }
 
-/* Adjust for smaller screens using media queries */
-@media (max-width: 768px) {
-    .product-cat .row {
-        grid-template-columns: repeat(2, 1fr); /* 2 cột cho màn hình nhỏ hơn */
-    }
-}
-
-@media (max-width: 480px) {
-    .product-cat .row {
-        grid-template-columns: 1fr; /* 1 cột cho màn hình nhỏ nhất */
-    }
-}
-
-/* Product item styling */
+/* Container for each product block */
 .product-cat .item-product-cat {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    flex: 1 1 calc(33.333% - 20px); /* Adjust to take 1/3 space minus 20px for gap */
+    box-sizing: border-box;
+    height: 100%; /* Ensure consistent height */
     border: 1px solid #e1e1e1;
     border-radius: 10px;
+    margin-bottom: 20px;
     overflow: hidden;
     background-color: #ffffff;
     transition: all 0.3s ease;
-    height: 100%; /* Đảm bảo chiều cao khối sản phẩm chiếm toàn bộ không gian */
 }
 
+/* Hover effect for product block */
 .product-cat .item-product-cat:hover {
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     transform: translateY(-5px);
 }
 
-/* Image styling */
 .product-cat .thumb .photo {
     height: 250px;
     background-size: cover;
     background-position: center;
 }
 
-/* Text and button styles */
+/* Content section of each product */
 .product-cat .text {
     padding: 20px;
     background-color: #f9f9f9;
@@ -208,6 +201,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     justify-content: space-between;
 }
 
+/* Title of each product */
 .product-cat .text h3 a {
     font-size: 18px;
     font-weight: bold;
@@ -220,17 +214,20 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     color: #CC3300;
 }
 
+/* Product price */
 .product-cat .text h4 {
     font-size: 16px;
     color: #CC3300;
     margin-top: 10px;
 }
 
+/* Product rating */
 .product-cat .rating {
     margin-top: 10px;
     color: #f39c12;
 }
 
+/* Button section */
 .product-cat .text p {
     margin-top: auto;
     text-align: center;
@@ -253,26 +250,21 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 .product-cat .text p a:hover {
     background-color: #006666;
 }
-/* Ensure products remain consistent in size */
-.product-cat .row::after {
-    content: "";
-    flex: 0 0 calc(33.333% - 20px);
-    box-sizing: border-box;
-}
 
+/* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .product-cat .item-product-cat {
-        flex: 0 0 calc(50% - 20px); /* For smaller screens, display 2 items per row */
+        flex: 0 0 calc(50% - 20px); /* 2 items per row on smaller screens */
     }
 }
 
 @media (max-width: 480px) {
     .product-cat .item-product-cat {
-        flex: 0 0 100%; /* For mobile screens, display 1 item per row */
+        flex: 0 0 100%; /* 1 item per row on mobile screens */
     }
 }
 
-   
+
 </style>
 <div class="page-banner" style="background-image: url(https://i.pinimg.com/736x/94/a9/9c/94a99cb922ebf9bfe925b2a191080a7b.jpg)">
     <div class="inner">

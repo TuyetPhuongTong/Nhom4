@@ -155,7 +155,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 .product-cat .row {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 items per row */
-    gap: 30px; /* Tăng khoảng cách giữa các sản phẩm */
+    gap: 20px; /* Tăng khoảng cách giữa các sản phẩm */
     width: 100%; /* Đảm bảo rằng container của lưới chiếm đủ chiều rộng */
 }
 
@@ -164,7 +164,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 400px; /* Tăng chiều cao khối sản phẩm */
+    min-height: 50px; /* Tăng chiều cao khối sản phẩm */
     border: 1px solid #e1e1e1;
     border-radius: 15px; /* Bo tròn góc nhiều hơn */
     background-color: #ffffff;
@@ -176,12 +176,12 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 /* Hover effect for product block */
 .product-cat .item-product-cat:hover {
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
-    transform: translateY(-10px);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
 }
 
 .product-cat .thumb .photo {
-    height: 300px; /* Tăng chiều cao ảnh */
+    height: 250px; /* Tăng chiều cao ảnh */
     background-size: cover;
     background-position: center;
 }
@@ -232,12 +232,12 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 .product-cat .text p a {
     display: inline-block;
     width: 100%;
-    padding: 15px 25px; /* Tăng kích thước nút */
+    padding: 10px 20px; /* Tăng kích thước nút */
     background-color: #CC3300;
     color: #ffffff;
-    border-radius: 8px; /* Bo góc nút nhiều hơn */
+    border-radius: 5px; /* Bo góc nút nhiều hơn */
     text-decoration: none;
-    font-size: 18px; /* Tăng cỡ chữ nút */
+    font-size: 16px; /* Tăng cỡ chữ nút */
     text-align: center;
     transition: background-color 0.3s ease;
     white-space: nowrap;

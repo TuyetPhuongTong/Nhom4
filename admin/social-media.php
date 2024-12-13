@@ -51,14 +51,13 @@ if(isset($_POST['form1'])) {
 	$statement = $pdo->prepare("UPDATE tbl_social SET social_url=? WHERE social_name=?");
 	$statement->execute(array($_POST['digg'],'Digg'));
 
-	$success_message = 'Social Media URLs are updated successfully.';
-
+	$success_message = 'Các URL Mạng Xã Hội đã được cập nhật thành công.';
 }
 ?>
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Social Media</h1>
+		<h1>Mạng Xã Hội</h1>
 	</div>
 </section>
 
@@ -139,8 +138,8 @@ foreach ($result as $row) {
 			<form class="form-horizontal" action="" method="post">
 				<div class="box box-info">
 					<div class="box-body">						
-						<p style="padding-bottom: 20px;">If you do not want to show a social media in your front end page, just leave the input field blank.</p>
-
+					<h1>Mạng Xã Hội</h1>
+					<p style="padding-bottom: 20px;">Nếu bạn không muốn hiển thị một mạng xã hội nào đó trên trang của bạn, chỉ cần để trống trường nhập liệu.</p>
 						<div class="form-group">
 							<label for="" class="col-sm-2 control-label">Facebook </label>
 							<div class="col-sm-4">

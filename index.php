@@ -102,11 +102,11 @@ foreach ($result as $row)
                 foreach ($result as $row) {
                     ?>
                     <div class="col-md-4" style="margin-bottom: 30px;">
-                        <div class="item" style="text-align: center; background: #F1A800; border: 1px solid #ddd; border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
+                        <div class="item" style="text-align: center; background:  #F0F0F0 ; border: 1px solid #ddd; border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
                             <div class="photo" style="margin-bottom: 20px;">
                                 <img src="assets/uploads/<?php echo $row['photo']; ?>" width="150px" alt="<?php echo $row['title']; ?>" style="max-width: 100%; border-radius: 5px;">
                             </div>
-                            <h3 style="font-size: 20px; font-weight: bold; color: #333;"><?php echo $row['title']; ?></h3>
+                            <h3 style="font-size: 20px; font-weight: bold; color: #F1A800;"><?php echo $row['title']; ?></h3>
                             <p style="font-size: 14px; color: #666; line-height: 1.6;">
                                 <?php echo nl2br($row['content']); ?>
                             </p>

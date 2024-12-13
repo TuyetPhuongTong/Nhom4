@@ -136,7 +136,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 }
 
 .page .container {
-    padding: 20px; /* Tạo khoảng cách giữa nội dung và viền container */
+    padding: 5px; /* Tạo khoảng cách giữa nội dung và viền container */
 }
 
 .product-cat h3 {

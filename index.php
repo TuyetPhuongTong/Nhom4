@@ -102,7 +102,7 @@ foreach ($result as $row)
                 foreach ($result as $row) {
                     ?>
                     <div class="col-md-4" style="margin-bottom: 30px;">
-                        <div class="item" style="text-align: center; background:rgb(139, 193, 194); border: 1px solid #ddd; border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
+                        <div class="item" style="text-align: center; background: #F0F0F0 ; border: 1px solid #ddd; border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
                             <div class="photo" style="margin-bottom: 20px;">
                                 <img src="assets/uploads/<?php echo $row['photo']; ?>" width="150px" alt="<?php echo $row['title']; ?>" style="max-width: 100%; border-radius: 5px;">
                             </div>

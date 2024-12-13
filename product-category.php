@@ -240,9 +240,10 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 /* Row adjustment */
 .product-cat .row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Cột tự động co dãn */
-    gap: 20px; /* Khoảng cách giữa các khối */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
 }
 
 /* Adjust for better layout on smaller screens */

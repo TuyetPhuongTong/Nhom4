@@ -158,7 +158,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
-    height: 100%;
+    height: auto;
     border: 1px solid #e1e1e1;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -254,19 +254,28 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     justify-content: space-between;
     align-items: stretch;
     height: auto;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex; /* Ensure each item-product-cat is a flex container */
+    flex-direction: column;
 }
 
 .product-cat .thumb .photo {
     height: 250px;
     background-size: cover;
     background-position: center;
+    object-fit: cover; 
 }
 
 .product-cat .text {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between; /* Space out content */
+    padding: 20px;
     background-color: #f9f9f9;
     text-align: center;
     padding: 20px;
@@ -292,7 +301,9 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 }
 
 .product-cat .text p a {
+    margin-top: auto; 
     display: inline-block;
+    width: 100%;
     padding: 10px 20px;
     background-color: #CC3300;
     color: #ffffff;

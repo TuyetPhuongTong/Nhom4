@@ -153,27 +153,19 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 /* PHẦN 3: Hiển thị danh sách sản phẩm */
 .product-cat .row {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Tự động điều chỉnh số cột */
+    display: grid; /* Chuyển sang grid */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Số cột tự động điều chỉnh theo kích thước */
     gap: 20px; /* Khoảng cách giữa các khối */
-}
-.product-cat .row::after {
-    content: ""; /* Tạo phần tử giả ở cuối hàng */
-    flex: 0 0 calc(33.333% - 20px); /* Chiếm không gian tương ứng một sản phẩm */
-    box-sizing: border-box; /* Đảm bảo kích thước tính theo border-box */
 }
 
 /* Từng khối sản phẩm */
 .product-cat .item-product-cat {
-    flex: 0 0 calc(33.333% - 20px); /* Chia mỗi khối sản phẩm thành 1/3 hàng */
-    box-sizing: border-box; /* Bao gồm padding và viền trong kích thước */
     display: flex;
     flex-direction: column; /* Xếp các phần tử con theo chiều dọc */
     justify-content: space-between; /* Dàn đều các phần tử */
-    height: 350px; /* Chiều cao tối thiểu cho khối sản phẩm */
+    height: 100%; /* Chiều cao linh hoạt */
     border: 1px solid #e1e1e1; /* Viền màu xám nhạt */
     border-radius: 10px; /* Bo góc khối */
-    margin-bottom: 20px; /* Khoảng cách dưới */
     overflow: hidden; /* Ẩn nội dung tràn */
     transition: all 0.3s ease; /* Hiệu ứng chuyển đổi mượt */
 }
@@ -184,14 +176,13 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 /* PHẦN 4: Định dạng hình ảnh */
 .product-cat .thumb .photo {
-    height: 250px; /* Chiều cao cố định của ảnh */
+    height: 200px; /* Chiều cao cố định của ảnh */
     background-size: cover; /* Ảnh phủ khung */
     background-position: center; /* Ảnh căn giữa khung */
 }
 
 /* PHẦN 5: Nội dung sản phẩm */
 .product-cat .text {
-    height: calc(100% - 200px); /* Cố định chiều cao còn lại cho nội dung */
     padding: 20px; /* Khoảng cách nội dung với viền */
     background-color: #f9f9f9; /* Màu nền nhạt */
     text-align: center; /* Căn giữa nội dung */
@@ -243,16 +234,20 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 .product-cat .text p a:hover {
     background-color: #006666; /* Màu xanh khi hover */
 }
+
+/* PHẦN 6: Responsive (Tương thích thiết bị) */
 @media (max-width: 768px) {
-    .product-cat .item-product-cat {
-        flex: 0 0 calc(50% - 20px); /* Hiển thị 2 sản phẩm mỗi hàng */
+    .product-cat .row {
+        grid-template-columns: repeat(2, 1fr); /* Hiển thị 2 sản phẩm mỗi hàng */
     }
 }
+
 @media (max-width: 480px) {
-    .product-cat .item-product-cat {
-        flex: 0 0 100%; /* Hiển thị 1 sản phẩm mỗi hàng */
+    .product-cat .row {
+        grid-template-columns: 1fr; /* Hiển thị 1 sản phẩm mỗi hàng */
     }
 }
+
 </style>
 
 <div class="page-banner" style="background-image: url(https://i.pinimg.com/736x/94/a9/9c/94a99cb922ebf9bfe925b2a191080a7b.jpg)">

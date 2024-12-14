@@ -150,9 +150,6 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     text-overflow: ellipsis;
     white-space: nowrap;
     white-space: nowrap; /* Không cho phép văn bản xuống dòng */
-    display: -webkit-box; /* Dùng để hỗ trợ ellipsis trên các trình duyệt cũ */
-    -webkit-line-clamp: 1; /* Đảm bảo chỉ có 1 dòng hiển thị */
-    -webkit-box-orient: vertical; /* Đảm bảo nội dung bị cắt sau 1 dòng */
 }
 
 /* PHẦN 3: Hiển thị danh sách sản phẩm */
@@ -160,8 +157,8 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: stretch; /* Đảm bảo các khối có chiều cao bằng nhau */
     gap: 20px;
+    margin: 0 auto; /* Căn giữa cho toàn bộ khối sản phẩm */
 }
 
 .product-cat .row::after {
@@ -172,16 +169,17 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 /* Từng khối sản phẩm */
 .product-cat .item-product-cat {
-    flex: 0 0 calc(33.333% - 20px);
-    box-sizing: border-box;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%; /* Đảm bảo đồng bộ chiều cao */
-    border: 1px solid #e1e1e1;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    overflow: hidden;
-    transition: all 0.3s ease;
+    flex: 0 0 calc(33.333% - 20px); /* Chia mỗi khối sản phẩm thành 1/3 hàng */
+    box-sizing: border-box; /* Bao gồm padding và viền trong kích thước */
+    display: flex;
+    flex-direction: column; /* Xếp các phần tử con theo chiều dọc */
+    justify-content: space-between; /* Dàn đều các phần tử */
+    height: 100%; /* Đồng nhất chiều cao */
+    border: 1px solid #e1e1e1; /* Viền màu xám nhạt */
+    border-radius: 10px; /* Bo góc khối */
+    margin-bottom: 20px; /* Khoảng cách dưới */
+    overflow: hidden; /* Ẩn nội dung tràn */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển đổi mượt */
 }
 
 .product-cat .item-product-cat:hover {
@@ -213,11 +211,6 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     color: #006666;
     text-decoration: none;
     transition: color 0.3s ease;
-    display: -webkit-box; /* Giới hạn dòng */
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2; /* Hiển thị tối đa 2 dòng */
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 .product-cat .text h3 a:hover {
     color: #CC3300;

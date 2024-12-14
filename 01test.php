@@ -936,12 +936,12 @@
                         >
                         Mike Doe
                       </a>
-                      I would like to meet you to discuss the latest news about
-                      the arrival of the new theme. They say it is going to be
-                      one the best themes on the market
+                      Tôi muốn gặp bạn để thảo luận về những tin tức mới nhất liên quan đến
+        việc phát hành giao diện mới. Họ nói rằng đây sẽ là một trong những
+        giao diện tốt nhất trên thị trường.
                     </p>
                     <div class="attachment">
-                      <h4>Attachments:</h4>
+                      <h4>Tệp đính kèm:</h4>
 
                       <p class="filename">Theme-thumbnail-image.jpg</p>
 
@@ -972,9 +972,9 @@
                         >
                         Alexander Pierce
                       </a>
-                      I would like to meet you to discuss the latest news about
-                      the arrival of the new theme. They say it is going to be
-                      one the best themes on the market
+                      Tôi muốn gặp bạn để thảo luận về những tin tức mới nhất liên quan đến
+        việc phát hành giao diện mới. Họ nói rằng đây sẽ là một trong những
+        giao diện tốt nhất trên thị trường.
                     </p>
                   </div>
                   <!-- /.item -->
@@ -993,9 +993,9 @@
                         >
                         Susan Doe
                       </a>
-                      I would like to meet you to discuss the latest news about
-                      the arrival of the new theme. They say it is going to be
-                      one the best themes on the market
+                      Tôi muốn gặp bạn để thảo luận về những tin tức mới nhất liên quan đến
+        việc phát hành giao diện mới. Họ nói rằng đây sẽ là một trong những
+        giao diện tốt nhất trên thị trường.
                     </p>
                   </div>
                   <!-- /.item -->

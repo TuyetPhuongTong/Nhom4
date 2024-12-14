@@ -163,7 +163,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 }
 .product-cat .row::after {
     content: ""; /* Tạo phần tử giả ở cuối hàng */
-    flex: 0 0 calc(33.333% - 20px); /* Chiếm không gian tương ứng một sản phẩm */
+    flex: 0 0 calc(33.333% - 5px); /* Chiếm không gian tương ứng một sản phẩm */
     box-sizing: border-box; /* Đảm bảo kích thước tính theo border-box */
 }
 .product-cat .item-product-cat:first-child {

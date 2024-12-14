@@ -71,20 +71,20 @@ $price_range = get_min_max_price();
 $min_price = $price_range['min_price'];
 $max_price = $price_range['max_price'];
 
-// Lọc sản phẩm theo giá (Nếu có GET min_price và max_price từ AJAX)
+// Nếu có tham số GET min_price và max_price, lọc sản phẩm
 if (isset($_GET['min_price']) && isset($_GET['max_price'])) {
     $min_price = $_GET['min_price'];
     $max_price = $_GET['max_price'];
     $products = get_products_by_price_range($min_price, $max_price);
-
-    // Trả về danh sách sản phẩm dưới dạng HTML cho AJAX
+    
+    // Trả về danh sách sản phẩm dưới dạng HTML
     foreach ($products as $product) {
         echo '<div class="product">';
         echo '<img src="' . $product['photo'] . '" alt="' . $product['name'] . '" />';
         echo '<p>' . $product['name'] . ' - ' . number_format($product['price'], 0, ',', '.') . ' VND</p>';
         echo '</div>';
     }
-    exit; // Dừng script để không tiếp tục hiển thị phần còn lại của trang
+    exit; // Dừng mã PHP, không cần tiếp tục xử lý
 }
 
 $products = get_products_by_price_range($min_price, $max_price);

@@ -154,7 +154,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Sử dụng grid để tự động điều chỉnh số cột */
     gap: 20px;
     margin: 0 auto;
-    max-width: 120px;
+    max-width: 100%
     position: relative;
 }
 

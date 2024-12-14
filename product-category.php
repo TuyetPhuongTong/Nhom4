@@ -166,7 +166,9 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     flex: 0 0 calc(33.333% - 20px); /* Chiếm không gian tương ứng một sản phẩm */
     box-sizing: border-box; /* Đảm bảo kích thước tính theo border-box */
 }
-
+.product-cat .item-product-cat:first-child {
+    margin-left: 0; /* Xóa margin trái cho phần tử đầu tiên */
+}
 /* Từng khối sản phẩm */
 .product-cat .item-product-cat {
     flex: 0 0 calc(33.333% - 10px); /* Chia mỗi khối sản phẩm thành 1/3 hàng */

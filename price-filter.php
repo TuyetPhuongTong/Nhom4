@@ -44,7 +44,7 @@ function get_products_by_price_range($min_price, $max_price) {
     global $conn;
     
     // Truy vấn lấy các sản phẩm trong phạm vi giá
-    $sql = "SELECT p_id, p_name, p_current_price, p_featured_photo 
+    $sql = "SELECT p_id, p_name, p_current_price, p_old_price, p_featured_photo 
             FROM tbl_product
             WHERE p_current_price BETWEEN $min_price AND $max_price";
 
@@ -60,6 +60,7 @@ function get_products_by_price_range($min_price, $max_price) {
             'id' => $row['p_id'],
             'name' => $row['p_name'],
             'price' => $row['p_current_price'],
+            'old_price' => $row['p_old_price'],
             'photo' => $row['p_featured_photo']
         ];
     }
@@ -71,20 +72,10 @@ $price_range = get_min_max_price();
 $min_price = $price_range['min_price'];
 $max_price = $price_range['max_price'];
 
-// Nếu có tham số GET min_price và max_price, lọc sản phẩm
+// Lọc sản phẩm theo giá (Nếu có GET min_price và max_price từ AJAX)
 if (isset($_GET['min_price']) && isset($_GET['max_price'])) {
     $min_price = $_GET['min_price'];
     $max_price = $_GET['max_price'];
-    $products = get_products_by_price_range($min_price, $max_price);
-    
-    // Trả về danh sách sản phẩm dưới dạng HTML
-    foreach ($products as $product) {
-        echo '<div class="product">';
-        echo '<img src="' . $product['photo'] . '" alt="' . $product['name'] . '" />';
-        echo '<p>' . $product['name'] . ' - ' . number_format($product['price'], 0, ',', '.') . ' VND</p>';
-        echo '</div>';
-    }
-    exit; // Dừng mã PHP, không cần tiếp tục xử lý
 }
 
 $products = get_products_by_price_range($min_price, $max_price);
@@ -147,6 +138,17 @@ $products = get_products_by_price_range($min_price, $max_price);
             max-width: 100px;
             max-height: 100px;
         }
+
+        /* Định dạng giá cũ với gạch ngang */
+        .old-price {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        .discount {
+            color: red;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -161,7 +163,14 @@ $products = get_products_by_price_range($min_price, $max_price);
         <?php foreach ($products as $product): ?>
             <div class="product">
                 <img src="<?php echo $product['photo']; ?>" alt="<?php echo $product['name']; ?>" />
-                <p><?php echo $product['name']; ?> - <?php echo number_format($product['price'], 0, ',', '.'); ?> VND</p>
+                <p><?php echo $product['name']; ?></p>
+                <p>
+                    <?php if ($product['old_price'] > 0): ?>
+                        <span class="old-price"><?php echo number_format($product['old_price'], 0, ',', '.') . ' VND'; ?></span>
+                        <span class="discount"> - Giảm <?php echo round(100 * ($product['old_price'] - $product['price']) / $product['old_price']); ?>%</span>
+                    <?php endif; ?>
+                    <?php echo number_format($product['price'], 0, ',', '.') . ' VND'; ?>
+                </p>
             </div>
         <?php endforeach; ?>
     </div>

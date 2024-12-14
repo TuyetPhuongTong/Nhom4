@@ -144,8 +144,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     font-size: 28px;
     color: #006666;
     margin-bottom: 20px;
-    height: auto; /* Để tiêu đề có thể tự động điều chỉnh chiều cao */
-    line-height: 1.4; /* Đảm bảo cách dòng hợp lý */
+    line-height: 1.4;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -154,16 +153,17 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 /* PHẦN 3: Hiển thị danh sách sản phẩm */
 .product-cat .row {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Tự điều chỉnh số cột */
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Tăng kích thước tối thiểu của khung sản phẩm */
+    gap: 30px; /* Tăng khoảng cách giữa các khối */
 }
 
 /* Từng khối sản phẩm */
 .product-cat .item-product-cat {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Đảm bảo nội dung bắt đầu từ trên */
-    height: auto; /* Cho phép chiều cao khối tự động mở rộng */
+    justify-content: flex-start;
+    height: auto; /* Khung tự điều chỉnh chiều cao dựa trên nội dung */
+    min-height: 450px; /* Chiều cao tối thiểu lớn hơn */
     border: 1px solid #e1e1e1;
     border-radius: 10px;
     overflow: hidden;
@@ -171,42 +171,42 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     background-color: #ffffff;
 }
 .product-cat .item-product-cat:hover {
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1); /* Tăng độ bóng khi hover */
     transform: translateY(-5px);
 }
 
 /* PHẦN 4: Định dạng hình ảnh */
 .product-cat .thumb .photo {
     width: 100%;
-    height: 200px;
+    height: 250px; /* Tăng chiều cao của ảnh để phù hợp khung */
     background-size: cover;
     background-position: center;
 }
 
 /* PHẦN 5: Nội dung sản phẩm */
 .product-cat .text {
-    padding: 20px;
+    padding: 25px; /* Tăng padding nội dung */
     background-color: #f9f9f9;
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Khoảng cách giữa các phần tử con */
+    gap: 15px; /* Khoảng cách giữa các phần tử con */
 }
 
 .product-cat .text h3 a {
-    font-size: 18px;
+    font-size: 20px; /* Tăng cỡ chữ tiêu đề */
     font-weight: bold;
     color: #006666;
     text-decoration: none;
     transition: color 0.3s ease;
-    overflow-wrap: break-word; /* Đảm bảo chữ dài không bị tràn */
+    overflow-wrap: break-word;
 }
 .product-cat .text h3 a:hover {
     color: #CC3300;
 }
 
 .product-cat .text h4 {
-    font-size: 16px;
+    font-size: 18px; /* Tăng cỡ chữ giá */
     color: #CC3300;
     margin-top: 10px;
 }
@@ -223,12 +223,12 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 .product-cat .text p a {
     display: inline-block;
     width: 100%;
-    padding: 10px 20px;
+    padding: 15px 25px; /* Tăng kích thước nút bấm */
     background-color: #CC3300;
     color: #ffffff;
     border-radius: 5px;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 18px; /* Tăng cỡ chữ nút */
     transition: background-color 0.3s ease;
 }
 .product-cat .text p a:hover {
@@ -247,6 +247,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
         grid-template-columns: 1fr; /* Hiển thị 1 sản phẩm mỗi hàng */
     }
 }
+
 
 
 </style>

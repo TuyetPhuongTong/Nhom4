@@ -157,8 +157,8 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     flex-wrap: wrap; /* Các phần tử sẽ xuống dòng khi hết không gian */
     justify-content: space-between; /* Khoảng cách giữa các khối sản phẩm được chia đều */
     gap: 20px; /* Khoảng cách giữa các khối */
-    align-items:  flex-start; /* Căn chỉnh các phần tử theo chiều dọc trong từng hàng */
-    align-content: flex-start; /* Căn chỉnh các hàng (nếu có) theo chiều dọc */
+    align-items: center; /* Căn các phần tử theo chiều dọc vào giữa mỗi hàng */
+    align-content: center; /* Căn các hàng theo chiều dọc vào giữa container */
 }
 .product-cat .row::after {
     content: ""; /* Tạo phần tử giả ở cuối hàng */

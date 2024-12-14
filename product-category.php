@@ -154,8 +154,8 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 .product-cat .row {
     display: grid;
     grid-template-columns: repeat(3, minmax(500px, 1fr));
-
-    gap: 10px; /* Tăng khoảng cách giữa các khối */
+    padding: 0; /* Đảm bảo không có padding không mong muốn */
+    gap: 5px; /* Tăng khoảng cách giữa các khối */
 }
 
 /* Từng khối sản phẩm */
@@ -170,7 +170,8 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     overflow: hidden;
     transition: all 0.3s ease;
     background-color: #ffffff;
-    margin: 10px; /* Giảm khoảng cách giữa các sản phẩm */
+    margin: 5px; /* Giảm khoảng cách giữa các khối sản phẩm */
+    padding: 0; /* Đảm bảo không có padding không mong muốn */
 }
 .product-cat .item-product-cat:hover {
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1); /* Tăng độ bóng khi hover */

@@ -1,147 +1,198 @@
+<?php
+// Kết nối cơ sở dữ liệu
+$servername = "localhost";
+$username = "root"; // Tên người dùng MySQL của bạn
+$password = ""; // Mật khẩu MySQL của bạn
+$dbname = "ecommerceweb"; // Tên cơ sở dữ liệu của bạn
+
+// Tạo kết nối
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Kiểm tra kết nối
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Lấy giá thấp nhất và cao nhất từ cơ sở dữ liệu
+function get_min_max_price() {
+    global $conn;
+    
+    // Truy vấn lấy giá sản phẩm thấp nhất và cao nhất
+    $sql = "SELECT MIN(p_current_price) AS min_price, MAX(p_current_price) AS max_price FROM tbl_product";
+    
+    $result = $conn->query($sql);
+    
+    if (!$result) {
+        die('Query failed: ' . $conn->error); // Nếu truy vấn không thành công, dừng và in lỗi
+    }
+
+    if ($result->num_rows > 0) {
+        // Lấy giá trị từ kết quả truy vấn
+        $row = $result->fetch_assoc();
+        return [
+            'min_price' => (int) $row['min_price'],
+            'max_price' => (int) $row['max_price']
+        ];
+    }
+    
+    // Nếu không có sản phẩm, trả về giá mặc định
+    return ['min_price' => 0, 'max_price' => 1000];
+}
+
+// Lọc sản phẩm theo phạm vi giá
+function get_products_by_price_range($min_price, $max_price) {
+    global $conn;
+    
+    // Truy vấn lấy các sản phẩm trong phạm vi giá
+    $sql = "SELECT p_id, p_name, p_old_price, p_current_price, p_featured_photo 
+            FROM tbl_product
+            WHERE p_current_price BETWEEN $min_price AND $max_price";
+
+    $result = $conn->query($sql);
+    
+    if (!$result) {
+        die('Query failed: ' . $conn->error); // Nếu truy vấn không thành công, dừng và in lỗi
+    }
+
+    $products = [];
+    while ($row = $result->fetch_assoc()) {
+        // Kiểm tra nếu có giá giảm, nếu có thì sẽ hiển thị giá cũ và giá giảm
+        $products[] = [
+            'id' => $row['p_id'],
+            'name' => $row['p_name'],
+            'old_price' => $row['p_old_price'],
+            'current_price' => $row['p_current_price'],
+            'photo' => $row['p_featured_photo']
+        ];
+    }
+
+    return $products;
+}
+
+$price_range = get_min_max_price();
+$min_price = $price_range['min_price'];
+$max_price = $price_range['max_price'];
+
+// Lọc sản phẩm theo giá (Nếu có GET min_price và max_price từ AJAX)
+if (isset($_GET['min_price']) && isset($_GET['max_price'])) {
+    $min_price = $_GET['min_price'];
+    $max_price = $_GET['max_price'];
+}
+
+$products = get_products_by_price_range($min_price, $max_price);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Sản Phẩm</title>
-    <link rel="stylesheet" href="sp.css">
+    <title>Product Category</title>
+    <style>
+        /* CSS cho thanh lọc giá */
+        .price-filter {
+            position: fixed;
+            top: 20px;
+            left: 0;
+            width: 250px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            margin-right: 30px;
+            border: 1px solid #ccc;
+            z-index: 9999;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .price-filter h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .price-filter input[type="range"] {
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .price-filter p {
+            font-size: 16px;
+        }
+
+        /* Giới hạn chiều rộng cho thanh lọc giá */
+        .price-filter {
+            max-width: 250px;
+        }
+
+        /* Đảm bảo rằng danh sách sản phẩm không bị che khuất bởi thanh lọc giá */
+        #product-list {
+            margin-left: 300px;
+        }
+
+        /* Định dạng sản phẩm */
+        .product {
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+
+        .product img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .sale-price {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Notification Bar -->
-    <div class="notification-bar">
-        <p>Đặt quà và giao hàng miễn phí cho đơn từ 1.000.000 VND</p>
+    <div class="price-filter">
+        <h3>Filter by Price</h3>
+        <input type="range" id="price-range" min="<?php echo $min_price; ?>" max="<?php echo $max_price; ?>" value="<?php echo $max_price; ?>" step="10" onchange="updatePriceRange()" />
+        <p>Price: <span id="price-value"><?php echo $max_price; ?></span> VND</p>
     </div>
 
-    <!-- Header -->
-    <header>
-        <div class="header-left">
-            <a href="#login">Đăng nhập</a>
-            <a href="#register">Đăng ký</a>
-        </div>
-        <div class="logo">
-            <img src="ĐÔ.png" alt="Logo">
-        </div>
-        <div class="header-right">
-            <a href="#cart">Giỏ hàng</a>
-            <a href="#search">Tìm kiếm</a>
-        </div>
-    </header>
-
-    <!-- Main Navigation -->
-    <nav class="main-nav">
-        <ul>
-            <li><a href="#home">Trang chủ</a></li>
-            <li><a href="#products">Sản phẩm</a></li>
-            <li><a href="#blog">Bài viết</a></li>
-            <li><a href="#about">Về chúng tôi</a></li>
-            <li><a href="#contact">Liên hệ</a></li>
-        </ul>
-    </nav>
-
-    <!-- Main Content -->
-    <div class="main-content">
-        <!-- Sidebar for Filters and Categories -->
-        <aside class="sidebar">
-            <h3>Danh Mục Sản Phẩm</h3>
-            <ul class="category-list">
-                <li><a href="#category1">Sản phẩm A</a></li>
-                <li><a href="#category2">Sản phẩm B</a></li>
-                <li><a href="#category3">Sản phẩm C</a></li>
-            </ul>
-
-            <h3>Bộ Lọc</h3>
-            <form action="#" method="get" class="filter-form">
-                <div class="filter-option">
-                    <label for="price">Lọc theo giá:</label>
-                    <input type="range" id="price" name="price" min="0" max="1000" step="10" value="500">
-                    <p id="price-value">Giá: 500 VND</p>
-                </div>
-
-                <div class="filter-option">
-                    <label for="flavor">Lọc theo hương vị:</label>
-                    <select id="flavor" name="flavor">
-                        <option value="chocolate">Socola</option>
-                        <option value="vanilla">Vani</option>
-                        <option value="strawberry">Dâu</option>
-                    </select>
-                </div>
-
-                <button type="submit">Áp dụng bộ lọc</button>
-            </form>
-        </aside>
-
-        <!-- Product Grid -->
-        <section class="product-grid">
-            <h2>Sản phẩm nổi bật</h2>
-            <div class="product-container">
-                <!-- Example Product -->
-                <div class="product-card">
-                    <img src="sp1 (2).png" alt="Sản phẩm 1">
-                    <h3>Sản phẩm 1</h3>
-                    <p>Giá: 200.000 VND</p>
-                    <button class="btn-add-to-cart">Thêm vào giỏ</button>
-                </div>
-
-                <div class="product-card">
-                    <img src="sp2 (2).png" alt="Sản phẩm 2">
-                    <h3>Sản phẩm 2</h3>
-                    <p>Giá: 250.000 VND</p>
-                    <button class="btn-add-to-cart">Thêm vào giỏ</button>
-                </div>
+    <div id="product-list">
+        <?php foreach ($products as $product): ?>
+            <div class="product">
+                <img src="<?php echo $product['photo']; ?>" alt="<?php echo $product['name']; ?>" />
+                <p><?php echo $product['name']; ?></p>
+                
+                <!-- Kiểm tra và hiển thị giá -->
+                <?php if ($product['current_price'] < $product['old_price']): ?>
+                    <p><span class="original-price"><?php echo number_format($product['old_price'], 0, ',', '.'); ?> VND</span></p>
+                    <p><span class="sale-price"><?php echo number_format($product['current_price'], 0, ',', '.'); ?> VND</span></p>
+                <?php else: ?>
+                    <p><?php echo number_format($product['current_price'], 0, ',', '.'); ?> VND</p>
+                <?php endif; ?>
             </div>
-        </section>
-    </div>
- <!-- Footer -->
- <footer>
-    <div class="footer-container">
-        <!-- Contact Information -->
-        <div class="footer-column">
-            <h4>Liên hệ</h4>
-            <p>Địa chỉ: 123 Đường ABC, TP. Hồ Chí Minh</p>
-            <p>Email: contact@chocolatestore.com</p>
-            <p>Hotline: 0909 123 456</p>
-        </div>
-
-        <!-- Social Media -->
-        <div class="footer-column">
-            <h4>Theo dõi chúng tôi</h4>
-            <ul class="social-links">
-                <li><a href="#facebook">Facebook</a></li>
-                <li><a href="#instagram">Instagram</a></li>
-                <li><a href="#twitter">Twitter</a></li>
-                <li><a href="#youtube">YouTube</a></li>
-            </ul>
-        </div>
-
-        <!-- Quick Links -->
-        <div class="footer-column">
-            <h4>Liên kết nhanh</h4>
-            <ul>
-                <li><a href="#home">Trang chủ</a></li>
-                <li><a href="#products">Sản phẩm</a></li>
-                <li><a href="#about">Về chúng tôi</a></li>
-                <li><a href="#faq">FAQ</a></li>
-            </ul>
-        </div>
-
-        <!-- Newsletter -->
-        <div class="footer-column">
-            <h4>Đăng ký nhận tin</h4>
-            <p>Nhận thông tin ưu đãi và sản phẩm mới nhất!</p>
-            <form action="#">
-                <input type="email" placeholder="Nhập email của bạn" required>
-                <button type="submit">Đăng ký</button>
-            </form>
-        </div>
+        <?php endforeach; ?>
     </div>
 
-    <!-- Copyright -->
-    <div class="footer-bottom">
-        <p>&copy; 2024 Đô Si La Mi. All rights reserved.</p>
-    </div>
-</footer>
-   
+    <script>
+        function updatePriceRange() {
+            var priceValue = document.getElementById('price-range').value;
+            document.getElementById('price-value').textContent = priceValue;
+
+            // Gửi giá trị của thanh trượt tới server qua AJAX
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "product-category.php?min_price=0&max_price=" + priceValue, true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    // Cập nhật danh sách sản phẩm với kết quả trả về từ server
+                    document.getElementById('product-list').innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        }
+    </script>
+
 </body>
 </html>
-

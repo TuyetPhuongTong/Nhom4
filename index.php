@@ -35,7 +35,7 @@ foreach ($result as $row)
 <div id="bootstrap-touch-slider" class="carousel bs-slider fade control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="false" >
 
     <!-- Indicators -->
-    <ol class="carousel-indicators">
+    <ol class="carousel-indicators" style="margin-right: 1.6dvw;">
         <?php
         $i=0;
         $statement = $pdo->prepare("SELECT * FROM tbl_slider");
@@ -64,10 +64,10 @@ foreach ($result as $row)
                 <div class="bs-slider-overlay"></div>
                 <div class="container">
                     <div class="row">
-                        <div class="slide-text <?php if($row['position'] == 'Left') {echo 'slide_style_left';} elseif($row['position'] == 'Center') {echo 'slide_style_center';} elseif($row['position'] == 'Right') {echo 'slide_style_right';} ?>">
+                        <div style=""class="slide-text <?php if($row['position'] == 'Left') {echo 'slide_style_left';} elseif($row['position'] == 'Center') {echo 'slide_style_center';} elseif($row['position'] == 'Right') {echo 'slide_style_right';} ?>">
                             <h1 data-animation="animated <?php if($row['position'] == 'Left') {echo 'zoomInLeft';} elseif($row['position'] == 'Center') {echo 'flipInX';} elseif($row['position'] == 'Right') {echo 'zoomInRight';} ?>"><?php echo $row['heading']; ?></h1>
-                            <p data-animation="animated <?php if($row['position'] == 'Left') {echo 'fadeInLeft';} elseif($row['position'] == 'Center') {echo 'fadeInDown';} elseif($row['position'] == 'Right') {echo 'fadeInRight';} ?>"><?php echo nl2br($row['content']); ?></p>
-                            <a href="<?php echo $row['button_url']; ?>" target="_blank"  class="btn btn-primary" data-animation="animated <?php if($row['position'] == 'Left') {echo 'fadeInLeft';} elseif($row['position'] == 'Center') {echo 'fadeInDown';} elseif($row['position'] == 'Right') {echo 'fadeInRight';} ?>"><?php echo $row['button_text']; ?></a>
+                
+                            <a style="margin-top:250px;"href="<?php echo $row['button_url']; ?>" target="_blank"  class="btn btn-primary" data-animation="animated <?php if($row['position'] == 'Left') {echo 'fadeInLeft';} elseif($row['position'] == 'Center') {echo 'fadeInDown';} elseif($row['position'] == 'Right') {echo 'fadeInRight';} ?>"><?php echo $row['button_text']; ?></a>
                         </div>
                     </div>
                 </div>
@@ -91,6 +91,21 @@ foreach ($result as $row)
     </a>
 
 </div>
+<style>
+    .slide-text h1 {
+    display: none;
+    }
+    .bs-slider-overlay {
+    display: none;
+    }
+    .slide-text a {
+    display: inline-block; /* Đảm bảo nút được căn chỉnh theo dạng khối */
+    margin-top: 600px; /* Di chuyển nút xuống dưới */
+}
+
+    
+</style>
+
 <?php if($home_service_on_off == 1): ?>
 <div class="service bg-gray" style="padding: 50px 0; background-color: #f9f9f9;">
     <div class="container">

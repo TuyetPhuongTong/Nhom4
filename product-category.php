@@ -174,7 +174,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 }
 /* Từng khối sản phẩm */
 .product-cat .item-product-cat {
-    flex: 0 0 calc(33.333% - 10px); /* Chia mỗi khối sản phẩm thành 1/3 hàng */
+    flex: 0 0 calc(33.333% - 5px); /* Chia mỗi khối sản phẩm thành 1/3 hàng */
     box-sizing: border-box; /* Bao gồm padding và viền trong kích thước */
     display: flex;
     flex-direction: column; /* Xếp các phần tử con theo chiều dọc */

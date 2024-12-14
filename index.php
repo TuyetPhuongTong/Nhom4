@@ -359,6 +359,9 @@ foreach ($result as $row)
     border: 1px solid #ddd;
     border-radius: 10px;
     overflow: hidden;
+    white-space: nowrap; /* Ngăn văn bản xuống dòng */
+    text-overflow: ellipsis; /* Thêm dấu ba chấm khi văn bản quá dài */
+    display: block; /* Đảm bảo phần tử hiển thị block */
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* Distribute content evenly */

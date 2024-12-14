@@ -151,15 +151,13 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 /* PHẦN 3: Hiển thị danh sách sản phẩm */
 .product-cat .row {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Hiển thị 3 sản phẩm mỗi hàng */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Tự động điều chỉnh số cột */
     gap: 20px;
     margin: 0 auto;
-    max-width: 100%
+    max-width: 100%;
     position: relative;
+    grid-auto-rows: 1fr; /* Đảm bảo các hàng có chiều cao đều */
 }
-
-/* Thêm khoảng cách giữa các hàng sau mỗi nhóm sản phẩm */
-
 
 /* Từng khối sản phẩm */
 .product-cat .item-product-cat {
@@ -170,8 +168,10 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     overflow: hidden;
     transition: all 0.3s ease;
     background-color: #fff;
+    height: 100%; /* Đảm bảo khối sản phẩm chiếm hết chiều cao của hàng */
 }
 
+/* Khi hover vào khối sản phẩm */
 .product-cat .item-product-cat:hover {
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     transform: translateY(-5px);
@@ -189,8 +189,12 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     padding: 20px;
     text-align: center;
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
+/* Tiêu đề sản phẩm */
 .product-cat .text h3 a {
     font-size: 18px;
     font-weight: bold;
@@ -203,18 +207,20 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     color: #CC3300;
 }
 
+/* Giá sản phẩm */
 .product-cat .text h4 {
     font-size: 16px;
     color: #CC3300;
     margin-top: 10px;
 }
 
+/* Đánh giá sản phẩm */
 .product-cat .rating {
     margin-top: 10px;
     color: #f39c12;
 }
 
-/* Nút bấm */
+/* Nút thêm giỏ hàng */
 .product-cat .text p {
     margin-top: auto;
 }
@@ -229,6 +235,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     text-decoration: none;
     font-size: 16px;
     transition: background-color 0.3s ease;
+    text-align: center; /* Căn giữa nút */
 }
 
 .product-cat .text p a:hover {
@@ -238,21 +245,22 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 /* PHẦN 6: Responsive (Tương thích thiết bị) */
 @media (max-width: 1024px) {
     .product-cat .row {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Chuyển sang 2-3 cột tùy theo màn hình */
+        grid-template-columns: repeat(3, 1fr); /* 3 cột mỗi hàng trên màn hình vừa */
     }
 }
 
 @media (max-width: 768px) {
     .product-cat .row {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 1-2 cột cho màn hình nhỏ */
+        grid-template-columns: repeat(2, 1fr); /* 2 cột mỗi hàng trên màn hình nhỏ */
     }
 }
 
 @media (max-width: 480px) {
     .product-cat .row {
-        grid-template-columns: 1fr; /* 1 cột cho màn hình nhỏ nhất */
+        grid-template-columns: 1fr; /* 1 cột mỗi hàng trên màn hình rất nhỏ */
     }
 }
+
 
 </style>
 

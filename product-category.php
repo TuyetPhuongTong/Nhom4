@@ -151,7 +151,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 /* PHẦN 3: Hiển thị danh sách sản phẩm */
 .product-cat .row {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Sử dụng grid để tự động điều chỉnh số cột */
+    grid-template-columns: repeat(3, 1fr); /* Hiển thị 3 sản phẩm mỗi hàng */
     gap: 20px;
     margin: 0 auto;
     max-width: 100%

@@ -157,7 +157,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     flex-wrap: wrap; /* Các phần tử sẽ xuống dòng khi hết không gian */
     justify-content: space-between; /* Khoảng cách giữa các khối sản phẩm được chia đều */
     gap: 20px; /* Khoảng cách giữa các khối */
-    align-items: center; /* Căn chỉnh các phần tử theo chiều dọc trong từng hàng */
+    align-items:  flex-start; /* Căn chỉnh các phần tử theo chiều dọc trong từng hàng */
     align-content: flex-start; /* Căn chỉnh các hàng (nếu có) theo chiều dọc */
 }
 .product-cat .row::after {

@@ -153,7 +153,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 /* PHẦN 3: Hiển thị danh sách sản phẩm */
 .product-cat .row {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Tăng kích thước tối thiểu của khung sản phẩm */
+    grid-template-columns: repeat(auto-fill, minmax(1fr, 350px)); /* Tăng kích thước tối thiểu của khung sản phẩm */
     gap: 30px; /* Tăng khoảng cách giữa các khối */
 }
 

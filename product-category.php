@@ -136,7 +136,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 }
 
 .page .container {
-    padding: 30px;
+    padding: 5px;
 }
 
 /* PHẦN 2: Định dạng tiêu đề danh mục sản phẩm */

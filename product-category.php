@@ -158,7 +158,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     justify-content: space-between; /* Khoảng cách giữa các khối sản phẩm được chia đều */
     gap: 5px; /* Khoảng cách giữa các khối */
     align-content: space-between; /* Căn khoảng cách giữa các hàng */
-    align-items: flex-start; 
+    align-items: stretch; /* Các phần tử có chiều cao bằng nhau */
   
 }
 .product-cat .row::after {
@@ -168,6 +168,9 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 }
 .product-cat .item-product-cat:first-child {
     margin-left: 0; /* Xóa margin trái cho phần tử đầu tiên */
+}
+.product-cat .item-product-cat:last-child {
+    margin-bottom: 5px; /* Điều chỉnh margin dưới cùng để đều */
 }
 /* Từng khối sản phẩm */
 .product-cat .item-product-cat {

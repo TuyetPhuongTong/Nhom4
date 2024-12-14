@@ -153,9 +153,8 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 /* PHẦN 3: Hiển thị danh sách sản phẩm */
 .product-cat .row {
-    display: flex;
-    flex-wrap: wrap; /* Các phần tử sẽ xuống dòng khi hết không gian */
-    justify-content: space-between; /* Khoảng cách giữa các khối sản phẩm được chia đều */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Tự động điều chỉnh số cột */
     gap: 20px; /* Khoảng cách giữa các khối */
 }
 .product-cat .row::after {
@@ -171,7 +170,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     display: flex;
     flex-direction: column; /* Xếp các phần tử con theo chiều dọc */
     justify-content: space-between; /* Dàn đều các phần tử */
-    min-height: 350px; /* Chiều cao tối thiểu cho khối sản phẩm */
+    height: 350px; /* Chiều cao tối thiểu cho khối sản phẩm */
     border: 1px solid #e1e1e1; /* Viền màu xám nhạt */
     border-radius: 10px; /* Bo góc khối */
     margin-bottom: 20px; /* Khoảng cách dưới */
@@ -192,6 +191,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 /* PHẦN 5: Nội dung sản phẩm */
 .product-cat .text {
+    height: calc(100% - 200px); /* Cố định chiều cao còn lại cho nội dung */
     padding: 20px; /* Khoảng cách nội dung với viền */
     background-color: #f9f9f9; /* Màu nền nhạt */
     text-align: center; /* Căn giữa nội dung */
@@ -242,6 +242,16 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 }
 .product-cat .text p a:hover {
     background-color: #006666; /* Màu xanh khi hover */
+}
+@media (max-width: 768px) {
+    .product-cat .item-product-cat {
+        flex: 0 0 calc(50% - 20px); /* Hiển thị 2 sản phẩm mỗi hàng */
+    }
+}
+@media (max-width: 480px) {
+    .product-cat .item-product-cat {
+        flex: 0 0 100%; /* Hiển thị 1 sản phẩm mỗi hàng */
+    }
 }
 </style>
 

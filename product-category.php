@@ -171,7 +171,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     display: flex;
     flex-direction: column; /* Xếp các phần tử con theo chiều dọc */
     justify-content: space-between; /* Dàn đều các phần tử */
-    height: 100%; /* Đồng nhất chiều cao */
+    min-height: 350px; /* Chiều cao tối thiểu cho khối sản phẩm */
     border: 1px solid #e1e1e1; /* Viền màu xám nhạt */
     border-radius: 10px; /* Bo góc khối */
     margin-bottom: 20px; /* Khoảng cách dưới */

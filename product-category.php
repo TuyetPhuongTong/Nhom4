@@ -170,6 +170,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     overflow: hidden;
     transition: all 0.3s ease;
     background-color: #ffffff;
+    margin: 10px; /* Giảm khoảng cách giữa các sản phẩm */
 }
 .product-cat .item-product-cat:hover {
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1); /* Tăng độ bóng khi hover */

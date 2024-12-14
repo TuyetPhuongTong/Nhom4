@@ -173,7 +173,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     box-sizing: border-box; /* Bao gồm padding và viền trong kích thước */
     display: flex;
     flex-direction: column; /* Xếp các phần tử con theo chiều dọc */
-    justify-content: flex-start; /* Dàn đều các phần tử */
+    justify-content:space-between; /* Dàn đều các phần tử */
     height: 100%; /* Đồng nhất chiều cao */
     border: 1px solid #e1e1e1; /* Viền màu xám nhạt */
     border-radius: 10px; /* Bo góc khối */

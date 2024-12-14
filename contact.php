@@ -124,10 +124,10 @@ if(isset($_POST['form_contact']))
               "MIME-Version: 1.0\r\n" . 
               "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-   // Gửi Email Đến Quản Trị Viên                  
+   // Gửi Email Đến Quản Trị Viên                
    mail($to_admin, $subject, $message, $headers); 
-   
    $success_message = $receive_email_thank_you_message;
+   
 }
 }
 ?>

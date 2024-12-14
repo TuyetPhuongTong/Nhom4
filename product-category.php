@@ -122,152 +122,152 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 <style>
 /* PHẦN 1: Định dạng chung cho trang */
 .page-banner {
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-    padding: 100px 0;
-    color: #ffffff;
+    background-size: cover; /* Ảnh nền phủ toàn bộ vùng chứa mà không bị co giãn sai tỷ lệ */
+    background-position: center; /* Căn giữa ảnh nền */
+    text-align: center; /* Căn giữa nội dung theo chiều ngang */
+    padding: 100px 0; /* Tạo khoảng cách trên và dưới */
+    color: #ffffff; /* Màu chữ trắng */
 }
 
 .page-banner .inner h1 {
-    font-size: 36px;
-    font-weight: bold;
-    color: #CC3300;
+    font-size: 36px; /* Cỡ chữ lớn cho tiêu đề */
+    font-weight: bold; /* In đậm chữ */
+    color: #CC3300; /* Màu đỏ cho tiêu đề */
 }
 
 .page .container {
-    padding: 30px;
+    padding: 20px; /* Tạo khoảng cách giữa nội dung và viền container */
 }
 
 /* PHẦN 2: Định dạng tiêu đề danh mục sản phẩm */
 .product-cat h3 {
-    font-size: 28px;
-    color: #006666;
-    margin-bottom: 20px;
-    height: 50px;
-    line-height: 50px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    font-size: 28px; /* Cỡ chữ lớn */
+    color: #006666; /* Màu xanh */
+    margin-bottom: 20px; /* Khoảng cách phía dưới */
+    height: 50px; /* Chiều cao cố định */
+    line-height: 50px; /* Đảm bảo văn bản căn giữa theo chiều dọc */
+    overflow: hidden; /* Ẩn nội dung tràn */
+    text-overflow: ellipsis; /* Thêm dấu "..." khi nội dung bị cắt */
     white-space: nowrap; /* Không cho phép văn bản xuống dòng */
-    display: -webkit-box; /* Dùng để hỗ trợ ellipsis trên các trình duyệt cũ */
-    -webkit-line-clamp: 1; /* Đảm bảo chỉ có 1 dòng hiển thị */
-    -webkit-box-orient: vertical; /* Đảm bảo nội dung bị cắt sau 1 dòng */
 }
 
 /* PHẦN 3: Hiển thị danh sách sản phẩm */
-.product-cat .row {
+.product-cat.row{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: stretch; /* Đảm bảo các khối có chiều cao bằng nhau */
-    gap: 20px;
+    flex-wrap: wrap; /* Các phần tử sẽ xuống dòng khi hết không gian */
+    justify-content: space-between; /* Khoảng cách giữa các khối sản phẩm được chia đều */
+    gap: 10px; /* Khoảng cách giữa các khối */
+   
+    align-items: stretch; /* Các phần tử có chiều cao bằng nhau */
+  
 }
-
 .product-cat .row::after {
-    content: ""; /* Phần tử giả để căn chỉnh */
-    flex: 0 0 calc(33.333% - 20px); /* Kích thước tương đương một sản phẩm */
-    box-sizing: border-box;
+    content: ""; /* Tạo phần tử giả ở cuối hàng */
+    flex: 0 0 calc(33.333% - 10px); /* Chiếm không gian tương ứng một sản phẩm */
+    box-sizing: border-box; /* Đảm bảo kích thước tính theo border-box */
 }
-
+.product-cat .item-product-cat:first-child {
+    margin-left: 0; /* Xóa margin trái cho phần tử đầu tiên */
+}
+.product-cat .item-product-cat:last-child {
+    margin-bottom: 5px; /* Điều chỉnh margin dưới cùng để đều */
+}
 /* Từng khối sản phẩm */
 .product-cat .item-product-cat {
-    flex: 0 0 calc(33.333% - 20px);
-    box-sizing: border-box;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%; /* Đảm bảo đồng bộ chiều cao */
-    border: 1px solid #e1e1e1;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    overflow: hidden;
-    transition: all 0.3s ease;
+    flex: 1 1 calc(33.333% - 10px); /* Chia mỗi khối sản phẩm thành 1/3 hàng */
+    box-sizing: border-box; /* Bao gồm padding và viền trong kích thước */
+    display: flex;
+    flex-direction: column; /* Xếp các phần tử con theo chiều dọc */
+    justify-content:space-between; /* Dàn đều các phần tử */
+    height: 100%; /* Đồng nhất chiều cao */
+    border: 1px solid #e1e1e1; /* Viền màu xám nhạt */
+    border-radius: 10px; /* Bo góc khối */
+    margin-bottom: 20px; /* Khoảng cách dưới */
+    overflow: hidden; /* Ẩn nội dung tràn */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển đổi mượt */
 }
-
 .product-cat .item-product-cat:hover {
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-5px);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Tạo bóng khi hover */
+    transform: translateY(-5px); /* Nâng khối lên khi hover */
 }
 
 /* PHẦN 4: Định dạng hình ảnh */
 .product-cat .thumb .photo {
-    height: 250px;
-    background-size: cover;
-    background-position: center;
+    height: 250px; /* Chiều cao cố định của ảnh */
+    background-size: cover; /* Ảnh phủ khung */
+    background-position: center; /* Ảnh căn giữa khung */
 }
 
 /* PHẦN 5: Nội dung sản phẩm */
 .product-cat .text {
-    padding: 20px;
-    background-color: #f9f9f9;
-    text-align: center;
-    flex-grow: 1; /* Lấp đầy không gian còn lại */
+    padding: 20px; /* Khoảng cách nội dung với viền */
+    background-color: #f9f9f9; /* Màu nền nhạt */
+    text-align: center; /* Căn giữa nội dung */
+    flex-grow: 1; /* Tự mở rộng để lấp đầy không gian */
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-direction: column; /* Xếp các phần tử con theo chiều dọc */
+    justify-content: space-between; /* Dàn đều các phần tử trong khối */
 }
 
 .product-cat .text h3 a {
-    font-size: 18px;
-    font-weight: bold;
-    color: #006666;
-    text-decoration: none;
-    transition: color 0.3s ease;
-    display: -webkit-box; /* Giới hạn dòng */
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2; /* Hiển thị tối đa 2 dòng */
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 18px; /* Cỡ chữ tên sản phẩm */
+    font-weight: bold; /* In đậm */
+    color: #006666; /* Màu xanh đậm */
+    text-decoration: none; /* Xóa gạch chân */
+    transition: color 0.3s ease; /* Hiệu ứng đổi màu mượt */
+    overflow-wrap: break-word;
+    white-space: nowrap; /* Ngăn văn bản xuống dòng */
+    text-overflow: ellipsis; /* Thêm dấu ba chấm khi văn bản quá dài */
+    display: block; /* Đảm bảo phần tử hiển thị block */
 }
 .product-cat .text h3 a:hover {
-    color: #CC3300;
+    color: #CC3300; /* Màu đỏ khi hover */
 }
 
 .product-cat .text h4 {
-    font-size: 16px;
-    color: #CC3300;
-    margin-top: 10px;
+    font-size: 16px; /* Cỡ chữ giá */
+    color: #CC3300; /* Màu đỏ */
+    margin-top: 10px; /* Khoảng cách phía trên */
 }
 
 .product-cat .rating {
     margin-top: 10px;
-    color: #f39c12;
+    color: #f39c12; /* Màu vàng cho đánh giá */
 }
 
 /* Nút bấm */
 .product-cat .text p {
-    margin-top: auto;
+    margin-top: auto; /* Đẩy nút xuống cuối */
     text-align: center;
 }
 .product-cat .text p a {
     display: inline-block;
-    width: 100%;
+    width: 100%; /* Chiều ngang 100% */
     padding: 10px 20px;
-    background-color: #CC3300;
-    color: #ffffff;
-    border-radius: 5px;
-    text-decoration: none;
+    background-color: #CC3300; /* Màu đỏ */
+    color: #ffffff; /* Màu chữ trắng */
+    border-radius: 5px; /* Bo góc */
+    text-decoration: none; /* Xóa gạch chân */
     font-size: 16px;
     transition: background-color 0.3s ease;
-    white-space: nowrap;
+    white-space: nowrap; /* Không xuống dòng */
 }
 .product-cat .text p a:hover {
-    background-color: #006666;
+    background-color: #006666; /* Màu xanh khi hover */
 }
 
 /* PHẦN 6: Responsive (Tương thích thiết bị) */
 @media (max-width: 768px) {
     .product-cat .item-product-cat {
-        flex: 0 0 calc(50% - 20px);
+        flex: 0 0 calc(50% - 20px); /* Hiển thị 2 sản phẩm mỗi hàng */
     }
 }
 @media (max-width: 480px) {
     .product-cat .item-product-cat {
-        flex: 0 0 100%;
+        flex: 0 0 100%; /* Hiển thị 1 sản phẩm mỗi hàng */
     }
 }
 </style>
-
 
 <div class="page-banner" style="background-image: url(https://i.pinimg.com/736x/94/a9/9c/94a99cb922ebf9bfe925b2a191080a7b.jpg)">
     <div class="inner">

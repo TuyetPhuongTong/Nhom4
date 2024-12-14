@@ -169,14 +169,14 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 /* Từng khối sản phẩm */
 .product-cat .item-product-cat {
     flex: 0 0 calc(33.333% - 10px); /* Chia mỗi khối sản phẩm thành 1/3 hàng */
-    min-width: 300px; /* Đảm bảo chiều rộng tối thiểu */
+    box-sizing: border-box; /* Bao gồm padding và viền trong kích thước */
     display: flex;
     flex-direction: column; /* Xếp các phần tử con theo chiều dọc */
-    justify-content:  flex-start; /* Dàn đều các phần tử */
-    min-height: 450px;
+    justify-content: flex-start; /* Dàn đều các phần tử */
+    height: 100%; /* Đồng nhất chiều cao */
     border: 1px solid #e1e1e1; /* Viền màu xám nhạt */
     border-radius: 10px; /* Bo góc khối */
-   
+    margin-bottom: 20px; /* Khoảng cách dưới */
     overflow: hidden; /* Ẩn nội dung tràn */
     transition: all 0.3s ease; /* Hiệu ứng chuyển đổi mượt */
 }

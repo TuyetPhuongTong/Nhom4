@@ -121,6 +121,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 ?>
 <style>
 /* PHẦN 1: Định dạng chung cho trang */
+/* PHẦN 1: Định dạng chung cho trang */
 .page-banner {
     background-size: cover;
     background-position: center;
@@ -144,42 +145,36 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     font-size: 28px;
     color: #006666;
     margin-bottom: 20px;
-    height: 50px;
-    line-height: 50px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    white-space: nowrap; /* Không cho phép văn bản xuống dòng */
+    text-align: center;
 }
 
 /* PHẦN 3: Hiển thị danh sách sản phẩm */
 .product-cat .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Sử dụng grid để tự động điều chỉnh số cột */
     gap: 20px;
-    margin: 0 auto; /* Căn giữa cho toàn bộ khối sản phẩm */
+    margin: 0 auto;
+    max-width: 1200px;
+    position: relative;
 }
 
+/* Thêm khoảng cách giữa các hàng sau mỗi nhóm sản phẩm */
 .product-cat .row::after {
-    content: ""; /* Phần tử giả để căn chỉnh */
-    flex: 0 0 calc(33.333% - 20px); /* Kích thước tương đương một sản phẩm */
-    box-sizing: border-box;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 20px; /* Khoảng cách giữa các hàng */
 }
 
 /* Từng khối sản phẩm */
 .product-cat .item-product-cat {
-    flex: 0 0 calc(33.333% - 20px); /* Chia mỗi khối sản phẩm thành 1/3 hàng */
-    box-sizing: border-box; /* Bao gồm padding và viền trong kích thước */
     display: flex;
-    flex-direction: column; /* Xếp các phần tử con theo chiều dọc */
-    justify-content: space-between; /* Dàn đều các phần tử */
-    height: 100%; /* Đồng nhất chiều cao */
-    border: 1px solid #e1e1e1; /* Viền màu xám nhạt */
-    border-radius: 10px; /* Bo góc khối */
-    margin-bottom: 20px; /* Khoảng cách dưới */
-    overflow: hidden; /* Ẩn nội dung tràn */
-    transition: all 0.3s ease; /* Hiệu ứng chuyển đổi mượt */
+    flex-direction: column;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background-color: #fff;
 }
 
 .product-cat .item-product-cat:hover {
@@ -197,12 +192,8 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 /* PHẦN 5: Nội dung sản phẩm */
 .product-cat .text {
     padding: 20px;
-    background-color: #f9f9f9;
     text-align: center;
-    flex-grow: 1; /* Lấp đầy không gian còn lại */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-grow: 1;
 }
 
 .product-cat .text h3 a {
@@ -212,6 +203,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     text-decoration: none;
     transition: color 0.3s ease;
 }
+
 .product-cat .text h3 a:hover {
     color: #CC3300;
 }
@@ -230,8 +222,8 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 /* Nút bấm */
 .product-cat .text p {
     margin-top: auto;
-    text-align: center;
 }
+
 .product-cat .text p a {
     display: inline-block;
     width: 100%;
@@ -242,23 +234,31 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     text-decoration: none;
     font-size: 16px;
     transition: background-color 0.3s ease;
-    white-space: nowrap;
 }
+
 .product-cat .text p a:hover {
     background-color: #006666;
 }
 
 /* PHẦN 6: Responsive (Tương thích thiết bị) */
+@media (max-width: 1024px) {
+    .product-cat .row {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Chuyển sang 2-3 cột tùy theo màn hình */
+    }
+}
+
 @media (max-width: 768px) {
-    .product-cat .item-product-cat {
-        flex: 0 0 calc(50% - 20px);
+    .product-cat .row {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 1-2 cột cho màn hình nhỏ */
     }
 }
+
 @media (max-width: 480px) {
-    .product-cat .item-product-cat {
-        flex: 0 0 100%;
+    .product-cat .row {
+        grid-template-columns: 1fr; /* 1 cột cho màn hình nhỏ nhất */
     }
 }
+
 </style>
 
 

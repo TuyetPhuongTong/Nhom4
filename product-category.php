@@ -149,6 +149,10 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    white-space: nowrap; /* Không cho phép văn bản xuống dòng */
+    display: -webkit-box; /* Dùng để hỗ trợ ellipsis trên các trình duyệt cũ */
+    -webkit-line-clamp: 1; /* Đảm bảo chỉ có 1 dòng hiển thị */
+    -webkit-box-orient: vertical; /* Đảm bảo nội dung bị cắt sau 1 dòng */
 }
 
 /* PHẦN 3: Hiển thị danh sách sản phẩm */
@@ -170,7 +174,6 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 .product-cat .item-product-cat {
     flex: 0 0 calc(33.333% - 20px);
     box-sizing: border-box;
-    display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%; /* Đảm bảo đồng bộ chiều cao */

@@ -243,18 +243,6 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 .product-cat .text p a:hover {
     background-color: #006666; /* Màu xanh khi hover */
 }
-
-/* PHẦN 6: Responsive (Tương thích thiết bị) */
-@media (max-width: 768px) {
-    .product-cat .item-product-cat {
-        flex: 0 0 calc(50% - 20px); /* Hiển thị 2 sản phẩm mỗi hàng */
-    }
-}
-@media (max-width: 480px) {
-    .product-cat .item-product-cat {
-        flex: 0 0 100%; /* Hiển thị 1 sản phẩm mỗi hàng */
-    }
-}
 </style>
 
 <div class="page-banner" style="background-image: url(https://i.pinimg.com/736x/94/a9/9c/94a99cb922ebf9bfe925b2a191080a7b.jpg)">

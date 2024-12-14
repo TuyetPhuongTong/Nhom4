@@ -158,6 +158,11 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     justify-content: space-between; /* Khoảng cách giữa các khối sản phẩm được chia đều */
     gap: 20px; /* Khoảng cách giữa các khối */
 }
+.product-cat .row::after {
+    content: ""; /* Tạo phần tử giả ở cuối hàng */
+    flex: 0 0 calc(33.333% - 20px); /* Chiếm không gian tương ứng một sản phẩm */
+    box-sizing: border-box; /* Đảm bảo kích thước tính theo border-box */
+}
 
 /* Từng khối sản phẩm */
 .product-cat .item-product-cat {

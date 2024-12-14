@@ -34,7 +34,7 @@ foreach ($result as $row) {
                     <div class="col-md-8">
                         <div class="well well-sm">
                             
-                            <?php
+<?php
 // Xử Lý Khi Biểu Mẫu Liên Hệ Được Gửi
 if(isset($_POST['form_contact']))
 {
@@ -87,15 +87,16 @@ if(isset($_POST['form_contact']))
 
     if($valid == 1)
     {
+    
         $visitor_name = strip_tags($_POST['visitor_name']);
         $visitor_email = strip_tags($_POST['visitor_email']);
         $visitor_phone = strip_tags($_POST['visitor_phone']);
         $visitor_message = strip_tags($_POST['visitor_message']);
 
-        // Gửi Email
-        $to_admin = $receive_email;
-        $subject = $receive_email_subject;
-        $message = '
+   // Gửi Email
+   $to_admin = 'phuongtong.31221023099@st.ueh.edu.vn';
+   $subject = $receive_email_subject;
+   $message = '
 <html><body>
 <table>
 <tr>
@@ -117,19 +118,27 @@ if(isset($_POST['form_contact']))
 </table>
 </body></html>
 ';
-        $headers = 'From: ' . $visitor_email . "\r\n" .
-                   'Reply-To: ' . $visitor_email . "\r\n" .
-                   'X-Mailer: PHP/' . phpversion() . "\r\n" . 
-                   "MIME-Version: 1.0\r\n" . 
-                   "Content-Type: text/html; charset=ISO-8859-1\r\n";
+   $headers = 'From: ' . $visitor_email . "\r\n" .
+              'Reply-To: ' . $visitor_email . "\r\n" .
+              'X-Mailer: PHP/' . phpversion() . "\r\n" . 
+              "MIME-Version: 1.0\r\n" . 
+              "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-        // Gửi Email Đến Quản Trị Viên                  
-        mail($to_admin, $subject, $message, $headers); 
-        
-        $success_message = $receive_email_thank_you_message;
-    }
+   // Gửi Email Đến Quản Trị Viên                  
+   mail($to_admin, $subject, $message, $headers); 
+   
+   $success_message = $receive_email_thank_you_message;
+}
 }
 ?>
+<?php
+           if($error_message != '') {
+               echo "<script>alert('".$error_message."')</script>";
+           }
+           if($success_message != '') {
+               echo "<script>alert('".$success_message."')</script>";
+           }
+           ?>
 <style>
  /* Thiết kế chung cho biểu mẫu liên hệ */
 .cform .form-control {
@@ -221,14 +230,6 @@ address a:hover {
 
 
 </style>           
-                <?php
-                if($error_message != '') {
-                    echo "<script>alert('".$error_message."')</script>";
-                }
-                if($success_message != '') {
-                    echo "<script>alert('".$success_message."')</script>";
-                }
-                ?>
 
 
                             <form action="" method="post">

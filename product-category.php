@@ -155,7 +155,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     display: grid;
     grid-template-columns: repeat(3, minmax(10px, 1fr));
     padding: 0; /* Đảm bảo không có padding không mong muốn */
-    gap: 5px; /* Tăng khoảng cách giữa các khối */
+    gap: 5px !important; /* Áp dụng gap nhỏ hơn với !important */
 }
 
 /* Từng khối sản phẩm */

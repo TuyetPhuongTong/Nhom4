@@ -215,6 +215,10 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     color: #006666; /* Màu xanh đậm */
     text-decoration: none; /* Xóa gạch chân */
     transition: color 0.3s ease; /* Hiệu ứng đổi màu mượt */
+    overflow-wrap: break-word;
+    white-space: nowrap; /* Ngăn văn bản xuống dòng */
+    text-overflow: ellipsis; /* Thêm dấu ba chấm khi văn bản quá dài */
+    display: block; /* Đảm bảo phần tử hiển thị block */
 }
 .product-cat .text h3 a:hover {
     color: #CC3300; /* Màu đỏ khi hover */

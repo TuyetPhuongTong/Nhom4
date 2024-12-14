@@ -154,17 +154,12 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Sử dụng grid để tự động điều chỉnh số cột */
     gap: 20px;
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 120px;
     position: relative;
 }
 
 /* Thêm khoảng cách giữa các hàng sau mỗi nhóm sản phẩm */
-.product-cat .row::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 20px; /* Khoảng cách giữa các hàng */
-}
+
 
 /* Từng khối sản phẩm */
 .product-cat .item-product-cat {

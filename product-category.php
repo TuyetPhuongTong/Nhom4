@@ -193,7 +193,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Khoảng cách giữa các phần tử con */
+    gap: 5px; /* Khoảng cách giữa các phần tử con */
 }
 
 .product-cat .text h3 a {

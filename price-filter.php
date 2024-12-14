@@ -44,7 +44,7 @@ function get_products_by_price_range($min_price, $max_price) {
     global $conn;
     
     // Truy vấn lấy các sản phẩm trong phạm vi giá
-    $sql = "SELECT p_id, p_name, p_current_price, p_old_price, p_featured_photo 
+    $sql = "SELECT p_id, p_name, p_current_price, p_featured_photo 
             FROM tbl_product
             WHERE p_current_price BETWEEN $min_price AND $max_price";
 
@@ -59,8 +59,7 @@ function get_products_by_price_range($min_price, $max_price) {
         $products[] = [
             'id' => $row['p_id'],
             'name' => $row['p_name'],
-            'current_price' => $row['p_current_price'],
-            'old_price' => $row['p_old_price'],
+            'price' => $row['p_current_price'],
             'photo' => $row['p_featured_photo']
         ];
     }
@@ -138,19 +137,6 @@ $products = get_products_by_price_range($min_price, $max_price);
             max-width: 100px;
             max-height: 100px;
         }
-
-        /* CSS cho giá cũ */
-        .old-price {
-            text-decoration: line-through;
-            color: #999; /* Màu xám cho giá cũ */
-            margin-right: 10px; /* Khoảng cách giữa giá cũ và giá mới */
-        }
-
-        /* CSS cho giá hiện tại */
-        .current-price {
-            color: #CC3300; /* Màu đỏ cho giá hiện tại */
-            font-weight: bold;
-        }
     </style>
 </head>
 <body>
@@ -165,13 +151,7 @@ $products = get_products_by_price_range($min_price, $max_price);
         <?php foreach ($products as $product): ?>
             <div class="product">
                 <img src="<?php echo $product['photo']; ?>" alt="<?php echo $product['name']; ?>" />
-                <p><?php echo $product['name']; ?></p>
-                <p>
-                    <?php if ($product['old_price'] > $product['current_price']): ?>
-                        <span class="old-price"><?php echo $product['old_price']; ?> VND</span>
-                    <?php endif; ?>
-                    <span class="current-price"><?php echo $product['current_price']; ?> VND</span>
-                </p>
+                <p><?php echo $product['name']; ?> - <?php echo $product['price']; ?> VND</p>
             </div>
         <?php endforeach; ?>
     </div>
